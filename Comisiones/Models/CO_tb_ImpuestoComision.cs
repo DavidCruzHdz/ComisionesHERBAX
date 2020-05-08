@@ -11,27 +11,15 @@ namespace Comisiones.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class CO_tb_ImpuestoComision
     {
         public int id_Impuesto { get; set; }
-        [DisplayName("Limite inferior")]
-        [DisplayFormat(DataFormatString = "{0:N2}")]
         public Nullable<decimal> limiteInferior { get; set; }
-        [DisplayName("Limite superior")]
-        [DisplayFormat(DataFormatString = "{0:N2}")]
         public Nullable<decimal> limiteSuperior { get; set; }
-        [DisplayName("Porcentaje")]
-        [DisplayFormat(DataFormatString = "{0:N2}")]
         public Nullable<decimal> porcentaje { get; set; }
-        [DisplayName("Cuota fija")]
-        [DisplayFormat(DataFormatString = "{0:N2}")]
         public Nullable<decimal> coutaFija { get; set; }
-        [DisplayName("Usuario")]
         public string usuario { get; set; }
-        [DisplayName("Fecha movimiento")]
         public Nullable<System.DateTime> fechaMovimiento { get; set; }
     }
 }

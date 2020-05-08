@@ -11,8 +11,7 @@ namespace Comisiones.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class CO_tb_Conceptos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,19 +21,12 @@ namespace Comisiones.Models
         }
     
         public int id_Concepto { get; set; }
-        [DisplayName("Descripcion")]
         public string descripcion { get; set; }
-        [DisplayName("Tipo")]
         public string tipo { get; set; }
-        [DisplayName("Es gravable")]
         public short gravable { get; set; }
-        [DisplayName("Pago en especie")]
         public short pagoEspecie { get; set; }
-        [DisplayName("Estatus")]
         public short estatus { get; set; }
-        [DisplayName("Usuario")]
         public string usuario { get; set; }
-        [DisplayName("Fecha Movimiento")]
         public Nullable<System.DateTime> fechaMovimiento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

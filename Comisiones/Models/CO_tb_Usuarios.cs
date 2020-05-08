@@ -11,8 +11,7 @@ namespace Comisiones.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class CO_tb_Usuarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -30,23 +29,19 @@ namespace Comisiones.Models
             this.CO_tb_Usuarios1 = new HashSet<CO_tb_Usuarios>();
             this.CO_tb_Usuarios11 = new HashSet<CO_tb_Usuarios>();
         }
-
+    
         public int IdUsuario { get; set; }
         public int IdRol { get; set; }
-        [DisplayName("Usuario")]
         public string NombreUsuario { get; set; }
         public string Correo { get; set; }
-        [DisplayName("Contraseña")]
         public string Password { get; set; }
-        [DisplayName("Confirma el Password")]
-        public string ConfirmaPass { get; set; }
         public Nullable<int> Id_Pais { get; set; }
         public Nullable<bool> Estatus { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public Nullable<int> UsuarioAlta { get; set; }
         public Nullable<System.DateTime> FechaCambio { get; set; }
         public Nullable<int> UsuarioCambio { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CO_tb_Pantallas> CO_tb_Pantallas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

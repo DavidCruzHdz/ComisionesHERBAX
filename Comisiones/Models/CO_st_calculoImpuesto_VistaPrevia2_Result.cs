@@ -23,6 +23,5 @@ namespace Comisiones.Models
         public string partner_id { get; set; }
         public decimal porcentaje { get; set; }
         public string nombreCompania { get; set; }
-
     }
 }

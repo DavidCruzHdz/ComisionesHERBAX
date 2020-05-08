@@ -11,8 +11,7 @@ namespace Comisiones.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class CO_tb_ConfigReembolsos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,9 +23,7 @@ namespace Comisiones.Models
         public int Id_Reembolso { get; set; }
         public int Anio { get; set; }
         public int Mes { get; set; }
-        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal Cantidad { get; set; }
-        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal Cantidad_Topada { get; set; }
         public decimal PorcentajeReembolso { get; set; }
         public int id_concepto { get; set; }

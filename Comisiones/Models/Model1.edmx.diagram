@@ -4,38 +4,38 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fc908ce8a1d34d59b6216a4aa852f309" Name="Diagram1" ZoomLevel="93">
-        <EntityTypeShape EntityType="herbaxModel.CO_TB_ARBOL" Width="1.875" PointX="9.375" PointY="10.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_Bonos" Width="1.5" PointX="0.75" PointY="11.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_Comisiones" Width="1.5" PointX="2.75" PointY="11.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_Comisiones_hist" Width="1.5" PointX="4.75" PointY="11.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_CompaniaPago" Width="1.5" PointX="6.75" PointY="11.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_Conceptos" Width="1.5" PointX="9.75" PointY="1.375" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_CuentaSocioHistorico" Width="1.5" PointX="11.75" PointY="10.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_FoliosMovInventarios" Width="1.5" PointX="12.75" PointY="5.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_ImpuestoComision" Width="1.5" PointX="13.75" PointY="9.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_ImpuestoPais" Width="1.5" PointX="11.75" PointY="13.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_MenuDinamico" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_MovimientosSocio" Width="1.5" PointX="12" PointY="1" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_PagoSocio" Width="1.5" PointX="13.75" PointY="13.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_PagoSocio_hist" Width="1.5" PointX="14.75" PointY="0.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_PagosRespuesta" Width="1.5" PointX="6.75" PointY="14.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_Pantallas" Width="1.5" PointX="3" PointY="5.875" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_Parametro" Width="1.5" PointX="14.75" PointY="5.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_PermisosRoles" Width="1.5" PointX="5.25" PointY="4.125" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_Prestamo" Width="1.5" PointX="7.75" PointY="6" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_PrestamoDetalle" Width="1.5" PointX="10" PointY="6.875" />
+      <Diagram DiagramId="fc908ce8a1d34d59b6216a4aa852f309" Name="Diagram1" ZoomLevel="65">
+        <EntityTypeShape EntityType="herbaxModel.CO_TB_ARBOL" Width="1.875" PointX="0.5" PointY="7.5" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Bonos" Width="1.5" PointX="0.5" PointY="10.875" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Comisiones" Width="1.5" PointX="2.375" PointY="10.875" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Comisiones_hist" Width="1.5" PointX="0.5" PointY="15.75" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_CompaniaPago" Width="1.5" PointX="5.25" PointY="8" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Conceptos" Width="1.5" PointX="7.125" PointY="0.5" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_CuentaSocioHistorico" Width="1.5" PointX="6.25" PointY="11.75" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_FoliosMovInventarios" Width="1.5" PointX="9.125" PointY="7.625" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_ImpuestoComision" Width="1.5" PointX="8.125" PointY="11.75" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_ImpuestoPais" Width="1.5" PointX="10" PointY="11.75" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_MenuDinamico" Width="1.5" PointX="5.125" PointY="0.5" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_MovimientosSocio" Width="1.5" PointX="9.125" PointY="0.5" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_PagoSocio" Width="1.5" PointX="10" PointY="14.25" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_PagoSocio_hist" Width="1.5" PointX="2.375" PointY="15.625" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_PagosRespuesta" Width="1.5" PointX="4.25" PointY="10.875" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Pantallas" Width="1.5" PointX="3.25" PointY="6" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Parametro" Width="1.5" PointX="4.25" PointY="15" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_PermisosRoles" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Prestamo" Width="1.5" PointX="7" PointY="3.875" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_PrestamoDetalle" Width="1.5" PointX="9.125" PointY="4.25" />
         <EntityTypeShape EntityType="herbaxModel.CO_tb_RecepcionDepositos" Width="1.5" PointX="15.75" PointY="9.75" />
         <EntityTypeShape EntityType="herbaxModel.CO_tb_Roles" Width="1.5" PointX="3" PointY="1.25" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_Usuarios" Width="1.5" PointX="0.75" PointY="2.75" />
-        <EntityTypeShape EntityType="herbaxModel.tb_config_premios" Width="1.5" PointX="15.75" PointY="15.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_CALCULO_PREMIOS_HIST" Width="1.5" PointX="10.75" PointY="16.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_Pedidos" Width="1.5" PointX="17.75" PointY="9.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_ProgramacionCobro" Width="1.5" PointX="20.25" PointY="0.5" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Usuarios" Width="1.5" PointX="0.5" PointY="0.75" />
+        <EntityTypeShape EntityType="herbaxModel.tb_config_premios" Width="1.5" PointX="11.875" PointY="14.25" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_CALCULO_PREMIOS_HIST" Width="1.5" PointX="6.125" PointY="14.375" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Pedidos" Width="1.5" PointX="12.75" PointY="0.5" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_ProgramacionCobro" Width="1.5" PointX="7.125" PointY="8.75" />
         <EntityTypeShape EntityType="herbaxModel.CO_tb_Reembolsos" Width="1.5" PointX="19.875" PointY="3.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_Reembolsos_Hist" Width="1.5" PointX="12.75" PointY="18.75" />
-        <EntityTypeShape EntityType="herbaxModel.SA_tb_cdaVenta" Width="1.5" PointX="4.75" PointY="19.75" />
-        <EntityTypeShape EntityType="herbaxModel.SA_tb_Puntos" Width="1.5" PointX="6.75" PointY="19.75" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Reembolsos_Hist" Width="1.5" PointX="8" PointY="14.375" />
+        <EntityTypeShape EntityType="herbaxModel.SA_tb_cdaVenta" Width="1.5" PointX="4.25" PointY="18.375" />
+        <EntityTypeShape EntityType="herbaxModel.SA_tb_Puntos" Width="1.5" PointX="6.125" PointY="19" />
         <EntityTypeShape EntityType="herbaxModel.TB_TMP_CALCULO_PREMIOS" Width="1.5" PointX="19.75" PointY="7.75" />
         <EntityTypeShape EntityType="herbaxModel.TB_TMP_CALCULO_PREMIOS_HIST" Width="1.5" PointX="19.75" PointY="13.75" />
         <AssociationConnector Association="herbaxModel.FK__CO_tb_Mov__id_Co__48CFD27E" />
@@ -57,15 +57,15 @@
         <AssociationConnector Association="herbaxModel.FK__CO_tb_Usu__IdRol__1B7E091A" />
         <AssociationConnector Association="herbaxModel.FK__CO_tb_Usu__Usuar__16B953FD" />
         <AssociationConnector Association="herbaxModel.FK__CO_tb_Usu__Usuar__17AD7836" />
-        <EntityTypeShape EntityType="herbaxModel.CO_Tb_ISR_GT" Width="1.5" PointX="15.375" PointY="20.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_Tb_IVA" Width="1.5" PointX="17.375" PointY="20.75" />
+        <EntityTypeShape EntityType="herbaxModel.CO_Tb_ISR_GT" Width="1.5" PointX="8.125" PointY="18.125" />
+        <EntityTypeShape EntityType="herbaxModel.CO_Tb_IVA" Width="1.5" PointX="10" PointY="18" />
         <EntityTypeShape EntityType="herbaxModel.CO_tb_Rango_Compra_Premios" Width="2.5" PointX="21.375" PointY="21.75" />
         <EntityTypeShape EntityType="herbaxModel.CO_tb_DtlPedidos" Width="1.5" PointX="0.75" PointY="17.75" />
-        <EntityTypeShape EntityType="herbaxModel.CO_tb_ARBOL_HIST" Width="1.5" PointX="0.75" PointY="22.75" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_ARBOL_HIST" Width="1.5" PointX="10.875" PointY="0.5" />
         <EntityTypeShape EntityType="herbaxModel.co_tb_ventageneracional" Width="1.5" PointX="22.375" PointY="4.75" />
-        <EntityTypeShape EntityType="herbaxModel.SA_tb_cdaVentas" Width="1.5" PointX="17.375" PointY="0.75" />
+        <EntityTypeShape EntityType="herbaxModel.SA_tb_cdaVentas" Width="1.5" PointX="17" PointY="3.5" />
         <EntityTypeShape EntityType="herbaxModel.CO_tb_ConfigReembolsos" Width="1.5" PointX="22.375" PointY="0.75" />
-        <EntityTypeShape EntityType="herbaxModel.TMP_CO_tb_ConfigReembolsos" Width="2" PointX="9.375" PointY="22.75" />
+        <EntityTypeShape EntityType="herbaxModel.TMP_CO_tb_ConfigReembolsos" Width="2" PointX="11.75" PointY="17.75" />
         <EntityTypeShape EntityType="herbaxModel.CO_tb_Productos_Reembolso" Width="1.5" PointX="24.625" PointY="1" />
         <AssociationConnector Association="herbaxModel.FK__CO_tb_Pro__Id_Re__4321E620" />
         <EntityTypeShape EntityType="herbaxModel.CO_tb_Premios" Width="1.5" PointX="22.375" PointY="8.75" />

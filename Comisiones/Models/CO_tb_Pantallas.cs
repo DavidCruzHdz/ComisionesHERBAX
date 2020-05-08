@@ -11,7 +11,7 @@ namespace Comisiones.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class CO_tb_Pantallas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,11 +20,10 @@ namespace Comisiones.Models
             this.CO_tb_Pantallas1 = new HashSet<CO_tb_Pantallas>();
             this.CO_tb_PermisosRoles = new HashSet<CO_tb_PermisosRoles>();
         }
-
+    
         public int IdPantalla { get; set; }
         public Nullable<int> PadreId { get; set; }
         public string NombrePantalla { get; set; }
-        public bool checkeado { get; set; }
         public string Archivo { get; set; }
         public string Carpeta { get; set; }
         public string Tipo { get; set; }
@@ -34,7 +33,7 @@ namespace Comisiones.Models
         public Nullable<int> UsuarioAlta { get; set; }
         public Nullable<System.DateTime> FechaCambio { get; set; }
         public Nullable<int> UsuarioCambio { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CO_tb_Pantallas> CO_tb_Pantallas1 { get; set; }
         public virtual CO_tb_Pantallas CO_tb_Pantallas2 { get; set; }

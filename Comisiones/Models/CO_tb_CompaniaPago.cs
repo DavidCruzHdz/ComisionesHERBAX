@@ -11,21 +11,13 @@ namespace Comisiones.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class CO_tb_CompaniaPago
     {
         public int id_CompaniaPago { get; set; }
-        [DisplayName("Compañia")]
         public string nombreCompania { get; set; }
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        [RegularExpression(@"[0-9]*\.?[0-9]*", ErrorMessage = "La cantidad debe contener sólo números")]
-        [DisplayName("Porcentaje")]
         public decimal porcentaje { get; set; }
-        [DisplayName("Usuario")]
         public string usuario { get; set; }
-        [DisplayName("Fecha movimiento")]
         public Nullable<System.DateTime> fechaMovimiento { get; set; }
     }
 }

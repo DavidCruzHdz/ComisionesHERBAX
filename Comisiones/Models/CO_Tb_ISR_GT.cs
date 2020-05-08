@@ -11,32 +11,15 @@ namespace Comisiones.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class CO_Tb_ISR_GT
     {
         public int id_ISR { get; set; }
-        [DisplayName("Pais")]
         public Nullable<int> id_pais { get; set; }
-        [DisplayName("Descripcion")]
         public Nullable<int> id_regimen { get; set; }
-        [DisplayFormat(DataFormatString = "{0:###,###.##}")]
-        [RegularExpression(@"[0-9]*\.?[0-9]*", ErrorMessage = "La cantidad debe contener sólo números")]
-        [DisplayName("Monto Minimo")]
         public Nullable<decimal> montominimo { get; set; }
-        [DisplayFormat(DataFormatString = "{0:F0}")]
-        [DisplayName("Limite Inferior")]
-        [RegularExpression(@"[0-9]*\.?[0-9]*", ErrorMessage = "La cantidad debe contener sólo números")]
         public Nullable<decimal> limiteinferior { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:F0}")]
-        [DisplayName("Limite Superior")]
-        [RegularExpression(@"[0-9]*\.?[0-9]*", ErrorMessage = "La cantidad debe contener sólo números")]
         public Nullable<decimal> limitesuperior { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:###.##}")]
-        [RegularExpression(@"[0-9]*\.?[0-9]*", ErrorMessage = "La cantidad debe contener sólo números")]
         public Nullable<decimal> ISR { get; set; }
         public Nullable<System.DateTime> fecha_ult_modificacion { get; set; }
         public string usuario_ult_modificacion { get; set; }

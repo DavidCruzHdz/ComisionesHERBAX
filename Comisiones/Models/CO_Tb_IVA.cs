@@ -11,18 +11,12 @@ namespace Comisiones.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class CO_Tb_IVA
     {
         public int id_IVA { get; set; }
         public int id_pais { get; set; }
         public int id_regimen { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:##.##}")]
-        [DisplayName("Porcentaje")]
-        [RegularExpression(@"[0-9]*\.?[0-9]*", ErrorMessage = "La cantidad debe contener sólo números")]
         public Nullable<decimal> iva { get; set; }
         public Nullable<System.DateTime> fecha_ult_modificacion { get; set; }
         public string usuario_ult_modificacion { get; set; }
