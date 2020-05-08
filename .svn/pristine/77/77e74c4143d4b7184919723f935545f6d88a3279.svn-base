@@ -1,0 +1,100 @@
+﻿@model List<Comisiones.Models.ViewModels.ListSociosViewModel>
+
+
+
+
+@{
+    ViewBag.Title = "Búsqueda de socio";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+<br />
+
+<form action="@sesion.urlMain/MovimientosSocio/Index" method="post">
+   
+<div class="form-group">
+    <label for="Partner_id">Socio</label>
+    <input class="form-control" id="Partner_id" name="Partner_id" type="text" value="" />
+</div>
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label for="Importe">Nombre</label>
+        <input class="form-control" id="FirstName" name="FirstName" type="text" value="" />
+    </div>
+    <div class="form-group col-md-3">
+        <label for="Importe">Primer Apellido</label>
+        <input class="form-control" id="LastName" name="LastName" type="text" value="" />
+    </div>
+</div>
+<br />
+    <input onclick="return clicEvent()" id="btnBuscar" value="Buscar" class="btn btn-primary btnTamano" type="submit" />
+
+</form>
+
+
+@if (Model != null)
+{
+    <br />
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped tblComisiones">
+                <tr>
+                    <th>No. socio</th>
+                    <th>Nombre Completo</th>
+                    <th>Acción</th>
+                </tr>
+                @foreach (var socios in Model)
+                {
+                    <tr>
+                        <td>@socios.Partner_id</td>
+                        <td>@socios.Nombre</td>
+                        <td>
+                            <a href="@Url.Action("Movimientos", "MovimientosSocio", new { PartnerId = socios.Partner_id, Id_Periodo = socios.Id_Periodo })" class="btn btn-outline-secondary">Seleccionar</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+}
+
+@section scripts{
+    
+<script type="text/javascript"> 
+    
+    function clicEvent()
+    {
+        if ($("#Partner_id").val() == "" && $("#FirstName").val() == "")
+        {
+            $("#Partner_id").focus();
+            alertSystem("warning","El numero de socio o el nombre es requerido.");
+            //alert("El numero de socio o el nombre es requerido")
+            return false;
+        }
+        /*
+        else if ($("#FirstName").val() === "") {
+            $("#FirstName").focus();
+            return false;
+        }
+        else if ($("#LastName").val() === "") {
+            $("#LastName").focus();
+            return false;
+        }
+        */
+        return true;
+    }//End function
+
+    $(document).ready(function () {
+        $("#Partner_id").focus();
+    });
+
+    </script>
+
+}
+
+
+
+
+
+
+

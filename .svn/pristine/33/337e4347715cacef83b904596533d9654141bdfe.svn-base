@@ -1,0 +1,20 @@
+﻿namespace servicioComisiones
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Runtime.Serialization;
+    using System.ServiceModel;
+    using System.Text;
+
+    /// <summary>
+    /// Servicio integral de comisiones, expuesto a la red mundial para autorizaciones de prestamo.
+    /// </summary>
+    [ServiceContract]
+    public interface IComisiones
+    {
+        [OperationContract]
+        void confirmarPrestamo(int idPrestamo,int idPartner,int accionSolicitud);
+
+    }
+}

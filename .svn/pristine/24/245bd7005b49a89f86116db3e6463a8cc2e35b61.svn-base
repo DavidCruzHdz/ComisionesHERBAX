@@ -1,0 +1,132 @@
+﻿<div class="maintitle">Cálculo de Premios en Mexico</div>
+<br />
+<div class="container">
+    <!--<div class="row">
+        <div class="col-sm-12"> -->
+            <table id="tbPremios"  class="display nowrap" style="width:100%">
+                
+            </table>
+        <!--</div>
+    </div>-->
+
+    <div class="row">
+        <div class="col-sm-10"></div>
+        <div class="col-sm-2 text-right">
+            <input type="submit" name="Calcular" id="CreateMovSocio" value="crear Movimientos Socio" class="btn" />
+        </div>
+    </div>
+    <!--fin del Row-->
+</div>
+
+
+
+
+@section scripts{
+    <script>
+       
+        $(document).ready(function () {
+
+            
+            var _numReg = 0;
+            var tablaPremios = $('#tbPremios').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+                },
+                "scrollY": 400,
+                "scrollX": true,
+                //scrollCollapse: true,
+                paging: false,
+                //data:dataSet,
+                
+                columns:[
+                    { title: "mes" },
+                    { title: "Quincena" },
+                    { title: "id partner" },
+                    { title: "Nombre" },
+                    { title: "Volumen" },
+                    { title: "Rango" },
+                    { title: "Productos" }
+                ]
+            });
+            
+
+        
+            $.ajax({
+                type: "POST",
+                url:"@Url.Content("~/CalculaPremio/CalcularPremio")",
+                //dataType: 'json',
+                timeout: 60000
+                //processData: false,
+                //contentType: false,
+                //cache: true
+                //async: false
+                
+                
+            })
+            .done(
+                function (retorno) {
+                    if (retorno.length > 0) {
+                        //console.log("DATOS RETORNO >>> " + JSON.stringify(retorno));
+                        _numReg = retorno.length;
+
+                        $.each(retorno, function (i, data) {
+                            tablaPremios.row.add(
+                                [
+                                data.Mes,
+                                data.Quincena,
+                                data.Partnetid,
+                                data.nombrePartner,
+                                formatNumber(data.Volume),
+                                data.Rango,
+                                data.PRODUCTOS
+                                ]);
+                            tablaPremios.draw();
+                        });
+
+                    } else {
+                        alertSystem("success", "El proceso no genero Resultados.");
+                    }
+
+                    
+            })
+           .fail(
+                 function (e) {
+                    alertSystem("error", e.responseText);
+                 }
+            );
+
+           
+            
+            $("#CreateMovSocio").click(function (event) {
+                event.preventDefault();
+                 //console.log("Numero de Registros:>> " + _numReg);
+                 if ( _numReg > 0 ) {
+                    
+
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Content("~/CalculaPremio/GenerarMovSocio")",
+                        //data: data,
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        timeout: 600000,
+                        success: function (data) {
+                            console.log(data);
+                            alertSystem("success", "Se han Generado Movimientos  con Exito.");
+                        },
+                        error: function (e) {
+                            alertSystem("error", e.responseText);
+                        }
+                    });
+                }else {
+                    alertSystem("info", "No existe datos para procesar");
+                }
+
+                });
+            
+
+        });
+        
+    </script>
+}

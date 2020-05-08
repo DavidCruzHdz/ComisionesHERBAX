@@ -1,0 +1,273 @@
+﻿@model List<Comisiones.Models.CO_st_BuscaPedidosPremios1_Result>
+@{
+	ViewBag.Title = "Lista de Premios";
+}
+
+<br />
+<div class="maintitle">Lista de premios</div>
+
+<div class="container-fluid" id="divMainContainer">
+
+	<form class="form-inline" action="/action_page.php">
+		<label for="numSocio" class="mr-sm-2">No. de Socio:</label>
+		<input type="number" name="partner_idBusqd" id="Idpartner_idBusqd" class="form-control mb-2 mr-sm-2" placeholder="No. de socio" style="width:130px" />
+
+		<label for="FechaInicio" class="mr-sm-2">Fecha Inicio:</label>
+		<input type="text" name="fInicio_fiBusqd" id="fInicio_fiBusqd" class="form-control mb-2 mr-sm-2" placeholder="YYYY-MM-DD" style="width:130px" readonly />
+
+		<label for="FechaFin" class="mr-sm-2">Fecha Fin:</label>
+		<input type="text" name="fFin_ffBusqd" id="fFin_ffBusqd" class="form-control mb-2 mr-sm-2" placeholder="YYYY-MM-DD" style="width:130px" readonly />
+
+		<label for="Pais" class="mr-sm-2">Pa&iacute;s:</label>
+		<select class="form-control" id="idPais" name="idPais">
+
+		</select>
+
+			<div class="modal face" style="align-items: center; justify-content: center;" id="ventana2">
+				<div class="modal-dialog jumbotron alert-success">
+					<div class="modal-content alert-success">
+						<div class="modal-body alert-success">
+							<p>
+								<h2 class="modal-title w-100;" style="text-align:center; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Espere</h2>
+								<h2 class="modal-title" style="text-align:center; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Por el Momento</h2>
+								<h3 class="modal-title" style="text-align:center; font-style:oblique">Buscando la informacion solicitada de premios</h3>
+							</p>
+						</div>
+						<div class="modal-footer animated alert-success">
+							<div id="progress" style="display: flex; align-items: center; justify-content: center;" ;>
+								<img src="~/images/espera.svg" alt="image" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			@*&nbsp;&nbsp;&nbsp;&nbsp;*@
+
+			@*<button type="button" class="btn btn-info btn-sm" id="btnBusqueda">Buscar Premio</button>*@
+			<button data-ajax="true" type="button" id="btnBusqueda" class="btn btn-info btn-sm" name="btn-buscar" href="#ventana2" data-toggle="modal">Buscar Premio</button>
+</form>
+
+	<br />
+
+	<div class="col-lg-12" id="divPageQueryLists">
+		<table id="tbPremiosHist" class="table table-striped table-bordered dt-responsive nowrap" style="width:98%">
+			<!-- Codigo generado desde JS Aqui...
+			<tbody id="tbPremiosHistBody"></tbody>-->
+		</table>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<script>
+    var dataSend = {};
+
+
+    $(document).ready(function () {
+
+		var tbPremiosHist = $('#tbPremiosHist').DataTable({
+			"language": {
+				"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+			},
+
+			scrollCollapse: true,
+			paging: true,
+			//data:dataSet,
+			"scrollY": true,
+			"scrollX": true,
+			columns: [
+				{ title: "Mes" },
+				{ title: "Quincena" },
+				{ title: "Pais" },
+
+				{ title: "Partner id" },
+				{ title: "Nombre" },
+
+				{ title: "Volumen" },
+				{ title: "Puntos" },
+				{ title: "Grado" },
+				{ title: "Bloque" },
+				{ title: "Productos" },
+				{ title: "Id_Pedido" },
+				{ title: "No_Guia" }
+
+
+            ]
+
+            /*"columnDefs": [{"targets": [3],"visible": false,"searchable": false},
+                           {"targets": [6],"visible": false},
+                           {"targets": [8], "visible": false}
+            ]*/
+
+        });
+        //tbPremiosHist.columns([3, 6, 8]).visible(false);
+        //$('#tbPremiosHist').DataTable().destroy();
+
+        $("#fInicio_fiBusqd").datepicker({
+
+            changeMonth: true,
+            changeYear: true,
+
+            dateFormat: 'yy-mm-dd',
+            uiLibrary: 'bootstrap4',
+            locale: 'es-es'
+        }).datepicker(new Date());
+
+        $("#fFin_ffBusqd").datepicker({
+
+            changeMonth: true,
+            changeYear: true,
+
+            dateFormat: 'yy-mm-dd',
+            uiLibrary: 'bootstrap4',
+            locale: 'es-es'
+        }).datepicker(new Date());
+
+
+        //Bloque para consultar País y cargar el Combo
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "@Url.Content("~/ConsultaPremios/getPaises")",
+                //data: dataSend,
+            processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function (retorno) {
+            if (retorno.length > 0) {
+                _numReg = retorno.length;
+                console.log("Numero de registros Paises::" + _numReg)
+
+                $('#idPais').children().remove();
+                //var bank_id = 6;
+                $("#idPais").append('<option selected value="0">Seleccione un Pa&iacute;s</option>');
+                $.each(retorno, function (key, pais) {
+
+                    $("#idPais").append('<option value=' + pais.Id_Pais + '>' + pais.nombrePais + '</option>');
+
+
+                });
+                ocultarLoader();
+
+            } else { alertSystem("success", "No se encontraron paises."); ocultarLoader();}
+
+        },
+        error: function (e) {
+            alertSystem("error", e.responseText);
+            ocultarLoader();
+        }
+
+    })
+
+        $('#btnBusqueda').click(function () {
+			
+            var dataSend = new FormData();
+            dataSend.append('partner_id', $('#Idpartner_idBusqd').val());
+            dataSend.append('fInicio', $('#fInicio_fiBusqd').val());
+            dataSend.append('fFin', $('#fFin_ffBusqd').val());
+            dataSend.append('idPais', $('#idPais').val());
+
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "@Url.Content("~/ConsultaPremios/ListarPremios")",
+                data: dataSend,
+                processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (retorno) {
+                if (retorno.length > 0) {
+
+                    tbPremiosHist.rows().remove().draw();
+                    _numReg = retorno.length;
+                    console.log("Numero de registros::" + _numReg);
+                    console.log("Datos del Retorno:" + JSON.stringify(retorno));
+
+                    $.each(retorno, function (i, data) {
+						console.log("Datos de la consulta:" + JSON.stringify(data));
+						tbPremiosHist.row.add($('<tr > <td>' + data.Mes + '</td>'
+                             +'<td>' + data.Quincena+ '</td>'
+                             +'<td>' + data.Pais+ '</td>'
+                             +'<td>' + data.Partnetid+ '</td> '
+                             +'<td>' + data.nombrePartner + '</td>'
+                             + '<td>' + data.Volume + '</td>'
+                             + '<td>' + data.puntos + '</td>'
+                             + '<td>' + data.Grado + '  </td>'
+                             + '<td>' + data.Bloque + '</td>'
+							 + '<td>' + data.PRODUCTOS + '</td>'
+							 + '<td>' + data.Id_Pedido + '</td>'
+							 + '<td>' + data.No_Guia + '</td>'
+                             + '</tr>'));
+                        tbPremiosHist.draw();
+
+                    });
+                    ocultarLoader();
+
+
+
+						$("#ventana2").modal('hide');//ocultamos el modal
+				$('body').removeClass('modal-open');//eliminamos la clase del body para poder hacer scroll
+				$('.modal-backdrop').remove();//eliminamos el backdrop del modal
+
+
+							Swal.fire
+									    ({
+												title: 'Finalizo la Busqueda.',
+												 text: "Presione el boton para cerrar!",
+												 type: "success",
+											animation: false,
+										  customClass:
+												{
+					                                popup: 'animated tada'
+												}									   
+									}).then(function (result)
+									{
+
+									    window.location.hostname;
+									})
+
+				}
+				else
+				{
+					$("#ventana2").modal('hide');//ocultamos el modal
+					$('body').removeClass('modal-open');//eliminamos la clase del body para poder hacer scroll
+					$('.modal-backdrop').remove();//eliminamos el backdrop del modal
+
+					alertSystem("success", "El proceso no genero Resultados.");
+					ocultarLoader();
+				}
+
+            },
+            error: function (e) {
+
+				alertSystem("error", e.responseText);
+                ocultarLoader();
+            }
+
+        })
+        });
+
+
+
+
+
+
+
+
+    });
+
+
+
+    function rellenarconCeros(value, length) {
+        return (value.toString().length < length) ? rellenarconCeros("0" + value, length) :
+        value;
+    }
+
+</script>

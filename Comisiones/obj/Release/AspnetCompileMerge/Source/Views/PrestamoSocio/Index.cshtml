@@ -1,0 +1,70 @@
+﻿@model List<Comisiones.Models.ViewModels.PrestamoSocioViewModel>
+
+<script type="text/javascript" class="init">
+	$(document).ready(function () {
+	    var table = $('#tblComisiones').DataTable({
+			language: {
+				"decimal": "",
+				"emptyTable": "No hay información",
+				"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+				"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+				"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+				"infoPostFix": "",
+				"thousands": ",",
+				"lengthMenu": "Mostrar _MENU_ registros",
+				"loadingRecords": "Cargando...",
+				"processing": "Procesando...",
+				"search": "Buscar:",
+				"zeroRecords": "Ningún dato disponible en esta tabla",
+				"paginate": {
+					"first": "Primero",
+					"last": "Ultimo",
+					"next": "Siguiente",
+					"previous": "Anterior"
+				}
+			}
+		}
+		);
+	});
+</script>
+
+
+@{
+    ViewBag.Title = "Préstamo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="maintitle">@ViewBag.Title</div>
+
+<div>
+    <div class="form-group">
+        <label for="Partner_id">Socio</label>
+        <input class="form-control" id="Partner_id" name="Partner_id" type="text" value="" />
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="Importe">Nombre</label>
+            <input class="form-control" id="FirstName" name="FirstName" type="text" value="" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="Importe">Primer Apellido</label>
+            <input class="form-control" id="LastName" name="LastName" type="text" value="" />
+        </div>
+    </div>
+    <br />
+    <input onclick="return comisiones.buscarSocio();" id="btnBuscar" value="Buscar" class="btn btn-primary btnTamano" type="submit" />
+</div>
+<br />
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped tblComisiones">
+            <tr style="background-color:darkcyan;width:100%">
+                <th>No. socio</th>
+                <th>Nombre completo</th>
+                <th>Acción</th>
+            </tr>
+            <tbody id="tbodySocios"></tbody>            
+        </table>
+    </div>
+</div>

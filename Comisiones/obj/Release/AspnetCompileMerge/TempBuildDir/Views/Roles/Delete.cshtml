@@ -1,0 +1,98 @@
+﻿@model Comisiones.Models.CO_tb_Roles
+
+@{
+	ViewBag.Title = "Borrar";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h2>Desactivar rol</h2>
+
+	@Html.AntiForgeryToken()
+	<h6>Esta seguro que desea deshabilitar los datos de este rol?</h6>
+	<div>
+		<div>
+			<h4>Informacion actual del rol</h4>
+			<hr />
+			<dl class="dl-horizontal">
+				<dt>
+					@Html.DisplayNameFor(model => model.NombreRol)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.NombreRol)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Estatus)
+				</dt>
+
+				<dd>
+					@*@Html.DisplayFor(model => model.Estatus)*@
+					@{
+						if (Model.Estatus != false)
+						{
+							<span>
+								Activo
+							</span>
+						}
+						else
+						{
+							<span>
+								Inactivo
+							</span>
+						}
+
+					}
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.FechaAlta)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.FechaAlta)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.CO_tb_Usuarios1.NombreUsuario)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.CO_tb_Usuarios1.NombreUsuario)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.FechaCambio)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.FechaCambio)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.CO_tb_Usuarios.NombreUsuario)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.CO_tb_Usuarios.NombreUsuario)
+				</dd>
+
+			</dl>
+
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+
+				<div class="form-actions no-color">
+					<input type="submit" value="Aceptar" class="btn btn-default" />
+					@Html.ActionLink("Regresar", "Index", "Roles", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+				</div>
+			}
+		</div>
+
+
+	</div>
+
+</div>
+

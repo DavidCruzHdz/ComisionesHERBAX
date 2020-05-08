@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "Cargar archivo de recepción de depósitos";
+}
+
+<div class="row">
+
+</div>
+
+
+<div class="container-fluid" id="divMainContainer">
+    <div id="divPageQueryLists">
+        <div class="form-group">
+            <div class="maintitle">@ViewBag.Title</div>
+        </div>
+        <form id="frmArchivoDepositos" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <input id="IdCargaArchivoComi" type="file" name="archivoComisiones"  />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <input type="submit" name="Guardar" id="Guardar" value="Guardar" class="glyphicon glyphicon-save btn btnTamano" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div class="row" id="listErrorLoad" style="display:none;z-index:10;">
+    <div class="form-group">
+        <h3>Registros Insertados</h3>
+    </div>
+
+    <table class="table table-striped table-bordered ">
+        <thead>
+            <tr>
+                <th>Referencia</th>
+                <th>Beneficiario</th>
+                <th>Importe</th>
+            </tr>
+        </thead>
+        <tbody id="depositosTbl"></tbody>
+    </table>
+
+</div>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+           
+           // $('#listErrorLoad').hide();
+
+            $("#Guardar").click(function (event) {
+                
+                // Get form
+                var form = $('#frmArchivoDepositos')[0];
+
+                // Create an FormData object
+                var data = new FormData(form);
+
+                // disabled the submit button
+                $("#Guardar").prop("disabled", true);
+
+
+
+                $.ajax({
+                    type: "POST",
+                    enctype: 'multipart/form-data',
+                    url: "@Url.Content("~/RecepcionDepositos/GuardarArchivo")",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    timeout: 600000,
+                    success: function (data) {
+                        
+                        console.log(JSON.stringify(data));
+                        if (data.length > 0) {
+
+                            $('#listErrorLoad').show();
+                            var totalCount = 0;
+                            for (i in data) {
+
+                                $('#depositosTbl').append('<tr>' +
+					                    '<td>' + data[i].numeroReferencia + '</td>' +
+					                    '<td>' + data[i].beneficiario + '</td>' +
+					                    '<td>' + data[i].importe + '</td>' +
+					                  '</tr>');
+                            }
+
+                        } else {
+                            $('#listErrorLoad').hidden();
+                        }
+
+                        //##$("#result").text(data);
+                        //##console.log("SUCCESS : ");
+                        //##console.log(data);
+                        $("#Guardar").prop("disabled", false);
+
+                        $('#frmArchivoDepositos')[0].reset();
+                    },
+                    error: function (e) {
+
+                        //##$("#result").text(e.responseText);
+                        //##console.log("ERROR : ", e);
+                        $("#Guardar").prop("disabled", false);
+                        $('#frmArchivoDepositos')[0].reset();
+
+                    }
+                })
+
+            })
+        })
+
+    </script>
+
+}

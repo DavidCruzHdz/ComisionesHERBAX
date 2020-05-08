@@ -1,0 +1,181 @@
+﻿
+@{
+    ViewBag.Title = "Catálogo de Socios";
+}
+
+<br />
+
+<div class="maintitle">Comisiones Atrasadas</div>
+
+<div class="container-fluid" id="divMainContainer">
+
+
+    <form class="form-inline" >
+        
+        <button type="button" class="btn btn-info btn-sm" id="btnDescargarExcel">Descargar Excel</button>
+    </form>
+    
+    <br />
+    <div class="col-lg-12" id="divPageQueryLists">
+        <table id="tbComiAtrasadas" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+            <!-- Codigo generado desde JS Aqui...
+            <tbody id="tbComiAtrasadasBody"></tbody>-->
+        </table>
+    </div>
+</div>
+
+
+    
+
+
+
+<script>
+    var dataSend = {};
+
+
+    $(document).ready(function () {
+
+        mostrarLoader();
+        /*$('#Idpartner_idBusqd').click(function () {
+            alert("cliqueando ando");
+        });*/
+
+        $('#btnDescargarExcel').click(function (event) {
+            event.preventDefault();
+            mostrarLoader();
+
+                
+            window.location.href = 'descargaComiAtrasadas';
+
+            ocultarLoader();
+
+        });
+
+
+
+
+        var tbComiAtrasadas = $('#tbComiAtrasadas').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+            },
+            "scrollX": true,
+            //scrollCollapse: true,
+            paging: true,
+            //data:dataSet,
+            columns: [
+                        //{ title: "Tipo Registro" },
+                        //{ title: "NoIdentificaciónArchivo" },
+                        { title: "Fecha Envio" },   
+                        //{ title: "VersionLayout" },
+                        //{ title: "TipoRegistroDet" },                
+                        //{ title: "RFC" },                
+                        //{ title: "CURP" },
+                        //{ title: " email" },
+                        { title: "Periodo" },
+                        { title: "Id Distribuidor" },
+                        { title: "Nombre" },
+                        
+                        { title: "Banco" },
+                        { title: "Clave" },
+                        { title: "Cuenta" },
+                        { title: "Importe" }
+                        
+                        //{ title: "TipoRegistroCtrl" },
+                        //{ title: "NoMovimientos" },
+                        //{ title: "ImpTotalAbonos" },
+                        //{ title: "ImpTotalAbonos" }
+
+            ],
+            //para que funcione el format se agrego moment.js
+            columnDefs:[{targets:0, render:function(data){
+                return moment(data).format('YYYY/MM/DD', 'Do MMM YY', 'fr');
+            }}]
+            /*"columnDefs": [{"targets": [3],"visible": false,"searchable": false},
+                           {"targets": [6],"visible": false},
+                           {"targets": [8], "visible": false}
+            ]*/
+            
+        });
+        //tbComiAtrasadas.columns([3, 6, 8]).visible(false);
+        //$('#tbComiAtrasadas').DataTable().destroy();
+
+        $('#modalSocio').on('hidden.bs.modal', function (e) {
+            //$(this).removeData('bs.modal');
+            e.preventDefault();
+            resetValuesFormModalSocio();
+        })
+
+
+       
+
+
+        //
+        //ajax mustra las comisiones atrasadas al cargar la pagina
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "@Url.Content("~/ComiAtrasadas/ListarComiAtrasadas")",
+            data: dataSend,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function (retorno) {
+            if (retorno.length > 0) {
+
+                tbComiAtrasadas.rows().remove().draw();
+                _numReg = retorno.length;
+                console.log("Numero de registros::" + _numReg)
+                $.each(retorno, function (i, data) {
+                    
+                     
+                    //partner_id, tax_id, social_security, bank_id, account, Paymethod_com
+                    tbComiAtrasadas.row.add($('<tr > '
+                     /*+'<td>' + data.TipoRegistro + '</td>'
+                     +'<td>' + data.NoIdentificaciónArchivo + '</td>' */
+                     + '<td >' + data.FechaEnvio + '</td>'
+                     /*+'<td>' + data.VersionLayout + '</td>'
+                     +'<td>' + data.TipoRegistroDet + '</td>'                
+                     +'<td>' + data.RFC + '</td>'                
+                     +'<td>' + data.CURP + '</td>'
+                     +'<td>' + data.email + '</td>'*/
+                     
+
+                     + '<td>' + data.Periodo + '</td>'
+                     + '<td>' + data.id_Distribuidor + '</td>'
+                     +'<td>' + data.Nombre + '</td>'
+                     
+                     + '<td>' + data.Banco + '</td>'
+                     +'<td>' + data.Clabe + '</td>'
+                     + '<td>' + data.Cuenta + '</td>'
+
+                     + '<td class="derecha">' + formatCurrency(data.ImporteVista) + '</td>'
+                     
+                     
+                    /* + '<td>' + data.TipoRegistroCtrl + '</td>'
+                    + '<td>' + data.NoMovimientos + '</td>'
+                     + '<td>' + data.ImpTotalAbonos + '</td>'
+                     + '<td>' + data.ImpTotalAbonos + '</td>'
+                     + '<td>' + data.IvaDelimTotal + '</td>'*/
+                        
+                    +'</tr>'));
+                    /*tbComiAtrasadas.row.add($('<tr id="' + data.partner_id + '"> <td>' + data.partner_id + '</td> <td>' + data.tax_id + '</td> <td>' + data.social_security + '</td> <td>' + data.bank_id + '</td> <td>' + data.account + '</td>   <td>' + data.Paymethod_com + '</td>        <td> <a href="#" onclick="editarSocio(' + data.Periodo         + ');">  Editar         </a> </td> </tr>'));*/
+                    tbComiAtrasadas.draw();
+
+                });
+                ocultarLoader();
+
+            } else { alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();}
+
+        },
+        error: function (e) {
+            alertSystem("error", e.responseText);
+            ocultarLoader();
+        }
+
+    })
+
+
+    });
+
+        </script>

@@ -1,0 +1,65 @@
+﻿namespace Comisiones.Controllers
+{
+    using Comisiones.Models;
+    using SpreadsheetLight;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Web;
+    using System.Web.Mvc;
+
+    public class CalculaReembolsosController : Controller
+    {
+        // GET: CalculaReembolso
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        
+        public ActionResult GenerarMovSocio()
+        {
+
+            List<CO_st_CO_st_InsertaMovimientosSocio_Reembolsos_Result> tblReembolsos;
+            using (herbaxEntities hbxEntities = new herbaxEntities())
+            {
+
+                //Procedimiento que retorna monto,partner_id,id_Periodo,estatus par amostrarlo en la tabla de comisiones cargadas
+                tblReembolsos = hbxEntities.CO_st_CO_st_InsertaMovimientosSocio_Reembolsos().ToList();
+
+                if (Convert.ToInt32(tblReembolsos[0].numReg) > Convert.ToInt32(0))
+                {
+                    return Json("success");
+                }
+                else
+                {
+                    return Json("error");
+                }
+
+
+            }
+            //return Json(tblReembolsos, JsonRequestBehavior.AllowGet);
+        }
+
+
+        /* descomentar   revisar porque el sp no regresa info
+        public ActionResult CalculaReembolsos()
+        {
+
+            List<CO_st_getReembolsos_Result> tblReembolsos;
+            using (herbaxEntities hbxEntities = new herbaxEntities())
+            {
+
+                //Procedimiento que calcula los reembolsos que se le dara a cada persona de acuerdoa sus ventas
+                tblReembolsos = hbxEntities.CO_st_getReembolsos().ToList(); 
+
+            }
+            return Json(tblReembolsos, JsonRequestBehavior.AllowGet);
+        } 
+
+        */
+
+    }
+}

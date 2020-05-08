@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d76bc820-eaff-48f3-af9d-f72e9d430bd0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/servicioComisiones/Comisiones.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Comisiones.disco" MetadataType="Disco" ID="868e564b-3e80-4a7d-acf8-f6416df52c7c" SourceId="1" SourceUrl="http://localhost/servicioComisiones/Comisiones.svc?disco" />
+    <MetadataFile FileName="Comisiones.wsdl" MetadataType="Wsdl" ID="14333bd6-4d6d-4e2b-8568-fe172d515ce8" SourceId="1" SourceUrl="http://localhost/servicioComisiones/Comisiones.svc?wsdl" />
+    <MetadataFile FileName="Comisiones.xsd" MetadataType="Schema" ID="3115d161-60ef-48d6-b46c-8c7357911ab0" SourceId="1" SourceUrl="http://localhost/servicioComisiones/Comisiones.svc?xsd=xsd0" />
+    <MetadataFile FileName="Comisiones1.xsd" MetadataType="Schema" ID="baa0b6f7-2510-4d0f-8819-5498384062de" SourceId="1" SourceUrl="http://localhost/servicioComisiones/Comisiones.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

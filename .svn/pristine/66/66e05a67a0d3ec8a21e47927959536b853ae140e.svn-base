@@ -1,0 +1,74 @@
+﻿@model Comisiones.Models.ViewModels.PrestamoViewModel
+
+
+@{
+    ViewBag.Title = "Solicitud de prestamo";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <br />
+            <di class="form-group">
+                <label for="lblFullName" id="lblFullName"></label>
+            </di>
+            <br />
+            <di class="form-group">
+                <label for="Partner_id">Numero de socio</label>
+                <input class="form-control" id="Partner_id" name="Partner_id" type="text" value="" />
+            </di>
+
+            <div class="form-group">
+                <label for="Partner_id">Importe a solicitar</label>
+                <input class="form-control" id="txtImporteSolicitar" name="txtImporteSolicitar" type="text" value="" />
+             </div>
+
+            <div class="form-group">
+                <label for="Partner_id">Forma de pago</label>
+                <select class="form-control" id="slFormaPago">
+                    <option selected value="0">Seleccione una forma de pago</option>
+                    <option value="1">Mensual</option>
+                    <option value="2">Quincenal</option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label id="lblNumeroPagos" for="lblNumeroPagos">Numero de pagos</label>
+                <input class="form-control" id="txtNumeroPagos" name="txtNumeroPagos" type="text" value="" />
+
+            </div>
+
+            <div class="form-group">
+                <label for="lblMotivoPrestamo">Motivo de prestamo</label>
+                <textarea class="form-control" id="txtMotivoPrestamo" name="txtMotivoPrestamo"></textarea>
+            </div>
+
+            <br />
+            <div style="text-align:right">
+                <input value="Enviar Solicitud" onclick="return comisiones.enviarSolicitudPrestamo();" class="btn btn-primary" type="submit" />
+            </div>
+        </div>
+
+    </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        comisiones.loadPrestamo();
+
+        $('#slFormaPago').on('change', function () {
+            var idFormaPago = $(this).children("option:selected").val();
+            if (idFormaPago == 1) {
+                $('#lblNumeroPagos').text("Numero de pagos mensuales")
+            } else if (idFormaPago == 2) {
+                $('#lblNumeroPagos').text("Numero de pagos quincenales")
+            }
+            else { $('#lblNumeroPagos').text("Numero de pagos") }
+        });
+
+    });
+</script>

@@ -1,0 +1,70 @@
+﻿namespace Comisiones.Controllers
+{
+    using Comisiones.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using Comisiones.Models.ModelsEvolution;
+
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            /*if (!sesion.EstatusCalculo)
+            {
+                sesion.EstatusCalculo = getEstatusProcCalculo();
+            }*/
+
+            if (string.IsNullOrEmpty(sesion.urlMain))
+            {
+                sesion.urlMain = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
+                string strSlash = sesion.urlMain.Substring(sesion.urlMain.Length - 1);
+                if (strSlash == "/")
+                {
+                    sesion.urlMain = sesion.urlMain.Remove(sesion.urlMain.Length - 1);
+                }
+            }
+
+           // using (EvolutionEntities evoEntities = new EvolutionEntities())
+            //{
+               // sesion.periodoActivo = (from periodo in evoEntities.CU_tb_Periodo
+               //                         where periodo.Estatus == 33  /*Estatus ABIERTO*/
+               //                         select periodo).FirstOrDefault();
+            //}
+
+
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        /*private Boolean getEstatusProcCalculo()
+        {
+            bool isEnable = false;
+
+            using (herbaxEntities hbxEntities = new herbaxEntities())
+            {
+                if (hbxEntities.CO_st_validaEstDelProcCalculo() != null)
+                {
+                    if (hbxEntities.CO_st_validaEstDelProcCalculo().FirstOrDefault() == 1) { isEnable = true; }
+                }
+            }
+            return isEnable;
+        }*/
+    }
+}
+

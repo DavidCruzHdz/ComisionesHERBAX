@@ -1,0 +1,114 @@
+﻿@model Comisiones.Models.ModelsEvolution.CO_tb_cdaPolitica
+
+
+@{
+	ViewBag.Title = "Delete";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h2>Borrar esta compañia</h2>
+
+	@Html.AntiForgeryToken()
+	<h6>Esta seguro que desea borrar los datos de esta Politica?</h6>
+	<div>
+		<div>
+			<hr />
+			<dl class="dl-horizontal">
+				<dt>
+					@Html.DisplayNameFor(model => model.Descripcion)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Descripcion)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Descripcion_corta)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Descripcion_corta)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Monto)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Monto)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Cantidad)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Cantidad)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Cantidad_Topada)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Cantidad_Topada)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.id_percepcion)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.id_percepcion)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.id_estatus)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.id_estatus)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.f_Vigencia)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.f_Vigencia)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.UltMod_Usuario)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.UltMod_Usuario)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.UltMod_F)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.UltMod_F)
+				</dd>
+
+			</dl>
+
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+
+				<div class="form-actions no-color">
+					<input type="submit" value="Aceptar" class="btn btn-default" />
+					@Html.ActionLink("Regresar", "Index", "CO_tb_cdaPolitica", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+				</div>
+			}
+		</div>
+
+
+	</div>
+</div>
+

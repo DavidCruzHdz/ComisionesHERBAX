@@ -1,0 +1,158 @@
+﻿@model IEnumerable<Comisiones.Models.CO_tb_Productos_Reembolso>
+
+@{
+	ViewBag.Title = "Canje de Reembolsos";
+	WebGrid grid = new WebGrid(Model);
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+</head>
+
+@grid.GetHtml(
+	fillEmptyRows: true,
+	alternatingRowStyle: "fila-alternativa",
+	headerStyle: "encabezado-grid",
+	footerStyle: "pie-grid",
+	mode: WebGridPagerModes.All,
+	firstText: "<< Primera",
+	previousText: "< Anterior",
+	nextText: "Siguiente >",
+	lastText: "Última >>",
+	columns: new[] {
+	     grid.Column("sku"),
+			grid.Column("Descripcion"),
+						grid.Column("PrecioSocio"),
+						grid.Column("CantidadProducto"),
+						grid.Column("TotalProducto"),
+						grid.Column("checkeado"),
+})
+
+
+<body>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jqueryval")
+
+
+	@using (Html.BeginForm())
+	{
+		@*@Html.AntiForgeryToken()*@
+
+
+		<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+
+			<h2>Asignar productos al reembolso </h2>
+
+			<h5>Marque los productos que desea canjear por el monto del reembolso @ViewBag.VarNombreRol</h5>
+			<hr />
+			<div class="form-horizontal">
+
+				<div class="col-md-12">
+					@grid.GetHtml(
+						fillEmptyRows: true,
+						alternatingRowStyle: "fila-alternativa",
+						headerStyle: "encabezado-grid",
+						footerStyle: "pie-grid",
+						mode: WebGridPagerModes.All,
+						firstText: "<< Primera",
+						previousText: "< Anterior",
+						nextText: "Siguiente >",
+						lastText: "Última >>",
+						columns: new[] {
+								grid.Column("sku"),
+								grid.Column("Descripcion"),
+								grid.Column("PrecioSocio"),
+								grid.Column("CantidadProducto"),
+								grid.Column("TotalProducto"),
+								grid.Column("checkeado"),
+						})
+
+
+
+					@*<table class="table table-striped" id="TblCliente">
+			<tr>
+				<th>Socio</th>
+				<th style="width:550px;" type="text" maxlength="550">Nombre Completo</th>
+				<th>Venta</th>
+				<th>Reembolso</th>
+				<th>Diferencia</th>
+				<th>Fecha Pedido</th>
+			</tr>
+
+			<tr>
+				<td>@TempData["Socio"]</td>
+				<td>@TempData["Nombre"]</td>
+				<td>@TempData["Ventas"]</td>
+				<td>@TempData["Reembolso"]</td>
+				<td>@TempData["Diferencia"]</td>
+				<td>@TempData["FechaPedido"]</td>
+			</tr>
+			<tbody class="tablaCli"></tbody>
+		</table>*@
+				</div>
+
+
+
+				<div class="col-md-7" style="text-align-last:left">
+					<div>
+						<button data-ajax="true" class="btn btn-danger btn-lg" id="Validar" style="text-align-last:left">Validar</button>
+					</div>
+				</div>
+
+
+				@*@for (var i = 0; i < Model.Count; i++)
+					{
+						<div class="form-group row">
+							<div class="container form-group col-md-1">
+								@Html.HiddenFor(x => x[i].sku, new { @class = "form-control" })
+								<span></span>
+							</div>
+
+
+							<div class="container form-group col-md-3" style="text-align-last:right; font-size:18px; font-style:normal; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+								@Html.DisplayFor(x => x[i].Descripcion, new { @class = "form-control", @style = "align-items:right" })
+							</div>
+
+							<div class="container form-group col-md-3" style="text-align-last:right; font-size:18px; font-style:normal; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+								@Html.DisplayFor(x => x[i].PrecioSocio, new { @class = "form-control", @style = "align-items:right" })
+							</div>
+
+							<div class="container form-group col-md-8">
+								@Html.CheckBoxFor(x => x[i].checkeado, new { @class = "form-control", @style = "align-items:left" })
+							</div>
+						</div>
+
+
+					}*@
+			</div>
+
+
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+
+				<div class="form-actions no-color">
+					<input type="submit" value="Aceptar" class="btn btn-default" />
+					@Html.ActionLink("Regresar", "Index", "CO_tb_Productos_Reembolso", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+				</div>
+			}
+		</div>
+
+	}
+
+
+</body>
+</html>
+
+
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

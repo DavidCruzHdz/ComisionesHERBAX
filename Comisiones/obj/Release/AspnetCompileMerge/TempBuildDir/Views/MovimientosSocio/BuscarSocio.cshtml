@@ -1,0 +1,96 @@
+﻿@model Comisiones.Models.ViewModels.MovimientosSocioViewModel
+
+
+@{
+    ViewBag.Title = "Alta de Percepciones / Deducciones";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+
+
+
+<form action="@sesion.urlMain/MovimientosSocio/Nuevo" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <di class="form-group">
+                <label for="Partner_id">Socio</label>
+                <div class="col-md-8">
+                    <input class="form_control" id="Partner_id" name="Partner_id" type="text" value="" />
+                </div>
+            </di>
+            
+            <div class="form-group">
+                <label for="Importe">Nombre</label>
+                <div class="col-md-12">
+                    <input class="form_control" id="FirstName" name="FirstName" type="text" value="" />
+                </div>
+                <label for="Importe">Nombre</label>
+                <div class="col-md-12">
+                    <input class="form_control" id="LastName" name="LastName" type="text" value="" />
+                </div>
+                <label for="Importe">Nombre</label>
+                <div class="col-md-12">
+                    <input class="form_control" id="SecondLastName" name="SecondLastName" type="text" value="" />
+                </div>
+            </div>
+
+            <br />
+            <div style="text-align:right">
+                <input id="btnGuardar" value="Guardar" class="btn btn-primary" type="submit" />
+                
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+@section scripts{
+    <script>
+
+
+        $(document).ready(function () {
+
+            $('#btnGuardar').clic(function () {
+                alert("clic")
+            });
+
+            console.log("Formulario listo");
+            console.log($('#idConcepto'));
+
+            $('#Id_Concepto').hide();
+
+            $("#tipoConcepto").change(function () {
+                
+                $('#Id_Concepto').show();
+
+                var url = "@Url.Action("getConceptosPorTipo", "MovimientosSocio")";
+                var idTipo = $('#tipoConcepto').val();
+                var data = {idTipo: idTipo}
+                console.log(idTipo);
+
+                if (idTipo != "" && idTipo != undefined ) {
+                    $.get(url, data).done(function (data) {
+                        if (data.length > 0) {
+                            console.log(data);
+                            $('#Id_Concepto').empty();
+                            for (i in data) {
+                                $("#Id_Concepto").append('<option value="' + data[i].Id + '" >' + data[i].Id + ' - ' + data[i].descripcion + '</option>');
+                            }
+                        } else {
+                            $('#Id_Concepto').empty();
+                            $('#Id_Concepto').hide();
+                        }
+                    })
+                } else {
+                    $('#Id_Concepto').empty();
+                    $('#Id_Concepto').hide();
+                }
+
+            });
+
+        });
+
+    </script>
+}
+

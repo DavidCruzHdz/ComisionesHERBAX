@@ -1,0 +1,277 @@
+﻿@model List<Comisiones.Models.CO_st_InfoPeriodoActivo_Result>
+
+@*<script type="text/javascript" class="init">
+	$(document).ready(function () {
+	    var table = $('#tblPeriodo').DataTable({
+			language: {
+				"decimal": "",
+				"emptyTable": "No hay información",
+				"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+				"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+				"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+				"infoPostFix": "",
+				"thousands": ",",
+				"lengthMenu": "Mostrar _MENU_ registros",
+				"loadingRecords": "Cargando...",
+				"processing": "Procesando...",
+				"search": "Buscar:",
+				"zeroRecords": "Ningún dato disponible en esta tabla",
+				"paginate": {
+					"first": "Primero",
+					"last": "Ultimo",
+					"next": "Siguiente",
+					"previous": "Anterior"
+				}
+			}
+		}
+		);
+
+
+	});
+</script>*@
+
+
+
+@{
+    ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="maintitle">Cálculo de comisiones de socios</div>
+
+<div class="container-fluid" id="divMainContainer">
+	<div id="divPageQueryLists">
+		@if (Model != null)
+		{
+			<table class="table table-hover" id="tblPeriodo">
+				<thead>
+					<tr>
+						<th>Periodo</th>
+						<th>Año</th>
+						<th>Mes</th>
+						<th>Quincena</th>
+						<th>Inicio Periodo</th>
+						<th>Fin Periodo</th>
+					</tr>
+				</thead>
+				<tbody>
+
+
+					@foreach (var info in Model)
+					{
+						<tr>
+							<td>@info.Periodo</td>
+							<td>@info.Anio</td>
+							<td>@info.Mes</td>
+							<td>@info.Quincena</td>
+							<td>@info.Fecha_inicio</td>
+							<td>@info.Fecha_fin</td>
+						</tr>
+					}
+
+
+
+				</tbody>
+			</table>
+		}
+
+		<table id="tblCalculo" class="display nowrap" style="width:100%">
+		</table>
+		<form id="frmCalculaComision" method="post">
+			<div class="row">
+				<div class="form-group">
+					<input type="submit" name="Previo" id="Previo" value="Vista Previa del Calculo" class="btn" />
+					<input type="submit" name="Calcular" id="Calcular" value="Calcular Comisión" class="btn" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<div class="row" id="listComisiones" style="display:none;z-index:10;">
+    <div class="form-group">
+        <h3>Registros con error</h3>
+    </div>
+
+    <table class="table table-striped table-bordered ">
+        <thead>
+            <tr>
+                <th>socio</th>
+                <th>nombre</th>
+                <th>comisi&oacute;n</th>
+            </tr>
+        </thead>
+        <tbody id="comisionesTbl"></tbody>
+    </table>
+
+</div>
+
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+			$('#tblPeriodo').show();
+			$('#tblCalculo').hide();
+			$('#Calcular').hide();
+
+            $('#listComisiones').hide();
+
+            $("#Calcular").click(function (event) {
+
+                event.preventDefault();
+                // Get form
+                var form = $('#frmCalculaComision')[0];
+
+                // Create an FormData object
+                var data = new FormData(form);
+
+                // disabled the submit button
+                $("#Guardar").prop("disabled", true);
+
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Content("~/CalculaComision/CalculaComision")",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    timeout: 600000,
+                    success: function (data) {
+
+
+                        $("#Calcular").prop("disabled", false);
+                        $('#frmCalculaComision')[0].reset();
+                        if (data == 'success') {
+                            alertSystem("success", "Se realizaron los calculos de comisiones.");
+                        } else {
+                            alertSystem("error", "No existe periodo activo.");
+                        }
+                        
+                        
+                    },
+                    error: function (e) {
+
+                        
+                        $("#result").text(e.responseText);
+                        $("#Calcular").prop("disabled", false);
+                        $('#frmCalculaComision')[0].reset();
+                        alertSystem("error", e.responseText);
+                    }
+                })
+
+			})
+
+
+			$("#Previo").click(function (event) {
+				$('#tblPeriodo').hide();
+				$('#Previo').hide();
+				$('#tblCalculo').show();
+				$('#Calcular').show();	
+
+				event.preventDefault();
+				mostrarLoader();
+				// Get form
+
+				var form = $('#frmCalculaComision')[0];
+
+				// Create an FormData object
+				var data = new FormData(form);
+
+				// disabled the submit button
+				$("#Guardar").prop("disabled", true);
+
+				var _numReg = 0;
+				var _numQuincena = 0;
+				var tablaCalculo = $('#tblCalculo').DataTable({
+
+					"language": {
+						"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+					},
+					"scrollY": 400,
+					"scrollX": true,
+					//scrollCollapse: true,
+					paging: true,
+					//data:dataSet,
+					columns: [
+						{ title: "Id Pago" },
+						{ title: "Socio" },
+						{ title: "Nombre" },
+						{ title: "Monto" },
+						{ title: "Pais" },
+						{ title: "Periodo" },
+						{ title: "Compania" },
+						{ title: "Porcentaje" },
+						{ title: "Registro" },
+						{ title: "Folio" }
+					]
+				});
+
+				$.ajax({
+					type: "POST",
+					url: "@Url.Content("~/CalculaComision/VistaPrevia")",
+					//data: {"id":1},
+					processData: false,
+					contentType: false,
+					cache: false,
+					//timeout: 600000,
+					success: function (retorno) {
+
+						if (retorno.length > 0) {
+							//console.log("OJO>>> " + JSON.stringify(retorno));
+							_numReg = retorno.length;
+
+							$.each(retorno, function (i, data) {
+								//_numQuincena = data.Quincena;
+								tablaCalculo.row.add(
+									[
+										data.id_PagoSocio,
+										data.partner_id,
+										data.Nombre,
+										data.monto,
+										data.Pais,
+										data.id_Periodo,
+										data.nombreCompania,
+										data.porcentaje,
+										data.fechaRegistro,
+										data.folioCalculo
+									]);
+								tablaCalculo.draw();
+										//formatCurrency(data.monto),
+
+			
+							});
+						} else { alertSystem("success", "El proceso no generó resultados"); }
+
+						ocultarLoader();
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						ocultarLoader();
+
+						Swal.fire({
+							title: "Error se presento un problema al momento de generar la informacion",
+							text: retorno.Mensaje,
+							type: "error",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar",
+							animation: false,
+							customClass: {
+								popup: 'animated tada'
+							}
+						}).then(function (result) {
+							window.location.href = "Index";
+						})
+					}
+				})
+			});
+           
+
+        })
+
+    </script>
+
+}

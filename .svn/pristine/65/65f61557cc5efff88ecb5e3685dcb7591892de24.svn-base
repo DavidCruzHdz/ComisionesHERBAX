@@ -1,0 +1,565 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="herbaxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="herbaxEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="CO_st_asignarCompaniaPago_pr" />
+    <FunctionImport Name="CO_st_buscarsocio_pr">
+      <Parameter Name="PartnerID" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="SecondLastName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CO_st_verificarPagoComision_pr" />
+    <FunctionImport Name="CO_st_registrosPago_pr" ReturnType="Collection(herbaxModel.CO_st_registrosPago_pr_Result)">
+      <Parameter Name="TipoConsulta" Mode="In" Type="String" />
+      <Parameter Name="compania" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CO_st_ListaComisiones_porEstatus" ReturnType="Collection(herbaxModel.CO_st_ListaComisiones_porEstatus_Result)">
+      <Parameter Name="ESTATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getDetalleComisionesporEstatus" ReturnType="Collection(herbaxModel.CO_st_ListaComisiones_porEstatus_Result)">
+      <Parameter Name="ESTATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CO_st_extraerComisones_pr" />
+    <FunctionImport Name="CO_st_calculoImpuesto_pr" />
+    <FunctionImport Name="CO_st_validaEstDelProcCalculo" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="CalcularBonosCDA" ReturnType="Collection(herbaxModel.CalcularBonosCDA_Result)" />
+    <FunctionImport Name="CO_st_InsertMovimientosSocio" ReturnType="Collection(herbaxModel.insertarMovimientosSocioBonos_Result)" />
+    <FunctionImport Name="insertarMovimientosSocioBonos" ReturnType="Collection(herbaxModel.insertarMovimientosSocioBonos_Result)" />
+    <FunctionImport Name="CO_st_CalculaBonosCDA" ReturnType="Collection(herbaxModel.CO_st_CalculaBonosCDA_Result)" />
+    <FunctionImport Name="CO_st_obtieneSocios" ReturnType="Collection(herbaxModel.CO_st_obtieneSocios_Result)">
+      <Parameter Name="partner_id" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CO_st_validaCapacidadPago" ReturnType="Collection(herbaxModel.CO_st_validaCapacidadPago_Result)">
+      <Parameter Name="partner_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CO_st_ProgramacionCobro">
+      <Parameter Name="partner_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CO_st_ListaComisiones_periodoActivo" ReturnType="Collection(herbaxModel.CO_st_ListaComisiones_periodoActivo_Result)" />
+    <FunctionImport Name="CO_st_GetPremiosPeriodoActivo" ReturnType="Collection(herbaxModel.CO_st_GetPremiosPeriodoActivo_Result)" />
+    <FunctionImport Name="CO_st_InsertaMovimientosSocio_Premio" ReturnType="Collection(herbaxModel.CO_st_InsertaMovimientosSocio_Premio_Result)" />
+    <FunctionImport Name="CO_st_generaMovimientosPrestamo" />
+    <FunctionImport Name="CO_st_validaCapacidadPago1" ReturnType="Collection(herbaxModel.CO_st_validaCapacidadPago1_Result)">
+      <Parameter Name="partner_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CO_st_getReembolsos" ReturnType="Collection(herbaxModel.CO_st_getReembolsos_Result)" />
+    <FunctionImport Name="CO_st_CO_st_InsertaMovimientosSocio_Reembolsos" ReturnType="Collection(herbaxModel.CO_st_CO_st_InsertaMovimientosSocio_Reembolsos_Result)" />
+    <EntitySet Name="CO_TB_ARBOL" EntityType="herbaxModel.CO_TB_ARBOL" />
+    <EntitySet Name="CO_tb_Bonos" EntityType="herbaxModel.CO_tb_Bonos" />
+    <EntitySet Name="CO_tb_Comisiones" EntityType="herbaxModel.CO_tb_Comisiones" />
+    <EntitySet Name="CO_tb_Comisiones_hist" EntityType="herbaxModel.CO_tb_Comisiones_hist" />
+    <EntitySet Name="CO_tb_CompaniaPago" EntityType="herbaxModel.CO_tb_CompaniaPago" />
+    <EntitySet Name="CO_tb_Conceptos" EntityType="herbaxModel.CO_tb_Conceptos" />
+    <EntitySet Name="CO_tb_ConfigReembolsos" EntityType="herbaxModel.CO_tb_ConfigReembolsos" />
+    <EntitySet Name="CO_tb_CuentaSocioHistorico" EntityType="herbaxModel.CO_tb_CuentaSocioHistorico" />
+    <EntitySet Name="CO_tb_ImpuestoComision" EntityType="herbaxModel.CO_tb_ImpuestoComision" />
+    <EntitySet Name="CO_tb_ImpuestoPais" EntityType="herbaxModel.CO_tb_ImpuestoPais" />
+    <EntitySet Name="CO_tb_MovimientosSocio" EntityType="herbaxModel.CO_tb_MovimientosSocio" />
+    <EntitySet Name="CO_tb_PagoSocio" EntityType="herbaxModel.CO_tb_PagoSocio" />
+    <EntitySet Name="CO_tb_PagoSocio_hist" EntityType="herbaxModel.CO_tb_PagoSocio_hist" />
+    <EntitySet Name="CO_tb_PagosRespuesta" EntityType="herbaxModel.CO_tb_PagosRespuesta" />
+    <EntitySet Name="CO_tb_Parametro" EntityType="herbaxModel.CO_tb_Parametro" />
+    <EntitySet Name="CO_tb_Prestamo" EntityType="herbaxModel.CO_tb_Prestamo" />
+    <EntitySet Name="CO_tb_PrestamoDetalle" EntityType="herbaxModel.CO_tb_PrestamoDetalle" />
+    <EntitySet Name="CO_tb_Productos_Premios" EntityType="herbaxModel.CO_tb_Productos_Premios" />
+    <EntitySet Name="CO_tb_RecepcionDepositos" EntityType="herbaxModel.CO_tb_RecepcionDepositos" />
+    <EntitySet Name="tb_config_premios" EntityType="herbaxModel.tb_config_premios" />
+    <EntitySet Name="CO_tb_ARBOL_HIST" EntityType="herbaxModel.CO_tb_ARBOL_HIST" />
+    <EntitySet Name="SA_tb_cdaVenta" EntityType="herbaxModel.SA_tb_cdaVenta" />
+    <EntitySet Name="SA_tb_Puntos" EntityType="herbaxModel.SA_tb_Puntos" />
+    <AssociationSet Name="FK__CO_tb_Mov__id_Co__48CFD27E" Association="herbaxModel.FK__CO_tb_Mov__id_Co__48CFD27E">
+      <End Role="CO_tb_Conceptos" EntitySet="CO_tb_Conceptos" />
+      <End Role="CO_tb_MovimientosSocio" EntitySet="CO_tb_MovimientosSocio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Pre__id_Pr__5165187F" Association="herbaxModel.FK__CO_tb_Pre__id_Pr__5165187F">
+      <End Role="CO_tb_Prestamo" EntitySet="CO_tb_Prestamo" />
+      <End Role="CO_tb_PrestamoDetalle" EntitySet="CO_tb_PrestamoDetalle" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="CO_st_registrosPago_pr_Result">
+    <Property Type="Int32" Name="TipoRegistro" Nullable="false" />
+    <Property Type="Int32" Name="NoIdentificaciónArchivo" Nullable="false" />
+    <Property Type="DateTime" Name="FechaEnvio" Nullable="true" Precision="16" />
+    <Property Type="String" Name="VersionLayout" Nullable="false" MaxLength="2" />
+    <Property Type="Int32" Name="TipoRegistroDet" Nullable="false" />
+    <Property Type="String" Name="RFC" Nullable="false" MaxLength="13" />
+    <Property Type="String" Name="CURP" Nullable="true" MaxLength="18" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Importe" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="Clabe" Nullable="true" MaxLength="18" />
+    <Property Type="String" Name="Banco" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Cuenta" Nullable="true" MaxLength="11" />
+    <Property Type="Int32" Name="Periodo" Nullable="true" />
+    <Property Type="String" Name="id_Distribuidor" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="TipoRegistroCtrl" Nullable="false" />
+    <Property Type="Int32" Name="NoMovimientos" Nullable="true" />
+    <Property Type="String" Name="ImpTotalAbonos" Nullable="true" MaxLength="20" />
+    <Property Type="Decimal" Name="IvaDelimTotal" Nullable="true" Precision="38" Scale="4" />
+  </ComplexType>
+  <ComplexType Name="CO_st_ListaComisiones_porEstatus_Result">
+    <Property Type="Int32" Name="id_Periodo" Nullable="true" />
+    <Property Type="String" Name="partner_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nombreCustomer" Nullable="false" MaxLength="102" />
+    <Property Type="String" Name="monto" Nullable="true" MaxLength="4000" />
+    <Property Type="Int32" Name="estatus" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CalcularBonosCDA_Result">
+    <Property Type="Int32" Name="mes" Nullable="false" />
+    <Property Type="String" Name="Id_UserXen" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Almacen" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Id_Responsable" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Regla" Nullable="false" Precision="4" Scale="1" />
+    <Property Type="Int32" Name="Id_Politica" Nullable="false" />
+    <Property Type="Decimal" Name="Total_venta" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="insertarMovimientosSocioBonos_Result">
+    <Property Type="Int32" Name="numReg" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CO_st_CalculaBonosCDA_Result">
+    <Property Type="Int32" Name="mes" Nullable="false" />
+    <Property Type="String" Name="Id_UserXen" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Almacen" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Id_Responsable" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Regla" Nullable="false" Precision="4" Scale="1" />
+    <Property Type="Int32" Name="Id_Politica" Nullable="false" />
+    <Property Type="Decimal" Name="Total_venta" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="CO_st_obtieneSocios_Result">
+    <Property Type="String" Name="partner_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="CO_st_validaCapacidadPago_Result">
+    <Property Type="String" Name="Respuesta" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="71" />
+    <Property Type="Decimal" Name="monto" Nullable="false" Precision="6" Scale="2" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="nombreCompleto" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="CO_st_ListaComisiones_periodoActivo_Result">
+    <Property Type="Int32" Name="id_Comisiones" Nullable="false" />
+    <Property Type="Int32" Name="id_Periodo" Nullable="true" />
+    <Property Type="String" Name="partner_id" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="id_Concepto" Nullable="true" />
+    <Property Type="DateTime" Name="fechaAplicacion" Nullable="true" Precision="16" />
+    <Property Type="Decimal" Name="monto" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="observaciones" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="estatus" Nullable="true" />
+    <Property Type="Int32" Name="folioCalculo" Nullable="true" />
+    <Property Type="DateTime" Name="fechaRegistro" Nullable="true" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="150" />
+    <Property Type="DateTime" Name="fechaMovimiento" Nullable="true" Precision="16" />
+  </ComplexType>
+  <ComplexType Name="CO_st_GetPremiosPeriodoActivo_Result">
+    <Property Type="Int32" Name="RankLastPeriod_ID" Nullable="true" />
+    <Property Type="Int32" Name="Mes" Nullable="false" />
+    <Property Type="Int32" Name="Quincena" Nullable="false" />
+    <Property Type="Int32" Name="idPeriodo" Nullable="false" />
+    <Property Type="String" Name="Partnetid" Nullable="true" MaxLength="8000" />
+    <Property Type="String" Name="nombrePartner" Nullable="false" MaxLength="102" />
+    <Property Type="Int32" Name="Volume" Nullable="true" />
+    <Property Type="Int32" Name="puntos" Nullable="true" />
+    <Property Type="String" Name="Rango" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PRODUCTOS" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CO_st_InsertaMovimientosSocio_Premio_Result">
+    <Property Type="Int32" Name="numReg" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CO_st_validaCapacidadPago1_Result">
+    <Property Type="String" Name="Respuesta" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="71" />
+    <Property Type="Decimal" Name="monto" Nullable="false" Precision="6" Scale="2" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="nombreCompleto" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="CO_st_getReembolsos_Result">
+    <Property Type="Int32" Name="MES" Nullable="true" />
+    <Property Type="Int32" Name="ID_PERIODO" Nullable="true" />
+    <Property Type="String" Name="ID_PARTNER" Nullable="true" MaxLength="10" />
+    <Property Type="Decimal" Name="VENTA_PERIODO" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="CANTIDAD_REEMBOLSO" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="NOMBRE_CUSTOMER" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ESTATUS" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHA_CREACION" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CO_st_CO_st_InsertaMovimientosSocio_Reembolsos_Result">
+    <Property Type="Int32" Name="numReg" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="CO_TB_ARBOL">
+    <Key>
+      <PropertyRef Name="PARTNER_ID" />
+    </Key>
+    <Property Name="PARTNER_ID" Type="Int32" Nullable="false" />
+    <Property Name="SPONSOR_ID" Type="Int32" Nullable="false" />
+    <Property Name="VENTAPERSONAL" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="VENTARED" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IDPERIODO" Type="Int32" />
+    <Property Name="NUMDIAS" Type="Int32" />
+    <Property Name="NUMMESES" Type="Int32" />
+    <Property Name="PUNTOS" Type="Int32" />
+    <Property Name="VOLUMENCOMISION" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FECHACREACION" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_Bonos">
+    <Key>
+      <PropertyRef Name="idBono" />
+    </Key>
+    <Property Name="idBono" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idResponsableAlmacen" Type="Int32" />
+    <Property Name="nombreResponsableAlmacen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idAlmacen" Type="Int32" />
+    <Property Name="nombreAlmacen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="montoVenta" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="manejoCDA" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="montoPolitica" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="cantidadInicial" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="cantidadTopada" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="numVecesPremio" Type="Int32" />
+    <Property Name="montoBonoManejoCDA" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MontoBonoPolitica" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="idPolitica" Type="Int32" />
+    <Property Name="TotalBono" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="idConcepto" Type="Int32" />
+    <Property Name="descripcionConcepto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idPeriodo" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CO_tb_Comisiones">
+    <Key>
+      <PropertyRef Name="id_Comisiones" />
+    </Key>
+    <Property Name="id_Comisiones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_Periodo" Type="Int32" />
+    <Property Name="partner_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="id_Concepto" Type="Int32" />
+    <Property Name="fechaAplicacion" Type="DateTime" Precision="0" />
+    <Property Name="monto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="observaciones" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="estatus" Type="Int32" />
+    <Property Name="folioCalculo" Type="Int32" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="0" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_Comisiones_hist">
+    <Key>
+      <PropertyRef Name="id_Comisiones_hist" />
+    </Key>
+    <Property Name="id_Comisiones_hist" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_Comisiones" Type="Int32" />
+    <Property Name="id_Periodo" Type="Int32" />
+    <Property Name="partner_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="id_Concepto" Type="Int32" />
+    <Property Name="fechaAplicacion" Type="DateTime" Precision="0" />
+    <Property Name="monto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="observaciones" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="estatus" Type="Int32" />
+    <Property Name="folioCalculo" Type="Int32" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="0" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_CompaniaPago">
+    <Key>
+      <PropertyRef Name="id_CompaniaPago" />
+    </Key>
+    <Property Name="id_CompaniaPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreCompania" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="porcentaje" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_Conceptos">
+    <Key>
+      <PropertyRef Name="id_Concepto" />
+    </Key>
+    <Property Name="id_Concepto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="gravable" Type="Int16" Nullable="false" />
+    <Property Name="pagoEspecie" Type="Int16" Nullable="false" />
+    <Property Name="estatus" Type="Int16" Nullable="false" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CO_tb_MovimientosSocio" Relationship="herbaxModel.FK__CO_tb_Mov__id_Co__48CFD27E" FromRole="CO_tb_Conceptos" ToRole="CO_tb_MovimientosSocio" />
+  </EntityType>
+  <EntityType Name="CO_tb_ConfigReembolsos">
+    <Key>
+      <PropertyRef Name="Id_Reembolso" />
+    </Key>
+    <Property Name="Id_Reembolso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPeriodo" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+    <Property Name="Cantidad_Topada" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+    <Property Name="PorcentajeReembolso" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+    <Property Name="id_concepto" Type="Int32" Nullable="false" />
+    <Property Name="id_estatus" Type="Int32" Nullable="false" />
+    <Property Name="f_Vigencia" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UltMod_Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UltMod_F" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_CuentaSocioHistorico">
+    <Key>
+      <PropertyRef Name="id_CuentaSocioHistorico" />
+    </Key>
+    <Property Name="id_CuentaSocioHistorico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="partner_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="id_Banco" Type="Int32" />
+    <Property Name="Clabe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_ImpuestoComision">
+    <Key>
+      <PropertyRef Name="id_Impuesto" />
+    </Key>
+    <Property Name="id_Impuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="limiteInferior" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="limiteSuperior" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="porcentaje" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="coutaFija" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_ImpuestoPais">
+    <Key>
+      <PropertyRef Name="id_Impuesto" />
+    </Key>
+    <Property Name="id_Impuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pais" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="impuesto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="pagoMinimo" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_MovimientosSocio">
+    <Key>
+      <PropertyRef Name="id_MovimientosSocio" />
+    </Key>
+    <Property Name="id_MovimientosSocio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="partner_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="id_Concepto" Type="Int32" Nullable="false" />
+    <Property Name="comentario" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="monto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="estatus" Type="Int16" Nullable="false" />
+    <Property Name="folioCalculo" Type="Int32" />
+    <Property Name="Id_Periodo" Type="Int32" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CO_tb_Conceptos" Relationship="herbaxModel.FK__CO_tb_Mov__id_Co__48CFD27E" FromRole="CO_tb_MovimientosSocio" ToRole="CO_tb_Conceptos" />
+  </EntityType>
+  <EntityType Name="CO_tb_PagoSocio">
+    <Key>
+      <PropertyRef Name="id_PagoSocio" />
+    </Key>
+    <Property Name="id_PagoSocio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="partner_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="monto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="id_Periodo" Type="Int32" />
+    <Property Name="id_CompaniaPago" Type="Int32" />
+    <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fechaPago" Type="DateTime" Precision="0" />
+    <Property Name="estatus" Type="Int16" Nullable="false" />
+    <Property Name="folioCalculo" Type="Int32" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_PagoSocio_hist">
+    <Key>
+      <PropertyRef Name="id_PagoSocio_hist" />
+    </Key>
+    <Property Name="id_PagoSocio_hist" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_PagoSocio" Type="Int32" />
+    <Property Name="partner_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="monto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="id_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="id_CompaniaPago" Type="Int32" />
+    <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fechaPago" Type="DateTime" Precision="0" />
+    <Property Name="estatus" Type="Int16" Nullable="false" />
+    <Property Name="folioCalculo" Type="Int32" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_PagosRespuesta">
+    <Key>
+      <PropertyRef Name="id_PagosRespuesta" />
+    </Key>
+    <Property Name="id_PagosRespuesta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tiporeRegistro" Type="Int32" />
+    <Property Name="cuentaDestino" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="partner_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="beneficiario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="importe" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="numeroReferencia" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="fechaAplicacion" Type="DateTime" Precision="0" />
+    <Property Name="claveRastreo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="motivoDevolucion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="id_Periodo" Type="Int32" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_Parametro">
+    <Key>
+      <PropertyRef Name="id_Parametro" />
+    </Key>
+    <Property Name="id_Parametro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="parametro" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="valor" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CO_tb_Prestamo">
+    <Key>
+      <PropertyRef Name="id_Prestamo" />
+    </Key>
+    <Property Name="id_Prestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="partner_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="importe" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="tipoAplicacion" Type="Int32" Nullable="false" />
+    <Property Name="numeroPagos" Type="Int32" Nullable="false" />
+    <Property Name="id_Concepto" Type="Int32" Nullable="false" />
+    <Property Name="id_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="saldo" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="fechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="fechaFin" Type="DateTime" Precision="0" />
+    <Property Name="estatus" Type="Int32" />
+    <Property Name="folioCalculo" Type="Int32" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+    <Property Name="Motivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idFormaPago" Type="Int32" />
+    <NavigationProperty Name="CO_tb_PrestamoDetalle" Relationship="herbaxModel.FK__CO_tb_Pre__id_Pr__5165187F" FromRole="CO_tb_Prestamo" ToRole="CO_tb_PrestamoDetalle" />
+  </EntityType>
+  <EntityType Name="CO_tb_PrestamoDetalle">
+    <Key>
+      <PropertyRef Name="id_PrestamoDetalle" />
+    </Key>
+    <Property Name="id_PrestamoDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_Prestamo" Type="Int32" />
+    <Property Name="importe" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="pagonumero" Type="Int32" Nullable="false" />
+    <Property Name="fechaPago" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fechaAplicacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="estatus" Type="Int32" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CO_tb_Prestamo" Relationship="herbaxModel.FK__CO_tb_Pre__id_Pr__5165187F" FromRole="CO_tb_PrestamoDetalle" ToRole="CO_tb_Prestamo" />
+  </EntityType>
+  <EntityType Name="CO_tb_Productos_Premios">
+    <Key>
+      <PropertyRef Name="idProductos" />
+    </Key>
+    <Property Name="idProductos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CO_tb_RecepcionDepositos">
+    <Key>
+      <PropertyRef Name="id_RecepcionDeposito" />
+    </Key>
+    <Property Name="id_RecepcionDeposito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numeroReferencia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cuentaOrigen" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cuentaDestino" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="beneficiario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="importe" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="estatus" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="conceptoPagoTransf" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="referenciaInterban" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="formaAplicacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="fechaAplicacion" Type="DateTime" Precision="0" />
+    <Property Name="claveRastreo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="motivoDevolucion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="iva" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="rfc" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="comprobanteElectronico" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="divisa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="fechaMovimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tb_config_premios">
+    <Key>
+      <PropertyRef Name="idPremio" />
+    </Key>
+    <Property Name="idPremio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idGrupo" Type="Int32" />
+    <Property Name="puntos" Type="Int32" />
+    <Property Name="mes" Type="Int32" />
+    <Property Name="quincena" Type="Int32" />
+    <Property Name="idConcepto" Type="Int32" />
+    <Property Name="vigencia" Type="DateTime" Precision="0" />
+    <Property Name="estatus" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CO_tb_ARBOL_HIST">
+    <Key>
+      <PropertyRef Name="PARTNER_ID" />
+      <PropertyRef Name="SPONSOR_ID" />
+    </Key>
+    <Property Name="PARTNER_ID" Type="Int32" Nullable="false" />
+    <Property Name="SPONSOR_ID" Type="Int32" Nullable="false" />
+    <Property Name="VENTAPERSONAL" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="VENTARED" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IDPERIODO" Type="Int32" />
+    <Property Name="NUMDIAS" Type="Int32" />
+    <Property Name="NUMMESES" Type="Int32" />
+    <Property Name="PUNTOS" Type="Int32" />
+    <Property Name="VOLUMENCOMISION" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FECHACREACION" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="SA_tb_cdaVenta">
+    <Key>
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="f_proceso" />
+    </Key>
+    <Property Name="Mes" Type="Int32" Nullable="false" />
+    <Property Name="entered_by" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Total_venta" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="f_proceso" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="SA_tb_Puntos">
+    <Key>
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="Quincena" />
+      <PropertyRef Name="idPeriodo" />
+      <PropertyRef Name="nombrePartner" />
+    </Key>
+    <Property Name="RankLastPeriod_ID" Type="Int32" />
+    <Property Name="Mes" Type="Int32" Nullable="false" />
+    <Property Name="Quincena" Type="Int32" Nullable="false" />
+    <Property Name="idPeriodo" Type="Int32" Nullable="false" />
+    <Property Name="Partnetid" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="nombrePartner" Type="String" Nullable="false" MaxLength="102" FixedLength="false" Unicode="true" />
+    <Property Name="Volume" Type="Int32" />
+    <Property Name="costoTotal" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="FK__CO_tb_Mov__id_Co__48CFD27E">
+    <End Type="herbaxModel.CO_tb_Conceptos" Role="CO_tb_Conceptos" Multiplicity="1" />
+    <End Type="herbaxModel.CO_tb_MovimientosSocio" Role="CO_tb_MovimientosSocio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Conceptos">
+        <PropertyRef Name="id_Concepto" />
+      </Principal>
+      <Dependent Role="CO_tb_MovimientosSocio">
+        <PropertyRef Name="id_Concepto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Pre__id_Pr__5165187F">
+    <End Type="herbaxModel.CO_tb_Prestamo" Role="CO_tb_Prestamo" Multiplicity="0..1" />
+    <End Type="herbaxModel.CO_tb_PrestamoDetalle" Role="CO_tb_PrestamoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Prestamo">
+        <PropertyRef Name="id_Prestamo" />
+      </Principal>
+      <Dependent Role="CO_tb_PrestamoDetalle">
+        <PropertyRef Name="id_Prestamo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

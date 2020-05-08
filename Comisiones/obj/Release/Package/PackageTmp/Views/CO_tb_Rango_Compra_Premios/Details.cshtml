@@ -1,0 +1,110 @@
+﻿@model Comisiones.Models.CO_tb_Rango_Compra_Premios
+
+@{
+	ViewBag.Title = "Consultas";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	@Html.AntiForgeryToken()
+	<h2>Consultar Rank de Pago</h2>
+	<div>
+		<h4>Informacion de la Compañia</h4>
+		<hr />
+		<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.id_premio)
+            </dt>
+
+            <dd>
+                @Html.DropDownList("id_premio", (IEnumerable<SelectListItem>)ViewBag.dropdownPremios, "Selecciona un Premio?", new { @id = "IdPremio", @class = "form-control", @disabled = "disabled" })
+            </dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.id_pais)
+			</dt>
+
+			<dd>
+				@Html.DropDownList("id_pais", (IEnumerable<SelectListItem>)ViewBag.dropdownPaises, "Selecciona un Pais?", new { @id = "IdPais", @class = "form-control", @disabled = "disabled" })
+			</dd>
+
+
+			<dt>
+				@Html.DisplayNameFor(model => model.id_rank)
+			</dt>
+
+			<dd>
+                @Html.DropDownList("id_rank", (IEnumerable<SelectListItem>)ViewBag.dropdownRanks, "Cual es RANK a configurar?", new { @id = "IdRank", @class = "form-control", @disabled = "disabled" })
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.id_periodo)
+			</dt>
+
+			<dd>
+				@Html.DropDownList("id_periodo", (IEnumerable<SelectListItem>)ViewBag.dropdownPeriodos, "Cual es Periodo a configurar?", new { @id = "IdPeriodo", @class = "form-control", @disabled = "disabled" })
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.puntos)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.puntos)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Estatus)
+			</dt>
+
+			<dd>
+				@Html.DropDownList("Estatus", (IEnumerable<SelectListItem>)ViewBag.dropdownEstatus, new { @id = "idEstatus", @class = "form-control", @disabled = "disabled" })
+			</dd>
+
+			@*<dt>
+				@Html.DisplayNameFor(model => model.CreadoUsuario)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.CreadoUsuario)
+			</dd>*@
+
+			@*<dt>
+				@Html.DisplayNameFor(model => model.Creado_F)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.Creado_F)
+			</dd>*@
+
+			<dt>
+				@Html.DisplayNameFor(model => model.UltModUsuario)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.UltModUsuario)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.UltMod_F)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.UltMod_F)
+			</dd>
+
+		</dl>
+	</div>
+	<p>
+		@*@Html.ActionLink("Edit", "Edit", new { id = Model.IdUsuario }) |
+			@Html.ActionLink("Back to List", "Index")*@
+		@Html.ActionLink("Regresar", "Index", "CO_tb_Rango_Compra_Premios", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+	</p>
+
+</div>
+
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}
+

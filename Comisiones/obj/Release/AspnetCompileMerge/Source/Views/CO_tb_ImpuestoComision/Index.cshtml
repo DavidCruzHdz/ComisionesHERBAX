@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Comisiones.Models.CO_tb_ImpuestoComision>
+
+@{
+	ViewBag.Title = "Altas";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="maintitle">Listado de Impuesto de Comisiones</div>
+
+<br />
+<div class="container-fluid" id="divMainContainer">
+	@Html.AntiForgeryToken()
+	<p>
+		@Html.ActionLink("Agregar nueva", "Create", "CO_tb_ImpuestoComision", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+		@Html.AntiForgeryToken()
+	</p>
+
+
+	<script type="text/javascript" class="init">
+		$(document).ready(function () {
+			var table = $('#tblCompaniaPago').DataTable({
+
+				language: {
+					"decimal": "",
+					"emptyTable": "No hay información",
+					"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+					"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+					"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+					"infoPostFix": "",
+					"thousands": ",",
+					"lengthMenu": "Mostrar _MENU_ registros",
+					"loadingRecords": "Cargando...",
+					"processing": "Procesando...",
+					"search": "Buscar:",
+					"zeroRecords": "Ningún dato disponible en esta tabla",
+					"paginate": {
+						"first": "Primero",
+						"last": "Ultimo",
+						"next": "Siguiente",
+						"previous": "Anterior"
+					}
+				}
+			}
+			);
+
+
+		});
+	</script>
+
+
+	<div class="col-lg-12" id="divPageQueryLists">
+		<table id="tblCompaniaPago" class="table display table-striped table-bordered dt-responsive nowrap" style="width:100%; text-align:right;">
+			<thead>
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.limiteInferior)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.limiteSuperior)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.porcentaje)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.coutaFija)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.usuario)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.fechaMovimiento)
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.limiteInferior)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.limiteSuperior)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.porcentaje)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.coutaFija)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.usuario)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.fechaMovimiento)
+						</td>
+						<td>
+							@Html.ActionLink("Modificar", "Edit", new { id = item.id_Impuesto }) |
+							@Html.ActionLink("Consultar", "Details", new { id = item.id_Impuesto }) |
+							@Html.ActionLink("Borrar", "Delete", new { id = item.id_Impuesto })
+						</td>
+					</tr>
+				}
+			</tbody>
+
+		</table>
+	</div>
+</div>
+

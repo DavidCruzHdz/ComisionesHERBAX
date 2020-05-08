@@ -1,0 +1,5 @@
+﻿@model List<Comisiones.Models.ViewModels.ListPrestamoViewModel>
+
+@{
+    ViewBag.Title = "Prestamos";
+}

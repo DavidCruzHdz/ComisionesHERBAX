@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EvolutionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CL_tb_Customer">
+    <Key>
+      <PropertyRef Name="partner_id" />
+    </Key>
+    <Property Name="partner_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="second_last_name" Type="varchar" MaxLength="40" />
+    <Property Name="midle_name" Type="varchar" MaxLength="40" />
+    <Property Name="first_name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="sponsor_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="upline_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PostalCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="country_id" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Address_1" Type="varchar" MaxLength="100" />
+    <Property Name="Address_2" Type="varchar" MaxLength="100" />
+    <Property Name="Address_3" Type="varchar" MaxLength="100" />
+    <Property Name="Postal_Community_id" Type="varchar" MaxLength="12" />
+    <Property Name="city_id" Type="varchar" MaxLength="12" />
+    <Property Name="state_id" Type="int" />
+    <Property Name="Mapanet_id" Type="bigint" />
+    <Property Name="language_id" Type="varchar" MaxLength="2" />
+    <Property Name="Phone_number" Type="varchar" MaxLength="20" />
+    <Property Name="mobile" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="tax_id_type" Type="int" />
+    <Property Name="tax_id" Type="varchar" MaxLength="15" />
+    <Property Name="social_security" Type="varchar" MaxLength="18" />
+    <Property Name="birthdate" Type="smalldatetime" />
+    <Property Name="brith_city" Type="varchar" MaxLength="2" />
+    <Property Name="sex" Type="int" />
+    <Property Name="entry_date" Type="smalldatetime" />
+    <Property Name="co_owner" Type="varchar" MaxLength="255" />
+    <Property Name="co_owner_brithdate" Type="smalldatetime" />
+    <Property Name="co_owner_email" Type="varchar" MaxLength="50" />
+    <Property Name="co_owner_telefhono" Type="varchar" MaxLength="20" />
+    <Property Name="co_owner_mobile" Type="varchar" MaxLength="20" />
+    <Property Name="pickupcenter_id" Type="int" />
+    <Property Name="bank_id" Type="int" />
+    <Property Name="account" Type="varchar" MaxLength="20" />
+    <Property Name="account_type" Type="int" />
+    <Property Name="account_Principal" Type="varchar" MaxLength="100" />
+    <Property Name="active_account" Type="int" />
+    <Property Name="tax_type" Type="int" />
+    <Property Name="tax_percent" Type="numeric" Precision="10" Scale="2" />
+    <Property Name="sales_tax_withold" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="comments" Type="varchar" MaxLength="255" />
+    <Property Name="partner_status_id" Type="int" />
+    <Property Name="first_purchase_date" Type="smalldatetime" />
+    <Property Name="last_purchase_date" Type="smalldatetime" />
+    <Property Name="customer_type" Type="char" MaxLength="1" />
+    <Property Name="id_type" Type="int" />
+    <Property Name="id_number" Type="varchar" MaxLength="20" />
+    <Property Name="current_grade_level" Type="int" />
+    <Property Name="maximum_grade_level_date" Type="smalldatetime" />
+    <Property Name="maximum_grade_level" Type="int" />
+    <Property Name="last_grade_level" Type="int" />
+    <Property Name="marketing_plan" Type="char" MaxLength="6" />
+    <Property Name="registration_method" Type="char" MaxLength="1" />
+    <Property Name="personal_type" Type="int" />
+    <Property Name="profession_id" Type="int" />
+    <Property Name="Marital_status" Type="int" />
+    <Property Name="hold_payment" Type="int" />
+    <Property Name="contact_us" Type="int" />
+    <Property Name="web_user_name" Type="varchar" MaxLength="20" />
+    <Property Name="Web_password" Type="varchar" MaxLength="20" />
+    <Property Name="old_id_number" Type="bit" />
+    <Property Name="promotion_code" Type="int" />
+    <Property Name="price_type" Type="char" MaxLength="1" />
+    <Property Name="personal_business" Type="int" />
+    <Property Name="offical_image_id_one" Type="varchar" MaxLength="255" />
+    <Property Name="offical_image_id_two" Type="varchar" MaxLength="255" />
+    <Property Name="creator_user" Type="varchar" MaxLength="50" />
+    <Property Name="creator_date" Type="smalldatetime" />
+    <Property Name="creator_machine" Type="varchar" MaxLength="50" />
+    <Property Name="changing_user" Type="varchar" MaxLength="50" />
+    <Property Name="changing_date" Type="smalldatetime" />
+    <Property Name="changing_machine" Type="varchar" MaxLength="50" />
+    <Property Name="RankLastPeriod_ID" Type="int" />
+    <Property Name="RankCurrent_ID" Type="int" />
+    <Property Name="RankMaximum_ID" Type="int" />
+    <Property Name="RankMaximumDate" Type="int" />
+    <Property Name="Paymethod_com" Type="int" />
+    <Property Name="Xen_Email" Type="varchar" MaxLength="200" />
+    <Property Name="Xen_WorkNo" Type="varchar" MaxLength="20" />
+    <Property Name="Xen_HomeNo" Type="varchar" MaxLength="20" />
+    <Property Name="Xen_CellNo" Type="varchar" MaxLength="30" />
+    <Property Name="Xen_ShippingAddress1" Type="varchar" MaxLength="75" />
+    <Property Name="Xen_ShippingAddress2" Type="varchar" MaxLength="75" />
+    <Property Name="Xen_ShippingAddress3" Type="varchar" MaxLength="75" />
+    <Property Name="Xen_ShippingCity" Type="varchar" MaxLength="75" />
+    <Property Name="Xen_ShippingState" Type="varchar" MaxLength="50" />
+    <Property Name="Xen_ShippingCountry" Type="varchar" MaxLength="50" />
+    <Property Name="Xen_ShippingZip" Type="varchar" MaxLength="75" />
+    <Property Name="Xen_BillingCity" Type="varchar" MaxLength="75" />
+    <Property Name="Xen_BillingState" Type="varchar" MaxLength="50" />
+    <Property Name="Xen_DistBusinessCenter" Type="smallint" />
+    <Property Name="Xen_EnteredBy" Type="varchar" MaxLength="15" />
+    <Property Name="Xen_DefaultWarehouse" Type="varchar" MaxLength="15" />
+    <Property Name="Xen_Active" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evolution.dbo.CL_tb_CustomerRank' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CL_tb_CustomerRank">
+    <Key>
+      <PropertyRef Name="Period_ID" />
+      <PropertyRef Name="Partner_ID" />
+      <PropertyRef Name="PaidRankID" />
+    </Key>
+    <Property Name="Period_ID" Type="int" Nullable="false" />
+    <Property Name="Partner_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PeriodStartDate" Type="datetime" />
+    <Property Name="PeriodEndDate" Type="datetime" />
+    <Property Name="PaidRankID" Type="int" Nullable="false" />
+    <Property Name="ArchivedrankId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evolution.dbo.CL_tb_Pais' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CL_tb_Pais">
+    <Key>
+      <PropertyRef Name="Id_Pais" />
+      <PropertyRef Name="Id_Estatus" />
+      <PropertyRef Name="Pais" />
+      <PropertyRef Name="Folio" />
+      <PropertyRef Name="Id_PaisXe" />
+    </Key>
+    <Property Name="Id_Pais" Type="int" Nullable="false" />
+    <Property Name="Id_Estatus" Type="tinyint" Nullable="false" />
+    <Property Name="Pais" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Folio" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="NombreCorto" Type="varchar" MaxLength="3" />
+    <Property Name="DistBusinessCenter" Type="int" />
+    <Property Name="Warehouse" Type="nvarchar" MaxLength="15" />
+    <Property Name="Id_PaisXe" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CO_tb_cdaPolitica">
+    <Key>
+      <PropertyRef Name="Id_Politica" />
+    </Key>
+    <Property Name="Id_Politica" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion_corta" Type="varchar" MaxLength="15" />
+    <Property Name="Monto" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="Cantidad" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="Cantidad_Topada" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="id_percepcion" Type="int" Nullable="false" />
+    <Property Name="id_estatus" Type="int" Nullable="false" />
+    <Property Name="f_Vigencia" Type="datetime" Nullable="false" />
+    <Property Name="UltMod_Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="UltMod_F" Type="smalldatetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evolution.dbo.CO_tb_Periodo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CO_tb_Periodo">
+    <Key>
+      <PropertyRef Name="Id_Periodo" />
+      <PropertyRef Name="Anio" />
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="Quincena" />
+    </Key>
+    <Property Name="Id_Periodo" Type="int" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" Nullable="false" />
+    <Property Name="Inicio" Type="datetime" />
+    <Property Name="Fin" Type="datetime" />
+    <Property Name="Estatus" Type="int" />
+    <Property Name="Pagado" Type="float" />
+    <Property Name="CreadoUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="Creado_F" Type="smalldatetime" />
+    <Property Name="UltModUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="UltMod_F" Type="smalldatetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evolution.dbo.CO_tb_Rank' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CO_tb_Rank">
+    <Key>
+      <PropertyRef Name="Rank_ID" />
+      <PropertyRef Name="Rank_XEID" />
+      <PropertyRef Name="Rank" />
+      <PropertyRef Name="Rank_XE" />
+      <PropertyRef Name="type_Id" />
+      <PropertyRef Name="DirectQualified" />
+      <PropertyRef Name="F_Creation" />
+      <PropertyRef Name="U_Creation" />
+      <PropertyRef Name="H_Creation" />
+    </Key>
+    <Property Name="Rank_ID" Type="int" Nullable="false" />
+    <Property Name="Rank_XEID" Type="int" Nullable="false" />
+    <Property Name="Rank" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rank_XE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="type_Id" Type="int" Nullable="false" />
+    <Property Name="PV" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="DirectQualified" Type="int" Nullable="false" />
+    <Property Name="F_Creation" Type="smalldatetime" Nullable="false" />
+    <Property Name="U_Creation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="H_Creation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="F_Modified" Type="smalldatetime" />
+    <Property Name="U_Modified" Type="varchar" MaxLength="50" />
+    <Property Name="H_Modified" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evolution.dbo.CO_tb_TypeDist' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CO_tb_TypeDist">
+    <Key>
+      <PropertyRef Name="type_id" />
+      <PropertyRef Name="Description" />
+    </Key>
+    <Property Name="type_id" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CU_tb_Mes">
+    <Key>
+      <PropertyRef Name="Mes" />
+    </Key>
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="MesLetra" Type="nvarchar" MaxLength="60" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evolution.dbo.CU_tb_Periodo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CU_tb_Periodo">
+    <Key>
+      <PropertyRef Name="Id_Periodo" />
+      <PropertyRef Name="Anio" />
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="Quincena" />
+    </Key>
+    <Property Name="Id_Periodo" Type="int" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" Nullable="false" />
+    <Property Name="Inicio" Type="datetime" />
+    <Property Name="Fin" Type="datetime" />
+    <Property Name="Id_Estatus" Type="int" />
+    <Property Name="Pagado" Type="float" />
+    <Property Name="F_Pagado" Type="smalldatetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evolution.dbo.CU_tb_TipoCambio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CU_tb_TipoCambio">
+    <Key>
+      <PropertyRef Name="Id_Reg" />
+      <PropertyRef Name="DistBusinessCenter" />
+      <PropertyRef Name="Moneda" />
+      <PropertyRef Name="Abreviatura" />
+      <PropertyRef Name="id_moneda" />
+      <PropertyRef Name="Currency" />
+      <PropertyRef Name="LCurrency" />
+      <PropertyRef Name="Order_Currency_Code" />
+      <PropertyRef Name="id_vigente" />
+      <PropertyRef Name="valor" />
+    </Key>
+    <Property Name="Id_Reg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistBusinessCenter" Type="int" Nullable="false" />
+    <Property Name="Moneda" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Abreviatura" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="id_moneda" Type="int" Nullable="false" />
+    <Property Name="Currency" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="LCurrency" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Order_Currency_Code" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="id_vigente" Type="int" Nullable="false" />
+    <Property Name="valor" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="f_VigenciaInicio" Type="datetime" />
+    <Property Name="f_VigenciaFin" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evolution.dbo.IN_tb_Products' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="IN_tb_Products">
+    <Key>
+      <PropertyRef Name="sku" />
+      <PropertyRef Name="warehouse" />
+      <PropertyRef Name="Id_Empresa" />
+      <PropertyRef Name="Warehouse_ID" />
+      <PropertyRef Name="cve_art" />
+      <PropertyRef Name="XPrecioPublicoDescL" />
+      <PropertyRef Name="XPrecioSocioDescL" />
+      <PropertyRef Name="XPrecioPrefDescL" />
+      <PropertyRef Name="XPrecioPublicoDesc" />
+      <PropertyRef Name="XPrecioSocioDesc" />
+      <PropertyRef Name="XPrecioPrefDesc" />
+    </Key>
+    <Property Name="sku" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="warehouse" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Warehouse_ID" Type="int" Nullable="false" />
+    <Property Name="cve_art" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="40" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="40" />
+    <Property Name="PrecioPublico" Type="float" />
+    <Property Name="PrecioMinimo" Type="float" />
+    <Property Name="PrecioCosto" Type="float" />
+    <Property Name="PrecioSocio" Type="float" />
+    <Property Name="XPrecioPublicoL" Type="float" />
+    <Property Name="XPrecioPublicoDescL" Type="numeric" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="XPrecioSocioL" Type="float" />
+    <Property Name="XPrecioSocioDescL" Type="numeric" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="XPrecioPrefL" Type="float" />
+    <Property Name="XPrecioPrefDescL" Type="numeric" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="XPrecioPublico" Type="float" />
+    <Property Name="XPrecioPublicoDesc" Type="numeric" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="XPrecioSocio" Type="float" />
+    <Property Name="XPrecioSocioDesc" Type="numeric" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="XPrecioPref" Type="float" />
+    <Property Name="XPrecioPrefDesc" Type="numeric" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="PuntosPersonal" Type="float" />
+    <Property Name="PuntosPersonalDesc" Type="float" />
+    <Property Name="PuntosComision" Type="float" />
+    <Property Name="PuntosComisionDesc" Type="float" />
+    <Property Name="ActivoSAE" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Function Name="CL_fu_Rol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="Rol" Type="varchar" Mode="In" />
+    <Parameter Name="usuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CL_sp_pr_CrearRed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pnId_Cliente" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CL_stp_in_order" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="CL_stp_in order" />
+  <Function Name="CU_fu_ImpuestoProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+    <Parameter Name="pnId_Producto" Type="varchar" Mode="In" />
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CU_fu_Ivapais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="DistBusinessCenter" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CU_fu_PeriodoAbierto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="CU_fu_PrecioProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
+    <Parameter Name="pnId_Producto" Type="varchar" Mode="In" />
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CU_sp_se_Folio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+    <Parameter Name="pnId_Foliador" Type="int" Mode="In" />
+    <Parameter Name="pnFolio" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="PR_sp_MailPt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="body" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="stp_carga_archivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileproc" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="stp_carga_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileproc" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="stp_distribuye_archivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="XE_Socio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="EvolutionModelStoreContainer">
+    <EntitySet Name="CL_tb_Customer" EntityType="Self.CL_tb_Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_cdaPolitica" EntityType="Self.CO_tb_cdaPolitica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CU_tb_Mes" EntityType="Self.CU_tb_Mes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CL_tb_CustomerRank" EntityType="Self.CL_tb_CustomerRank" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CL_tb_CustomerRank].[Period_ID] AS [Period_ID], 
+    [CL_tb_CustomerRank].[Partner_ID] AS [Partner_ID], 
+    [CL_tb_CustomerRank].[PeriodStartDate] AS [PeriodStartDate], 
+    [CL_tb_CustomerRank].[PeriodEndDate] AS [PeriodEndDate], 
+    [CL_tb_CustomerRank].[PaidRankID] AS [PaidRankID], 
+    [CL_tb_CustomerRank].[ArchivedrankId] AS [ArchivedrankId]
+    FROM [dbo].[CL_tb_CustomerRank] AS [CL_tb_CustomerRank]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CL_tb_Pais" EntityType="Self.CL_tb_Pais" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CL_tb_Pais].[Id_Pais] AS [Id_Pais], 
+    [CL_tb_Pais].[Id_Estatus] AS [Id_Estatus], 
+    [CL_tb_Pais].[Pais] AS [Pais], 
+    [CL_tb_Pais].[Folio] AS [Folio], 
+    [CL_tb_Pais].[NombreCorto] AS [NombreCorto], 
+    [CL_tb_Pais].[DistBusinessCenter] AS [DistBusinessCenter], 
+    [CL_tb_Pais].[Warehouse] AS [Warehouse], 
+    [CL_tb_Pais].[Id_PaisXe] AS [Id_PaisXe]
+    FROM [dbo].[CL_tb_Pais] AS [CL_tb_Pais]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CO_tb_Periodo" EntityType="Self.CO_tb_Periodo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CO_tb_Periodo].[Id_Periodo] AS [Id_Periodo], 
+    [CO_tb_Periodo].[Anio] AS [Anio], 
+    [CO_tb_Periodo].[Mes] AS [Mes], 
+    [CO_tb_Periodo].[Quincena] AS [Quincena], 
+    [CO_tb_Periodo].[Inicio] AS [Inicio], 
+    [CO_tb_Periodo].[Fin] AS [Fin], 
+    [CO_tb_Periodo].[Estatus] AS [Estatus], 
+    [CO_tb_Periodo].[Pagado] AS [Pagado], 
+    [CO_tb_Periodo].[CreadoUsuario] AS [CreadoUsuario], 
+    [CO_tb_Periodo].[Creado_F] AS [Creado_F], 
+    [CO_tb_Periodo].[UltModUsuario] AS [UltModUsuario], 
+    [CO_tb_Periodo].[UltMod_F] AS [UltMod_F]
+    FROM [dbo].[CO_tb_Periodo] AS [CO_tb_Periodo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CO_tb_Rank" EntityType="Self.CO_tb_Rank" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CO_tb_Rank].[Rank_ID] AS [Rank_ID], 
+    [CO_tb_Rank].[Rank_XEID] AS [Rank_XEID], 
+    [CO_tb_Rank].[Rank] AS [Rank], 
+    [CO_tb_Rank].[Rank_XE] AS [Rank_XE], 
+    [CO_tb_Rank].[type_Id] AS [type_Id], 
+    [CO_tb_Rank].[PV] AS [PV], 
+    [CO_tb_Rank].[DirectQualified] AS [DirectQualified], 
+    [CO_tb_Rank].[F_Creation] AS [F_Creation], 
+    [CO_tb_Rank].[U_Creation] AS [U_Creation], 
+    [CO_tb_Rank].[H_Creation] AS [H_Creation], 
+    [CO_tb_Rank].[F_Modified] AS [F_Modified], 
+    [CO_tb_Rank].[U_Modified] AS [U_Modified], 
+    [CO_tb_Rank].[H_Modified] AS [H_Modified]
+    FROM [dbo].[CO_tb_Rank] AS [CO_tb_Rank]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CO_tb_TypeDist" EntityType="Self.CO_tb_TypeDist" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CO_tb_TypeDist].[type_id] AS [type_id], 
+    [CO_tb_TypeDist].[Description] AS [Description]
+    FROM [dbo].[CO_tb_TypeDist] AS [CO_tb_TypeDist]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CU_tb_Periodo" EntityType="Self.CU_tb_Periodo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CU_tb_Periodo].[Id_Periodo] AS [Id_Periodo], 
+    [CU_tb_Periodo].[Anio] AS [Anio], 
+    [CU_tb_Periodo].[Mes] AS [Mes], 
+    [CU_tb_Periodo].[Quincena] AS [Quincena], 
+    [CU_tb_Periodo].[Inicio] AS [Inicio], 
+    [CU_tb_Periodo].[Fin] AS [Fin], 
+    [CU_tb_Periodo].[Id_Estatus] AS [Id_Estatus], 
+    [CU_tb_Periodo].[Pagado] AS [Pagado], 
+    [CU_tb_Periodo].[F_Pagado] AS [F_Pagado]
+    FROM [dbo].[CU_tb_Periodo] AS [CU_tb_Periodo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CU_tb_TipoCambio" EntityType="Self.CU_tb_TipoCambio" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CU_tb_TipoCambio].[Id_Reg] AS [Id_Reg], 
+    [CU_tb_TipoCambio].[DistBusinessCenter] AS [DistBusinessCenter], 
+    [CU_tb_TipoCambio].[Moneda] AS [Moneda], 
+    [CU_tb_TipoCambio].[Abreviatura] AS [Abreviatura], 
+    [CU_tb_TipoCambio].[id_moneda] AS [id_moneda], 
+    [CU_tb_TipoCambio].[Currency] AS [Currency], 
+    [CU_tb_TipoCambio].[LCurrency] AS [LCurrency], 
+    [CU_tb_TipoCambio].[Order_Currency_Code] AS [Order_Currency_Code], 
+    [CU_tb_TipoCambio].[id_vigente] AS [id_vigente], 
+    [CU_tb_TipoCambio].[valor] AS [valor], 
+    [CU_tb_TipoCambio].[f_VigenciaInicio] AS [f_VigenciaInicio], 
+    [CU_tb_TipoCambio].[f_VigenciaFin] AS [f_VigenciaFin]
+    FROM [dbo].[CU_tb_TipoCambio] AS [CU_tb_TipoCambio]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="IN_tb_Products" EntityType="Self.IN_tb_Products" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IN_tb_Products].[sku] AS [sku], 
+    [IN_tb_Products].[warehouse] AS [warehouse], 
+    [IN_tb_Products].[Id_Empresa] AS [Id_Empresa], 
+    [IN_tb_Products].[Warehouse_ID] AS [Warehouse_ID], 
+    [IN_tb_Products].[cve_art] AS [cve_art], 
+    [IN_tb_Products].[Descripcion] AS [Descripcion], 
+    [IN_tb_Products].[DescripcionCorta] AS [DescripcionCorta], 
+    [IN_tb_Products].[PrecioPublico] AS [PrecioPublico], 
+    [IN_tb_Products].[PrecioMinimo] AS [PrecioMinimo], 
+    [IN_tb_Products].[PrecioCosto] AS [PrecioCosto], 
+    [IN_tb_Products].[PrecioSocio] AS [PrecioSocio], 
+    [IN_tb_Products].[XPrecioPublicoL] AS [XPrecioPublicoL], 
+    [IN_tb_Products].[XPrecioPublicoDescL] AS [XPrecioPublicoDescL], 
+    [IN_tb_Products].[XPrecioSocioL] AS [XPrecioSocioL], 
+    [IN_tb_Products].[XPrecioSocioDescL] AS [XPrecioSocioDescL], 
+    [IN_tb_Products].[XPrecioPrefL] AS [XPrecioPrefL], 
+    [IN_tb_Products].[XPrecioPrefDescL] AS [XPrecioPrefDescL], 
+    [IN_tb_Products].[XPrecioPublico] AS [XPrecioPublico], 
+    [IN_tb_Products].[XPrecioPublicoDesc] AS [XPrecioPublicoDesc], 
+    [IN_tb_Products].[XPrecioSocio] AS [XPrecioSocio], 
+    [IN_tb_Products].[XPrecioSocioDesc] AS [XPrecioSocioDesc], 
+    [IN_tb_Products].[XPrecioPref] AS [XPrecioPref], 
+    [IN_tb_Products].[XPrecioPrefDesc] AS [XPrecioPrefDesc], 
+    [IN_tb_Products].[PuntosPersonal] AS [PuntosPersonal], 
+    [IN_tb_Products].[PuntosPersonalDesc] AS [PuntosPersonalDesc], 
+    [IN_tb_Products].[PuntosComision] AS [PuntosComision], 
+    [IN_tb_Products].[PuntosComisionDesc] AS [PuntosComisionDesc], 
+    [IN_tb_Products].[ActivoSAE] AS [ActivoSAE]
+    FROM [dbo].[IN_tb_Products] AS [IN_tb_Products]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,260 @@
+﻿
+@{
+    ViewBag.Title = "Cargar comisiones";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+
+<div class="container" id="divMainContainer">
+    <br />
+
+    <div class="row" id="divPageQueryLists">
+        <form id="frmCargarComisiones" method="post">
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <input type="submit" name="Cargar Comisiones" id="Cargar" value="Cargar" class="btn btnTamano" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="dvTabla" class="row ">
+        <div class="col-sm-12 table-wrapper-scroll-y ">
+
+            <table id="tComisiones" class="table table-bordered table-striped   ">
+
+                <thead class="text-center">
+                    <tr style="background:rgba(0,169,142,0.7)">
+                        <th scope="col">Año</th>
+                        <th scope="col">Mes</th>
+                        <th scope="col">Quincena</th>
+                        <th scope="col">Monto USD</th>
+                        <th scope="col">Id Pais</th>
+                        <th scope="col">Pais</th>
+                        <th scope="col">Monto Moneda Local</th>
+
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+
+                <tbody id="rowsComisiones"></tbody>
+            </table>
+
+        </div> <!--fin div row que contienen la tabla-->
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="detComisiones" role="dialog">
+    <span id="idPartnerSpan"></span>
+    <div class="modal-dialog modal-lg" style="height: 90%;width: 85%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Detalle Comisiones</h4>
+            </div>
+            <div class="modal-body">
+                <input id="id_Pais" name="id_Pais" type="hidden" value="">
+                <div class="row ">
+                    <div class="col-sm-12">
+                        <div class="table-bordered table-wrapper-scroll-y my-custom-scrollbar" style="width: 97%;">
+
+                            <table id="tComisionesDetalle" class="table table-fixed ">
+
+                                <thead class="text-center">
+                                    <tr style="background:rgba(0,169,142,0.7)">
+                                        <th scope="col">Socio</th>
+                                        <th scope="col">Monto USD</th>
+                                        <th scope="col">Tipo Cambio</th>
+                                        <th scope="col">Monto Moneda Local</th>
+                                        <th scope="col">Estatus</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="rowsComisionesDetalle"></tbody>
+                            </table>
+
+                        </div> <!--fin div row que contienen la tabla-->
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button id="btndescargar" class="btn"><i class="fa fa-download btn-sm"></i> Descargar Excel</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+
+            $('#dvTabla').hide();
+
+
+            $("#Cargar").click(function (event) {
+
+                event.preventDefault();
+                mostrarLoader();
+                // Get form
+                var form = $('#frmCargarComisiones')[0];
+
+                // Create an FormData object
+                var data = new FormData(form);
+
+                // disabled the submit button
+                $("#Cargar").prop("disabled", true);
+
+
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Content("~/CargaComisiones/Cargar")",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    timeout: 600000,
+                    success: function (retorno) {
+
+                        $("#Cargar").prop("disabled", false);
+
+                        //console.log(JSON.stringify(retorno));
+                        console.log(retorno.length);
+                        if (retorno.length > 0) {
+
+                            $('#rowsComisiones').children().remove();
+
+                            for (i in retorno) {
+                                $('#rowsComisiones').append('<tr  >' +
+                                '<td class="text-center">' + parseInt(retorno[i].Anio) + '</td>' +
+                                '<td class="text-center">' + parseInt(retorno[i].Mes) + '</td>' +
+                                '<td class="text-center">' + parseInt(retorno[i].Quincena) + '</td>' +
+                                '<td style="padding-right: 10px" class="text-right" >' + formatCurrency(parseFloat(retorno[i].montoUSD)) + '</td>' +
+                                '<td class="text-center">' + retorno[i].keyPais + '</td>' +
+                                '<td style="padding-left: 10px" class="text-left">' + retorno[i].Pais + '</td>' +
+                                    '<td style="padding-right: 10px" class="text-right">' + formatCurrency(parseFloat(retorno[i].MontoMonedaLocal)) + '</td>' +
+
+                                    '<td class=" text-right center"><a href="#" onclick="consultarDetalle(' + "'" + retorno[i].keyPais+"'" +  ');">  ver Detalle</a></td> ' +
+                                '</tr>');
+                                
+                            }
+                           
+                            $('#dvTabla').show();
+                            ocultarLoader();
+                        }
+                        else {
+                            alertSystem("error", "No se encontraron datos para el periodo Activo");
+                            ocultarLoader();
+                        }
+                        /*if (retorno == 'success') {
+                            alertSystem("success", "Se cargaron correctamente las comisiones.");
+
+                        } else {
+                            alertSystem("error", "No existe periodo activo.");
+                        }*/
+                       
+
+                    },
+                    error: function (jqXHR, data, e) {
+                        console.log('REVISAR ERROR:>>> ' + e);
+                        $("#Cargar").prop("disabled", false);
+                        $('#frmCargarComisiones')[0].reset();
+
+                        alertSystem("error", e);
+                        ocultarLoader();
+                        //alert("error", "No existe periodo activo.");
+                    }
+                })
+
+
+
+            })
+
+            $('#btndescargar').click(function (e) {
+
+                event.preventDefault();
+                // var tipoArchivo = $('#tipoArchivo').val();
+                var pais = $('#id_Pais').val();
+
+                               
+
+                var pais = $('#id_Pais').val();
+                
+                window.location.href = 'descargaDetalleComisiones?pais=' + pais;
+
+
+
+            });
+        })
+
+        
+
+
+        function consultarDetalle(idPais) {
+            mostrarLoader();
+            $('#id_Pais').val(idPais) ;
+            
+            $.ajax({
+
+                url: "@Url.Content("~/CargaComisiones/getDetalleComisiones")",
+                type: "POST",
+                data: JSON.stringify({ "pais": idPais }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                processData: false,
+                cache: false,
+                timeout: 600000,
+                success: function (retorno) {
+                    console.log(retorno);
+                    console.log("Detalle del partner>>> " + retorno.estatus);
+                    //cargando  tabla detalle
+                    if (retorno.length > 0) {
+                        $('#rowsComisionesDetalle').children().remove();
+                        for (i in retorno) {
+                            console.log("idPeriodos>>>" + retorno[i].idPeriodo);
+
+
+                            $('#rowsComisionesDetalle').append('<tr  id=' + retorno[i].partner_id + '>' +
+                                                                        '<td style="padding-left: 10px" class="text-left">' + retorno[i].nombreCustomer + '</td>' +
+                                                                        '<td style="padding-right: 10px" class="text-right">' + retorno[i].MontoUSD + '</td>' +
+                                                                        '<td style="padding-right: 10px" class="text-right">' + retorno[i].TipoCambio + '</td>' +
+                                                                        '<td style="padding-right: 10px" class="text-right">' + retorno[i].MontoMonedaLocal + '</td>' +
+                                                                        '<td class="text-center">' + retorno[i].estatus + '</td>' +
+
+                                                                    '</tr>');
+
+                        }
+                    }
+
+                    $('#detComisiones').modal('show'); // abrir hide cerrar
+                    ocultarLoader();
+
+                },
+                error: function (jqXHR, data, e) {
+                    console.log('REVISAR ERROR:>>> ' + e);
+                    //$("#Cargar").prop("disabled", false);
+                    //$('#frmCargarComisiones')[0].reset();
+
+                    alertSystem("error", "Ocurrio un Error" + e);
+                    ocultarLoader();
+                }
+            })
+
+
+        }
+
+    </script>
+
+}

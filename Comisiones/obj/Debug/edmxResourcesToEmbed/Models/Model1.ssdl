@@ -1,0 +1,1775 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="herbaxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CO_TB_ARBOL">
+    <Key>
+      <PropertyRef Name="PARTNER_ID" />
+    </Key>
+    <Property Name="PARTNER_ID" Type="int" Nullable="false" />
+    <Property Name="SPONSOR_ID" Type="int" Nullable="false" />
+    <Property Name="VENTAPERSONAL" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VENTARED" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IDPERIODO" Type="int" />
+    <Property Name="NUMDIAS" Type="int" />
+    <Property Name="NUMMESES" Type="int" />
+    <Property Name="PUNTOS" Type="int" />
+    <Property Name="VOLUMENCOMISION" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FECHACREACION" Type="date" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.CO_tb_ARBOL_HIST' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CO_tb_ARBOL_HIST">
+    <Key>
+      <PropertyRef Name="PARTNER_ID" />
+      <PropertyRef Name="SPONSOR_ID" />
+    </Key>
+    <Property Name="PARTNER_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SPONSOR_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="VENTAPERSONAL" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VENTAPERSONAL_MX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VENTAPERSONAL_US" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VENTAPERSONAL_GT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VENTARED" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VENTARED_MX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VENTARED_US" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VENTARED_GT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IDPERIODO" Type="int" />
+    <Property Name="NUMDIAS" Type="int" />
+    <Property Name="NUMMESES" Type="int" />
+    <Property Name="PUNTOSPERSONAL" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PUNTOSPERSONAL_MX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PUNTOSPERSONAL_US" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PUNTOSPERSONAL_GT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PUNTOSRED" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PUNTOSRED_MX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PUNTOSRED_US" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PUNTOSRED_GT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ALMACEN" Type="varchar" MaxLength="2" />
+    <Property Name="SOCIOSRED" Type="int" />
+    <Property Name="AUSPICIOSPERSONAL" Type="int" />
+    <Property Name="AUSPICIOSRED" Type="int" />
+    <Property Name="DIRECTOS" Type="int" />
+    <Property Name="PUNTOSAUSPICIOSPERSONAL" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="COMPRAS_2123" Type="int" />
+    <Property Name="COMPRAS_2124" Type="int" />
+    <Property Name="UNIDADESPERSONAL" Type="int" />
+    <Property Name="UNIDADESRED" Type="int" />
+    <Property Name="DESCUENTOSPERSONAL" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DESCUENTOSPERSONAL_Mx" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DESCUENTOSPERSONAL_Us" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DESCUENTOSPERSONAL_Gt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DESCUENTOSRED" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DESCUENTOSRED_Mx" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DESCUENTOSRED_Us" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DESCUENTOSRED_Gt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LineaCargada" Type="varchar" MaxLength="5" />
+    <Property Name="LineaCargadaPorc" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LineaCargadaSocio" Type="varchar" MaxLength="10" />
+    <Property Name="LineaCargadaGrado" Type="int" />
+    <Property Name="Venta_4a_Generacion" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Venta_5a_Generacion" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FECHACREACION" Type="date" />
+  </EntityType>
+  <EntityType Name="CO_tb_Bonos">
+    <Key>
+      <PropertyRef Name="idBono" />
+    </Key>
+    <Property Name="idBono" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idResponsableAlmacen" Type="int" />
+    <Property Name="nombreResponsableAlmacen" Type="varchar" MaxLength="100" />
+    <Property Name="idAlmacen" Type="int" />
+    <Property Name="nombreAlmacen" Type="varchar" MaxLength="100" />
+    <Property Name="montoVenta" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="manejoCDA" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="montoPolitica" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="cantidadInicial" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="cantidadTopada" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="numVecesPremio" Type="int" />
+    <Property Name="montoBonoManejoCDA" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MontoBonoPolitica" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="idPolitica" Type="int" />
+    <Property Name="TotalBono" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="idConcepto" Type="int" />
+    <Property Name="descripcionConcepto" Type="varchar" MaxLength="100" />
+    <Property Name="idPeriodo" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.CO_tb_CALCULO_PREMIOS_HIST' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CO_tb_CALCULO_PREMIOS_HIST">
+    <Key>
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="Quincena" />
+      <PropertyRef Name="Id_Pais" />
+      <PropertyRef Name="idPeriodo" />
+      <PropertyRef Name="nombrePartner" />
+    </Key>
+    <Property Name="RankLastPeriod_ID" Type="int" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" Nullable="false" />
+    <Property Name="Id_Pais" Type="int" Nullable="false" />
+    <Property Name="Pais" Type="varchar" MaxLength="100" />
+    <Property Name="idPeriodo" Type="int" Nullable="false" />
+    <Property Name="Partnetid" Type="varchar" MaxLength="8000" />
+    <Property Name="nombrePartner" Type="nvarchar" MaxLength="102" Nullable="false" />
+    <Property Name="Volume" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="puntos" Type="int" />
+    <Property Name="Grado" Type="varchar" MaxLength="50" />
+    <Property Name="Bloque" Type="varchar" MaxLength="50" />
+    <Property Name="PRODUCTOS" Type="nvarchar(max)" />
+    <Property Name="fechaCreacion" Type="date" />
+    <Property Name="PedidoGenerado" Type="bit" />
+    <Property Name="Estatus" Type="bit" />
+    <Property Name="Id_Pedido" Type="int" />
+  </EntityType>
+  <EntityType Name="CO_tb_Comisiones">
+    <Key>
+      <PropertyRef Name="id_Comisiones" />
+    </Key>
+    <Property Name="id_Comisiones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Periodo" Type="int" />
+    <Property Name="partner_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="id_Concepto" Type="int" />
+    <Property Name="fechaAplicacion" Type="smalldatetime" />
+    <Property Name="monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="observaciones" Type="varchar" MaxLength="150" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="folioCalculo" Type="int" />
+    <Property Name="fechaRegistro" Type="date" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+    <Property Name="Clabe" Type="varchar" MaxLength="20" />
+    <Property Name="idPais" Type="int" />
+    <Property Name="TipoCambio" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="idMonedaLocal" Type="int" />
+    <Property Name="MontoUSD" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MontoMonedaLocal" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="CO_tb_Comisiones_hist">
+    <Key>
+      <PropertyRef Name="id_Comisiones_hist" />
+    </Key>
+    <Property Name="id_Comisiones_hist" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Comisiones" Type="int" />
+    <Property Name="id_Periodo" Type="int" />
+    <Property Name="partner_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="id_Concepto" Type="int" />
+    <Property Name="fechaAplicacion" Type="smalldatetime" />
+    <Property Name="monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="observaciones" Type="varchar" MaxLength="150" />
+    <Property Name="estatus" Type="int" />
+    <Property Name="folioCalculo" Type="int" />
+    <Property Name="fechaRegistro" Type="date" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_CompaniaPago">
+    <Key>
+      <PropertyRef Name="id_CompaniaPago" />
+    </Key>
+    <Property Name="id_CompaniaPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreCompania" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="porcentaje" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_Conceptos">
+    <Key>
+      <PropertyRef Name="id_Concepto" />
+    </Key>
+    <Property Name="id_Concepto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tipo" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="gravable" Type="smallint" Nullable="false" />
+    <Property Name="pagoEspecie" Type="smallint" Nullable="false" />
+    <Property Name="estatus" Type="smallint" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_ConfigReembolsos">
+    <Key>
+      <PropertyRef Name="Id_Reembolso" />
+    </Key>
+    <Property Name="Id_Reembolso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="Cantidad_Topada" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="PorcentajeReembolso" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="id_concepto" Type="int" Nullable="false" />
+    <Property Name="id_estatus" Type="int" Nullable="false" />
+    <Property Name="id_pais" Type="int" />
+    <Property Name="UltMod_Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="UltMod_F" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_CuentaSocioHistorico">
+    <Key>
+      <PropertyRef Name="id_CuentaSocioHistorico" />
+    </Key>
+    <Property Name="id_CuentaSocioHistorico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="partner_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="id_Banco" Type="int" />
+    <Property Name="Clabe" Type="varchar" MaxLength="20" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_DtlPedidos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_DtlMovInv" Type="int" Nullable="false" />
+    <Property Name="Id_MovInv" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Id_Producto" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Precio" Type="numeric" Precision="19" Scale="8" Nullable="false" />
+    <Property Name="Impuesto" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Porc_Impuesto" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Id_Talla" Type="int" Nullable="false" />
+    <Property Name="Desc_Importe" Type="money" />
+    <Property Name="Desc_Impuesto" Type="money" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Id_Pedido" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CO_tb_FoliosMovInventarios">
+    <Key>
+      <PropertyRef Name="Folio_Inicio" />
+      <PropertyRef Name="Folio_Final" />
+    </Key>
+    <Property Name="Folio_Inicio" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Folio_Final" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Folio_Actual" Type="varchar" MaxLength="7" />
+    <Property Name="Aplicativo" Type="varchar" MaxLength="50" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="UsuarioAlta" Type="int" />
+    <Property Name="FechaCambio" Type="datetime" />
+    <Property Name="UsuarioCambio" Type="int" />
+    <Property Name="Estatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="CO_tb_ImpuestoComision">
+    <Key>
+      <PropertyRef Name="id_Impuesto" />
+    </Key>
+    <Property Name="id_Impuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="limiteInferior" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="limiteSuperior" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="porcentaje" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="coutaFija" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_ImpuestoPais">
+    <Key>
+      <PropertyRef Name="id_Impuesto" />
+    </Key>
+    <Property Name="id_Impuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pais" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="impuesto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="pagoMinimo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_Tb_ISR_GT">
+    <Key>
+      <PropertyRef Name="id_ISR" />
+    </Key>
+    <Property Name="id_ISR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_pais" Type="int" />
+    <Property Name="id_regimen" Type="int" />
+    <Property Name="montominimo" Type="money" />
+    <Property Name="limiteinferior" Type="money" />
+    <Property Name="limitesuperior" Type="money" />
+    <Property Name="ISR" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="fecha_ult_modificacion" Type="smalldatetime" />
+    <Property Name="usuario_ult_modificacion" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="CO_Tb_IVA">
+    <Key>
+      <PropertyRef Name="id_IVA" />
+    </Key>
+    <Property Name="id_IVA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_pais" Type="int" Nullable="false" />
+    <Property Name="id_regimen" Type="int" Nullable="false" />
+    <Property Name="iva" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="fecha_ult_modificacion" Type="smalldatetime" />
+    <Property Name="usuario_ult_modificacion" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="CO_tb_MenuDinamico">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PadreId" Type="int" />
+    <Property Name="Nombre" Type="varchar(max)" />
+    <Property Name="Archivo" Type="varchar(max)" />
+    <Property Name="Carpeta" Type="varchar(max)" />
+    <Property Name="Tipo" Type="varchar(max)" />
+    <Property Name="Entre" Type="varchar(max)" />
+    <Property Name="DescripcionMenu" Type="varchar(max)" />
+    <Property Name="IdRol" Type="int" Nullable="false" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="UsuarioAlta" Type="int" />
+    <Property Name="FechaCambio" Type="datetime" />
+    <Property Name="UsuarioCambio" Type="int" />
+  </EntityType>
+  <EntityType Name="CO_tb_MovimientosSocio">
+    <Key>
+      <PropertyRef Name="id_MovimientosSocio" />
+    </Key>
+    <Property Name="id_MovimientosSocio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="partner_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="id_Concepto" Type="int" Nullable="false" />
+    <Property Name="comentario" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="fechaRegistro" Type="date" Nullable="false" />
+    <Property Name="estatus" Type="smallint" Nullable="false" />
+    <Property Name="folioCalculo" Type="int" />
+    <Property Name="Id_Periodo" Type="int" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+    <Property Name="isDelete" Type="int" />
+  </EntityType>
+  <EntityType Name="CO_tb_PagoSocio">
+    <Key>
+      <PropertyRef Name="id_PagoSocio" />
+    </Key>
+    <Property Name="id_PagoSocio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="partner_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="id_Periodo" Type="int" />
+    <Property Name="id_CompaniaPago" Type="int" />
+    <Property Name="fechaRegistro" Type="smalldatetime" Nullable="false" />
+    <Property Name="fechaPago" Type="smalldatetime" />
+    <Property Name="estatus" Type="smallint" Nullable="false" />
+    <Property Name="folioCalculo" Type="int" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+    <Property Name="clabe" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CO_tb_PagoSocio_hist">
+    <Key>
+      <PropertyRef Name="id_PagoSocio_hist" />
+    </Key>
+    <Property Name="id_PagoSocio_hist" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_PagoSocio" Type="int" />
+    <Property Name="partner_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="id_Periodo" Type="int" Nullable="false" />
+    <Property Name="id_CompaniaPago" Type="int" />
+    <Property Name="fechaRegistro" Type="smalldatetime" Nullable="false" />
+    <Property Name="fechaPago" Type="smalldatetime" />
+    <Property Name="estatus" Type="smallint" Nullable="false" />
+    <Property Name="folioCalculo" Type="int" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_PagosRespuesta">
+    <Key>
+      <PropertyRef Name="id_PagosRespuesta" />
+    </Key>
+    <Property Name="id_PagosRespuesta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tiporeRegistro" Type="int" />
+    <Property Name="cuentaDestino" Type="varchar" MaxLength="20" />
+    <Property Name="partner_id" Type="varchar" MaxLength="10" />
+    <Property Name="beneficiario" Type="varchar" MaxLength="150" />
+    <Property Name="importe" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="numeroReferencia" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="fechaAplicacion" Type="smalldatetime" />
+    <Property Name="claveRastreo" Type="varchar" MaxLength="50" />
+    <Property Name="estatus" Type="varchar" MaxLength="20" />
+    <Property Name="motivoDevolucion" Type="varchar" MaxLength="100" />
+    <Property Name="id_Periodo" Type="int" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_Pantallas">
+    <Key>
+      <PropertyRef Name="IdPantalla" />
+    </Key>
+    <Property Name="IdPantalla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PadreId" Type="int" />
+    <Property Name="NombrePantalla" Type="varchar(max)" />
+    <Property Name="Archivo" Type="varchar(max)" />
+    <Property Name="Carpeta" Type="varchar(max)" />
+    <Property Name="Tipo" Type="varchar(max)" />
+    <Property Name="Entre" Type="varchar(max)" />
+    <Property Name="DescripcionMenu" Type="varchar(max)" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="UsuarioAlta" Type="int" />
+    <Property Name="FechaCambio" Type="datetime" />
+    <Property Name="UsuarioCambio" Type="int" />
+  </EntityType>
+  <EntityType Name="CO_tb_Parametro">
+    <Key>
+      <PropertyRef Name="id_Parametro" />
+    </Key>
+    <Property Name="id_Parametro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key_parametro" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="parametro" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="valor" Type="int" />
+    <Property Name="valor_str" Type="varchar" MaxLength="100" />
+    <Property Name="valor_dec" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.CO_tb_Pedidos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CO_tb_Pedidos">
+    <Key>
+      <PropertyRef Name="Id_Pedido" />
+      <PropertyRef Name="Id_MovInv" />
+      <PropertyRef Name="Id_Empresa" />
+      <PropertyRef Name="Id_ConcMovInv" />
+      <PropertyRef Name="Id_Almacen_Origen" />
+      <PropertyRef Name="Id_Almacen_Destino" />
+      <PropertyRef Name="Id_Estatus" />
+      <PropertyRef Name="Id_Periodo_PT" />
+      <PropertyRef Name="F_Traspaso" />
+      <PropertyRef Name="Id_Moneda" />
+      <PropertyRef Name="Tipo_Cambio" />
+      <PropertyRef Name="DocAnt" />
+      <PropertyRef Name="Total_Partidas" />
+      <PropertyRef Name="SubTotal" />
+      <PropertyRef Name="Impuesto" />
+      <PropertyRef Name="Total" />
+      <PropertyRef Name="partner_id" />
+      <PropertyRef Name="Año" />
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="Id_Condicion" />
+      <PropertyRef Name="Ventas" />
+      <PropertyRef Name="MontoCanje" />
+      <PropertyRef Name="DiferenciaCanje" />
+    </Key>
+    <Property Name="Id_Pedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_MovInv" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Id_ConcMovInv" Type="int" Nullable="false" />
+    <Property Name="Id_Almacen_Origen" Type="int" Nullable="false" />
+    <Property Name="Id_Almacen_Destino" Type="int" Nullable="false" />
+    <Property Name="Id_Estatus" Type="tinyint" Nullable="false" />
+    <Property Name="Id_Periodo_PT" Type="int" Nullable="false" />
+    <Property Name="F_Traspaso" Type="smalldatetime" Nullable="false" />
+    <Property Name="Envio" Type="varchar" MaxLength="255" />
+    <Property Name="Id_Moneda" Type="int" Nullable="false" />
+    <Property Name="Tipo_Cambio" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="DocAnt" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Total_Partidas" Type="int" Nullable="false" />
+    <Property Name="SubTotal" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Descuento" Type="numeric" Precision="18" Scale="4" />
+    <Property Name="Impuesto" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Total" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="255" />
+    <Property Name="IE_Direccion" Type="varchar" MaxLength="200" />
+    <Property Name="IE_CP" Type="int" />
+    <Property Name="IE_Colonia" Type="int" />
+    <Property Name="IE_Ciudad" Type="varchar" MaxLength="130" />
+    <Property Name="IE_Estado" Type="varchar" MaxLength="100" />
+    <Property Name="IE_NombreCol" Type="varchar" MaxLength="80" />
+    <Property Name="IE_Id_Almacen" Type="int" />
+    <Property Name="IE_Telefono" Type="varchar" MaxLength="15" />
+    <Property Name="IE_Contacto" Type="varchar" MaxLength="30" />
+    <Property Name="IE_Referencias" Type="varchar" MaxLength="25" />
+    <Property Name="partner_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Año" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" />
+    <Property Name="Id_Condicion" Type="int" Nullable="false" />
+    <Property Name="Compras" Type="money" />
+    <Property Name="F_PrimerCompra" Type="datetime" />
+    <Property Name="Ventas" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="MontoCanje" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="DiferenciaCanje" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="NoGuia" Type="varchar" MaxLength="100" />
+    <Property Name="F_Envio" Type="smalldatetime" />
+    <Property Name="Id_Mensajeria" Type="int" />
+    <Property Name="Generar_Traspaso" Type="int" />
+    <Property Name="Fecha_Creacion" Type="smalldatetime" />
+    <Property Name="Usuario_Creacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_UltMod" Type="smalldatetime" />
+    <Property Name="UsuarioUltMod" Type="varchar" MaxLength="50" />
+    <Property Name="Id_Periodo_Evo" Type="int" />
+  </EntityType>
+  <EntityType Name="CO_tb_PermisosRoles">
+    <Key>
+      <PropertyRef Name="IdPermiso" />
+    </Key>
+    <Property Name="IdPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPantalla" Type="int" Nullable="false" />
+    <Property Name="IdRol" Type="int" Nullable="false" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="UsuarioAlta" Type="int" />
+    <Property Name="FechaCambio" Type="datetime" />
+    <Property Name="UsuarioCambio" Type="int" />
+  </EntityType>
+  <EntityType Name="CO_tb_PREMIOPRODUCTO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDPREMIO" Type="int" />
+    <Property Name="IDPRODUCTO" Type="varchar" MaxLength="10" />
+    <Property Name="Estatus" Type="bit" />
+    <Property Name="CreadoUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="Creado_F" Type="smalldatetime" />
+    <Property Name="UltModUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="UltMod_F" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_Premios">
+    <Key>
+      <PropertyRef Name="id_premio" />
+    </Key>
+    <Property Name="id_premio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_premio" Type="varchar" MaxLength="100" />
+    <Property Name="id_pais" Type="int" />
+    <Property Name="id_periodo" Type="int" />
+    <Property Name="Estatus" Type="bit" />
+    <Property Name="Pagado" Type="bit" />
+    <Property Name="CreadoUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="Creado_F" Type="smalldatetime" />
+    <Property Name="UltModUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="UltMod_F" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_Prestamo">
+    <Key>
+      <PropertyRef Name="id_Prestamo" />
+    </Key>
+    <Property Name="id_Prestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="partner_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="importe" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="tipoAplicacion" Type="int" Nullable="false" />
+    <Property Name="numeroPagos" Type="int" Nullable="false" />
+    <Property Name="id_Concepto" Type="int" Nullable="false" />
+    <Property Name="id_Periodo" Type="int" Nullable="false" />
+    <Property Name="saldo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="fechaInicio" Type="date" />
+    <Property Name="fechaFin" Type="date" />
+    <Property Name="estatus" Type="int" />
+    <Property Name="folioCalculo" Type="int" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+    <Property Name="idFormaPago" Type="int" />
+    <Property Name="Motivo" Type="varchar" MaxLength="100" />
+    <Property Name="FechaAutorizacion" Type="datetime" />
+    <Property Name="FechaNegacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_PrestamoDetalle">
+    <Key>
+      <PropertyRef Name="id_PrestamoDetalle" />
+    </Key>
+    <Property Name="id_PrestamoDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Prestamo" Type="int" />
+    <Property Name="importe" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="pagonumero" Type="int" Nullable="false" />
+    <Property Name="fechaPago" Type="date" Nullable="false" />
+    <Property Name="fechaAplicacion" Type="date" Nullable="false" />
+    <Property Name="estatus" Type="int" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_Productos_Premios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_premio" Type="int" />
+    <Property Name="id_pais" Type="int" />
+    <Property Name="id_rank" Type="int" />
+    <Property Name="id_producto" Type="varchar" MaxLength="16" />
+    <Property Name="Estatus" Type="bit" />
+    <Property Name="InicioVigencia" Type="smalldatetime" />
+    <Property Name="FinalVigencia" Type="smalldatetime" />
+    <Property Name="CreadoUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="Creado_F" Type="smalldatetime" />
+    <Property Name="UltModUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="UltMod_F" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_Productos_Reembolso">
+    <Key>
+      <PropertyRef Name="Id_Reembolso" />
+      <PropertyRef Name="sku" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_Reembolso" Type="int" Nullable="false" />
+    <Property Name="sku" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Estatus" Type="bit" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="UsuarioAlta" Type="int" />
+    <Property Name="FechaCambio" Type="datetime" />
+    <Property Name="UsuarioCambio" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.CO_tb_ProgramacionCobro' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CO_tb_ProgramacionCobro">
+    <Key>
+      <PropertyRef Name="id_Prestamo" />
+    </Key>
+    <Property Name="id_Prestamo" Type="int" Nullable="false" />
+    <Property Name="fechaCargo" Type="date" />
+    <Property Name="primaTotal" Type="decimal" Precision="12" Scale="2" />
+    <Property Name="estatus" Type="int" />
+    <Property Name="remesa" Type="int" />
+    <Property Name="fechaAplicacion" Type="date" />
+  </EntityType>
+  <EntityType Name="CO_tb_Rango_Compra_Premios">
+    <Key>
+      <PropertyRef Name="id_Rango" />
+    </Key>
+    <Property Name="id_Rango" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_pais" Type="int" />
+    <Property Name="id_premio" Type="int" />
+    <Property Name="id_rank" Type="int" />
+    <Property Name="id_periodo" Type="int" />
+    <Property Name="puntos" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Estatus" Type="bit" />
+    <Property Name="CreadoUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="Creado_F" Type="smalldatetime" />
+    <Property Name="UltModUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="UltMod_F" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CO_tb_RecepcionDepositos">
+    <Key>
+      <PropertyRef Name="id_RecepcionDeposito" />
+    </Key>
+    <Property Name="id_RecepcionDeposito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numeroReferencia" Type="varchar" MaxLength="20" />
+    <Property Name="cuentaOrigen" Type="varchar" MaxLength="20" />
+    <Property Name="cuentaDestino" Type="varchar" MaxLength="20" />
+    <Property Name="beneficiario" Type="varchar" MaxLength="150" />
+    <Property Name="importe" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="fecha" Type="smalldatetime" />
+    <Property Name="estatus" Type="varchar" MaxLength="80" />
+    <Property Name="conceptoPagoTransf" Type="varchar" MaxLength="20" />
+    <Property Name="referenciaInterban" Type="varchar" MaxLength="20" />
+    <Property Name="formaAplicacion" Type="varchar" MaxLength="20" />
+    <Property Name="fechaAplicacion" Type="smalldatetime" />
+    <Property Name="claveRastreo" Type="varchar" MaxLength="50" />
+    <Property Name="motivoDevolucion" Type="varchar" MaxLength="100" />
+    <Property Name="iva" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="rfc" Type="varchar" MaxLength="15" />
+    <Property Name="comprobanteElectronico" Type="varchar" MaxLength="20" />
+    <Property Name="divisa" Type="varchar" MaxLength="20" />
+    <Property Name="usuario" Type="varchar" MaxLength="150" />
+    <Property Name="fechaMovimiento" Type="smalldatetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.CO_tb_Reembolsos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CO_tb_Reembolsos">
+    <Key>
+      <PropertyRef Name="ID_PERIODO" />
+    </Key>
+    <Property Name="ID_PERIODO" Type="int" Nullable="false" />
+    <Property Name="ID_PARTNER" Type="varchar" MaxLength="10" />
+    <Property Name="MES" Type="int" />
+    <Property Name="VENTA_PERIODO" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CANTIDAD_REEMBOLSO" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NOMBRE_CUSTOMER" Type="varchar" MaxLength="100" />
+    <Property Name="ESTATUS" Type="int" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="PedidoGenerado" Type="bit" />
+    <Property Name="Id_Pedido" Type="int" />
+    <Property Name="Situacion" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.CO_tb_Reembolsos_Hist' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CO_tb_Reembolsos_Hist">
+    <Key>
+      <PropertyRef Name="ID_PERIODO" />
+    </Key>
+    <Property Name="ID_PERIODO" Type="int" Nullable="false" />
+    <Property Name="ID_PARTNER" Type="varchar" MaxLength="10" />
+    <Property Name="MES" Type="int" />
+    <Property Name="VENTA_PERIODO" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CANTIDAD_REEMBOLSO" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NOMBRE_CUSTOMER" Type="varchar" MaxLength="100" />
+    <Property Name="ESTATUS" Type="int" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="PedidoGenerado" Type="bit" />
+    <Property Name="Id_Pedido" Type="int" />
+    <Property Name="Situacion" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CO_tb_Roles">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreRol" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="UsuarioAlta" Type="int" />
+    <Property Name="FechaCambio" Type="datetime" />
+    <Property Name="UsuarioCambio" Type="int" />
+    <Property Name="Estatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="CO_tb_Usuarios">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRol" Type="int" Nullable="false" />
+    <Property Name="NombreUsuario" Type="varchar(max)" Nullable="false" />
+    <Property Name="Correo" Type="varchar(max)" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+    <Property Name="Id_Pais" Type="int" />
+    <Property Name="Estatus" Type="bit" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="UsuarioAlta" Type="int" />
+    <Property Name="FechaCambio" Type="datetime" />
+    <Property Name="UsuarioCambio" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.co_tb_ventageneracional' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="co_tb_ventageneracional">
+    <Key>
+      <PropertyRef Name="IdVolumen" />
+    </Key>
+    <Property Name="IdVolumen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="partner_id" Type="int" />
+    <Property Name="directos" Type="int" />
+    <Property Name="Volumen4taGen" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Volumen5aGen" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Inicio" Type="smalldatetime" />
+    <Property Name="Fin" Type="smalldatetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.SA_tb_cdaVenta' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="SA_tb_cdaVenta">
+    <Key>
+      <PropertyRef Name="iD_Venta" />
+    </Key>
+    <Property Name="iD_Venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Partner_id" Type="varchar" MaxLength="10" />
+    <Property Name="Id_Periodo" Type="int" />
+    <Property Name="Total_Venta" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Id_UserXen" Type="varchar" MaxLength="10" />
+    <Property Name="Id_Almacen" Type="int" />
+    <Property Name="Almacen" Type="varchar" MaxLength="100" />
+    <Property Name="Id_Responsable" Type="int" />
+    <Property Name="Regla" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Id_Politica" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.SA_tb_Puntos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="SA_tb_Puntos">
+    <Key>
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="Quincena" />
+      <PropertyRef Name="idPeriodo" />
+      <PropertyRef Name="nombrePartner" />
+      <PropertyRef Name="Id_Pais" />
+    </Key>
+    <Property Name="RankLastPeriod_ID" Type="int" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" Nullable="false" />
+    <Property Name="idPeriodo" Type="int" Nullable="false" />
+    <Property Name="Partnetid" Type="varchar" MaxLength="8000" />
+    <Property Name="nombrePartner" Type="nvarchar" MaxLength="102" Nullable="false" />
+    <Property Name="Volume" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="costoTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Id_Pais" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_config_premios">
+    <Key>
+      <PropertyRef Name="idPremio" />
+    </Key>
+    <Property Name="idPremio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idGrupo" Type="int" />
+    <Property Name="puntos" Type="int" />
+    <Property Name="mes" Type="int" />
+    <Property Name="quincena" Type="int" />
+    <Property Name="idConcepto" Type="int" />
+    <Property Name="fechaInicio" Type="date" />
+    <Property Name="fechaFin" Type="date" />
+    <Property Name="estatus" Type="int" />
+    <Property Name="idPais" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.TB_TMP_CALCULO_PREMIOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="TB_TMP_CALCULO_PREMIOS">
+    <Key>
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="Quincena" />
+      <PropertyRef Name="Id_Pais" />
+      <PropertyRef Name="idPeriodo" />
+      <PropertyRef Name="nombrePartner" />
+    </Key>
+    <Property Name="RankLastPeriod_ID" Type="int" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" Nullable="false" />
+    <Property Name="Id_Pais" Type="int" Nullable="false" />
+    <Property Name="Pais" Type="varchar" MaxLength="100" />
+    <Property Name="idPeriodo" Type="int" Nullable="false" />
+    <Property Name="Partnetid" Type="varchar" MaxLength="8000" />
+    <Property Name="nombrePartner" Type="nvarchar" MaxLength="102" Nullable="false" />
+    <Property Name="Volume" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="puntos" Type="int" />
+    <Property Name="Grado" Type="varchar" MaxLength="50" />
+    <Property Name="Bloque" Type="varchar" MaxLength="50" />
+    <Property Name="PRODUCTOS" Type="nvarchar(max)" />
+    <Property Name="fechaCreacion" Type="date" />
+    <Property Name="PedidoGenerado" Type="bit" />
+    <Property Name="Estatus" Type="bit" />
+    <Property Name="Id_Pedido" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.TB_TMP_CALCULO_PREMIOS_HIST' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="TB_TMP_CALCULO_PREMIOS_HIST">
+    <Key>
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="Quincena" />
+      <PropertyRef Name="Id_Pais" />
+      <PropertyRef Name="idPeriodo" />
+      <PropertyRef Name="nombrePartner" />
+    </Key>
+    <Property Name="RankLastPeriod_ID" Type="int" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" Nullable="false" />
+    <Property Name="Id_Pais" Type="int" Nullable="false" />
+    <Property Name="Pais" Type="varchar" MaxLength="100" />
+    <Property Name="idPeriodo" Type="int" Nullable="false" />
+    <Property Name="Partnetid" Type="varchar" MaxLength="8000" />
+    <Property Name="nombrePartner" Type="nvarchar" MaxLength="102" Nullable="false" />
+    <Property Name="Volume" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="puntos" Type="int" />
+    <Property Name="Grado" Type="varchar" MaxLength="50" />
+    <Property Name="Bloque" Type="varchar" MaxLength="50" />
+    <Property Name="PRODUCTOS" Type="nvarchar(max)" />
+    <Property Name="PedidoGenerado" Type="bit" />
+    <Property Name="Estatus" Type="bit" />
+    <Property Name="Id_Pedido" Type="int" />
+  </EntityType>
+  <EntityType Name="TMP_CO_tb_ConfigReembolsos">
+    <Key>
+      <PropertyRef Name="Id_Reembolso" />
+    </Key>
+    <Property Name="Id_Reembolso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="Cantidad_Topada" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="PorcentajeReembolso" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="id_concepto" Type="int" Nullable="false" />
+    <Property Name="id_estatus" Type="int" Nullable="false" />
+    <Property Name="id_pais" Type="int" />
+    <Property Name="UltMod_Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="UltMod_F" Type="smalldatetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evo_Comisiones.dbo.SA_tb_cdaVentas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="SA_tb_cdaVentas">
+    <Key>
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="f_proceso" />
+    </Key>
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="entered_by" Type="varchar" MaxLength="15" />
+    <Property Name="Total_venta" Type="money" />
+    <Property Name="f_proceso" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__CO_tb_Men__Padre__473C8FC7">
+    <End Role="CO_tb_MenuDinamico" Type="Self.CO_tb_MenuDinamico" Multiplicity="0..1" />
+    <End Role="CO_tb_MenuDinamico1" Type="Self.CO_tb_MenuDinamico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_MenuDinamico">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CO_tb_MenuDinamico1">
+        <PropertyRef Name="PadreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Mov__id_Co__48CFD27E">
+    <End Role="CO_tb_Conceptos" Type="Self.CO_tb_Conceptos" Multiplicity="1" />
+    <End Role="CO_tb_MovimientosSocio" Type="Self.CO_tb_MovimientosSocio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Conceptos">
+        <PropertyRef Name="id_Concepto" />
+      </Principal>
+      <Dependent Role="CO_tb_MovimientosSocio">
+        <PropertyRef Name="id_Concepto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Pan__Padre__353DDB1D">
+    <End Role="CO_tb_Pantallas" Type="Self.CO_tb_Pantallas" Multiplicity="0..1" />
+    <End Role="CO_tb_Pantallas1" Type="Self.CO_tb_Pantallas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Pantallas">
+        <PropertyRef Name="IdPantalla" />
+      </Principal>
+      <Dependent Role="CO_tb_Pantallas1">
+        <PropertyRef Name="PadreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Pan__Usuar__3631FF56">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_Pantallas" Type="Self.CO_tb_Pantallas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_Pantallas">
+        <PropertyRef Name="UsuarioAlta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Pan__Usuar__3726238F">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_Pantallas" Type="Self.CO_tb_Pantallas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_Pantallas">
+        <PropertyRef Name="UsuarioCambio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Per__IdRol__4668671F">
+    <End Role="CO_tb_Roles" Type="Self.CO_tb_Roles" Multiplicity="1" />
+    <End Role="CO_tb_PermisosRoles" Type="Self.CO_tb_PermisosRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Roles">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="CO_tb_PermisosRoles">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Per__Usuar__475C8B58">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_PermisosRoles" Type="Self.CO_tb_PermisosRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_PermisosRoles">
+        <PropertyRef Name="UsuarioAlta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Per__Usuar__4850AF91">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_PermisosRoles" Type="Self.CO_tb_PermisosRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_PermisosRoles">
+        <PropertyRef Name="UsuarioCambio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Pre__id_Pr__5165187F">
+    <End Role="CO_tb_Prestamo" Type="Self.CO_tb_Prestamo" Multiplicity="0..1" />
+    <End Role="CO_tb_PrestamoDetalle" Type="Self.CO_tb_PrestamoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Prestamo">
+        <PropertyRef Name="id_Prestamo" />
+      </Principal>
+      <Dependent Role="CO_tb_PrestamoDetalle">
+        <PropertyRef Name="id_Prestamo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Pro__Id_Re__4321E620">
+    <End Role="CO_tb_ConfigReembolsos" Type="Self.CO_tb_ConfigReembolsos" Multiplicity="1" />
+    <End Role="CO_tb_Productos_Reembolso" Type="Self.CO_tb_Productos_Reembolso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_ConfigReembolsos">
+        <PropertyRef Name="Id_Reembolso" />
+      </Principal>
+      <Dependent Role="CO_tb_Productos_Reembolso">
+        <PropertyRef Name="Id_Reembolso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Rol__Usuar__18A19C6F">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_Roles" Type="Self.CO_tb_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_Roles">
+        <PropertyRef Name="UsuarioAlta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Rol__Usuar__1995C0A8">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_Roles" Type="Self.CO_tb_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_Roles">
+        <PropertyRef Name="UsuarioCambio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Rol__Usuar__1A89E4E1">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_Roles" Type="Self.CO_tb_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_Roles">
+        <PropertyRef Name="UsuarioCambio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Rol__Usuar__66EA454A">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_Roles" Type="Self.CO_tb_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_Roles">
+        <PropertyRef Name="UsuarioAlta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Rol__Usuar__67DE6983">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_Roles" Type="Self.CO_tb_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_Roles">
+        <PropertyRef Name="UsuarioCambio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Usu__IdRol__15C52FC4">
+    <End Role="CO_tb_Roles" Type="Self.CO_tb_Roles" Multiplicity="1" />
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Roles">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Usu__IdRol__1B7E091A">
+    <End Role="CO_tb_Roles" Type="Self.CO_tb_Roles" Multiplicity="1" />
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Roles">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Usu__Usuar__16B953FD">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_Usuarios1" Type="Self.CO_tb_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_Usuarios1">
+        <PropertyRef Name="UsuarioAlta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CO_tb_Usu__Usuar__17AD7836">
+    <End Role="CO_tb_Usuarios" Type="Self.CO_tb_Usuarios" Multiplicity="0..1" />
+    <End Role="CO_tb_Usuarios1" Type="Self.CO_tb_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CO_tb_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="CO_tb_Usuarios1">
+        <PropertyRef Name="UsuarioCambio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CO_st_ActualizaDatosPagoSocio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partner_id" Type="varchar" Mode="In" />
+    <Parameter Name="tax_id" Type="varchar" Mode="In" />
+    <Parameter Name="social_security" Type="varchar" Mode="In" />
+    <Parameter Name="bank_id" Type="int" Mode="In" />
+    <Parameter Name="account" Type="varchar" Mode="In" />
+    <Parameter Name="paymethod_com" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_ActualizaPeriodos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_periodo" Type="int" Mode="In" />
+    <Parameter Name="anio" Type="int" Mode="In" />
+    <Parameter Name="mes" Type="int" Mode="In" />
+    <Parameter Name="quincena" Type="int" Mode="In" />
+    <Parameter Name="inicio" Type="smalldatetime" Mode="In" />
+    <Parameter Name="fin" Type="smalldatetime" Mode="In" />
+    <Parameter Name="estatus" Type="int" Mode="In" />
+    <Parameter Name="usuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_asignarCompaniaPago_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BorrarProductosPremios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPremios" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_BorrarProductosReembolso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdReembolso" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_BuscaConfigReembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BuscaDetalleDelPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPedido" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_BuscaEstadosDeCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partener_id" Type="varchar" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Direccion" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="CO_st_BuscaISRs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BuscaIVAs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BuscaPartidasDePedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Pedido" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_BuscaPedidosPremios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partener_id" Type="varchar" Mode="In" />
+    <Parameter Name="idPais" Type="int" Mode="In" />
+    <Parameter Name="fInicio" Type="varchar" Mode="In" />
+    <Parameter Name="fFin" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_BuscaPedidosReembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BuscaProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPais" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_BuscaProductosConUnId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPais" Type="int" Mode="In" />
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Rank" Type="int" Mode="In" />
+    <Parameter Name="Opcion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_BuscaProductosPremios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BuscaProductosReembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BuscaRango_Compra_Premios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BuscaRANKs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BuscarDatosPagoSocio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partner_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_BuscaReembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BuscarPeriodos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_BuscarRegimenFiscal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPais" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_buscarsocio_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PartnerID" Type="varchar" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="SecondLastName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_BuscarSocioMovimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PARTNER_ID" Type="varchar" Mode="In" />
+    <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+    <Parameter Name="APATERNO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_CalculaBonosCDA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="co_st_CalculoImpuesto_Guatemala" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numeroSocio" Type="varchar" Mode="In" />
+    <Parameter Name="Mon_comision" Type="numeric" Mode="In" />
+    <Parameter Name="paymethodCom" Type="char" Mode="In" />
+    <Parameter Name="periodoCalculo" Type="int" Mode="In" />
+    <Parameter Name="folioCalculo" Type="int" Mode="In" />
+    <Parameter Name="Mon_gravable" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="co_st_CalculoImpuesto_Mexico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numeroSocio" Type="varchar" Mode="In" />
+    <Parameter Name="Mon_comision" Type="numeric" Mode="In" />
+    <Parameter Name="paymethodCom" Type="char" Mode="In" />
+    <Parameter Name="periodoCalculo" Type="int" Mode="In" />
+    <Parameter Name="folioCalculo" Type="int" Mode="In" />
+    <Parameter Name="Mon_gravable" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="CO_st_calculoImpuesto_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="co_st_CalculoImpuesto_USA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numeroSocio" Type="varchar" Mode="In" />
+    <Parameter Name="Mon_comision" Type="numeric" Mode="In" />
+    <Parameter Name="paymethodCom" Type="char" Mode="In" />
+    <Parameter Name="periodoCalculo" Type="int" Mode="In" />
+    <Parameter Name="folioCalculo" Type="int" Mode="In" />
+    <Parameter Name="Mon_gravable" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="CO_st_calculoImpuesto_VistaPrevia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_cargatmp_CO_tb_Comisiones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DistID" Type="int" Mode="In" />
+    <Parameter Name="CalcDetail" Type="varchar" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="SponsorID" Type="int" Mode="In" />
+    <Parameter Name="Porcentages" Type="decimal" Mode="In" />
+    <Parameter Name="Volume" Type="decimal" Mode="In" />
+    <Parameter Name="PeriodStartDate" Type="date" Mode="In" />
+    <Parameter Name="PeriodEndDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="CO_st_CierreDePeriodoReembolso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_comboNumerodePagos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="formaPago" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_ComisionesDetallePais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PAIS" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_EdoDeCuenta_get_Distribuidor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partener_id" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Direccion" Type="varchar(max)" Mode="In" />
+    <Parameter Name="CP" Type="int" Mode="In" />
+    <Parameter Name="Telefono" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_EdoDeCuenta_get_Movimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partner" Type="varchar" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_EdoDeCuenta_get_Percepciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partener_id" Type="varchar" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_extraerComisones_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_extraerComisones_pr_original" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_Forma_de_pago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_GeneraEstadosDeCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partener_id" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Direccion" Type="varchar(max)" Mode="In" />
+    <Parameter Name="CP" Type="int" Mode="In" />
+    <Parameter Name="Telefono" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_GeneraMovimientosPremios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id_MovInv" Type="varchar" Mode="In" />
+    <Parameter Name="PartnerId" Type="varchar" Mode="In" />
+    <Parameter Name="Id_ConcMovInv" Type="int" Mode="In" />
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+    <Parameter Name="DiferenciaCanje" Type="float" Mode="In" />
+    <Parameter Name="SubTotal" Type="float" Mode="In" />
+    <Parameter Name="Impuesto" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Total_Partidas" Type="int" Mode="In" />
+    <Parameter Name="Ventas" Type="float" Mode="In" />
+    <Parameter Name="IdUsuario" Type="int" Mode="In" />
+    <Parameter Name="Año" Type="int" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Quincena" Type="int" Mode="In" />
+    <Parameter Name="Id_PeriodoEvo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_generaMovimientosPrestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_PRESTAMO" Type="int" Mode="In" />
+    <Parameter Name="Sts_IdPeriodo" Type="int" Mode="In" />
+    <Parameter Name="Sts_IdUsuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_GenerarPartidaPedidoReembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id_MovInv" Type="varchar" Mode="In" />
+    <Parameter Name="IdDtlMovInv" Type="int" Mode="In" />
+    <Parameter Name="IdProducto" Type="varchar" Mode="In" />
+    <Parameter Name="Cantidad" Type="int" Mode="In" />
+    <Parameter Name="Precio" Type="float" Mode="In" />
+    <Parameter Name="Impuesto" Type="float" Mode="In" />
+    <Parameter Name="Porc_Impuesto" Type="float" Mode="In" />
+    <Parameter Name="Id_Talla" Type="int" Mode="In" />
+    <Parameter Name="Desc_Importe" Type="decimal" Mode="In" />
+    <Parameter Name="Desc_Impuesto" Type="decimal" Mode="In" />
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+    <Parameter Name="IdPedido" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_GenerarPedidosPremios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUsuario" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_GenerarPedidosReembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id_MovInv" Type="varchar" Mode="In" />
+    <Parameter Name="PartnerId" Type="varchar" Mode="In" />
+    <Parameter Name="Id_ConcMovInv" Type="int" Mode="In" />
+    <Parameter Name="Id_Compania" Type="varchar" Mode="In" />
+    <Parameter Name="DiferenciaCanje" Type="float" Mode="In" />
+    <Parameter Name="SubTotal" Type="float" Mode="In" />
+    <Parameter Name="Impuesto" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Total_Partidas" Type="int" Mode="In" />
+    <Parameter Name="Ventas" Type="float" Mode="In" />
+    <Parameter Name="IdUsuario" Type="int" Mode="In" />
+    <Parameter Name="Año" Type="int" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Quincena" Type="int" Mode="In" />
+    <Parameter Name="Id_PeriodoEvo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_GetComisionesPeriodoActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_getPremiosHist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partener_id" Type="varchar" Mode="In" />
+    <Parameter Name="idPais" Type="int" Mode="In" />
+    <Parameter Name="fInicio" Type="varchar" Mode="In" />
+    <Parameter Name="fFin" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_GetPremiosPeriodoActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_getReembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_InfoPeriodoActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_InsertaMovimientosSocio_Premio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_InsertaMovimientosSocio_Reembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_InsertaPeriodos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="anio" Type="int" Mode="In" />
+    <Parameter Name="mes" Type="int" Mode="In" />
+    <Parameter Name="quincena" Type="int" Mode="In" />
+    <Parameter Name="inicio" Type="smalldatetime" Mode="In" />
+    <Parameter Name="fin" Type="smalldatetime" Mode="In" />
+    <Parameter Name="estatus" Type="int" Mode="In" />
+    <Parameter Name="usuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_InsertMovimientosSocio_CDA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_Listabancos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_ListaComisiones_porEstatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ESTATUS" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_ListaPaises" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_ListaPrestamos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_ListaReembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_ListaRegimenFiscal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pais_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_MovientosDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDSOCIO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_NombreArchivoComiAtrasadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_NombreArchivoDetcom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PAIS" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_NombreArchivoLComisiones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Tipo" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Cia" Type="int" Mode="In" />
+    <Parameter Name="Archivo" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="CO_st_NombreArchivoLPrestamos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_NombreArchivoLReembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_obtieneSocios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partner_id" Type="varchar" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_ORGANIZA_DATOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_ProgramacionCobro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partner_id" Type="varchar" Mode="In" />
+    <Parameter Name="id_Prestamo" Type="int" Mode="In" />
+    <Parameter Name="accion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_registrosPago_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TipoConsulta" Type="char" Mode="In" />
+    <Parameter Name="compania" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_registrosPagoAtrasadas_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CO_st_ReporteComisionesExcell" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="periodo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_TransferirPartidasPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PartnerId" Type="varchar" Mode="In" />
+    <Parameter Name="Id_ConcMovInv" Type="int" Mode="In" />
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+    <Parameter Name="DiferenciaCanje" Type="numeric" Mode="In" />
+    <Parameter Name="SubTotal" Type="numeric" Mode="In" />
+    <Parameter Name="Impuesto" Type="numeric" Mode="In" />
+    <Parameter Name="Total" Type="numeric" Mode="In" />
+    <Parameter Name="Total_Partidas" Type="int" Mode="In" />
+    <Parameter Name="Ventas" Type="numeric" Mode="In" />
+    <Parameter Name="IdUsuario" Type="int" Mode="In" />
+    <Parameter Name="Año" Type="int" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Quincena" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CO_st_TranspasaPedidosPremios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Partnetid" Type="varchar" Mode="In" />
+    <Parameter Name="Id_PeriodoPT" Type="int" Mode="In" />
+    <Parameter Name="Año" Type="int" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Quincena" Type="int" Mode="In" />
+    <Parameter Name="Id_MovInv" Type="varchar" Mode="In" />
+    <Parameter Name="NomUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_TranspasaPedidosReembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Partnetid" Type="varchar" Mode="In" />
+    <Parameter Name="Id_PeriodoPT" Type="int" Mode="In" />
+    <Parameter Name="Año" Type="int" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Quincena" Type="int" Mode="In" />
+    <Parameter Name="Id_MovInv" Type="varchar" Mode="In" />
+    <Parameter Name="NomUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_validaCapacidadPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partner_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CO_st_verificarPagoComision_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GETPERIODOACTUAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+  <Function Name="GETPERIODOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+  <Function Name="SUMARED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="PARTNER_ID" Type="int" Mode="In" />
+    <Parameter Name="IDPERIODO_S" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="herbaxModelStoreContainer">
+    <EntitySet Name="CO_TB_ARBOL" EntityType="Self.CO_TB_ARBOL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Bonos" EntityType="Self.CO_tb_Bonos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Comisiones" EntityType="Self.CO_tb_Comisiones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Comisiones_hist" EntityType="Self.CO_tb_Comisiones_hist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_CompaniaPago" EntityType="Self.CO_tb_CompaniaPago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Conceptos" EntityType="Self.CO_tb_Conceptos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_ConfigReembolsos" EntityType="Self.CO_tb_ConfigReembolsos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_CuentaSocioHistorico" EntityType="Self.CO_tb_CuentaSocioHistorico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_DtlPedidos" EntityType="Self.CO_tb_DtlPedidos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_FoliosMovInventarios" EntityType="Self.CO_tb_FoliosMovInventarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_ImpuestoComision" EntityType="Self.CO_tb_ImpuestoComision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_ImpuestoPais" EntityType="Self.CO_tb_ImpuestoPais" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_Tb_ISR_GT" EntityType="Self.CO_Tb_ISR_GT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_Tb_IVA" EntityType="Self.CO_Tb_IVA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_MenuDinamico" EntityType="Self.CO_tb_MenuDinamico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_MovimientosSocio" EntityType="Self.CO_tb_MovimientosSocio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_PagoSocio" EntityType="Self.CO_tb_PagoSocio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_PagoSocio_hist" EntityType="Self.CO_tb_PagoSocio_hist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_PagosRespuesta" EntityType="Self.CO_tb_PagosRespuesta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Pantallas" EntityType="Self.CO_tb_Pantallas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Parametro" EntityType="Self.CO_tb_Parametro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_PermisosRoles" EntityType="Self.CO_tb_PermisosRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_PREMIOPRODUCTO" EntityType="Self.CO_tb_PREMIOPRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Premios" EntityType="Self.CO_tb_Premios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Prestamo" EntityType="Self.CO_tb_Prestamo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_PrestamoDetalle" EntityType="Self.CO_tb_PrestamoDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Productos_Premios" EntityType="Self.CO_tb_Productos_Premios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Productos_Reembolso" EntityType="Self.CO_tb_Productos_Reembolso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Rango_Compra_Premios" EntityType="Self.CO_tb_Rango_Compra_Premios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_RecepcionDepositos" EntityType="Self.CO_tb_RecepcionDepositos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Roles" EntityType="Self.CO_tb_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_Usuarios" EntityType="Self.CO_tb_Usuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_config_premios" EntityType="Self.tb_config_premios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TMP_CO_tb_ConfigReembolsos" EntityType="Self.TMP_CO_tb_ConfigReembolsos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CO_tb_ARBOL_HIST" EntityType="Self.CO_tb_ARBOL_HIST" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CO_tb_ARBOL_HIST].[PARTNER_ID] AS [PARTNER_ID], 
+    [CO_tb_ARBOL_HIST].[SPONSOR_ID] AS [SPONSOR_ID], 
+    [CO_tb_ARBOL_HIST].[VENTAPERSONAL] AS [VENTAPERSONAL], 
+    [CO_tb_ARBOL_HIST].[VENTAPERSONAL_MX] AS [VENTAPERSONAL_MX], 
+    [CO_tb_ARBOL_HIST].[VENTAPERSONAL_US] AS [VENTAPERSONAL_US], 
+    [CO_tb_ARBOL_HIST].[VENTAPERSONAL_GT] AS [VENTAPERSONAL_GT], 
+    [CO_tb_ARBOL_HIST].[VENTARED] AS [VENTARED], 
+    [CO_tb_ARBOL_HIST].[VENTARED_MX] AS [VENTARED_MX], 
+    [CO_tb_ARBOL_HIST].[VENTARED_US] AS [VENTARED_US], 
+    [CO_tb_ARBOL_HIST].[VENTARED_GT] AS [VENTARED_GT], 
+    [CO_tb_ARBOL_HIST].[IDPERIODO] AS [IDPERIODO], 
+    [CO_tb_ARBOL_HIST].[NUMDIAS] AS [NUMDIAS], 
+    [CO_tb_ARBOL_HIST].[NUMMESES] AS [NUMMESES], 
+    [CO_tb_ARBOL_HIST].[PUNTOSPERSONAL] AS [PUNTOSPERSONAL], 
+    [CO_tb_ARBOL_HIST].[PUNTOSPERSONAL_MX] AS [PUNTOSPERSONAL_MX], 
+    [CO_tb_ARBOL_HIST].[PUNTOSPERSONAL_US] AS [PUNTOSPERSONAL_US], 
+    [CO_tb_ARBOL_HIST].[PUNTOSPERSONAL_GT] AS [PUNTOSPERSONAL_GT], 
+    [CO_tb_ARBOL_HIST].[PUNTOSRED] AS [PUNTOSRED], 
+    [CO_tb_ARBOL_HIST].[PUNTOSRED_MX] AS [PUNTOSRED_MX], 
+    [CO_tb_ARBOL_HIST].[PUNTOSRED_US] AS [PUNTOSRED_US], 
+    [CO_tb_ARBOL_HIST].[PUNTOSRED_GT] AS [PUNTOSRED_GT], 
+    [CO_tb_ARBOL_HIST].[ALMACEN] AS [ALMACEN], 
+    [CO_tb_ARBOL_HIST].[SOCIOSRED] AS [SOCIOSRED], 
+    [CO_tb_ARBOL_HIST].[AUSPICIOSPERSONAL] AS [AUSPICIOSPERSONAL], 
+    [CO_tb_ARBOL_HIST].[AUSPICIOSRED] AS [AUSPICIOSRED], 
+    [CO_tb_ARBOL_HIST].[DIRECTOS] AS [DIRECTOS], 
+    [CO_tb_ARBOL_HIST].[PUNTOSAUSPICIOSPERSONAL] AS [PUNTOSAUSPICIOSPERSONAL], 
+    [CO_tb_ARBOL_HIST].[COMPRAS_2123] AS [COMPRAS_2123], 
+    [CO_tb_ARBOL_HIST].[COMPRAS_2124] AS [COMPRAS_2124], 
+    [CO_tb_ARBOL_HIST].[UNIDADESPERSONAL] AS [UNIDADESPERSONAL], 
+    [CO_tb_ARBOL_HIST].[UNIDADESRED] AS [UNIDADESRED], 
+    [CO_tb_ARBOL_HIST].[DESCUENTOSPERSONAL] AS [DESCUENTOSPERSONAL], 
+    [CO_tb_ARBOL_HIST].[DESCUENTOSPERSONAL_Mx] AS [DESCUENTOSPERSONAL_Mx], 
+    [CO_tb_ARBOL_HIST].[DESCUENTOSPERSONAL_Us] AS [DESCUENTOSPERSONAL_Us], 
+    [CO_tb_ARBOL_HIST].[DESCUENTOSPERSONAL_Gt] AS [DESCUENTOSPERSONAL_Gt], 
+    [CO_tb_ARBOL_HIST].[DESCUENTOSRED] AS [DESCUENTOSRED], 
+    [CO_tb_ARBOL_HIST].[DESCUENTOSRED_Mx] AS [DESCUENTOSRED_Mx], 
+    [CO_tb_ARBOL_HIST].[DESCUENTOSRED_Us] AS [DESCUENTOSRED_Us], 
+    [CO_tb_ARBOL_HIST].[DESCUENTOSRED_Gt] AS [DESCUENTOSRED_Gt], 
+    [CO_tb_ARBOL_HIST].[LineaCargada] AS [LineaCargada], 
+    [CO_tb_ARBOL_HIST].[LineaCargadaPorc] AS [LineaCargadaPorc], 
+    [CO_tb_ARBOL_HIST].[LineaCargadaSocio] AS [LineaCargadaSocio], 
+    [CO_tb_ARBOL_HIST].[LineaCargadaGrado] AS [LineaCargadaGrado], 
+    [CO_tb_ARBOL_HIST].[Venta_4a_Generacion] AS [Venta_4a_Generacion], 
+    [CO_tb_ARBOL_HIST].[Venta_5a_Generacion] AS [Venta_5a_Generacion], 
+    [CO_tb_ARBOL_HIST].[FECHACREACION] AS [FECHACREACION]
+    FROM [dbo].[CO_tb_ARBOL_HIST] AS [CO_tb_ARBOL_HIST]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CO_tb_CALCULO_PREMIOS_HIST" EntityType="Self.CO_tb_CALCULO_PREMIOS_HIST" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CO_tb_CALCULO_PREMIOS_HIST].[RankLastPeriod_ID] AS [RankLastPeriod_ID], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[Mes] AS [Mes], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[Quincena] AS [Quincena], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[Id_Pais] AS [Id_Pais], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[Pais] AS [Pais], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[idPeriodo] AS [idPeriodo], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[Partnetid] AS [Partnetid], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[nombrePartner] AS [nombrePartner], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[Volume] AS [Volume], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[puntos] AS [puntos], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[Grado] AS [Grado], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[Bloque] AS [Bloque], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[PRODUCTOS] AS [PRODUCTOS], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[fechaCreacion] AS [fechaCreacion], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[PedidoGenerado] AS [PedidoGenerado], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[Estatus] AS [Estatus], 
+    [CO_tb_CALCULO_PREMIOS_HIST].[Id_Pedido] AS [Id_Pedido]
+    FROM [dbo].[CO_tb_CALCULO_PREMIOS_HIST] AS [CO_tb_CALCULO_PREMIOS_HIST]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CO_tb_Pedidos" EntityType="Self.CO_tb_Pedidos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CO_tb_Pedidos].[Id_Pedido] AS [Id_Pedido], 
+    [CO_tb_Pedidos].[Id_MovInv] AS [Id_MovInv], 
+    [CO_tb_Pedidos].[Id_Empresa] AS [Id_Empresa], 
+    [CO_tb_Pedidos].[Id_ConcMovInv] AS [Id_ConcMovInv], 
+    [CO_tb_Pedidos].[Id_Almacen_Origen] AS [Id_Almacen_Origen], 
+    [CO_tb_Pedidos].[Id_Almacen_Destino] AS [Id_Almacen_Destino], 
+    [CO_tb_Pedidos].[Id_Estatus] AS [Id_Estatus], 
+    [CO_tb_Pedidos].[Id_Periodo_PT] AS [Id_Periodo_PT], 
+    [CO_tb_Pedidos].[F_Traspaso] AS [F_Traspaso], 
+    [CO_tb_Pedidos].[Envio] AS [Envio], 
+    [CO_tb_Pedidos].[Id_Moneda] AS [Id_Moneda], 
+    [CO_tb_Pedidos].[Tipo_Cambio] AS [Tipo_Cambio], 
+    [CO_tb_Pedidos].[DocAnt] AS [DocAnt], 
+    [CO_tb_Pedidos].[Total_Partidas] AS [Total_Partidas], 
+    [CO_tb_Pedidos].[SubTotal] AS [SubTotal], 
+    [CO_tb_Pedidos].[Descuento] AS [Descuento], 
+    [CO_tb_Pedidos].[Impuesto] AS [Impuesto], 
+    [CO_tb_Pedidos].[Total] AS [Total], 
+    [CO_tb_Pedidos].[Observaciones] AS [Observaciones], 
+    [CO_tb_Pedidos].[IE_Direccion] AS [IE_Direccion], 
+    [CO_tb_Pedidos].[IE_CP] AS [IE_CP], 
+    [CO_tb_Pedidos].[IE_Colonia] AS [IE_Colonia], 
+    [CO_tb_Pedidos].[IE_Ciudad] AS [IE_Ciudad], 
+    [CO_tb_Pedidos].[IE_Estado] AS [IE_Estado], 
+    [CO_tb_Pedidos].[IE_NombreCol] AS [IE_NombreCol], 
+    [CO_tb_Pedidos].[IE_Id_Almacen] AS [IE_Id_Almacen], 
+    [CO_tb_Pedidos].[IE_Telefono] AS [IE_Telefono], 
+    [CO_tb_Pedidos].[IE_Contacto] AS [IE_Contacto], 
+    [CO_tb_Pedidos].[IE_Referencias] AS [IE_Referencias], 
+    [CO_tb_Pedidos].[partner_id] AS [partner_id], 
+    [CO_tb_Pedidos].[Año] AS [Año], 
+    [CO_tb_Pedidos].[Mes] AS [Mes], 
+    [CO_tb_Pedidos].[Quincena] AS [Quincena], 
+    [CO_tb_Pedidos].[Id_Condicion] AS [Id_Condicion], 
+    [CO_tb_Pedidos].[Compras] AS [Compras], 
+    [CO_tb_Pedidos].[F_PrimerCompra] AS [F_PrimerCompra], 
+    [CO_tb_Pedidos].[Ventas] AS [Ventas], 
+    [CO_tb_Pedidos].[MontoCanje] AS [MontoCanje], 
+    [CO_tb_Pedidos].[DiferenciaCanje] AS [DiferenciaCanje], 
+    [CO_tb_Pedidos].[NoGuia] AS [NoGuia], 
+    [CO_tb_Pedidos].[F_Envio] AS [F_Envio], 
+    [CO_tb_Pedidos].[Id_Mensajeria] AS [Id_Mensajeria], 
+    [CO_tb_Pedidos].[Generar_Traspaso] AS [Generar_Traspaso], 
+    [CO_tb_Pedidos].[Fecha_Creacion] AS [Fecha_Creacion], 
+    [CO_tb_Pedidos].[Usuario_Creacion] AS [Usuario_Creacion], 
+    [CO_tb_Pedidos].[F_UltMod] AS [F_UltMod], 
+    [CO_tb_Pedidos].[UsuarioUltMod] AS [UsuarioUltMod], 
+    [CO_tb_Pedidos].[Id_Periodo_Evo] AS [Id_Periodo_Evo]
+    FROM [dbo].[CO_tb_Pedidos] AS [CO_tb_Pedidos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CO_tb_ProgramacionCobro" EntityType="Self.CO_tb_ProgramacionCobro" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CO_tb_ProgramacionCobro].[id_Prestamo] AS [id_Prestamo], 
+    [CO_tb_ProgramacionCobro].[fechaCargo] AS [fechaCargo], 
+    [CO_tb_ProgramacionCobro].[primaTotal] AS [primaTotal], 
+    [CO_tb_ProgramacionCobro].[estatus] AS [estatus], 
+    [CO_tb_ProgramacionCobro].[remesa] AS [remesa], 
+    [CO_tb_ProgramacionCobro].[fechaAplicacion] AS [fechaAplicacion]
+    FROM [dbo].[CO_tb_ProgramacionCobro] AS [CO_tb_ProgramacionCobro]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CO_tb_Reembolsos" EntityType="Self.CO_tb_Reembolsos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CO_tb_Reembolsos].[ID_PERIODO] AS [ID_PERIODO], 
+    [CO_tb_Reembolsos].[ID_PARTNER] AS [ID_PARTNER], 
+    [CO_tb_Reembolsos].[MES] AS [MES], 
+    [CO_tb_Reembolsos].[VENTA_PERIODO] AS [VENTA_PERIODO], 
+    [CO_tb_Reembolsos].[CANTIDAD_REEMBOLSO] AS [CANTIDAD_REEMBOLSO], 
+    [CO_tb_Reembolsos].[NOMBRE_CUSTOMER] AS [NOMBRE_CUSTOMER], 
+    [CO_tb_Reembolsos].[ESTATUS] AS [ESTATUS], 
+    [CO_tb_Reembolsos].[FECHA_CREACION] AS [FECHA_CREACION], 
+    [CO_tb_Reembolsos].[PedidoGenerado] AS [PedidoGenerado], 
+    [CO_tb_Reembolsos].[Id_Pedido] AS [Id_Pedido], 
+    [CO_tb_Reembolsos].[Situacion] AS [Situacion]
+    FROM [dbo].[CO_tb_Reembolsos] AS [CO_tb_Reembolsos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CO_tb_Reembolsos_Hist" EntityType="Self.CO_tb_Reembolsos_Hist" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CO_tb_Reembolsos_Hist].[ID_PERIODO] AS [ID_PERIODO], 
+    [CO_tb_Reembolsos_Hist].[ID_PARTNER] AS [ID_PARTNER], 
+    [CO_tb_Reembolsos_Hist].[MES] AS [MES], 
+    [CO_tb_Reembolsos_Hist].[VENTA_PERIODO] AS [VENTA_PERIODO], 
+    [CO_tb_Reembolsos_Hist].[CANTIDAD_REEMBOLSO] AS [CANTIDAD_REEMBOLSO], 
+    [CO_tb_Reembolsos_Hist].[NOMBRE_CUSTOMER] AS [NOMBRE_CUSTOMER], 
+    [CO_tb_Reembolsos_Hist].[ESTATUS] AS [ESTATUS], 
+    [CO_tb_Reembolsos_Hist].[FECHA_CREACION] AS [FECHA_CREACION], 
+    [CO_tb_Reembolsos_Hist].[PedidoGenerado] AS [PedidoGenerado], 
+    [CO_tb_Reembolsos_Hist].[Id_Pedido] AS [Id_Pedido], 
+    [CO_tb_Reembolsos_Hist].[Situacion] AS [Situacion]
+    FROM [dbo].[CO_tb_Reembolsos_Hist] AS [CO_tb_Reembolsos_Hist]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="co_tb_ventageneracional" EntityType="Self.co_tb_ventageneracional" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [co_tb_ventageneracional].[IdVolumen] AS [IdVolumen], 
+    [co_tb_ventageneracional].[partner_id] AS [partner_id], 
+    [co_tb_ventageneracional].[directos] AS [directos], 
+    [co_tb_ventageneracional].[Volumen4taGen] AS [Volumen4taGen], 
+    [co_tb_ventageneracional].[Volumen5aGen] AS [Volumen5aGen], 
+    [co_tb_ventageneracional].[Inicio] AS [Inicio], 
+    [co_tb_ventageneracional].[Fin] AS [Fin]
+    FROM [dbo].[co_tb_ventageneracional] AS [co_tb_ventageneracional]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SA_tb_cdaVenta" EntityType="Self.SA_tb_cdaVenta" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SA_tb_cdaVenta].[iD_Venta] AS [iD_Venta], 
+    [SA_tb_cdaVenta].[Partner_id] AS [Partner_id], 
+    [SA_tb_cdaVenta].[Id_Periodo] AS [Id_Periodo], 
+    [SA_tb_cdaVenta].[Total_Venta] AS [Total_Venta], 
+    [SA_tb_cdaVenta].[Id_UserXen] AS [Id_UserXen], 
+    [SA_tb_cdaVenta].[Id_Almacen] AS [Id_Almacen], 
+    [SA_tb_cdaVenta].[Almacen] AS [Almacen], 
+    [SA_tb_cdaVenta].[Id_Responsable] AS [Id_Responsable], 
+    [SA_tb_cdaVenta].[Regla] AS [Regla], 
+    [SA_tb_cdaVenta].[Id_Politica] AS [Id_Politica]
+    FROM [dbo].[SA_tb_cdaVenta] AS [SA_tb_cdaVenta]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SA_tb_Puntos" EntityType="Self.SA_tb_Puntos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SA_tb_Puntos].[RankLastPeriod_ID] AS [RankLastPeriod_ID], 
+    [SA_tb_Puntos].[Mes] AS [Mes], 
+    [SA_tb_Puntos].[Quincena] AS [Quincena], 
+    [SA_tb_Puntos].[idPeriodo] AS [idPeriodo], 
+    [SA_tb_Puntos].[Partnetid] AS [Partnetid], 
+    [SA_tb_Puntos].[nombrePartner] AS [nombrePartner], 
+    [SA_tb_Puntos].[Volume] AS [Volume], 
+    [SA_tb_Puntos].[costoTotal] AS [costoTotal], 
+    [SA_tb_Puntos].[Id_Pais] AS [Id_Pais]
+    FROM [dbo].[SA_tb_Puntos] AS [SA_tb_Puntos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TB_TMP_CALCULO_PREMIOS" EntityType="Self.TB_TMP_CALCULO_PREMIOS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TB_TMP_CALCULO_PREMIOS].[RankLastPeriod_ID] AS [RankLastPeriod_ID], 
+    [TB_TMP_CALCULO_PREMIOS].[Mes] AS [Mes], 
+    [TB_TMP_CALCULO_PREMIOS].[Quincena] AS [Quincena], 
+    [TB_TMP_CALCULO_PREMIOS].[Id_Pais] AS [Id_Pais], 
+    [TB_TMP_CALCULO_PREMIOS].[Pais] AS [Pais], 
+    [TB_TMP_CALCULO_PREMIOS].[idPeriodo] AS [idPeriodo], 
+    [TB_TMP_CALCULO_PREMIOS].[Partnetid] AS [Partnetid], 
+    [TB_TMP_CALCULO_PREMIOS].[nombrePartner] AS [nombrePartner], 
+    [TB_TMP_CALCULO_PREMIOS].[Volume] AS [Volume], 
+    [TB_TMP_CALCULO_PREMIOS].[puntos] AS [puntos], 
+    [TB_TMP_CALCULO_PREMIOS].[Grado] AS [Grado], 
+    [TB_TMP_CALCULO_PREMIOS].[Bloque] AS [Bloque], 
+    [TB_TMP_CALCULO_PREMIOS].[PRODUCTOS] AS [PRODUCTOS], 
+    [TB_TMP_CALCULO_PREMIOS].[fechaCreacion] AS [fechaCreacion], 
+    [TB_TMP_CALCULO_PREMIOS].[PedidoGenerado] AS [PedidoGenerado], 
+    [TB_TMP_CALCULO_PREMIOS].[Estatus] AS [Estatus], 
+    [TB_TMP_CALCULO_PREMIOS].[Id_Pedido] AS [Id_Pedido]
+    FROM [dbo].[TB_TMP_CALCULO_PREMIOS] AS [TB_TMP_CALCULO_PREMIOS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TB_TMP_CALCULO_PREMIOS_HIST" EntityType="Self.TB_TMP_CALCULO_PREMIOS_HIST" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[RankLastPeriod_ID] AS [RankLastPeriod_ID], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[Mes] AS [Mes], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[Quincena] AS [Quincena], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[Id_Pais] AS [Id_Pais], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[Pais] AS [Pais], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[idPeriodo] AS [idPeriodo], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[Partnetid] AS [Partnetid], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[nombrePartner] AS [nombrePartner], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[Volume] AS [Volume], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[puntos] AS [puntos], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[Grado] AS [Grado], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[Bloque] AS [Bloque], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[PRODUCTOS] AS [PRODUCTOS], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[PedidoGenerado] AS [PedidoGenerado], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[Estatus] AS [Estatus], 
+    [TB_TMP_CALCULO_PREMIOS_HIST].[Id_Pedido] AS [Id_Pedido]
+    FROM [dbo].[TB_TMP_CALCULO_PREMIOS_HIST] AS [TB_TMP_CALCULO_PREMIOS_HIST]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SA_tb_cdaVentas" EntityType="Self.SA_tb_cdaVentas" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SA_tb_cdaVentas].[Mes] AS [Mes], 
+    [SA_tb_cdaVentas].[entered_by] AS [entered_by], 
+    [SA_tb_cdaVentas].[Total_venta] AS [Total_venta], 
+    [SA_tb_cdaVentas].[f_proceso] AS [f_proceso]
+    FROM [dbo].[SA_tb_cdaVentas] AS [SA_tb_cdaVentas]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__CO_tb_Men__Padre__473C8FC7" Association="Self.FK__CO_tb_Men__Padre__473C8FC7">
+      <End Role="CO_tb_MenuDinamico" EntitySet="CO_tb_MenuDinamico" />
+      <End Role="CO_tb_MenuDinamico1" EntitySet="CO_tb_MenuDinamico" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Mov__id_Co__48CFD27E" Association="Self.FK__CO_tb_Mov__id_Co__48CFD27E">
+      <End Role="CO_tb_Conceptos" EntitySet="CO_tb_Conceptos" />
+      <End Role="CO_tb_MovimientosSocio" EntitySet="CO_tb_MovimientosSocio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Pan__Padre__353DDB1D" Association="Self.FK__CO_tb_Pan__Padre__353DDB1D">
+      <End Role="CO_tb_Pantallas" EntitySet="CO_tb_Pantallas" />
+      <End Role="CO_tb_Pantallas1" EntitySet="CO_tb_Pantallas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Pan__Usuar__3631FF56" Association="Self.FK__CO_tb_Pan__Usuar__3631FF56">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_Pantallas" EntitySet="CO_tb_Pantallas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Pan__Usuar__3726238F" Association="Self.FK__CO_tb_Pan__Usuar__3726238F">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_Pantallas" EntitySet="CO_tb_Pantallas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Per__IdRol__4668671F" Association="Self.FK__CO_tb_Per__IdRol__4668671F">
+      <End Role="CO_tb_Roles" EntitySet="CO_tb_Roles" />
+      <End Role="CO_tb_PermisosRoles" EntitySet="CO_tb_PermisosRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Per__Usuar__475C8B58" Association="Self.FK__CO_tb_Per__Usuar__475C8B58">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_PermisosRoles" EntitySet="CO_tb_PermisosRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Per__Usuar__4850AF91" Association="Self.FK__CO_tb_Per__Usuar__4850AF91">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_PermisosRoles" EntitySet="CO_tb_PermisosRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Pre__id_Pr__5165187F" Association="Self.FK__CO_tb_Pre__id_Pr__5165187F">
+      <End Role="CO_tb_Prestamo" EntitySet="CO_tb_Prestamo" />
+      <End Role="CO_tb_PrestamoDetalle" EntitySet="CO_tb_PrestamoDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Pro__Id_Re__4321E620" Association="Self.FK__CO_tb_Pro__Id_Re__4321E620">
+      <End Role="CO_tb_ConfigReembolsos" EntitySet="CO_tb_ConfigReembolsos" />
+      <End Role="CO_tb_Productos_Reembolso" EntitySet="CO_tb_Productos_Reembolso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Rol__Usuar__18A19C6F" Association="Self.FK__CO_tb_Rol__Usuar__18A19C6F">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_Roles" EntitySet="CO_tb_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Rol__Usuar__1995C0A8" Association="Self.FK__CO_tb_Rol__Usuar__1995C0A8">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_Roles" EntitySet="CO_tb_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Rol__Usuar__1A89E4E1" Association="Self.FK__CO_tb_Rol__Usuar__1A89E4E1">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_Roles" EntitySet="CO_tb_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Rol__Usuar__66EA454A" Association="Self.FK__CO_tb_Rol__Usuar__66EA454A">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_Roles" EntitySet="CO_tb_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Rol__Usuar__67DE6983" Association="Self.FK__CO_tb_Rol__Usuar__67DE6983">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_Roles" EntitySet="CO_tb_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Usu__IdRol__15C52FC4" Association="Self.FK__CO_tb_Usu__IdRol__15C52FC4">
+      <End Role="CO_tb_Roles" EntitySet="CO_tb_Roles" />
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Usu__IdRol__1B7E091A" Association="Self.FK__CO_tb_Usu__IdRol__1B7E091A">
+      <End Role="CO_tb_Roles" EntitySet="CO_tb_Roles" />
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Usu__Usuar__16B953FD" Association="Self.FK__CO_tb_Usu__Usuar__16B953FD">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_Usuarios1" EntitySet="CO_tb_Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CO_tb_Usu__Usuar__17AD7836" Association="Self.FK__CO_tb_Usu__Usuar__17AD7836">
+      <End Role="CO_tb_Usuarios" EntitySet="CO_tb_Usuarios" />
+      <End Role="CO_tb_Usuarios1" EntitySet="CO_tb_Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

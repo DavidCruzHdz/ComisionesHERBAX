@@ -1,0 +1,358 @@
+﻿@model IList<Comisiones.Models.CO_st_BuscaProductosConUnId1_Result>
+
+@{
+	ViewBag.Title = "Delete";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h6>Esta seguro que desea borrar los datos de esta compañia?</h6>
+	<div>
+		<div>
+			<h2>Premios</h2>
+			<hr />
+			@foreach (var Premiar in ViewBag.Premios)
+			{
+				<dl class="dl-horizontal">
+
+					<dt>
+						<label>id</label>
+					</dt>
+					<dd style="text-align:center">
+						<input maxlength="800" class="form-control" id="TmpPremio" name="TmpPremio" value=@Premiar.id_premio tabindex="1" type="number" readonly="true">
+					</dd>
+
+					<dt>
+						<label>Pais</label>
+					</dt>
+					<dd style="text-align:center">
+						<input maxlength="800" class="form-control" id="TmpPais" name="TmpPais" value=@Premiar.id_pais tabindex="2" type="text" readonly="true">
+					</dd>
+					<dt>
+						<label>Nombre</label>
+					</dt>
+					<dd style="text-align:center">
+						<input maxlength="800" class="form-control" id="TmpNombre" name="TmpNombre" value=@Premiar.nombre_premio tabindex="1" type="text" readonly="true">
+					</dd>
+
+					<dt>
+						<label>Periodo</label>
+					</dt>
+					<dd style="text-align:center">
+						<input maxlength="800" class="form-control" id="TmpPeriodo" name="TmpPeriodo" value=@Premiar.id_periodo tabindex="3" type="text" readonly="true">
+					</dd>
+					<dt>
+						<label>Estatus</label>
+					</dt>
+					<dd style="text-align:center">
+						@if (@Premiar.Estatus = true)
+						{
+							<input maxlength="800" class="form-control" id="Estatus" name="Estatus" value="Activo" tabindex="4" type="text" readonly="true">
+						}
+						else
+						{
+							<input maxlength="800" class="form-control" id="Estatus" name="Estatus" value="Inactivo" tabindex="4" type="text" readonly="true">
+						}
+
+					</dd>
+					<dt>
+						<label>Pagado</label>
+					</dt>
+					<dd style="text-align:center">
+						@if (@Premiar.Pagado = true)
+						{
+							<input maxlength="800" class="form-control" id="Pagado" name="Pagado" value="Activo" tabindex="4" type="text" readonly="true">
+						}
+						else
+						{
+							<input maxlength="800" class="form-control" id="Pagado" name="Pagado" value="Inactivo" tabindex="4" type="text" readonly="true">
+						}
+					</dd>
+					<dt>
+						<label>Usuario</label>
+					</dt>
+					<dd style="text-align:center">
+						<input maxlength="800" class="form-control" id="Usuario" name="Usuario" value=@Premiar.CreadoUsuario tabindex="6" type="text" readonly="true">
+
+					</dd>
+					<dt>
+						<label>Fecha</label>
+					</dt>
+					<dd style="text-align:center">
+						<input maxlength="800" class="form-control" id="Fecha" name="Fecha" value=@Premiar.Creado_F tabindex="7" type="text" readonly="true">
+					</dd>
+				</dl>
+			}
+
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+
+				<div class="form-actions no-color">
+					<input data-ajax="true" value="Ver Productos" id="MuestraProd" class="btn btn-danger btn-lg" href="#myModal" name="MuestraProd" data-toggle="modal" />
+					<input type="submit" value="Borrar" class="btn btn-danger btn-lg" />
+					<a href="~/CO_tb_Premios/" class="btn btn-danger btn-lg">Regresar</a>
+				</div>
+			}
+
+
+
+			<!-- Modal -->
+			<div id="myModal" class="modal face" style="align-content:center">
+				<div class="modal-body" role="document">
+					<div class="modal-content">
+						<div class="modal-body form-horizontal">
+							@using (Html.BeginForm("Delete", "CO_tb_Premios", "POST"))
+							{
+								<table class="table table-striped modal-content theader w-auto" id="TblPremios">
+
+									<tr style="background-color:#D6EAF8;width:100%">
+										<th>Empresa</th>
+
+										<th>Periodo</th>
+										<th>Nombre de Premio</th>
+										<th></th>
+									</tr>
+
+									<tr class="tablaPremios"></tr>
+								</table>
+								<table class="table display" style="background-color:#D6EAF8" id="TblProductos">
+									<thead style="background-color:#D6EAF8">
+										<tr>
+											<th style="text-align:center">
+												<label>Clave</label>
+											</th>
+											<th style="width:700px;" type="text" maxlength="700">
+												<label>Nombre Producto</label>
+											</th>
+											<th>
+												<label>Precio</label>
+											</th>
+											@*<th>
+												<label>Seleccionar</label>
+											</th>*@
+											<th>
+												@*<label></label>*@
+											</th>
+											<th>
+											</th>
+											<th>
+											</th>
+
+										</tr>
+									</thead>
+									<tbody>
+
+										@for (var i = 0; i < Model.Count; i++)
+										{
+											<tr id="row+@i" oninput="test(this)">
+
+												@Html.HiddenFor(x => x[i].PrecioPublico, new { @class = "form-control  TmpVentas", @id = "Precio" + @i })
+												@Html.HiddenFor(x => x[i].sku, new { @class = "form-control TmpSku" })
+												@Html.HiddenFor(x => x[i].Descripcion, new { @class = "form-control", @style = "align-items:right", @disabled = "disabled" })
+
+												@Html.HiddenFor(x => x[i].Warehouse_ID, new { @class = "form-control" })
+												@Html.HiddenFor(x => x[i].Warehouse, new { @class = "form-control" })
+												@Html.HiddenFor(x => x[i].cve_art, new { @class = "form-control" })
+
+												<td style="text-align:center">
+													@Html.DisplayFor(x => x[i].sku, new { @class = "form-control" })
+												</td>
+
+
+
+												<td style="width:700px;" type="text" maxlength="700">
+													@Html.DisplayFor(x => x[i].Descripcion, new { @class = "form-control", @style = "align-items:right", @disabled = "disabled" })
+												</td>
+												<td>
+
+													@Html.DisplayFor(x => x[i].PrecioPublico, new { @class = "form-control VaPrecio" + @i, @style = "align-items:right", @disabled = "disabled" })
+												</td>
+												@*<td>
+													@Html.CheckBoxFor(x => x[i].checkeado, new { @class = "form-control", @style = "align-items:left" })
+												</td>*@
+												<td>
+													@Html.HiddenFor(x => x[i].Id_Empresa, new { @class = "form-control  IdEmpresa" })
+												</td>
+												<td>
+													@Html.HiddenFor(x => x[i].nombre_premio, new { @class = "form-control  TmpNomPremio" })
+												</td>
+												<td>
+													@Html.HiddenFor(x => x[i].Id_Pais, new { @class = "form-control  TmpPais" })
+												</td>
+												<td>
+													@Html.HiddenFor(x => x[i].Id_Periodo, new { @class = "form-control  TmpPeriodo" })
+												</td>
+											</tr>
+										}
+									</tbody>
+
+								</table>
+
+
+
+								<div class="modal-footer">
+									<input type="hidden" value="0" id="rembolsoTotal" />
+									<input type="hidden" value="0" id="rembolsoActual" />
+
+									<a href="~/CO_tb_Premios/" class="btn btn-danger btn-lg">Cerrar</a>
+									<input type="submit" value="Borrar" class="btn btn-danger btn-lg" />
+
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+@section scripts{
+
+	<script type="text/javascript">
+				$(document).ready(function () {
+
+					mostrarLoader();
+
+					$(".CantProd").val(0);
+					$(".text-box").val(0);
+
+
+					var Nombre = 0;//global variable
+					var Ventas = 0;//global variable
+					var TotalReembolso = 0;//global variable
+
+					var Reembolsado = "";
+					var NumSocio = "";
+					var Diferencia = 0;
+					var Anio = 0;
+					var Mes = 0;
+					var Quincena = 0;
+
+
+					ocultarLoader();
+
+
+
+					$("#MuestraProd").click(function () {
+						addRowHandlers();
+					})
+
+
+				});
+
+
+
+				function addRowHandlers() {
+					$('#myform').on('submit', function (ev) {
+						$('#my-modal').modal({
+							show: 'false'
+						});
+
+						window.opener.document.getElementById('myModal').innerHTML = "";
+
+						var data = $(this).serializeObject();
+						json_data = JSON.stringify(data);
+						$("#results").text(json_data);
+						$(".modal-body").text(json_data);
+
+						ev.preventDefault();
+					});
+
+
+					var hoy = new Date();
+					var dd = hoy.getDate();
+					var mm = hoy.getMonth() + 1;
+					var yyyy = hoy.getFullYear();
+
+					if (dd < 10) {
+						dd = '0' + dd;
+					}
+
+					if (mm < 10) {
+						mm = '0' + mm;
+					}
+
+					var PaisPremio = $("#TmpPais").val();
+					var PeriodoPremio = $("#TmpPeriodo").val();
+					var NombrePremio = $("#TmpNombre").val();
+
+					$(".TmpNomPremio").val(NombrePremio);
+					$(".TmpPais").val(PaisPremio);
+					$(".TmpPeriodo").val(PeriodoPremio);
+
+					var ProdASeleccionar = " <td>" + PaisPremio.toString() + "</td><td>" + PeriodoPremio.toString() + "</td><td>" + NombrePremio.toString() + "</td>";
+					$(".tablaPremios td").remove();
+					$(".tablaPremios").append(ProdASeleccionar);
+				};
+
+
+				function validar() {
+					return false
+				}
+
+
+				function test(item) {
+				};
+
+
+
+				function cierre() {
+					$("#myModal").modal('hide');//ocultamos el modal
+					$('body').removeClass('modal-open');//eliminamos la clase del body para poder hacer scroll
+					$('.modal-backdrop').remove();//eliminamos el backdrop del modal
+
+					Swal.fire
+						({
+							title: 'Aun no ha grabado el pedido esta seguro que quiere ',
+							text: "Presione el boton para cerrar!",
+							type: "success",
+							animation: false,
+							customClass:
+							{
+								popup: 'animated tada'
+							}
+						}).then(function (result) {
+							window.location.hostname;
+						})
+
+				}
+
+
+				function cerrar() {
+
+					$(".CantProd").text("0");
+					$(".text-box").text("0");
+				}
+
+
+				function validar() {
+					return false
+				}
+
+
+				$("#IdPais").change(function () {
+					$("input[type=submit]").click();
+				});
+	</script>
+
+
+
+}
+
+<style>
+	.theader th {
+		width: 16% !important;
+	}
+
+	.theader td {
+		width: 16% !important;
+	}
+</style>
+
+
+

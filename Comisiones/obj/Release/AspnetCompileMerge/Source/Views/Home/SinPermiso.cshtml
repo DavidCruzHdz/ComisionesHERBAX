@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Sin Permisos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SinPermiso</title>
+</head>
+<body>
+    <div> 
+        <script type="text/javascript">
+								Swal.fire({
+								    title: "Lo sentimos usted no tiene permiso para acesar a esta opcion",
+								    text: "Presione el boton para cerrar!",
+								    type: "error",
+								    showConfirmButton: true,
+								    confirmButtonText: "Cerrar",
+								    animation: false,
+								    customClass: {
+								        popup: 'animated tada'
+								    }
+								}).then(function (result) {
+								    window.location.href = comisiones.urlMain + "/Home/Index";
+								})
+        </script>
+    </div>
+</body>
+</html>

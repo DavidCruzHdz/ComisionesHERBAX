@@ -1,0 +1,129 @@
+﻿@model Comisiones.Models.CO_tb_Usuarios
+
+@{
+	ViewBag.Title = "Consultas";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h2>Consultar usuarios</h2>
+
+	@Html.AntiForgeryToken()
+
+	<h5>Ver informacion del usuario</h5>
+	<hr />
+	<div>
+		<dl class="dl-horizontal">
+
+			<dt>
+				@Html.DisplayNameFor(model => model.NombreUsuario)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.NombreUsuario)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.CO_tb_Roles5.NombreRol)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.CO_tb_Roles5.NombreRol)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Correo)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.Correo)
+			</dd>
+
+			@*<dt>
+			@Html.DisplayNameFor(model => model.Password)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Password)
+		</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.CO_tb_Pais.Pais)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.CO_tb_Pais.Pais)
+			</dd>*@
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Estatus)
+			</dt>
+
+			<dd>
+				@*@Html.DisplayFor(model => model.Estatus)*@
+
+				@{
+					if (Model.Estatus != false)
+					{
+						<span>
+							Activo
+						</span>
+					}
+					else
+					{
+						<span>
+							Inactivo
+						</span>
+					}
+
+				}
+			</dd>
+
+			@*<dt>
+				@Html.DisplayNameFor(model => model.FechaAlta)
+			</dt>
+
+			<dd>
+			@Html.DisplayFor(model => model.FechaAlta)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.UsuarioAlta)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.UsuarioAlta)
+		</dd>*@
+
+			<dt>
+				@Html.DisplayNameFor(model => model.FechaCambio)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.FechaCambio)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.CO_tb_Usuarios2.NombreUsuario)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.CO_tb_Usuarios2.NombreUsuario)
+			</dd>
+
+
+
+		</dl>
+</div>
+<p>
+	@*@Html.ActionLink("Edit", "Edit", new { id = Model.IdUsuario }) |
+	@Html.ActionLink("Back to List", "Index")*@
+	@Html.ActionLink("Regresar", "Index", "Usuarios", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+</p>
+
+</div>
+
+	
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}

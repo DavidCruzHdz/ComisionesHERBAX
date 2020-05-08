@@ -1,0 +1,296 @@
+﻿@model IList<Comisiones.Models.CO_st_BuscaProductosConUnId1_Result>
+
+@{
+	ViewBag.Title = "ProdReembolso";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+	<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+		<h2>Reembolsos</h2>
+
+		<div>
+			<div>
+				<h6>Marque y desmarque los productos que desea agregar?</h6>
+
+				@*<a href="~/Models/CO_st_BuscaPedidosPremios_Result.cs">~/Models/CO_st_BuscaPedidosPremios_Result.cs</a>*@
+				<hr />
+				@using (Html.BeginForm("ProdReembolso", "CO_tb_ConfigReembolsos", "POST"))
+				{
+					<table class="table table-striped modal-content theader w-auto" id="TblPremios">
+
+						@foreach (var Premiar in ViewBag.Premios)
+						{
+							<tr style="background-color:#D6EAF8;width:100%">
+								<th>Empresa</th>
+								<th>Reembolso</th>
+								<th>Año</th>
+								<th>Mes</th>
+								<th>Cantidad</th>
+								<th>Cant.Topada</th>
+								<th>Porcentaje</th>
+							</tr>
+
+							<tr class="tablaPremios">
+								<td style="text-align:center">
+									<input maxlength="400" class="form-control" id="Paises" name="Paises" value=@ViewBag.id_pais type="text" readonly="true">
+								</td>
+								<td>
+									<input maxlength="400" class="form-control" id="Reembolsos" name="Reembolsos" value=@ViewBag.Id_Reembolso type="number" readonly="true">
+								</td>
+								<td style="text-align:center">
+									<input maxlength="400" class="form-control" id="Anios" name="Anios" value=@ViewBag.Anio type="text" readonly="true">
+								</td>
+								<td style="text-align:center">
+									<input maxlength="400" class="form-control" id="Meses" name="Meses" value=@ViewBag.Mes type="text" readonly="true">
+								</td>
+								<td>
+									<input maxlength="400" class="form-control" id="Cantidades" name="Cantidades" value=@ViewBag.Cantidad type="number" readonly="true">
+								</td>
+								<td>
+									<input maxlength="400" class="form-control" id="CantTopadas" name="CantTopadas" value=@ViewBag.Topada type="number" readonly="true">
+								</td>
+								<td>
+									<input maxlength="400" class="form-control" id="Porcentajes" name="Porcentajes" value=@ViewBag.Porcentaje type="number" hidden="true">
+								</td>
+							</tr>
+						}
+					</table>
+
+
+					<table class="table display" style="background-color:#D6EAF8" id="TblProductos">
+						<thead style="background-color:#D6EAF8">
+							<tr>
+								<th style="text-align:center">
+									<label>Clave</label>
+								</th>
+								<th style="width:700px;" type="text" maxlength="700">
+									<label>Nombre Producto</label>
+								</th>
+								<th>
+									<label>Precio</label>
+								</th>
+								<th>
+									<label>Seleccionar</label>
+								</th>
+								<th>
+									@*<label></label>*@
+								</th>
+								<th>
+								</th>
+								<th>
+								</th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+							@for (var i = 0; i < Model.Count; i++)
+							{
+							<tr id="row+@i" oninput="test(this)">
+
+								@Html.HiddenFor(x => x[i].PrecioPublico, new { @class = "form-control  TmpVentas", @id = "Precio" + @i })
+								@Html.HiddenFor(x => x[i].sku, new { @class = "form-control TmpSku" })
+								@Html.HiddenFor(x => x[i].Descripcion, new { @class = "form-control", @style = "align-items:right", @disabled = "disabled" })
+
+								@Html.HiddenFor(x => x[i].Warehouse_ID, new { @class = "form-control" })
+								@Html.HiddenFor(x => x[i].Warehouse, new { @class = "form-control" })
+								@Html.HiddenFor(x => x[i].cve_art, new { @class = "form-control" })
+
+								<td style="text-align:center">
+									@Html.DisplayFor(x => x[i].sku, new { @class = "form-control" })
+								</td>
+
+
+
+								<td style="width:700px;" type="text" maxlength="700">
+									@Html.DisplayFor(x => x[i].Descripcion, new { @class = "form-control", @style = "align-items:right", @disabled = "disabled" })
+								</td>
+								<td>
+
+									@Html.DisplayFor(x => x[i].PrecioPublico, new { @class = "form-control VaPrecio" + @i, @style = "align-items:right", @disabled = "disabled" })
+								</td>
+								<td>
+									@Html.CheckBoxFor(x => x[i].checkeado, new { @class = "form-control", @style = "align-items:left" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Id_Empresa, new { @class = "form-control  IdEmpresa" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].nombre_premio, new { @class = "form-control  TmpNomPremio" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Id_Pais, new { @class = "form-control  TmpPais" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Id_Periodo, new { @class = "form-control  TmpPeriodo" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].id_premio, new { @class = "form-control  TmpReembolso" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Anio, new { @class = "form-control  TmpAnio" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Mes, new { @class = "form-control  TmpMes" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Cantidad, new { @class = "form-control  TmpCantidad" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Topada, new { @class = "form-control  TmpTopada" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Porcentaje, new { @class = "form-control  TmpPorcentaje" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Estatus, new { @class = "form-control  TmpEstatus" })
+								</td>
+							</tr>
+							}
+						</tbody>
+
+					</table>
+
+
+
+					<div class="modal-footer">
+						<input type="hidden" value="0" id="rembolsoTotal" />
+						<input type="hidden" value="0" id="rembolsoActual" />
+
+						<a href="~/CO_tb_ConfigReembolsos/" class="btn btn-danger btn-lg">Cerrar</a>
+
+
+						<input type="submit" id="Grabar" value="Actualizar" class="btn btn-danger btn-lg" />
+
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+
+
+@section scripts{
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			mostrarLoader();
+
+			$(".CantProd").val(0);
+			$(".text-box").val(0);
+
+
+			var Nombre = 0;//global variable
+			var Ventas = 0;//global variable
+			var TotalReembolso = 0;//global variable
+
+			var Reembolsado = "";
+			var NumSocio = "";
+			var Diferencia = 0;
+			var Anio = 0;
+			var Mes = 0;
+			var Quincena = 0;
+
+					var PaisReembolso = $("#Paises").val();
+					var IdReembolso = $("#Reembolsos").val();
+					var AnioReembolso = $("#Anios").val();
+					var MesReembolso = $("#Meses").val();
+					var Cantidad = $("#Cantidades").val();
+					var Topada = $("#CantTopadas").val();
+					var Porcentaje = $("#Porcentajes").val();
+							
+					
+					$(".TmpPais").val(PaisReembolso);
+					$(".TmpReembolso").val(IdReembolso);
+					$(".TmpAnio").val(AnioReembolso);
+					$(".TmpMes").val(MesReembolso);
+					$(".TmpCantidad").val(Cantidad);
+					$(".TmpTopada").val(Topada);
+					$(".TmpPorcentaje").val(Porcentaje);
+							
+					var ProdASeleccionar = " <td>" + PaisReembolso.toString() + "</td><td>" + IdReembolso.toString() + "</td><td>" + AnioReembolso.toString() + "</td><td>" + MesReembolso.toString() + "</td><td>" + Cantidad.toString() + "</td><td>" + Topada.toString() + "</td><td>" + Porcentaje.toString() + "</td>";
+					$(".tablaPremios td").remove();
+					$(".tablaPremios").append(ProdASeleccionar);
+
+			ocultarLoader();
+
+		});
+
+
+			  $(function() {
+					  $("#Grabar").click(function () {
+						var PaisReembolso = $("#Paises").val();
+						var IdReembolso = $("#Reembolsos").val();
+						var AnioReembolso = $("#Anio").val();
+						var MesReembolso = $("#Mes").val();
+						var Cantidad = $("#Cantidades").val();
+						var Topada = $("#CantTopadas").val();
+						var Porcentaje = $("#Porcentaje").val();
+							
+					
+						$(".TmpPais").val(PaisPremio);
+						$(".TmpReembolso").val(IdReembolso);
+						$(".TmpAnio").val(AnioReembolso);
+						$(".TmpMes").val(MesReembolso);
+						$(".TmpCantidad").val(Cantidad);
+						$(".TmpTopada").val(Topada);
+						$(".TmpPorcentaje").val(Porcentaje);
+					
+					  });
+				});
+
+		function cierre() {
+			$("#myModal").modal('hide');//ocultamos el modal
+			$('body').removeClass('modal-open');//eliminamos la clase del body para poder hacer scroll
+			$('.modal-backdrop').remove();//eliminamos el backdrop del modal
+
+			Swal.fire
+				({
+					title: 'Aun no ha grabado el pedido esta seguro que quiere ',
+					text: "Presione el boton para cerrar!",
+					type: "success",
+					animation: false,
+					customClass:
+					{
+						popup: 'animated tada'
+					}
+				}).then(function (result) {
+					window.location.hostname;
+				})
+
+		}
+
+
+		function cerrar() {
+
+			$(".CantProd").text("0");
+			$(".text-box").text("0");
+		}
+
+
+		function validar() {
+			return false
+		}
+
+
+		$("#IdPais").change(function () {
+			$("input[type=submit]").click();
+		});
+	</script>
+
+
+
+}
+
+<style>
+	.theader th {
+		width: 16% !important;
+	}
+
+	.theader td {
+		width: 16% !important;
+	}
+</style>
+
+
+

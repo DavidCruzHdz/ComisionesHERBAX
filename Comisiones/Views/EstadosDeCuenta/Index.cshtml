@@ -1,0 +1,572 @@
+﻿@model List<Comisiones.Models.CO_st_BuscaEstadosDeCuenta1_Result>
+@{
+	ViewBag.Title = "Generacion de Estados de Cuenta";
+}
+
+<br />
+<div class="maintitle">Generacion de Estados de Cuenta</div>
+
+<div class="container-fluid" id="divMainContainer">
+	<form id="myform" class="form-horizontal container-fluid">
+
+		<div class="form-group row col-md-12">
+			<label for="numSocio">No.de Socio:</label>
+			<div class="col-md-2">
+				<div>
+					<input type="text" style="width:115px" name="partnerBusqd" id="Idpartner_Busqd" placeholder="Teclee el Socio" />
+				</div>
+			</div>
+			<label for="Anio">Año:</label>
+			<div class="col-md-3">
+				@Html.DropDownList("Anios", new SelectList(ViewBag.dropdownAnio, "Value", "Text"))
+			</div>
+
+			<label for="Mes">Mes:</label>
+			<div class="col-md-3">
+				@Html.DropDownList("Meses", new SelectList(ViewBag.dropdownMes, "Value", "Text"))
+			</div>
+
+			<div class="col-md-2">
+				<div>
+					<button type="button" class="btn btn-info btn-sm" id="btnBusqueda">Buscar</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group row col-md-12">
+			<label for="Nombre"></label>
+			<div class="col-md-4">
+				<div>
+					<input type="hidden" name="NombreBusqd" id="Nombre_Busqd" placeholder="Escriba Nombre del socio" style="width:600px" />
+				</div>
+			</div>
+			<label for="Direccion"></label>
+			<div class="col-md-5">
+				<div>
+					<input type="hidden" name="DireccionBusqd" id="Direccion_Busqd" placeholder="Escriba Direccion del socio" style="width:800px" />
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="col-lg-12" id="divPageQueryLists">
+			<table id="tblEdoCuenta" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+				<!-- Codigo generado desde JS Aqui...
+				<tbody id="tbPremiosHistBody"></tbody>-->
+			</table>
+		</div>
+
+		<div class="col-md-10">
+			<label for="formGroupExampleInput" id="MsgId"><span></span></label>
+		</div>
+
+		<div class="col-md-10">
+			@TempData["Mensaje"]
+		</div>
+
+		@if (ViewBag.Message != "")
+		{
+			<script type="text/javascript">
+                                    window.onload = function ()
+                                    {
+
+                                        if (@ViewBag.IsOk == 1)
+                                        {
+                                            Swal.fire("@ViewBag.Message", 'Presione el boton para cerrar!', 'success');
+
+                                        }
+                                        else
+                                        {
+                                            Swal.fire({
+                                                title: '@ViewBag.Message',
+                                                text: "Presione el boton para cerrar!",
+                                                type: "error",
+                                                animation: false,
+                                                customClass: {
+                                                    popup: 'animated tada'
+                                                }
+                                            })
+
+                                        }
+
+
+                                    };
+			</script>
+		}
+
+		<div class="modal face" style="align-content:center" id="ventana2">
+			<div class="modal-dialog jumbotron alert-success">
+				<div class="modal-content alert-success">
+					@*<div class="modal-header alert-success">
+							<button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+						</div>*@
+					<div class="modal-body alert-success">
+						<h1 class="modal-title w-100; alert-success" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight:bolder">Pedidos e Inventarios</h1>
+						<p>
+							<h2 class="modal-title w-100;" style="text-align:center; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Espere</h2>
+							<h2 class="modal-title" style="text-align:center; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Por el Momento</h2>
+							<h3 class="modal-title" style="text-align:center; font-style:oblique">Generando los pedidos de premios y creando los movimientos correspondientes en el inventario de Evo_PT</h3>
+							@*<h3 class="modal-title alert-success" style="text-align:center; font-style:oblique">asi como tambien se estan enviando los datos a EvoPT</h3>*@
+						</p>
+					</div>
+					<div class="modal-footer animated alert-success">
+						<div id="progress">
+							<img class="img-responsive center-block" src="~/images/espera.svg" alt="image" style="text-align:center" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+
+
+<script>
+    var dataSend = {};
+	$(document).ready(function () {
+
+
+		var Socio = 0;//global variable
+		var Anio = 0;
+		var Mes = 0;
+
+		var tblEdoCuenta = $('#tblEdoCuenta').DataTable({
+			"language": {
+				"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+			},
+
+			scrollCollapse: true,
+			paging: true,
+			//data:dataSet,
+			"scrollY": true,
+			"scrollX": true,
+			columns: [
+				{ title: "Socio" },
+				{ title: "Nombre Completo" },
+				{ title: "Direccion" },
+				{ title: "Ciudad" },
+				{ title: "Estado" },
+				{ title: "Pais" },
+				//{ title: "Cp" },
+				//{ title: "Telefono" },
+				{ title: "RFC" },
+				{ title: "CDA" }
+            ]
+		 });
+
+
+		$('#btnBusqueda').click(function () {
+			mostrarLoader();
+		var dataSend = new FormData();
+			dataSend.append('partner_id', $('#Idpartner_Busqd').val());
+			dataSend.append('Anio', $('#Anios').val());
+			dataSend.append('Mes', $('#Meses').val());
+            dataSend.append('Nombre', $('#Nombre_Busqd').val());
+            dataSend.append('Direccion', $('#Direccion_Busqd').val());
+			dataSend.append('CP', $('#CP_Busqd').val());
+
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "@Url.Content("~/EstadosDeCuenta/FiltrarSocios")",
+                data: dataSend,
+                processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (retorno) {
+                if (retorno.length > 0) {
+
+                    tblEdoCuenta.rows().remove().draw();
+                    $.each(retorno, function (i, data) {
+
+tblEdoCuenta.row.add($('<tr > <td>'+ data.Socio + '</td>'
+                             +'<td>' + data.Nombre + '</td>'
+                             +'<td>' + data.Direccion + '</td>'
+                             +'<td>' + data.Ciudad + '</td> '
+                             +'<td>' + data.Estado + '</td>'
+                             + '<td>' + data.Pais + '</td>'
+                             //+ '<td>' + data.CP + '</td>'
+                             //+ '<td>' + data.Telefono + '</td>'
+                             + '<td>' + data.RFC + '</td>'
+							 + '<td>' + data.CDA + '</td>'
+                             + '</tr>'));
+                        tblEdoCuenta.draw();
+
+                    });
+					ocultarLoader();
+					addRowHandlers();
+
+                } else { alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();}
+
+            },
+            error: function (e) {
+                alertSystem("error", e.responseText);
+                ocultarLoader();
+            }
+
+        })
+        });
+    });
+
+
+
+		function rellenarconCeros(value, length) {
+			return (value.toString().length < length) ? rellenarconCeros("0" + value, length) :
+			value;
+		}
+
+
+		function addRowHandlers()
+		{
+			    var table = document.getElementById("tblEdoCuenta");
+			    var rows = table.getElementsByTagName("tr");
+				for (i = 1; i < rows.length; i++)
+				{
+					var row = table.rows[i];
+					row.onclick = function (myrow)
+					{
+						return function ()
+						{
+							mostrarLoader();
+                            var Partner = myrow.getElementsByTagName("td")[0];
+							var IdPartner = Partner.innerHTML;
+
+							Socio = IdPartner;//global variable
+							var limite = 1;
+										var dataSocio =
+											{
+												IdSocio: Socio.toString(),
+											};
+
+
+											//ajax mustra los prestamos al  cargar la pagina
+											$.ajax({
+									            type: "POST",
+								             enctype: 'multipart/form-data',
+											     url: "@Url.Content("~/EstadosDeCuenta/BuscaDistribuidor")",
+								                data: dataSocio,
+												success: function (retorno)
+												{
+
+													 if (retorno.length > 0)
+													 {
+														//tblSocio.rows().remove().draw();
+														 $.each(retorno, function (i, data)
+														 {
+															 var Distribuidor = " <tr><td>" + data.partner_id.toString() + "</td><td>" + data.Nombre.toString() + "</td></tr><tr><td>" + data.Direccion.toString() + "</td></tr><tr><td>" + data.Ciudad.toString() + "</td><td>" + data.Estado.toString() + "</td></tr><tr><td>C.P." + data.CP.toString() + "</td></tr><tr><td>RFC:" + data.RFC.toString() + "</td></tr><tr><td>CDA:" + data.CDA.toString() + "</td></tr>";
+															 $(".tblSocio").append(Distribuidor);
+
+													  });
+												 }
+												 else
+												 {
+													 alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();
+												 }
+
+									            },
+												error: function (e)
+												{
+									                alertSystem("error", e.responseText);
+									                ocultarLoader();
+												}
+
+											})
+
+
+
+
+											if ($("#Meses option:selected").val() != "")
+											{
+												var MesLetra = $("#Meses option:selected").text();
+												 Meses = 0;
+
+												switch (MesLetra)
+													{
+														case "Enero":
+															Meses = 1;
+															break;
+														case "Febrero":
+															Meses = 2;
+															break;
+														case "Marzo":
+															Meses = 3;
+															break;
+														case "Abril":
+															Meses = 4;
+															break;
+														case "Mayo":
+															Meses = 5;
+															break;
+														case "Junio":
+															Meses = 6;
+															break;
+														case "Julio":
+															Meses = 7;
+															break;
+														case "Agosto":
+															Meses = 8;
+															break;
+														case "Septiembre":
+															Meses = 9;
+															break;
+														case "Octubre":
+															Meses = 10;
+															break;
+														case "Noviembre":
+															Meses = 11;
+															break;
+														case "Diciembre":
+															Meses = 12;
+															break;
+														default:
+															Meses = 0;
+															break;
+													}
+											}
+
+											if ($("#Anios option:selected").val() != "")
+											{
+								                 Anios = $("#Anios option:selected").text();
+											}
+
+
+											var dataPDF =
+											{
+												partner_id: Socio.toString(),
+												Anio: Anios.toString(),
+												Mes: Meses.toString()
+
+											};
+
+											ocultarLoader();
+
+											const swalWithBootstrapButtons = Swal.mixin({
+											    customClass: {
+											        confirmButton: 'btn btn-success',
+											        cancelButton: 'btn btn-danger'
+											    },
+											    buttonsStyling: false
+											})
+
+
+											swalWithBootstrapButtons.fire({
+											    title: 'Desea enviarle el estado de cuenta al socio?',
+											    text: "el envio sera via email",
+											    icon: 'warning',
+											    showCancelButton: true,
+											    confirmButtonText: ' Si ',
+											    cancelButtonText: ' No ',
+											    reverseButtons: true
+											}).then((result) => {
+											    if (result.value) {
+											        $.ajax({
+											            type: "POST",
+											            enctype: 'multipart/form-data',
+											            url: "@Url.Content("~/EstadosDeCuenta/GeneraPDF")",
+											            data: dataPDF,
+
+											        success: function (retorno)
+											        {
+
+											            if (retorno.IsOk != 0) 
+											            {
+
+											                Swal.fire({
+											                    title: 'El estado de cuenta fue enviado con exito via correo al socio',
+											                    text: "Presione el boton para cerrar!",
+											                    type: "success",
+											                    showConfirmButton: true,
+											                    confirmButtonText: "Cerrar",
+											                    animation: false,
+											                    customClass:
+                                                                {
+                                                                    popup: 'animated tada'
+                                                                }
+											                }).then(function (retorno)
+											                {
+											                    window.location.href = "Index";
+											                })
+											            }
+											            else
+											            {
+											                Swal.fire({
+											                    title: "Error se presento un problema al momento de generar la informacion",
+																text: retorno.Mensaje,
+											                    type: "error",
+											                    showConfirmButton: true,
+											                    confirmButtonText: "Cerrar",
+											                    animation: false,
+											                    customClass:
+                                                                    {
+                                                                        popup: 'animated tada'
+                                                                    }
+											                }). then(function(retorno){
+											                    window.location.href = "Index";
+											                })
+
+											            }
+													},
+													error: function (e)
+													{														
+														var span = document.createElement("span");
+														span.innerHTML = e.responseText;
+
+													   Swal.fire
+									                    ({
+													        title: "Error se presento un problema al momento de generar la informacion",
+				                                            html: span,
+				                                            type: "error",
+								                            animation: false,
+												            customClass:
+															  {
+			                                                      popup: 'animated tada'
+							                                  }
+											            })
+													}
+
+													});
+												}
+												else if (
+											        /* Read more about handling dismissals below */
+                                                  result.dismiss === Swal.DismissReason.cancel
+                                                ) {
+											        ocultarLoader();
+											        swalWithBootstrapButtons.fire(
+                                                      'Cancelled',
+                                                      'El envio fue cancelado por el usuario :)',
+                                                      'error'
+                                                    )
+											    }
+											})
+
+
+						};
+					}(row);
+				}
+	};
+
+
+
+	   @*$("#EnviarPDF").click(function ()
+			{
+											var dataToSend = JSON.stringify({ 'html': $("#content").html() });
+
+
+											$.ajax({
+											     url: "@Url.Content("~/EstadosDeCuenta/GenerayEnviaPDF")",
+												type: "POST",
+								                data: dataToSend,
+										 contentType: "application/json; charset=utf-8",
+								  		     success: function (data) {
+													 //$("#dialog").dialog("close");
+													 alertSystem("success", "El proceso genero con exito."); ocultarLoader();
+												console.log(data);
+												},
+												error: function (errorText)
+												{
+												console.log(errorText);
+												}
+											})
+		    });
+
+
+	function loadDocument() {
+        //To send the provided file name to the web API controller.
+        var documentName = $("#documentName").val();
+        var jsonObject = new Object();
+        if (documentName != "") {
+            jsonObject['documentName'] = documentName;
+            var jsonResult = JSON.stringify(jsonObject);
+            $.ajax({
+                type: "POST",
+                url: '../api/PdfViewer/DocumentRetrieve',
+                crossDomain: true,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: jsonResult,
+                traditional: true,
+                success: function (data) {
+                    //returns the PDF document data as base 64 string
+                    openDoc(data);
+                }
+            });
+        }
+
+    }*@
+    function openDoc(data) {
+        var obj = $("#pdfviewer").data("ejPdfViewer");
+        //load the PDF document in PDF viewer
+        obj.load(data);
+	}
+
+
+	$(function () {
+			$("#btnSubmit").click(function () {
+				$("input[name='GridHtml']").val($("#Grid").html());
+			});
+	});
+
+
+	 $(function()
+    {
+        $("#btnBusqueda").click(function ()
+        {
+
+            if($("#Idpartner_Busqd").val().length < 1) {
+                Swal.fire({
+                    title: 'El numero de socio no puede ir en blanco',
+                    text: "Presione el boton para cerrar!",
+                    type: "error",
+                    animation: false,
+                    customClass: {
+                        popup: 'animated tada'
+                    }
+                })
+                return false;
+            }
+
+			//alert ($("#Anios").val())
+
+            if($("#Anios").val() == 0) {
+                Swal.fire({
+                    title: 'Es necesario seleccionar un Año',
+                    text: "Presione el boton para cerrar!",
+                    type: "error",
+                    animation: false,
+                    customClass: {
+                        popup: 'animated tada'
+                    }
+                })
+                return false;
+            }
+
+			//alert ($("#Meses").val())
+
+            if($("#Meses").val() == 0) {
+                Swal.fire({
+                    title: 'Es necesario seleccionar un Mes',
+                    text: "Presione el boton para cerrar!",
+                    type: "error",
+                    animation: false,
+                    customClass: {
+                        popup: 'animated tada'
+                    }
+                })
+                return false;
+            }
+
+
+        });
+    });
+
+</script>
+
+<style>
+	#Meses {
+		width: 230px !important;
+	}
+</style>

@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace Comisiones.Models.ViewModels
+{
+    public class PrestamoViewModel
+    {
+
+        public int Id_prestamo { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Socio")]
+
+        public string Partner_id { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Importe Prestamo")]
+        [DataType(DataType.Currency)]
+        public decimal Importe { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Tipo Aplicación")]
+        public int TipoAplicacion { get; set; }
+
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Numero de Pagos")]
+        public int NumeroPagos { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Motivo Prestamo")]
+
+        public int IdConcepto { get; set; }
+
+        public decimal Saldo { get; set; }
+
+        public DateTime FechaInicio { get; set; }
+
+        public DateTime FechaFin { get; set; }
+
+        public int Estatus { get; set; } //  --- [1 SOLICITUD, 2 APROBADO,  3 PROCESO DE COBRO, 3 PAGADO]
+
+        public string Usuario { get; set; }
+
+        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}", ApplyFormatInEditMode =true)]
+        public DateTime FechaMovimiento { get; set; }
+
+        public int idFormaPago { get; set; }
+
+        public string motivo { get; set; }
+
+    }
+}

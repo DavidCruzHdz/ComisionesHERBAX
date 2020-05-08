@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Comisiones.Models.CO_st_BuscaRango_Compra_Premios1_Result>
+
+@{
+	ViewBag.Title = "Listado de Rangos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="maintitle">Listado de Rangos de Premios</div>
+
+<br />
+<div class="container-fluid" id="divMainContainer">
+	@Html.AntiForgeryToken()
+	<p>
+		@Html.ActionLink("Agregar nueva", "Create", "CO_tb_Rango_Compra_Premios", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+		@Html.AntiForgeryToken()
+	</p>
+
+
+	<script type="text/javascript" class="init">
+		$(document).ready(function () {
+			var table = $('#tblCompaniaPago').DataTable({
+
+				language: {
+					"decimal": "",
+					"emptyTable": "No hay información",
+					"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+					"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+					"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+					"infoPostFix": "",
+					"thousands": ",",
+					"lengthMenu": "Mostrar _MENU_ registros",
+					"loadingRecords": "Cargando...",
+					"processing": "Procesando...",
+					"search": "Buscar:",
+					"zeroRecords": "Ningún dato disponible en esta tabla",
+					"paginate": {
+						"first": "Primero",
+						"last": "Ultimo",
+						"next": "Siguiente",
+						"previous": "Anterior"
+					}
+				}
+			}
+			);
+
+
+		});
+	</script>
+
+
+	<div class="col-lg-12" id="divPageQueryLists">
+		<table id="tblCompaniaPago" class="table display table-striped table-bordered dt-responsive nowrap" style="width:100%; text-align:right;">
+			<thead>
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.DescripcionPais)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.DescripcionPremio)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.DescripcionRank)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.id_periodo)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.puntos)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.DescripcionEstatus)
+					</th>
+					@*<th>
+                        @Html.DisplayNameFor(model => model.CreadoUsuario)
+                       </th>
+                       <th>
+                            @Html.DisplayNameFor(model => model.Creado_F)
+                        </th>					
+                        <th>
+                        @Html.DisplayNameFor(model => model.UltModUsuario)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.UltMod_F)
+    </th>*@
+
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.HiddenFor(modelItem => item.id_rango)
+							@Html.DisplayFor(modelItem => item.DescripcionPais)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.DescripcionPremio)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.DescripcionRank)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.id_periodo)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.puntos)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.DescripcionEstatus)
+						</td>
+						@*<td>
+        @Html.DisplayFor(modelItem => item.CreadoUsuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Creado_F)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UltModUsuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UltMod_F)
+    </td>*@
+						<td>
+							@Html.ActionLink("Modificar", "Edit", new { id = item.id_rango }) |
+							@Html.ActionLink("Consultar", "Details", new { id = item.id_rango }) |
+							@Html.ActionLink("Borrar", "Delete", new { id = item.id_rango })
+						</td>
+					</tr>
+				}
+			</tbody>
+
+		</table>
+	</div>
+</div>
+

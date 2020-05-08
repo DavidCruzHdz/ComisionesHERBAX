@@ -1,0 +1,82 @@
+﻿@model IList<Comisiones.Models.CO_tb_Productos_Reembolso>
+
+@{
+	ViewBag.Title = "Canje de Reembolsos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+@*@{var VarNombreRol = "";}*@
+
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+
+	<h2>Asignar productos al reembolso </h2>
+
+	<h5>Marque los productos que desea canjear por el monto del reembolso @ViewBag.VarNombreRol</h5>
+
+	@using (Html.BeginForm())
+	{
+		<hr />
+		<div class="form-horizontal">
+
+			@for (var i = 0; i < Model.Count; i++)
+			{
+			<div class="form-group row">
+				<div class="container form-group col-md-1">
+					@Html.HiddenFor(x => x[i].sku, new { @class = "form-control" })
+					<span></span>
+				</div>
+
+
+				<div class="container form-group col-md-3" style="text-align-last:right; font-size:18px; font-style:normal; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+					@Html.DisplayFor(x => x[i].Descripcion, new { @class = "form-control", @style = "align-items:right" })
+				</div>
+
+				<div class="container form-group col-md-3" style="text-align-last:right; font-size:18px; font-style:normal; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+					@Html.DisplayFor(x => x[i].PrecioSocio, new { @class = "form-control", @style = "align-items:right" })
+				</div>
+
+				@*<div class="container form-group col-md-8">
+					@Html.CheckBoxFor(x => x[i].checkeado, new { @class = "form-control", @style = "align-items:left" })
+				</div>*@
+			</div>
+
+
+			}
+		</div>
+
+
+
+	}
+
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-actions no-color">
+			<input type="submit" value="Aceptar" class="btn btn-default" />
+			@Html.ActionLink("Regresar", "Index", "CO_tb_Productos_Reembolso", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+		</div>
+	}
+</div>
+
+
+
+
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
+
+
+
+

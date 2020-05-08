@@ -1,0 +1,105 @@
+﻿@model Comisiones.Models.CO_tb_Parametro
+
+
+@{
+
+	ViewBag.Title = "Modificaciones";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h2>Modificar datos</h2>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-horizontal">
+			<h4>CO_tb_Parametro</h4>
+			<hr />
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			@Html.HiddenFor(model => model.id_Parametro)
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Key_parametro, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.Key_parametro, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Key_parametro, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.parametro, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.parametro, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.parametro, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.valor, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.valor, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.valor, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.valor_str, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.valor_str, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.valor_str, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.valor_dec, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.valor_dec, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.valor_dec, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.estatus, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.estatus, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.estatus, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			@*<div class="form-group">
+				@Html.LabelFor(model => model.usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.usuario, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.usuario, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.fechaMovimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.fechaMovimiento, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.fechaMovimiento, "", new { @class = "text-danger" })
+				</div>
+			</div>*@
+
+
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Grabar" class="btn btn-default" style="height:25Px; text-align:inherit" />
+					@Html.ActionLink("Regresar", "Index", "CO_tb_Parametro", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+				</div>
+			</div>
+		</div>
+	}
+</div>
+

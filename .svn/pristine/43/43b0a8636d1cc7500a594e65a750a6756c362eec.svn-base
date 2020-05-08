@@ -1,0 +1,64 @@
+﻿@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/Barbershop in Thailand.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-Black.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-BlackIt.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-BoldIt.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-ExtraLight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-ExtraLightIt.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-It.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-Light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-LightIt.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-Semibold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    src: url('Fonts/SourceSansPro-SemiboldIt.otf') format('opentype');
+}

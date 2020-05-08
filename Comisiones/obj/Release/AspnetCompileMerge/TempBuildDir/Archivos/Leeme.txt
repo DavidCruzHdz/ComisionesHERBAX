@@ -1,0 +1,17 @@
+﻿Esta carpeta "Archivos"  asi como c:/herbax/Logs/
+deben tener permisos de lectura y escritura para el usuario IIS_IUSRS
+
+Este proyecto genera un log en un directorio en el servidor:
+c:/herbax/Logs/  el cual tambien debe tener permisos de lectura y escritura
+
+
+PASOS para agragar permisos:
+
+1.-abrimos nuestro directorio donde se crearán los archivos, y iriamos sus propiedades
+
+2.-Luego de esto, vamos al tab Seguridad, y damos clic en Editar…
+
+3.-En la ventana Permisos de Documentos damos clic en el botón Agregar….
+4.-En la ventana Seleccionar Usuarios o Grupos agregamos el usuario IIS_IUSRS
+5.-Una vez agregado el usuario IIS_IUSRS, le damos permisos de Control Total. 
+   Verificamos que todos los demás permisos tengan una palomita y damos clic en Aceptar.

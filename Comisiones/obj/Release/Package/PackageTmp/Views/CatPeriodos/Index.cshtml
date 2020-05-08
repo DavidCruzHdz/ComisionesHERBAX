@@ -1,0 +1,428 @@
+﻿@model List<Comisiones.Models.CO_st_BuscarPeriodos_Result>
+@{
+    ViewBag.Title = "Catálogo de Periodos";
+}
+
+<br />
+<div class="maintitle">Cat&aacute;logo de Periodos</div>
+<div class="container-fluid" id="divMainContainer">
+    <div class="col-lg-12">
+        <div class="panel panel-body" align='right'>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalPeriodo">Agregar Per&iacute;odo</button>
+        </div>
+    </div>
+    <br />
+    <div class="col-lg-12" id="divPageQueryLists"> 
+        <table  id="tbPeriodos" class="table table-striped table-bordered dt-responsive nowrap" style="width:98%">   
+            <!-- Codigo generado desde JS Aqui...-->
+            <tbody id="tbPeriodosBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal Se usa para Editar o para Agregar se usa idPeriodoSpan cuando es nuevo tiene un valor 0 sino tendra el valor del perido a editar -->
+<div id="modalPeriodo" class="modal fade" role="dialog">
+    <span id="idPeriodoSpan"></span>
+    <div class="modal-dialog  modal-sm modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Per&iacute;odo</h4>
+            </div>
+            <div class="modal-body">
+                <form  method=POST role="form">
+                    <div class="form-group">
+                        <label>Per&iacute;odo: </label>
+                        <input type="text" name="idPeriodo" id="idPeriodo" class="form-control" placeholder="id Periodo" readonly/> 
+                    </div>
+                    <div class="form-group">
+                        <label>A&ntilde;io: </label>
+                        <input type="text" name="anio" id="idAnio" class="form-control" placeholder="año" />
+                    </div>
+                    <div class="form-group">
+                        <label>Mes: </label>
+                        <input type="text" name="mes" id="idMes" class="form-control" placeholder="Mes" />
+                    </div>
+                    <div class="form-group">
+                        <label>Quincena: </label>
+                        <input type="text" name="quincena" id="idQuincena" class="form-control" placeholder="Quincena" />
+                    </div>
+                    
+                        <div class="form-group">
+                            <label>Fecha inicio: </label>
+                            <input type="text" name="fechaInicio" id="idFechaInicio" class="form-control ui-datepicker"   placeholder="YYYY-MM-DD"  readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label>fecha fin: </label>
+                            <input type="text" name="fechaFin" id="idFechaFin" class="form-control ui-datepicker"  placeholder="YYYY-MM-DD" readonly/>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+
+                                    <input class="form-check-input" type="checkbox" name="estatusPeriodo" id="estatusPeriodo" value="" />Marcar si el Estatus es Cerrado
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+
+
+
+                            <div class="row">
+                                <div class="col-lg-12"> &nbsp;</div>
+                                <div class="col-lg-8"></div>
+                                <div class="col-lg-4" align='right'>
+                                    <button type="submit" class="btn btn-facebook">Guardar</button>
+                                    <button type="reset" class="btn btn-facebook">Limpiar</button>
+                                    <!--<input type="submit" value="Limpiar">-->
+                                </div>
+                            </div>
+                        </div>
+
+</form>
+            </div>
+            <!--
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+<!-- fin Modal Periodo-->
+
+<script>
+    var dataSend = {};
+    //$('#modalPeriodo').find("#fechaInicio").val();//datepicker();
+    
+    //$('#fechaInicio').val(200);
+    /*$('#fechaInicio').datepicker({
+        uiLibrary: 'bootstrap4',
+        locale: 'es-es',
+    });*/
+
+    $(document).ready(function () {
+
+        
+        
+        //$("#modalPeriodo").find("input[name=fechaInicio]").datepicker({
+        $("#modalPeriodo").find("#idFechaInicio").datepicker({
+
+            changeMonth: true,
+            changeYear: true,
+
+            dateFormat: 'yy-mm-dd',
+            uiLibrary: 'bootstrap4',
+            locale: 'es-es'
+        }).datepicker( new Date());
+
+        $("#modalPeriodo").find("input[name=fechaFin]").datepicker({
+        //$("#modalPeriodo").find("#idFechaFin").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd',
+            uiLibrary: 'bootstrap4',
+            locale: 'es-es'
+        }).datepicker( new Date());
+            
+
+
+        var tbPeriodos = $('#tbPeriodos').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+            },
+
+            //scrollCollapse: true,
+            paging: true,
+            //data:dataSet,
+            columns: [
+                { title: "Per&iacute;odo" },
+                { title: "Año" },
+                { title: "Mes " },
+                { title: "Quincena" },
+                { title: "Inicio Per&iacute;odo" },
+                { title: "Fin Per&iacute;odo" },
+                { title: "Estatus" },
+                { title: " Acci&oacute;n" }
+            ]
+        });
+
+        
+
+        $('#modalPeriodo').on('hidden.bs.modal', function (e) {
+            //$(this).removeData('bs.modal');
+            e.preventDefault();
+            resetValuesFormModalPeriodo();
+        })
+
+
+        $('#modalPeriodo').submit(function (e) {
+            e.preventDefault();
+            var jsonValues = getValuesForm($(this));
+            //alert("Guardando la Edicion");
+            var dataSend = new FormData();
+            dataSend.append('idPeriodo', jsonValues.idPeriodo);
+            dataSend.append('anio', jsonValues.anio);
+            dataSend.append('mes', jsonValues.mes);
+            dataSend.append('quincena', jsonValues.quincena);
+            dataSend.append('fechaInicio', jsonValues.fechaInicio);
+            dataSend.append('fechaFin', jsonValues.fechaFin);
+            dataSend.append('estatus', jsonValues.estatus);
+            dataSend.append('AccionSend', jsonValues.AccionSend);
+
+            if(ValidaCampos()){
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "@Url.Content("~/CatPeriodos/AddOrEdit")",
+                data: dataSend,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function (retorno) {
+                    console.log("Numero de registros::" + retorno.length)
+                    if (retorno.length > 0) {
+						ocultarLoader();
+
+						 window.location.href = "Index";
+
+
+                        var tdResult = "";
+                        //tbPeriodos.rows().remove().draw();
+                        $('#tbPeriodosBody ').children().remove();
+                        
+                        
+                        $.each(retorno, function (key, data) {
+                            //for (i in retorno) {  retorno[i].Periodo  
+                            tdResult +="<tr id=" + data.Periodo + "> "+
+                            "<td >" + data.Periodo + "</td> " +
+                            "<td >" + data.Anio + "</td>"+
+                            "<td>" + data.Mes + "</td>"+
+                            "<td>" + data.Quincena + "</td>"+  
+                            "<td>" + data.Fecha_inicio + "</td>"+   
+                            "<td>" + data.Fecha_fin + "</td> "+   
+                            "<td>" + data.Estatus + "</td> "+
+                            "<td> <a href='#' onclick='editarPeriodo("+data.Periodo+")' >  Editar </a> </td> " +
+                            "</tr>";
+                            //onclick="editarPeriodo( data.Periodo );"
+                            //$('#tbPeriodos').append($('<tr id="' + data.Periodo + '"><td >' + data.Periodo + '</td> <td >' + data.Anio + '</td> <td>' + data.Mes + '</td> <td>' + data.Quincena + '</td>   <td>' + data.Fecha_inicio + '</td>   <td>' + data.Fecha_fin + '</td>    <td>' + data.Estatus + '</td> <td> <a href="#" onclick="editarPeriodo(' + data.Periodo + ');">  Editar </a> </td> </tr>'));
+                        });
+                        
+                        $('#tbPeriodos').append(tdResult);
+
+						
+                        return RedirectToAction("Index");
+
+                        ocultarLoader();
+                    }
+                    else
+                    {
+                        alertSystem("error", "Revisar retorno ");
+                        ocultarLoader();
+                    }
+
+
+                }, error: function (e) {
+                    alertSystem("error", e.responseText);
+                    ocultarLoader();
+                }
+            });
+            //cerrar el modal despues de clik en guardar
+            cerrarModalPeriodos();
+        }else{
+                alertSystem("info", "Todos los campos son Requeridos");
+                console.log("Todos los campos son requeridos");
+            
+        }
+
+            
+
+        });
+
+
+
+
+        
+
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "@Url.Content("~/CatPeriodos/ListarPeriodos")",
+            //data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (retorno) {
+                if (retorno.length > 0) {
+
+                    tbPeriodos.rows().remove().draw();
+                    _numReg = retorno.length;
+                    console.log("Numero de registros::" + _numReg)
+                    $.each(retorno, function (i, data) {
+
+                        var VarEstatus = ""
+                        if (data.Estatus != 0) {
+                            VarEstatus = "Cerrado"
+                        }
+                        else {
+                            VarEstatus = "Abierto"
+                        }
+
+                        tbPeriodos.row.add($('<tr id="' + data.Periodo + '"><td >' + data.Periodo + '</td> <td >' + data.Anio + '</td> <td>' + data.Mes + '</td> <td>' + data.Quincena + '</td>   <td>' + data.Fecha_inicio + '</td>   <td>' + data.Fecha_fin + '</td>    <td>' + VarEstatus + '</td> <td> <a href="#" onclick="editarPeriodo(' + data.Periodo + ');">  Editar </a> </td> </tr>'));
+                        tbPeriodos.draw();
+
+                    });
+                    ocultarLoader();
+
+                } else { alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();}
+
+            },
+            error: function (e) {
+                alertSystem("error", e.responseText);
+                ocultarLoader();
+            }
+
+        })
+
+    });
+
+    function editarPeriodo(idperiodo) {
+        $('#modalPeriodo').find("input[name=idPeriodo]").val(idperiodo)
+        $('#modalPeriodo').find('#idPeriodoSpan').val(idperiodo)
+        //alert("EDITAR  periodo:> " + $('#modalPeriodo').find('#idPeriodoSpan').val());
+        var tr = $('#tbPeriodos tr[id=' + idperiodo + ']');
+        //alert("todo TR:> " + tr.html());
+        //var td=$('#tNominaciones tr[id=' + idnominacion + ']').find('#idnominaciontd');
+        var idPeriodo = $('#tbPeriodos tr[id=' + idperiodo + ']').find("td").eq(0).html();
+        var anio = $('#tbPeriodos tr[id=' + idperiodo + ']').find("td").eq(1).html();
+        var mes = $('#tbPeriodos tr[id=' + idperiodo + ']').find("td").eq(2).html();
+        var quincena = $('#tbPeriodos tr[id=' + idperiodo + ']').find("td").eq(3).html();
+        var fechaInicio = $('#tbPeriodos tr[id=' + idperiodo + ']').find("td").eq(4).html();
+        var fechaFin = $('#tbPeriodos tr[id=' + idperiodo + ']').find("td").eq(5).html();
+        var estatus = $('#tbPeriodos tr[id=' + idperiodo + ']').find("td").eq(6).html();
+
+        //Elemento del Modal
+        //$('#modalPeriodo').find('#idPeriodo').val(idPeriodo);
+        $('#modalPeriodo').find("input[name=idPeriodo]").val(idPeriodo);
+        $('#modalPeriodo').find("input[name=anio]").val(anio);
+        $('#modalPeriodo').find("input[name=mes]").val(mes);
+        $('#modalPeriodo').find("input[name=quincena]").val(quincena);
+        $('#modalPeriodo').find("input[name=fechaInicio]").val(fechaInicio);
+        $('#modalPeriodo').find("input[name=fechaFin]").val(fechaFin);
+
+        if (estatus == "Cerrado") {
+
+            $("#modalPeriodo").find("input[name=estatusPeriodo]").prop("checked", true);
+        } else {
+          
+            $("#modalPeriodo").find("input[name=estatusPeriodo]").prop("checked", false);
+        }
+        //Fin Elementos del modal
+
+        abrirModalPeriodos();
+   }
+
+    function ValidaCampos() {
+        //campo no validado ya que se genera automaticamente
+        //$('#modalPeriodo').find("input[name=idPeriodo]").val() == "" &&
+        var retorno =true;
+        
+        if ($('#modalPeriodo').find("input[name=anio]").val() == "" ){retorno= false}
+        if ($('#modalPeriodo').find("input[name=mes]").val() == "") { retorno = false }
+        if ($('#modalPeriodo').find("input[name=quincena]").val() == "") { retorno = false }
+        if ($('#modalPeriodo').find("input[name=fechaInicio]").val() == "") { retorno = false }
+        if ($('#modalPeriodo').find("input[name=fechaFin]").val() == "") { retorno = false }
+         
+        return retorno;
+    }
+
+    function abrirModalPeriodos() {
+        //backdrop:true se pone oscuro el fondo y puedes cerrarlo en los botones de cerrar o dando click dando fuera del modal
+        //backdrop:false NO se pone oscuro el fondo y puedes cerrarlo en los botones de cerrar o dando click dando fuera del modal
+        //backdrop:static  se pone oscuro el fondo y solo puedes cerrarlo con los botones de cerrar del modal
+
+        $('#modalPeriodo').modal({
+            backdrop: 'static',
+            show: true,
+            keyboard: true
+        })
+
+    }
+    function cerrarModalPeriodos() {
+        $('#modalPeriodo').modal("hide");
+        //resetValuesFormModalValor($('#modalPeriodo'));
+        resetValuesFormModalPeriodo();
+       //location.reload(true);//reload from server recarga la pagina (no lo uso ya que lo cambia a Ajax)
+
+
+    }
+
+    function getValuesForm(modal) {
+
+        if (modal.find('#idPeriodoSpan').val() == 0) {
+            dataSend.AccionSend = 'Add';
+        } else {
+            dataSend.AccionSend = 'Edit';
+
+        }
+        dataSend.idPeriodo = $('#modalPeriodo').find("input[name=idPeriodo]").val();
+        dataSend.anio = $('#modalPeriodo').find("input[name=anio]").val();
+        dataSend.mes = $('#modalPeriodo').find("input[name=mes]").val();
+        dataSend.quincena = $('#modalPeriodo').find("input[name=quincena]").val();
+        dataSend.fechaInicio = $('#modalPeriodo').find("input[name=fechaInicio]").val();
+        dataSend.fechaFin = $('#modalPeriodo').find("input[name=fechaFin]").val();
+
+        if ($("#modalPeriodo").find("input[name=estatusPeriodo]").prop("checked")) 
+        {
+            dataSend.estatus = 1;
+        } else {
+            dataSend.estatus = 0;
+        }
+
+        
+
+
+        console.log("jsonValues:> " +
+        dataSend.idPeriodo + "__" +
+        dataSend.anio + "__" +
+        dataSend.mes + "__" +
+        dataSend.quincena + "__" +
+        dataSend.fechaInicio + "__" +
+        dataSend.fechaFin + "__" +
+        dataSend.estatus + "__" +
+        dataSend.AccionSend
+        );
+
+
+        return dataSend;
+    }
+
+
+    function resetValuesFormModalPeriodo() {
+        //alert("RESETEANDO..");
+        $('#modalPeriodo').find('#idPeriodoSpan').val(0);
+        
+        console.log("modalPeriodo reseteando:> " + $('#modalPeriodo').find('#idPeriodoSpan').val());
+        //modal.find("input,textarea,select").val('');//.end().find("input[type=checkbox], input[type=radio]").prop("checked", "").end();
+        
+        $('#modalPeriodo').find("input[name=idPeriodo]").val("");
+        $('#modalPeriodo').find("input[name=anio]").val("");
+        $('#modalPeriodo').find("input[name=mes]").val("");
+        $('#modalPeriodo').find("input[name=quincena]").val("");
+        $('#modalPeriodo').find("input[name=fechaInicio]").val("");
+        $('#modalPeriodo').find("input[name=fechaFin]").val("");
+
+        $("#modalPeriodo").find("input[name=estatusPeriodo]").prop("checked", false);
+        
+
+        
+    }
+
+        </script>

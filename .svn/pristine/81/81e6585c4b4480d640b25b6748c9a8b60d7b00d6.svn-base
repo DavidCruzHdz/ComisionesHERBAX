@@ -1,0 +1,19 @@
+﻿using System;
+
+/// <summary>
+/// Summary description for Class1
+/// </summary>
+public class ConceptosModels
+{
+	public ConceptosModels()
+	{
+		//
+		// TODO: Add constructor logic here
+		//
+
+        public long idCondepto;
+        public String tipoConcepto;
+        public String descripcion;
+
+	}
+}

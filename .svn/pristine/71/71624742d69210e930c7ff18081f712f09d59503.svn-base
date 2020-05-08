@@ -1,0 +1,170 @@
+﻿@model List<Comisiones.Models.CO_st_BuscarSocioMovimientos_Result>
+
+
+
+
+@{
+    ViewBag.Title = "Búsqueda de socio";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+<br />
+
+<form action="@sesion.urlMain/MovimientosSocio/Index" method="post" id="idFormsocios">
+
+    <div class="form-group">
+        <label for="Partner_id">Socio</label>
+        <input class="form-control" id="Partner_id" name="Partner_id" type="text" />
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="Importe">Nombre</label>
+            <input class="form-control" id="FirstName" name="FirstName" type="text" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="Importe">Primer Apellido</label>
+            <input class="form-control" id="LastName" name="LastName" type="text" />
+        </div>
+    </div>
+    <br />
+
+
+    <input id="BuscarMovimientosSocio" onclick="clicEvent()" value="Buscar" class="btn btn-primary btnTamano" type="button" />
+
+</form>
+
+
+
+
+<br />
+
+
+
+<table id="idSociosMovimiento" class="table table-striped table-bordered dt-responsive nowrap" style="width:98%">
+</table>
+
+
+@section scripts{
+
+    <script>
+
+        $(document).ready(function () {
+            
+            movimientosSocio = $('#idSociosMovimiento').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+                },
+
+                //scrollCollapse: true,
+                paging: true,
+                //data:dataSet,
+
+                columns: [
+                    { title: "Socio" },
+                    { title: "Nombre" },
+                    { title: " " }
+                ]
+            });
+
+
+
+            
+        })
+
+
+        function movimientoSocio(varPartner_id, varId_Periodo, varNombre ) {
+            alert("varPartner_id" + varPartner_id);
+           
+            window.location.href = 'Movimientos/MovimientosSocio?PartnerId=' + varPartner_id + '&Id_Periodo=' + varId_Periodo + '&Nombre=' + varNombre;
+        }
+
+        function clicEvent() {
+            event.preventDefault();
+            if ($("#Partner_id").val() == "" && $("#FirstName").val() == "" && $("#LastName").val() == "") {
+                $("#Partner_id").focus();
+                alertSystem("warning", "Debe capturar por lo menos un campo para búsqueda");
+                //alert("El numero de socio o el nombre es requerido")
+                return false;
+            }
+            /*
+            else if ($("#FirstName").val() === "") {
+                $("#FirstName").focus();
+                return false;
+            }
+            else if ($("#LastName").val() === "") {
+                $("#LastName").focus();
+                return false;
+            }
+            */
+            //document.getElementById("idFormsocios").submit();
+            buscarMovimientosSocio();
+        }//End function
+
+        $(document).ready(function () {
+            $("#Partner_id").focus();
+        });
+
+
+        function buscarMovimientosSocio() {
+
+          //  $("#BuscarMovimientosSocio").click(function (event) {
+               
+                event.preventDefault();
+                // Get form
+               // alert("HAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                mostrarLoader();
+
+
+
+               // var data = { "Partner_id": partner_id, "FirstName": firstName, "LastName": lastName };
+                var form = $('#idFormsocios')[0];
+
+                // Create an FormData object
+                var data = new FormData(form);
+
+                $.ajax({
+                    type: "POST",
+                    enctype: 'multipart/form-data',
+                    url: "@Url.Content("~/MovimientosSocio/buscarSocios")",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    timeout: 600000,
+                    success: function (retorno) {
+
+                        if (retorno.length > 0) {
+                            movimientosSocio.rows().remove().draw();
+                            _numReg = retorno.length;
+
+                            $.each(retorno, function (i, data) {
+                                //var datos = new { PartnerId = data.Partner_id, Id_Periodo = data.Id_Periodo, Nombre = data.Nombre };
+                                var url = '@Url.Action("Movimientos", "MovimientosSocio", new { PartnerId = "varPartnerId", Id_Periodo = "varId_Periodo", Nombre = "varNombre" })';
+                                url = url.replace("varPartnerId", data.Partner_id).replace("varId_Periodo", data.Id_Periodo).replace("varNombre", data.Nombre);
+
+                                movimientosSocio.row.add(
+                                    [
+                                        data.Partner_id,
+                                        data.Nombre,
+                                       // '<a href="#" onclick = "movimientoSocio(' + data.Partner_id + ',' + data.Id_Periodo + ',' + '\'' + data.Nombre + '\'' + ')" >Seleccionar</a>'                                      
+                                        ' <a href="' + url +'" >Ver Movimientos </a>'
+
+                                    ]);
+                                movimientosSocio.draw();
+                            });
+                            ocultarLoader();
+                        } else { alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();}
+
+
+                    }, error: function (e) {
+                        alertSystem("error", e.responseText);
+                        ocultarLoader();
+                    }
+                })
+
+           // })
+        }
+
+
+    </script>
+}

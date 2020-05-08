@@ -1,0 +1,119 @@
+﻿@model Comisiones.Models.CO_tb_Productos_Reembolso
+@{
+	ViewBag.Title = "Delete";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h2>Borrar esta compañia</h2>
+
+	@Html.AntiForgeryToken()
+	<h6>Esta seguro que desea borrar los datos de este producto?</h6>
+	<div>
+		<div>
+			<hr />
+
+			<dl class="dl-horizontal">
+				<dt>
+					@Html.DisplayNameFor(model => model.warehouse)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.warehouse)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Id_Empresa)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Id_Empresa)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Warehouse_ID)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Warehouse_ID)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.cve_art)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.cve_art)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Descripcion)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Descripcion)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.DescripcionCorta)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.DescripcionCorta)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.PrecioPublico)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.PrecioPublico)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.PrecioMinimo)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.PrecioMinimo)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.PrecioCosto)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.PrecioCosto)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.PrecioSocio)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.PrecioSocio)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.ActivoSAE)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.ActivoSAE)
+				</dd>
+
+			</dl>
+
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+
+				<div class="form-actions no-color">
+					<input type="submit" value="Aceptar" class="btn btn-default" />
+					@Html.ActionLink("Regresar", "Index", "Productos_Reembolso", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+				</div>
+			}
+		</div>
+	</div>
+</div>
+

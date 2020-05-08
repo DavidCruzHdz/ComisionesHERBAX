@@ -1,0 +1,62 @@
+﻿@model Comisiones.Models.ViewModels.PrestamoViewModel
+
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+
+@using (Html.BeginForm("Editar", "Prestamo", FormMethod.Post))
+{
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.HiddenFor(model => model.Id_prestamo)
+            <di class="form-group">
+                @Html.LabelFor(model => model.Partner_id)
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.Partner_id, "", new { @class = "form_control" })
+                    @Html.ValidationMessageFor(model => model.Partner_id, "", new { @class = "text-danger" })
+                </div>
+            </di>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Importe)
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.Importe, "", new { @class = "form_control" })
+                    @Html.ValidationMessageFor(model => model.Importe, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumeroPagos)
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.NumeroPagos, "", new { @class = "form_control" })
+                    @Html.ValidationMessageFor(model => model.NumeroPagos, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdConcepto)
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.IdConcepto, "", new { @class = "form_control" })
+                    @Html.ValidationMessageFor(model => model.IdConcepto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TipoAplicacion)
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.TipoAplicacion, "", new { @class = "form_control" })
+                    @Html.ValidationMessageFor(model => model.TipoAplicacion, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <br />
+            <div style="text-align:right">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+        </div>
+
+    </div>
+
+}

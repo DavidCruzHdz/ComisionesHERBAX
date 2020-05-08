@@ -1,0 +1,206 @@
+﻿@model Comisiones.Models.ViewModels.PrestamoViewModel
+
+
+@{
+    ViewBag.Title = "Capturar  préstamo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <br />
+           
+            
+            <div class="form-group">
+                <label for="lblFullName" > @Request.QueryString["nombre"]</label>
+            </div>
+            <div class="form-group">
+                <label for="Partner_id">Periodo Activo</label>
+                <input class="form-control" id="id_Periodo" name="id_Periodo" type="text" value="@Request.QueryString["Id_Periodo"] " readonly />
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="Partner_id">N&uacute;mero de socio</label>
+                <input class="form-control" id="Partner_id" name="partner_id" type="text" value="@Request.QueryString["Partner_id"] " readonly/>
+            </div>
+
+            <div class="form-group">
+                <label for="Partner_id">Importe a solicitar</label>
+                <input class="form-control" id="txtImporteSolicitar" name="importe" type="text" value="" />
+             </div>
+
+            <div class="form-group">
+                <label for="Partner_id">Forma de pago</label>
+                <select class="form-control" id="slFormaPago" name="slFormaPago">
+                    <!--<option selected value="0">Seleccione una forma de pago</option>
+                    <option value="1">Mensual</option>
+                    <option value="2">Quincenal</option>-->
+                </select>
+
+            </div>
+            <!--
+            <div class="form-group">
+                <label id="lblNumeroPagos" for="lblNumeroPagos">Numero de pagos</label>
+                <input class="form-control "   id="txtNumeroPagos" name="numeroPagos" type="text" value="" />
+
+            </div> -->
+            
+
+          
+            <div class="form-group">
+                <label for="lblNumeroPagos">N&uacute;mero de pagos</label>
+                <select class="form-control" id="txtNumeroPagos" name="txtNumeroPagos">
+                    <!--<option selected value="0">Seleccione una opcion</option>
+                    <option value="1">1 MES</option>
+                    <option value="2">1 mese</option>-->
+                </select>
+            </div>
+           
+
+
+            <div class="form-group">
+                <label for="lblMotivoPrestamo">Motivo de pr&eacute;stamo</label>
+                <textarea class="form-control" id="txtMotivoPrestamo" name="txtMotivoPrestamo"></textarea>
+            </div>
+
+            <br />
+            <div style="text-align:right">
+                <input value="Crear Pr&eacute;stamo" onclick="return comisiones.crearPrestamo();" class="btn btn-primary" type="submit" />
+            </div>
+        </div>
+
+    </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //comisiones.loadPrestamo();
+        mostrarLoader();
+        //permite escribir solo números
+        $('#txtImporteSolicitar').keyup(function () {
+            this.value = this.value.replace(/[^0-9].[^0-9]/g, '');
+        });
+
+        
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Content("~/Prestamo/getFormasdePago")",
+            //data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (retorno) {
+                console.log(JSON.stringify(retorno));
+                console.log(retorno.length);
+                if (retorno.length > 0) {
+                    $('#slFormaPago').children().remove();
+                    
+                    $("#slFormaPago").append('<option selected value="0">Seleccione una forma de pago</option>');
+                    $.each(retorno, function (key, formaPago) {
+                        //alert(formaPago.valor + ": " + formaPago.descripcion);
+                        $("#slFormaPago").append('<option value=' + formaPago.valor + '>' + formaPago.descripcion + '</option>');
+                    });
+
+
+                    
+                    
+
+
+                    ocultarLoader();
+                }
+                else {
+                    alertSystem("error", "Falla en SP que retorna datos para el Combo");
+                    ocultarLoader();
+                }
+
+
+
+            },
+            error: function (jqXHR, data, e) {
+                console.log('REVISAR ERROR:>>> ' + e);
+
+                alertSystem("error", e);
+                ocultarLoader();
+                
+            }
+        });
+
+
+
+        $('#slFormaPago').on('change', function () {
+            var idFormaPago = $(this).children("option:selected").val();
+            if (idFormaPago == 1) {
+                $('#lblNumeroPagos').text("N&uacute;mero de pagos mensuales");
+                $('#txtNumeroPagos').children().remove();
+                cargarComboNumeroPagos(idFormaPago);
+                
+            } else if (idFormaPago == 2) {
+                $('#lblNumeroPagos').text("N&uacute;mero de pagos quincenales");
+                $('#txtNumeroPagos').children().remove();
+                cargarComboNumeroPagos(idFormaPago);
+
+            }
+            else { $('#lblNumeroPagos').text("N&uacute;mero de pagos") }
+        });
+
+    });
+
+
+    function cargarComboNumeroPagos( idFormaPago) {
+        // Create an FormData object
+        var dataSend = new FormData();
+        dataSend.append('idFormaPago', idFormaPago);
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Content("~/Prestamo/getNumerodePagos")",
+            contentType: false,
+            data: dataSend,
+            processData: false,
+            cache: false,
+            
+        success: function (retorno) {
+            console.log(JSON.stringify(retorno));
+            console.log(retorno.length);
+            if (retorno.length > 0) {
+                
+                    
+                $("#txtNumeroPagos").append('<option selected value="0">Seleccione</option>');
+                $.each(retorno, function (key, numPagos) {
+                    //alert(formaPago.valor + ": " + formaPago.descripcion);
+                    $("#txtNumeroPagos").append('<option value=' + numPagos.indice + '>' + numPagos.valor + '</option>');
+                });
+
+
+                    
+                    
+
+
+                ocultarLoader();
+            }
+            else {
+                alertSystem("error", "No se encontraron formas de pagao configuradas");
+                ocultarLoader();
+            }
+
+
+
+        },
+        error: function (jqXHR, data, e) {
+            console.log('REVISAR ERROR:>>> ' + e);
+
+            alertSystem("error", e);
+            ocultarLoader();
+                
+        }
+    });
+
+    }
+
+</script>

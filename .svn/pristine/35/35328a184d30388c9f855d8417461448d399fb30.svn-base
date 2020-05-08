@@ -1,0 +1,58 @@
+﻿namespace Comisiones.Controllers
+{
+    using Comisiones.Models;
+    using SpreadsheetLight;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Web;
+    using System.Web.Mvc;
+
+    public class CalculaCDAController : Controller
+    {
+        // GET: CalculaCDA
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult GenerarMovSocio()
+        {
+
+            List<CO_st_InsertMovimientosSocio_CDA_Result> tblBonos;
+            using (herbaxEntities hbxEntities = new herbaxEntities())
+            {
+
+                //Procedimiento que retorna monto,partner_id,id_Periodo,estatus par amostrarlo en la tabla de comisiones cargadas
+                tblBonos = hbxEntities.CO_st_InsertMovimientosSocio_CDA().ToList();
+
+                if (Convert.ToInt32(tblBonos[0].numReg) > Convert.ToInt32(0))
+                {
+                    return Json("success");
+                }
+                else
+                {
+                    return Json("error");
+                }
+
+
+            }
+            //return Json(tblBonos, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult CalcularCDA()
+        {
+
+            List<CO_st_CalculaBonosCDA_Result> tblBonos;
+            using (herbaxEntities hbxEntities = new herbaxEntities())
+            {
+
+                //Procedimiento que calcula las bonos correspondientes a cada encargado del CDA
+                tblBonos = hbxEntities.CO_st_CalculaBonosCDA().ToList(); 
+
+            }
+            return Json(tblBonos, JsonRequestBehavior.AllowGet);
+        }
+
+    }
+}

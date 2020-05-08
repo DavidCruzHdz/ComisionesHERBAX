@@ -1,0 +1,82 @@
+﻿@model Comisiones.Models.CO_tb_Productos_Reembolso
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>CO_tb_Productos_Reembolso</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DescripcionCorta)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DescripcionCorta)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PrecioPublico)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PrecioPublico)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PrecioMinimo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PrecioMinimo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PrecioCosto)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PrecioCosto)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PrecioSocio)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PrecioSocio)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ActivoSAE)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ActivoSAE)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

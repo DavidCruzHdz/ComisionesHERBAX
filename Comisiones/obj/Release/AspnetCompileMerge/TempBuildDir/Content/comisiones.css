@@ -1,0 +1,167 @@
+﻿
+.maintitleSinFondo {
+    padding-left: 5px;
+    color: #4b4f54;
+    font-size: 23px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.maintitle {
+    background-color: #e3e7ec;
+    padding-left: 5px;
+    color: #00a98e;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  
+    border-color: #bee5eb;
+
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    text-transform:uppercase;
+}
+.maintitle hr {
+  border-top-color: #abdde5;
+}
+
+.maintitle .alert-link {
+  color: #062c33;
+}
+
+
+.copyright {
+    float: left;
+    width: 100%;
+    clear: both;
+    text-align: center;
+    padding: 3px;
+    color: #858585;
+    font-size: 10px;
+}
+
+.menuActivo {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    color: #ede813;
+    text-decoration: none;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-style: normal;
+}
+
+.tblComisiones {
+    border: 1px solid #dee2e6;
+}
+
+.textDescription {
+    text-transform: capitalize;
+}
+
+.submenuItem {
+    padding-left:5px;
+    padding-right:5px;
+    white-space: nowrap;
+}
+.enlace {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-style: normal;
+}
+
+    .enlace:visited {
+        text-decoration: none;
+    }
+
+    .enlace:hover {
+        color: #ede813;
+        text-decoration: none;
+    }
+
+    .enlace:active {
+        color: #000000;
+        text-decoration: none;
+    }
+
+/* Style buttons */
+.btn {
+    background-color: rgba(0,169,142,0.7);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-color: #ffffff;
+}
+
+
+    /* Darker background on mouse-over */
+    .btn:hover {
+        background-color: #00a98e;
+        color: white;
+    }
+
+.btnTamano {
+    width: 119px;
+}
+
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.modal-header {
+    display: block;
+}
+
+.mayusculas{
+    text-transform:uppercase;
+}
+.derecha{
+    text-align:right;
+}
+.izquierda{
+    text-align:left;
+}
+.importeMovimiento{
+    padding-right:8px;
+    font-weight:bold;
+}
+.lidisabled {
+    pointer-events:none; 
+    opacity:0.6;   
+}
+.espaciosIzquierda{
+    padding-left:5px;
+    padding-top:3px;
+}
+.espaciosDerecha{
+    padding-right:5px;
+    padding-top:3px;
+}
+
+.centrarLoader {
+    
+    /*background: red;*/
+    width: 160px;
+    align-content:center;
+}

@@ -1,0 +1,655 @@
+﻿@model IList<Comisiones.Models.CO_st_BuscaProductosPremios_Result>
+
+@{ ViewBag.Title = "Listado de Productos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript" class="init">
+		$(document).ready(function () {
+			var table = $('#tblReembolsos').DataTable({
+				language: {
+					"decimal": "",
+					"emptyTable": "No hay información",
+					"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+					"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+					"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+					"infoPostFix": "",
+					"thousands": ",",
+					"lengthMenu": "Mostrar _MENU_ registros",
+					"loadingRecords": "Cargando...",
+					"processing": "Procesando...",
+					"search": "Buscar:",
+					"zeroRecords": "Ningún dato disponible en esta tabla",
+					"paginate": {
+						"first": "Primero",
+						"last": "Ultimo",
+						"next": "Siguiente",
+						"previous": "Anterior"
+					}
+				}
+			}
+			);
+
+
+		});
+</script>
+
+
+<head>
+	<link rel="stylesheet" href="~/Content/estilos.css" />
+</head>
+
+<body>
+	<input type="checkbox" id="cerrar">
+	<label for="cerrar" id="btn-cerrar">X</label>
+	<div class="ventana">
+		<div class="contenido">
+			<h2>Cargando Informacion</h2>
+			<img src="~/images/espera.svg" alt="">
+			<h4>Espere hasta que la informacion se complete</h4>
+		</div>
+	</div>
+
+
+
+
+	<main>
+		<div class="maintitle">Lista de reembolsos pendientes</div>
+		<div class="container-fluid" id="divMainContainer" style="align-content:center">
+			<form id="myform" class="form-inline">
+
+
+
+				@if (ViewBag.Message != "")
+				{
+					<script type="text/javascript">
+                                    window.onload = function ()
+                                    {
+
+                                        if (@ViewBag.IsOk == 1)
+                                        {
+                                            Swal.fire("@ViewBag.Message", 'Presione el boton para cerrar!', 'success');
+
+                                        }
+                                        else
+                                        {
+                                            Swal.fire({
+                                                title: '@ViewBag.Message',
+                                                text: "Presione el boton para cerrar!",
+                                                type: "error",
+
+                                                animation: false,
+                                                customClass:
+                                                      {
+                                                          popup: 'animated tada'
+                                                      }
+                                            }).then(function (result)
+                                            {
+                                                window.location.hostname;
+                                            })
+
+                                        }
+
+
+                                    };
+					</script>
+				}
+
+				<button type="button" class="btn btn-info btn-sm" id="btnDescargarExcel">Descargar Excel</button>
+
+				<br />
+				<br />
+				<table class="table table-striped modal-content theader w-auto" id="TblCliente">
+
+					<tr style="background-color:#D6EAF8;width:100%">
+						<th>Socio</th>
+						<th style="width:1000px;" type="text" maxlength="1000">Nombre Completo</th>
+						<th>Fecha Pedido</th>
+						<th>Periodo</th>
+						<th>Venta</th>
+						<th>Reembolso</th>
+						<th>Diferencia</th>
+					</tr>
+
+					<tr class="tablaCli"></tr>
+				</table>
+				<table class="table display" style="background-color:#D6EAF8" id="datatable">
+					<thead style="background-color:#D6EAF8">
+						<tr>
+							<th style="text-align:center">
+								<label>Clave</label>
+							</th>
+							<th style="width:700px;" type="text" maxlength="700">
+								<label>Nombre Producto</label>
+							</th>
+							<th>
+								<label>Precio</label>
+							</th>
+							<th>
+								<label>Cantidad a ordenar</label>
+							</th>
+							<th>
+								<label>Monto total</label>
+							</th>
+							<th>
+							</th>
+							<th>
+							</th>
+
+						</tr>
+					</thead>
+					<tbody>
+
+						@for (var i = 0; i < Model.Count; i++)
+						{
+							<tr id="row+@i" oninput="test(this)">
+
+								@Html.HiddenFor(x => x[i].PrecioPublico, new { @class = "form-control  TmpVentas", @id = "Precio" + @i })
+								@Html.HiddenFor(x => x[i].sku, new { @class = "form-control TmpSku" })
+								@Html.HiddenFor(x => x[i].Descripcion, new { @class = "form-control", @style = "align-items:right", @disabled = "disabled" })
+								@Html.HiddenFor(x => x[i].SubTotal, new { @class = "form-control Monto", @style = "align-items:right", @disabled = "disabled" })
+
+
+								<td style="text-align:center">
+									@Html.DisplayFor(x => x[i].sku, new { @class = "form-control" })
+								</td>
+								<td style="width:700px;" type="text" maxlength="700">
+									@Html.DisplayFor(x => x[i].Descripcion, new { @class = "form-control", @style = "align-items:right", @disabled = "disabled" })
+								</td>
+								<td>
+
+									@Html.DisplayFor(x => x[i].PrecioPublico, new { @class = "form-control VaPrecio" + @i, @style = "align-items:right", @disabled = "disabled" })
+								</td>
+								<td>
+									@Html.EditorFor(x => x[i].CantidadProducto, "Teclee la cantidad a solicitar", new { @class = "form-control CantProd", htmlAttributes = new { min = 0, max = 100000 }, @style = "align-items:right; width: 80px; height: 20px;", @type = "number" })
+									<br />
+									@Html.ValidationMessageFor(x => x[i].CantidadProducto, "", new { @class = "text-danger" })
+								</td>
+								<td>
+									@Html.DisplayFor(x => x[i].SubTotal, new { @class = "form-control TmpMonto", @style = "align-items:right", @disabled = "disabled" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Id_Empresa, new { @class = "form-control  IdEmpresa" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Id_Socio, new { @class = "form-control  TmpSocio" })
+								</td>
+								<td>
+									@Html.HiddenFor(x => x[i].Id_Periodo, new { @class = "form-control  TmpPeriodo" })
+								</td>
+							</tr>
+						}
+					</tbody>
+
+				</table>
+
+
+
+				<div class="modal-footer">
+					<input type="hidden" value="0" id="rembolsoTotal" />
+					<input type="hidden" value="0" id="rembolsoActual" />
+
+					<a href="~/ReembolsosCanje/" class="btn btn-danger btn-lg">Cerrar</a>
+					<input type="submit" value="envia" onclick="return validar()" class="btn btn-danger btn-lg" />
+				</div>
+
+			</form>
+
+
+		</div>
+	</main>
+</body>
+
+
+
+
+@section scripts{
+	<script>
+		$(document).ready(function () {
+			mostrarLoader();
+			$(".CantProd").val(0);
+			$(".text-box").val(0);
+
+
+				var Socio = 0;//global variable
+				var Ventas = 0;//global variable
+				var TotalReembolso = 0;//global variable
+
+				var Reembolsado = "";
+				var NumSocio = "";
+				var Diferencia = 0;
+				var Anio = 0;
+				var Mes = 0;
+				var Quincena = 0;
+
+			$('#btnDescargarExcel').click(function (event)
+			{
+	            event.preventDefault();
+		        mostrarLoader();
+			    window.location.href = 'descargaReembolsosCanje';
+				ocultarLoader();
+			});
+
+
+			$('#btnOtroExcel').click(function (event)
+			{
+	            event.preventDefault();
+		        mostrarLoader();
+			    window.location.href = 'descargaEXCELL';
+				ocultarLoader();
+			});
+
+			ocultarLoader();
+				addRowHandlers();
+        });
+
+
+
+
+	function addRowHandlers()
+			{
+
+			    var table = document.getElementById("tblReembolsos");
+				var rows = table.getElementsByTagName("tr");
+
+				for (i = 1; i < rows.length; i++)
+				{
+					var row = table.rows[i];
+					row.onclick = function (myrow)
+					{
+
+					    $(".valid").text("0");
+						return function ()
+						{
+                            var Partner = myrow.getElementsByTagName("td")[0];
+							var IdPartner = Partner.innerHTML;
+
+							var Name = myrow.getElementsByTagName("td")[1];
+							var NombreCompleto = Name.innerHTML;
+
+							var Sale = myrow.getElementsByTagName("td")[4];
+							var Venta = Sale.innerHTML;
+
+							var Reembolsar = myrow.getElementsByTagName("td")[5];
+							var Reembolso = Reembolsar.innerHTML;
+
+							Reembolso = Reembolso.replace("$", "");
+							Reembolso = Reembolso.replace(",", "");
+							$("#rembolsoTotal").val( Reembolso);
+							var Estado = myrow.getElementsByTagName("td")[6];
+							var Periodo = Estado.innerHTML;
+
+							Socio = IdPartner;//global variable
+
+							var limite = 1;
+
+							$('#myform').on('submit', function(ev) {
+								 $('#my-modal').modal({
+							        show: 'false'
+								    });
+
+									window.opener.document.getElementById('myModal').innerHTML = "";
+
+								    var data = $(this).serializeObject();
+								    json_data = JSON.stringify(data);
+									$("#results").text(json_data);
+									$(".modal-body").text(json_data);
+
+										ev.preventDefault();
+								});
+
+
+							var hoy = new Date();
+							var dd = hoy.getDate();
+							var mm = hoy.getMonth()+1;
+							var yyyy = hoy.getFullYear();
+
+							if (dd < 10)
+							{
+								  dd='0'+dd;
+							}
+
+							if (mm < 10)
+							{
+								mm='0'+mm;
+							}
+							//  var fecha = new Date();
+
+						   FechaPedido = dd + "/" + mm + "/" + yyyy;
+							ReembolsoSocio = Reembolso.toString();
+							Reembolsado = "";
+							NumSocio = "";
+
+								var SocioID = IdPartner.toString();//global variable
+								var numeros = "0123456789.";
+									for (i = 0; i < Socio.length; i++)
+									{
+									   if (numeros.indexOf(SocioID.charAt(i), 0) != -1)
+									   {
+											NumSocio = NumSocio + SocioID.charAt(i);
+										}
+									}
+									Socio = NumSocio;
+
+
+									for (i = 0; i < ReembolsoSocio.length; i++)
+									{
+									   if (numeros.indexOf(ReembolsoSocio.charAt(i), 0) != -1)
+									   {
+											Reembolsado = Reembolsado + ReembolsoSocio.charAt(i);
+										}
+									}
+
+
+
+							$(".TmpSocio").val(Socio.toString());
+							$(".TmpPeriodo").val(Periodo.toString());
+
+							TotalReembolso = Reembolsado;
+							Diferencias = TotalReembolso;
+
+							var Clientes = " <td>" + Socio.toString() + "</td><td>" + NombreCompleto.toString() + "</td><td>" + FechaPedido.toString() + "</td><td>" + Periodo.toString() + "</td><td>" + Venta.toString() + "</td><td id='reembolso'>" + Reembolso.toString() + "</td><td id='restante'>" + Diferencias + "</td>";
+							$(".tablaCli td").remove();
+							$(".tablaCli").append(Clientes);
+							$('#myModal').modal('show');
+						};
+					}(row);
+				}
+		};
+
+
+			function validar() {
+			    if ($("#restante").text() < 0) {
+                      Swal.fire({
+			            title: 'No puede guardar el pedido si exede la cantidad del reembolso otorgado',
+			            text: "Presione el boton para cerrar!",
+			            type: "error",
+			            animation: false,
+			            customClass: {
+			                popup: 'animated tada'
+			            }
+			        })
+
+					//alert("Reembolso exedido")
+					return false
+			    }
+
+
+				var VarReembolso = parseFloat($("#reembolso").text());
+				var VarRestante = parseFloat($("#restante").text());
+
+				var RendondeaReembolso =  Math.round(VarReembolso, -2);
+
+				//alert(RendondeaReembolso)
+				//alert(VarRestante)
+
+
+
+				//if (VarRestante == 0)
+				//	{
+    //                  Swal.fire({
+			 //           title: 'No puede guardar el pedido en ceros, seleccione algun producto',
+			 //           text: "Presione el boton para cerrar!",
+			 //           type: "error",
+			 //           animation: false,
+			 //           customClass: {
+			 //               popup: 'animated tada'
+			 //           }
+			 //       })
+
+				//	return false
+				//}
+
+
+				//alert(RendondeaReembolso);
+				//alert(VarRestante);
+				if (RendondeaReembolso == VarRestante)
+					{
+                      Swal.fire({
+			            title: 'No puede guardar el pedido en ceros, seleccione algun producto',
+			            text: "Presione el boton para cerrar!",
+			            type: "error",
+			            animation: false,
+			            customClass: {
+			                popup: 'animated tada'
+			            }
+			        })
+
+					//alert("Reembolso exedido")
+					return false
+				}
+
+
+				if (VarRestante > RendondeaReembolso)
+					{
+                      Swal.fire({
+			            title: 'No puede guardar el pedido en ceros, seleccione algun producto',
+			            text: "Presione el boton para cerrar!",
+			            type: "error",
+			            animation: false,
+			            customClass: {
+			                popup: 'animated tada'
+			            }
+			        })
+
+					//alert("Reembolso exedido")
+					return false
+				}
+
+
+				return true;
+			}
+
+
+
+			function test(item)
+			{
+				//alert("click");
+
+			var myrow2 =item;
+
+			var id = myrow2.id.toString();
+				id = id.substring(4, id.length);
+
+			var Producto = myrow2.getElementsByTagName("td")[0];
+			var IdProducto = Producto.innerHTML;
+			var Can = myrow2.getElementsByTagName("td")[3];
+			var Canti = Can.getElementsByTagName('input')[0].value;
+			var PreciArt = $("#Precio"+id).val();
+
+				if (Canti != null && Canti != "") {
+					var montoRow = myrow2.getElementsByTagName("td")[4];
+					var monto = montoRow.innerHTML;
+					var varMontoRow = 0;
+					varMontoRow = (PreciArt * Canti);
+					var sumaRembolsos = $("#rembolsoActual").val();
+
+					if (isNaN(sumaRembolsos))
+					{
+						sumaRembolsos = 0;
+					}
+
+					if (monto >= varMontoRow)
+					{
+						var restar = parseFloat(monto) - parseFloat(varMontoRow);
+						sumaRembolsos = parseFloat(sumaRembolsos) - parseFloat(restar);
+						$("#rembolsoActual").val(sumaRembolsos);
+					}
+					else
+					{
+						sumaRembolsos = sumaRembolsos - monto;
+						sumaRembolsos = parseFloat(sumaRembolsos) + parseFloat(varMontoRow);
+						$("#rembolsoActual").val(sumaRembolsos);
+					}
+
+					montoRow.innerHTML = Math.floor(varMontoRow * 100) / 100
+					//$(".SubMonto").val(Math.round(varMontoRow));
+
+					//montoRow.innerHTML = Math.round(varMontoRow, -1)
+					$(".SubMonto").val(Math.round(varMontoRow, -1));
+
+
+
+					var SumaMontos3 = 0;
+					var table3 = document.getElementById("datatable");
+					var rows3 = table3.getElementsByTagName("tr");
+
+					if (isNaN(sumaRembolsos))
+					{
+						sumaRembolsos = 0;
+
+					}
+
+					var rembolsoTotal  = $("#rembolsoTotal").val();
+					var VarReembolso = TotalReembolso;
+					var VarRestante = $("#restante").val();
+
+					Diferencia =rembolsoTotal - sumaRembolsos
+					//$("#restante").text(Math.round(Diferencia * 100) / 100);
+					$("#restante").text(Math.round(Diferencia,-1));
+
+					//alert(rembolsoTotal)
+					    if (Diferencia == rembolsoTotal)
+					    {
+					        Swal.fire({
+					            title: 'No puedes dejar el pedido en ceros',
+					            text: "Presione el boton para cerrar!",
+					            type: "error",
+					            animation: false,
+					            customClass: {
+					                popup: 'animated tada'
+					            }
+					        })
+					    }
+
+						if (Diferencia < 0)
+					    {
+					        Swal.fire({
+					            title: 'Ha exedido la cantidad a rembolsar! Favor de disminuir las cantidades',
+					            text: "Presione el boton para cerrar!",
+					            type: "error",
+					            animation: false,
+					            customClass: {
+					                popup: 'animated tada'
+					            }
+					        })
+					    }
+
+
+			    }
+		};
+
+
+	function addRowProductos()
+	{
+		var table2 = document.getElementById("datatable");
+		var rows2 = table2.getElementsByTagName("tr");
+		for (i = 1; i < rows2.length; i++)
+		{
+			var row2 = table2.rows[i];
+		row2.onclick = function (myrow2)
+			{
+				return function ()
+				{
+					var Producto = myrow2.getElementsByTagName("td")[0];
+					var IdProducto = Producto.innerHTML;
+
+					var IdPedido = myrow2.getElementsByTagName("td")[10];
+					var Pedido = IdPedido.innerHTML;
+
+					//alert("NumeroPedido:" + Pedido);
+
+
+					var valid = false;
+
+					valid = $(".validatecheckbox:checked").length > 0;
+
+				if (!valid)
+				{
+					//alert("se fue por falso");
+					var Cant = myrow2.getElementsByTagName("td")[3];
+					$("#Cant.innerHTML").val(0);
+					$("#validatecheckbox").attr("disabled", true);
+					return false;
+				}
+				else
+				{
+					//alert("se fue por verdadero");
+					var Cant = myrow2.getElementsByTagName("td")[3];
+					var Cantidad = Cant.innerHTML;
+
+					$("validatecheckbox").attr("disabled", false);
+					return true;
+				}
+			};
+				}(row2);
+			}
+			};
+
+			 $(function()
+			{
+				 $("#EnvioInfo").click(function ()
+				 {
+					 	var adicional =
+						  {
+							    modelo: $('#datatable input').serialize(),
+								SocioId: $("#SocioId").val(),
+								VentasId: $("#VentasId").val(),
+								ReembolsoId: $("#ReembolsoId").val(),
+							};
+
+							$.ajax({
+								url: "/ReembolsosCanje/Index",
+								type: 'POST',
+							    data: adicional,
+							});
+				 });
+			 });
+
+
+		function cierre()
+				{
+						$("#myModal").modal('hide');//ocultamos el modal
+						$('body').removeClass('modal-open');//eliminamos la clase del body para poder hacer scroll
+						$('.modal-backdrop').remove();//eliminamos el backdrop del modal
+
+						Swal.fire
+									    ({
+												title: 'Aun no ha grabado el pedido esta seguro que quiere ',
+												 text: "Presione el boton para cerrar!",
+												 type: "success",
+											animation: false,
+										  customClass:
+												{
+					                                popup: 'animated tada'
+												}
+									}).then(function (result)
+									{
+									    window.location.hostname;
+									})
+
+			    }
+
+
+		function cerrar()
+		{
+
+				$(".CantProd").text("0");
+				$(".text-box").text("0");
+		}
+
+	</script>
+
+
+
+}
+
+<style>
+	.theader th {
+		width: 16% !important;
+	}
+
+	.theader td {
+		width: 16% !important;
+	}
+</style>

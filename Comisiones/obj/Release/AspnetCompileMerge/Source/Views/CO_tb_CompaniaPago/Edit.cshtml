@@ -1,0 +1,64 @@
+﻿@model Comisiones.Models.CO_tb_CompaniaPago
+
+@{
+
+	ViewBag.Title = "Modificaciones";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h2>Modificar datos</h2>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<h4>Cambios a la informacion</h4>
+		<hr />
+		<div class="form-horizontal">
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			@Html.HiddenFor(model => model.id_CompaniaPago)
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.nombreCompania, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.nombreCompania, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.nombreCompania, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.porcentaje, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.DropDownList("porcentaje", (IEnumerable<SelectListItem>)ViewBag.Porcenta, "Seleccione el Porcentaje", new { @id = "Porciento", @class = "form-control" })
+
+				</div>
+			</div>
+
+			@*<div class="form-group">
+			@Html.LabelFor(model => model.usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.usuario, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.usuario, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.fechaMovimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.fechaMovimiento, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.fechaMovimiento, "", new { @class = "text-danger" })
+			</div>
+		</div>*@
+
+
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Grabar" class="btn btn-default" style="height:25Px; text-align:inherit" />
+					@Html.ActionLink("Regresar", "Index", "CO_tb_CompaniaPago", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+				</div>
+			</div>
+		</div>
+	}
+</div>
+

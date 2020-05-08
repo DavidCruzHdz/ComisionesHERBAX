@@ -1,0 +1,96 @@
+﻿@model Comisiones.Models.CO_tb_ConfigReembolsos
+
+@{
+	ViewBag.Title = "Modificaciones";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+	<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+		@*@Html.AntiForgeryToken()*@
+		<h2>Modificar Reembolsos</h2>
+
+		@using (Html.BeginForm("ProdReembolso", "CO_tb_ConfigReembolsos", FormMethod.Get))
+		{
+			@*@Html.AntiForgeryToken()*@
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			<form id="myform" class="form-inline">
+
+				<div class="form-horizontal">
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.id_pais, htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DropDownList("id_pais", (IEnumerable<SelectListItem>)ViewBag.dropdownPaises, "Selecciona un Pais?", new { onchange = "this.form.submit();", @id = "IdPais", @class = "form-control" })
+						</div>
+					</div>
+
+
+					<br />
+					<div class="form-group">
+						@Html.LabelFor(model => model.Anio, htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DropDownList("Anio", (IEnumerable<SelectListItem>)ViewBag.dropdownAnio, "Cual es Periodo a configurar?", new { @id = "IdAnio", @class = "form-control" })
+						</div>
+					</div>
+
+					<br />
+					<div class="form-group">
+						@Html.LabelFor(model => model.Mes, htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DropDownList("Mes", (IEnumerable<SelectListItem>)ViewBag.dropdownMes, "Cual es Mes a configurar?", new { @id = "IdMes", @class = "form-control" })
+						</div>
+					</div>
+
+					<br />
+					<div class="form-group">
+						@Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<br />
+					<div class="form-group">
+						@Html.LabelFor(model => model.Cantidad_Topada, htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.EditorFor(model => model.Cantidad_Topada, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.Cantidad_Topada, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+
+					<br />
+					<div class="form-group">
+						@Html.LabelFor(model => model.PorcentajeReembolso, htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.EditorFor(model => model.PorcentajeReembolso, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.PorcentajeReembolso, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					@Html.HiddenFor(model => model.Id_Reembolso, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.HiddenFor(model => model.UltMod_Usuario, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.HiddenFor(model => model.UltMod_F, new { htmlAttributes = new { @class = "form-control" } })
+
+					<br />
+					<p>
+						@*<input type="submit" value="Grabar" class="btn btn-default" style="height:25Px; text-align:inherit" />*@
+						<input type="submit" value="Modificar Productos" class="btn btn-default" style="height:25Px; text-align:inherit" />
+						@Html.ActionLink("Regresar", "Index", "CO_tb_ConfigReembolsos", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+					</p>
+				</div>
+			</form>
+		}
+
+
+
+	</div>
+
+
+
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}
+

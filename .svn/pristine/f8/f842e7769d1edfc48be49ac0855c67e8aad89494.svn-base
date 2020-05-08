@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc908ce8a1d34d59b6216a4aa852f309" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Conceptos" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_MovimientosSocio" Width="1.5" PointX="2.625" PointY="0.625" />
+        <AssociationConnector Association="herbaxModel.FK__CO_tb_Mov__id_Co__48CFD27E" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_PagosRespuesta" Width="3.125" PointX="11.625" PointY="0.875" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Parametro" Width="3" PointX="6.625" PointY="0.625" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_RecepcionDepositos" Width="1.5" PointX="10" PointY="0.5" />
+        <EntityTypeShape EntityType="herbaxModel.CO_tb_Prestamo" Width="1.5" PointX="4.375" PointY="0.625" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

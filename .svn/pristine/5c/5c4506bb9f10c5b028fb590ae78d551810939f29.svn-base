@@ -1,0 +1,115 @@
+﻿@model List<Comisiones.Models.ViewModels.ListMovimientosSocioViewModels>
+
+@{
+    ViewBag.Title = "Movimientos";
+}
+
+<div class="maintitleSinFondo">Movimientos</div>
+@{
+    ViewBag.Title = "Percepciones y deducciones del socio";
+    Int32 identificador = 0;
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+<br />
+
+<div class="container">
+    <!-- Content here -->
+    <div class="row">
+        <div class="col-md-12">
+            <label>SOCIO: </label>
+            @ViewBag.codigoSocio  - @ViewBag.nombreSocio
+        </div>
+
+    </div>
+
+
+    <div class="d-flex">
+        <div class="ml-auto p-2">
+            <a id="urlNuevo" href="@Url.Action("Nuevo","MovimientosSocio", new { PartnerId = @ViewBag.codigoSocio, nombre = @ViewBag.nombreSocio, Id_Periodo= @ViewBag.Id_Periodo })" class="btn btn-primary">Nuevo</a>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped tblComisiones ">
+                <thead>
+                    <tr>
+                        <th>Monto</th>
+                        <th>Tipo</th>
+                        <th>Fecha Alta</th>
+                        <th>Comentario</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @foreach (var movimientosSoc in Model)
+                {
+
+                    identificador++;
+                    <tr>
+                        <td class="derecha importeMovimiento">@movimientosSoc.montoFormatoMoneda</td>
+                        <td class="izquierda">@movimientosSoc.Id_Concepto - @movimientosSoc.DescripcionConcepto</td>
+                        <td class="mayusculas izquierda">@movimientosSoc.fechaFormatoCorta</td>
+                        <td class="mayusculas izquierda">@movimientosSoc.Comentario</td>
+                        <td>@movimientosSoc.strEstatus</td>
+                        <td>
+                            <!--<a href="~/MovimientosSocio/Editar/@movimientosSoc.Id_MovimientosSocio" class="btn btn-outline-secondary" id="urlEditar_@identificador" name="urlEditar_@identificador">Editar</a>-->
+                            <a href="~/MovimientosSocio/Eliminar/@movimientosSoc.Id_MovimientosSocio" class="btn btn-outline-danger" id="urlEliminar_@identificador" name="urlEliminar_@identificador">Eliminar</a>
+                        </td>
+                    </tr>                   
+                }
+            </table>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="row" style="text-align:right; padding:8px">
+                <a href="@Url.Action("Index","MovimientosSocio", null)" class="btn btn-primary">Regresar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+
+        $(document).ready(function () {
+
+            if(@ViewBag.Id_Periodo < 1){
+                alertSystem("error", "No existe periodo activo.");
+                $('#urlNuevo').hide();
+
+                /*
+                $('[name=urlEditar]').hide();
+                $('[name=urlEliminar]').hide();
+                */
+
+                console.log("SEGUNDA FORMA");
+
+                $("[id^=urlEditar_]").hide();
+
+                $("[id^=urlEliminar_]").hide();
+
+            }
+
+            $("#tdMoneda").on({
+                "focus":function (event){ $(event.target).select();},
+                "keyup":function(event){
+                            $(event.target).val(function(index,value){
+                                return value.replace(/\D/g,"").replace(/\B(?=(\d{3})+(?!\d)\.?)/g,",");
+                            });
+                        }
+            });
+
+        });
+
+    </script>
+}
+
+
+
+
+
+
+

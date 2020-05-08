@@ -1,0 +1,74 @@
+﻿@model Comisiones.Models.CO_tb_Reembolsos
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>CO_tb_Reembolsos</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.MES)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MES)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VENTA_PERIODO)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VENTA_PERIODO)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CANTIDAD_REEMBOLSO)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CANTIDAD_REEMBOLSO)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NOMBRE_CUSTOMER)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NOMBRE_CUSTOMER)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ESTATUS)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ESTATUS)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FECHA_CREACION)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FECHA_CREACION)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,107 @@
+﻿@model Comisiones.Models.CO_Tb_IVA
+
+@{
+	ViewBag.Title = "Alta de Impuestos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h2>Agregar nuevo</h2>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-horizontal">
+			<h4>Crear una registro de impuesto</h4>
+			<hr />
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.id_pais, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.DropDownList("id_pais", (IEnumerable<SelectListItem>)ViewBag.dropdownPaises, "Selecciona un Pais?", new { @id = "IdPais", @class = "form-control" })
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.id_regimen, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.DropDownList("id_regimen", (IEnumerable<SelectListItem>)ViewBag.dropdownRegimen, "A que Regimen Fiscal pertenece", new { @id = "IdRegimen", @class = "form-control" } )
+
+				</div>
+			</div>
+
+			@*<div class="form-group">
+					@Html.LabelFor(model => model.iva, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.DropDownList("iva", (IEnumerable<SelectListItem>)ViewBag.dropdownIVA, "Porcentaje de IVA?", new { @id = "IdIva", @class = "form-control" })
+					</div>
+				</div>*@
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.iva, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.iva, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.iva, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Grabar" class="btn btn-default" style="height:25Px; text-align:inherit" />
+					@Html.ActionLink("Regresar", "Index", "CO_Tb_IVA", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+				</div>
+			</div>
+		</div>
+
+	}
+</div>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+	$(document).ready(function () {
+	    $("#IdRegimen").attr('readonly', true);
+
+		$("#IdPais").change(function ()
+		{
+		    // Clear drop down list
+		    $("#IdRegimen").find("option").remove();
+
+		    var params =
+                {
+                      IdPais: $("#IdPais").val(),
+                };
+
+
+			    $.ajax(
+                    {
+                        url: "/CO_Tb_IVA/RegimenSelectList",
+                        method: "post",
+                        data: params,
+                        success: function (data) {
+                            console.log(data)
+                                // agregamos opcion de inicio
+                                $('<option>').val(0).text("A que Regimen Fiscal pertenece").appendTo("#IdRegimen");
+
+                            $.each(data, function (index, value) {
+                                console.log(index + value)
+                                $('<option>').val(value.Value).text(value.Text).appendTo("#IdRegimen");
+                            })
+
+                            $("#IdRegimen").attr('readonly', false);
+                            //$(".IdRegimen").css("disabled", "false");
+                            //$("#IdRegimen").css("disabled", "true");
+                        },
+                    });
+			})
+		//})
+	});
+</script>
+

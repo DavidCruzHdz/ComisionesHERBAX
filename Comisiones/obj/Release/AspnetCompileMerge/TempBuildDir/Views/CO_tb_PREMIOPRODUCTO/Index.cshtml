@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Comisiones.Models.CO_tb_Premios>
+
+@{
+	ViewBag.Title = "Listado Premios Productos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="maintitle">Listado de Productos de Premios</div>
+
+<br />
+<div class="container-fluid" id="divMainContainer">
+	@Html.AntiForgeryToken()
+	<p>
+		@Html.ActionLink("Agregar nueva", "Create", "CO_tb_Premios", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+		@Html.AntiForgeryToken()
+	</p>
+
+
+	<script type="text/javascript" class="init">
+		$(document).ready(function () {
+			var table = $('#tblCompaniaPago').DataTable({
+
+				language: {
+					"decimal": "",
+					"emptyTable": "No hay información",
+					"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+					"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+					"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+					"infoPostFix": "",
+					"thousands": ",",
+					"lengthMenu": "Mostrar _MENU_ registros",
+					"loadingRecords": "Cargando...",
+					"processing": "Procesando...",
+					"search": "Buscar:",
+					"zeroRecords": "Ningún dato disponible en esta tabla",
+					"paginate": {
+						"first": "Primero",
+						"last": "Ultimo",
+						"next": "Siguiente",
+						"previous": "Anterior"
+					}
+				}
+			}
+			);
+
+
+		});
+	</script>
+
+
+	<div class="col-lg-12" id="divPageQueryLists">
+		<table id="tblCompaniaPago" class="table display table-striped table-bordered dt-responsive nowrap" style="width:100%">
+			<thead>
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.id)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.id_premio)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.nombre_premio)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.id_pais)
+					</th>
+
+					<th>
+						@Html.DisplayNameFor(model => model.id_periodo)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Estatus)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Pagado)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.CreadoUsuario)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Creado_F)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.UltModUsuario)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.UltMod_F)
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.id)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.id_premio)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.nombre_premio)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.id_pais)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.id_periodo)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Estatus)
+					</td>
+
+					<td>
+						@Html.DisplayFor(modelItem => item.Pagado)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.CreadoUsuario)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Creado_F)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.UltModUsuario)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.UltMod_F)
+					</td>
+					<td>
+						@Html.ActionLink("Modificar", "Edit", new { id = item.id }) |
+						@Html.ActionLink("Consultar", "Details", new { id = item.id }) |
+						@Html.ActionLink("Borrar", "Delete", new { id = item.id })
+					</td>
+				</tr>
+				}
+			</tbody>
+
+		</table>
+	</div>
+</div>
+

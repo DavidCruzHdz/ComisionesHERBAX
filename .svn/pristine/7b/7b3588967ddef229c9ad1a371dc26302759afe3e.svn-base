@@ -1,0 +1,43 @@
+﻿@model List<Comisiones.Models.ViewModels.PrestamoSocioViewModel>
+
+@{
+    ViewBag.Title = "Préstamo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+<br />
+
+<div>
+    
+    
+    <div class="form-group">
+        <label for="Partner_id">Socio</label>
+        <input class="form-control" id="Partner_id" name="Partner_id" type="text" value="" />
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="Importe">Nombre</label>
+            <input class="form-control" id="FirstName" name="FirstName" type="text" value="" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="Importe">Primer Apellido</label>
+            <input class="form-control" id="LastName" name="LastName" type="text" value="" />
+        </div>
+    </div>
+    <br />
+    <input onclick="return comisiones.buscarSocio();" id="btnBuscar" value="Buscar" class="btn btn-primary btnTamano" type="submit" />
+</div>
+<br />
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped tblComisiones">
+            <tr>
+                <th>No. socio</th>
+                <th>Nombre Completo</th>
+                <th>Acción</th>
+            </tr>
+            <tbody id="tbodySocios"></tbody>            
+        </table>
+    </div>
+</div>

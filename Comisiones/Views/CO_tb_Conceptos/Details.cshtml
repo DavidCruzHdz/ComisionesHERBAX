@@ -1,0 +1,87 @@
+﻿@model Comisiones.Models.CO_tb_Conceptos
+
+
+@{
+	ViewBag.Title = "Consultas";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	@Html.AntiForgeryToken()
+	<h2>Consultar Compañias de Pago</h2>
+	<div>
+		<h4>Informacion de la Compañia</h4>
+		<hr />
+
+		<dl class="dl-horizontal">
+			<dt>
+				@Html.DisplayNameFor(model => model.descripcion)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.descripcion)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.tipo)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.tipo)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.gravable)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.gravable)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.pagoEspecie)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.pagoEspecie)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.estatus)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.estatus)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.usuario)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.usuario)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.fechaMovimiento)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.fechaMovimiento)
+			</dd>
+
+		</dl>
+	</div>
+	<p>
+		@*@Html.ActionLink("Edit", "Edit", new { id = Model.IdUsuario }) |
+			@Html.ActionLink("Back to List", "Index")*@
+		@Html.ActionLink("Regresar", "Index", "CO_tb_Conceptos", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+	</p>
+
+</div>
+
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}
+

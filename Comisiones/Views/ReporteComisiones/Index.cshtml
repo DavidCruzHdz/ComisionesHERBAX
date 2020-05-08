@@ -1,0 +1,424 @@
+﻿@model PagedList.IPagedList<Comisiones.Models.CO_st_ReporteComisionesExcell2_Result>
+@using PagedList.Mvc;
+
+
+@{
+	ViewBag.Title = "Reporte";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+	<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+	
+	
+</head>
+
+<script type="text/javascript" class="init">
+	$(document).ready(function () {
+		var table = $('#example').DataTable({
+
+			language: {
+				"decimal": "",
+				"emptyTable": "No hay información",
+				"info": "Mostrando _START_ a _END_ de _TOTAL_ Reglones",
+				"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+				"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+				"infoPostFix": "",
+				"thousands": ",",
+				"lengthMenu": "Mostrar _MENU_ Reglones",
+				"loadingRecords": "Cargando...",
+				"processing": "Procesando...",
+				"search": "Buscar:",
+				"zeroRecords": "Sin resultados encontrados",
+				"paginate": {
+					"first": "Primero",
+					"last": "Ultimo",
+					"next": "Siguiente",
+					"previous": "Anterior"
+				}
+			}
+		}
+		);
+
+
+	});
+</script>
+
+
+
+<div class="form-horizontal container-fluid col-lg-push-12 img-rounded ">
+	@Html.AntiForgeryToken()
+    <br />
+    <div class="maintitle">Reporte de Comisiones</div>
+	@using (Html.BeginForm("Index", "ReporteComisiones", FormMethod.Get))
+	{
+		@Html.AntiForgeryToken()
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<form id="myform" class="form-inline">
+
+			@*<div class="col-md-12">*@
+			<table>
+				<tr>
+						<td>
+							<div class="form-group">
+								<div class="col-md-2" style="text-align-last:right">
+									<label>Años:</label>
+								</div>
+								<div class="col-md-10">
+									@Html.DropDownList("Anio", (IEnumerable<SelectListItem>)ViewBag.dropdownAnio, "Seleccione el Año", new { onchange = "this.form.submit();", @id = "TmpAnio", @class = "form-control" })
+								</div>
+							</div>
+					
+							<div class="form-group">
+								<div class="col-md-2" style="text-align-last:right">
+									<label>Periodos:</label>
+								</div>
+								<div class="col-md-10">
+									@*@Html.DropDownList("id_periodo", (IEnumerable<SelectListItem>)ViewBag.dropdownPeriodos, "Selecciona un Periodo?", new { onchange = "this.form.submit();", @id = "TmpPeriodo", @class = "form-control" })*@
+									@Html.DropDownList("id_periodo", (IEnumerable<SelectListItem>)ViewBag.dropdownPeriodos, "Seleccione un Periodo", new { @id = "TmpPeriodo", @class = "form-control" })
+								</div>
+							</div>
+
+					<br />
+
+					<div class="form-group">
+						<div class="col-md-12">
+							<input id="TxtPeriodo" name="TxtPeriodo" type="hidden" value="">
+							<input type="submit" value="Generar Excel" onclick="return validar()" class="btn btn-danger btn-lg" />
+						</div>
+					</div>
+
+				</td>
+				</tr>
+			</table>
+
+			@*</div>*@
+		</form>
+	}
+
+			<br />
+			@*<div class="panel-body">
+				<table class="table display" id="example">
+					<tr>
+						<th>
+							@Html.ActionLink("partner_id", "Index", new { sortOrder = "partner_id", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("Nombre", "Index", new { sortOrder = "Nombre", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("Pais", "Index", new { sortOrder = "Pais", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("FormaPago", "Index", new { sortOrder = "FormaPago", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("C_Constructor", "Index", new { sortOrder = "C_Constructor", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("C_Generacional", "Index", new { sortOrder = "C_Generacional", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("C_InfinitoDiferencial", "Index", new { sortOrder = "C_InfinitoDiferencial", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("C_InfinitoRapido", "Index", new { sortOrder = "C_InfinitoRapido", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("C_Nivel", "Index", new { sortOrder = "C_Nivel", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("C_Retail", "Index", new { sortOrder = "C_Retail", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("C_Elite", "Index", new { sortOrder = "C_Elite", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("C_Salto", "Index", new { sortOrder = "C_Salto", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("C_TotalGeneral", "Index", new { sortOrder = "C_TotalGeneral", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("P_ManejoCDA", "Index", new { sortOrder = "P_ManejoCDA", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("P_BonoRuta", "Index", new { sortOrder = "P_BonoRuta", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("P_ReembolsoMeta", "Index", new { sortOrder = "P_ReembolsoMeta", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("P_TotalPercepciones", "Index", new { sortOrder = "P_TotalPercepciones", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_ArrendamientoAuto", "Index", new { sortOrder = "D_ArrendamientoAuto", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_ConvencionRiviera", "Index", new { sortOrder = "D_ConvencionRiviera", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_CreditoCrece", "Index", new { sortOrder = "D_CreditoCrece", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_DeducibleAuto", "Index", new { sortOrder = "D_DeducibleAuto", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_EquipoComputo", "Index", new { sortOrder = "D_EquipoComputo", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_Impresora", "Index", new { sortOrder = "D_Impresora", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_Mobiliario", "Index", new { sortOrder = "D_Mobiliario", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_Placas_Seguros", "Index", new { sortOrder = "D_Placas_Seguros", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_Prestamo", "Index", new { sortOrder = "D_Prestamo", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_Manutencion", "Index", new { sortOrder = "D_Manutencion", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("D_TotalDeducciones", "Index", new { sortOrder = "D_TotalDeducciones", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("ComisionTotal", "Index", new { sortOrder = "Comision_Total", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("I_Iva", "Index", new { sortOrder = "I_Iva", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("I_ISR", "Index", new { sortOrder = "I_ISR", currentFilter = ViewBag.CurrentFilter })
+						</th>
+						<th>
+							@Html.ActionLink("Total", "Index", new { sortOrder = "Total", currentFilter = ViewBag.CurrentFilter })
+						</th>
+					</tr>
+
+
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.partner_id)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Nombre)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Pais)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.FormaPago)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.C_Constructor)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.C_Generacional)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.C_InfinitoDiferencial)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.C_InicioRapido)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.C_Nivel)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.C_Retail)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.C_Elite)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.C_Salto)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.C_TotalGeneral)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.P_ManejoCDA)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.P_BonoRuta)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.P_ReembolsoMeta)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.P_TotalPercepciones)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_ArrendamientoAuto)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_ConvencionRiviera)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_CreditoCrece)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_DeducibleAuto)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_EquipoComputo)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_Impresora)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_Mobiliario)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_Placas_Seguros)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_Prestamo)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_Manutencion)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.D_TotalDeducciones)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.ComisionTotal)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.I_Iva)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.I_ISR)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Total)
+							</td>
+						</tr>
+
+					}
+				</table>
+
+
+				<div class="col-lg-push-12" style="text-align-last:left">
+					<table>
+						<tr>
+							<td style="text-align-last:right; width:25px;">
+							</td>
+							<td style="text-align-last:left; width:200px;">
+								Paginas @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+							</td>
+							<td>
+								@Html.PagedListPager(Model, page => Url.Action("Index",
+							   new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+							</td>
+						</tr>
+					</table>
+
+
+				</div>
+
+
+			</div>*@
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        moment().locale('es');
+
+
+	});
+
+
+	
+			function validar() {
+			    if ($("#TmpPeriodo").text() < 0) {
+					 var Periodo = $('#TmpPeriodo').val();			
+						$(".TxtPeriodo").val(Periodo);
+					return true
+			    }
+
+
+    //$('#picker').daterangepicker({
+    //    startDate: moment().subtract(29, 'days'),
+    //    endDate: moment(),
+    //    ranges: {
+    //        'Hoy': [moment(), moment()],
+    //        'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+    //        'Los ultimos 7 dias': [moment().subtract(6, 'days'), moment()],
+    //        'Los ultimos 30 dias': [moment().subtract(29, 'days'), moment()],
+    //        'Este Mes': [moment().startOf('month'), moment().endOf('month')],
+    //        'El mes pasado': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    //    }
+    //}, function(start, end){
+    //    $('#date').html('Del '+ start.format('DD MMMM YYYY') +' al '+ end.format('DD MMMM YYYY'))
+
+    //    var IdTransporte = $("#VarConsecutivo").val();
+    //    $("#FechaIni").val(start.format('DD/MM/YYYY'));
+    //    $("#FechaFin").val(end.format('DD/MM/YYYY'));
+
+    //    $("#FeInicial").val(start.format('DD/MM/YYYY'));
+    //    $("#FeFinal").val(end.format('DD/MM/YYYY'));
+    //});
+
+
+
+    @*function Busca()
+    {
+        var IdPlanta = @Session["idPlantaDF"];
+        var Captura = @Session["TipoCaptura"];
+        var DateInicial = $('#FechaIni').val();
+        var DateFinal = $('#FechaFin').val();
+        var Filter = $('#currentFilter').val();
+        var orden =  $("#sortOrder").val();
+        var QueBuscar =  $("#Search").val();
+
+        if (DateInicial != null)
+        {
+            QueBuscar = "";
+            Filter = null;
+            orden = "Entrada";
+            DateInicial = $('#start').val();
+            DateFinal = $('#end').val();
+            DateInicial = $('#FechaIni').val();
+            DateFinal = $('#FechaFin').val();
+        }
+        else
+        {
+            DateInicial = null;
+            DateFinal = null;
+            orden = "Transporte";
+            Filter = null;
+        }
+
+        var IdTransporte = $("#VarConsecutivo").val();
+
+
+        $.ajax({
+            url: location.origin + "/Index/Buscar?sortOrder=" + orden + "&currentFilter=" + Filter + "&FeInicial=" + DateInicial + "&FeFinal=" + DateFinal + "&searchString=" + QueBuscar,
+            success: function () {
+                $("#comment-" + IdPlanta).slideUp("fast");
+            }
+        });*@
+
+
+		
+	
+
+
+</script>

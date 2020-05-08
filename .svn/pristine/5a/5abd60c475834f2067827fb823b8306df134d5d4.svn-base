@@ -1,0 +1,264 @@
+﻿namespace Comisiones.Controllers
+{
+    using Comisiones.Models;
+    using Comisiones.Models.ModelsEvolution;
+    using Comisiones.Models.ViewModels;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity.Validation;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+
+    public class MovimientosSocioController : Controller
+    {
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
+        // GET: MovimientosSocio
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+        
+        
+        [HttpPost]
+        public JsonResult buscarSocios(SociosViewModel socios)
+        {
+
+            List<CO_st_BuscarSocioMovimientos_Result> listaSocios;
+            using (herbaxEntities hbxEntities = new herbaxEntities())
+            {
+
+                //Procedimiento que retorna monto,partner_id,id_Periodo,estatus par amostrarlo en la tabla de comisiones cargadas
+                string codigoSocio = "";
+
+                if (!String.IsNullOrEmpty(socios.Partner_id))
+                {
+                    codigoSocio = socios.Partner_id.PadLeft(10, '0');
+                }
+                listaSocios = hbxEntities.CO_st_BuscarSocioMovimientos(codigoSocio, socios.FirstName, socios.LastName).ToList();
+
+            }
+
+            // return View(listaSocios);
+            return Json(listaSocios, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult getConceptosPorTipo(String idTipo)
+        {
+
+            List<ListConceptoViewModel> conceptosList;
+
+            using (herbaxEntities hbxEntities = new herbaxEntities())
+            {
+                conceptosList = (from conceptos in hbxEntities.CO_tb_Conceptos
+                                 where conceptos.tipo == idTipo
+                                 && conceptos.estatus == 1
+                                 select new ListConceptoViewModel
+                                 {
+                                     Id = conceptos.id_Concepto,
+                                     descripcion = conceptos.descripcion
+                                 }).OrderBy(c =>  c.descripcion).ToList()
+                                ;
+            }
+
+            return Json(conceptosList, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult Nuevo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Nuevo(MovimientosSocioViewModel model)
+        {
+
+            Int16 estatusNuevo = 1;
+            string usuarioSistema = "usercomisiones";
+            Int64 idMovimiento = 0;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (herbaxEntities hbxEntities = new herbaxEntities())
+                    {
+
+                        //Validar si es grabable movimiento
+                        var concepto = hbxEntities.CO_tb_Conceptos.Find(model.Id_Concepto);
+
+                        var movimientosSocio = new CO_tb_MovimientosSocio();
+
+                        movimientosSocio.partner_id = model.Partner_id;
+                        movimientosSocio.id_Concepto = model.Id_Concepto;
+                        movimientosSocio.Monto = model.Monto;
+                        movimientosSocio.comentario = model.Comentario;
+                        movimientosSocio.fechaRegistro = DateTime.Now;
+                        movimientosSocio.estatus = estatusNuevo;
+                        movimientosSocio.usuario = usuarioSistema;
+                        movimientosSocio.fechaMovimiento = DateTime.Now; // fecha actual
+                        movimientosSocio.Id_Periodo = model.Id_Periodo;
+                        movimientosSocio.isDelete = estatusNuevo;
+
+                        hbxEntities.CO_tb_MovimientosSocio.Add(movimientosSocio);
+                        hbxEntities.SaveChanges();
+
+                        idMovimiento = movimientosSocio.id_MovimientosSocio;
+
+                        //return Redirect("~/MovimientosSocio/Movimientos");
+                        return RedirectToAction("Movimientos", "MovimientosSocio", new { PartnerId = movimientosSocio.partner_id, Id_Periodo = movimientosSocio.Id_Periodo, nombre = model.NombreSocio });
+                    }
+                }
+                else {
+                    var errors = ModelState.Select(x => x.Value.Errors)
+                      .Where(y => y.Count > 0)
+                      .ToList();
+                    return RedirectToAction("Movimientos", "MovimientosSocio");
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // Retrieve the error messages as a list of strings.
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+
+                // Join the list to a single string.
+                var fullErrorMessage = string.Join("; ", errorMessages);
+
+                // Combine the original exception message with the new one.
+                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                // Throw a new DbEntityValidationException with the improved exception message.
+                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+            }
+
+            return View(model);
+        }
+
+
+        public ActionResult Movimientos(String PartnerId, String Id_Periodo, String Nombre)
+        {
+
+
+            List<CO_st_MovientosDetalle_Result> listaMovimientosDetalle;
+            using (herbaxEntities hbxEntities = new herbaxEntities())
+            {
+
+                //Procedimiento que retorna monto,partner_id,id_Periodo,estatus par amostrarlo en la tabla de comisiones cargadas
+                String codigoSocio = PartnerId.PadLeft(10, '0');
+                listaMovimientosDetalle = hbxEntities.CO_st_MovientosDetalle(codigoSocio).ToList();
+
+                List<Object> listaResult = new List<object>();
+
+                //listaResult[0] = listaMovimientosDetalle;
+                //listaResult[1] = Id_Periodo;
+                //listaResult[2] = PartnerId;
+                //listaResult[3] = listaMovimientosDetalle;
+
+                ViewBag.Id_Periodo = Id_Periodo;
+                ViewBag.codigoSocio = PartnerId;
+                ViewBag.nombreSocio = Nombre;
+
+      
+
+            }
+            
+
+           // return Json(listaMovimientosDetalle, JsonRequestBehavior.AllowGet);
+
+            return View(listaMovimientosDetalle);
+        }
+
+        public ActionResult Editar(int Id)
+        {
+            MovimientosSocioViewModel movSocViewModel = new MovimientosSocioViewModel();
+
+            using (herbaxEntities hbxEntities = new herbaxEntities())
+            {
+
+                movSocViewModel = (from movimientosSoc in hbxEntities.CO_tb_MovimientosSocio
+                                       ///join clientes in hbxEntities.CL_tb_Customer on movimientosSoc.partner_id equals clientes.partner_id
+                                   join concepto in hbxEntities.CO_tb_Conceptos on movimientosSoc.id_Concepto equals concepto.id_Concepto
+                                   where movimientosSoc.id_MovimientosSocio == Id
+                                   select new MovimientosSocioViewModel
+                                   {
+                                       Partner_id = movimientosSoc.partner_id,
+                                       // NombreDistribuidor = clientes.first_name,
+                                       Id_MovimientosSocio = movimientosSoc.id_MovimientosSocio,
+                                       Id_Concepto = movimientosSoc.id_Concepto,
+                                       TipoConcepto = concepto.tipo,
+                                       DescripcionConcepto = concepto.descripcion,
+                                       Monto = movimientosSoc.Monto
+                                   }).First();
+            } 
+
+            return View(movSocViewModel);
+        }
+
+
+        [HttpPost]
+        public ActionResult Editar(MovimientosSocioViewModel model)
+        {
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (herbaxEntities hbxEntities = new herbaxEntities())
+                    {
+                        var movimientosSocio = hbxEntities.CO_tb_MovimientosSocio.Find(model.Id_MovimientosSocio);
+
+                        movimientosSocio.partner_id = model.Partner_id;
+                        movimientosSocio.id_Concepto = model.Id_Concepto;
+                        movimientosSocio.Monto = model.Monto;
+
+                        hbxEntities.Entry(movimientosSocio).State = System.Data.Entity.EntityState.Modified;
+                        hbxEntities.SaveChanges();
+
+                        return RedirectToAction("Movimientos", "MovimientosSocio", new { PartnerId = movimientosSocio.partner_id, Id_Periodo= movimientosSocio.Id_Periodo });
+
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Eliminar(int Id)
+        {
+
+            string codigoSocio = "";
+            int periodoActual = 0;
+
+            using (herbaxEntities hbxEntities = new herbaxEntities())
+            {
+                var movimientoSocio = hbxEntities.CO_tb_MovimientosSocio.Find(Id);
+
+                codigoSocio = movimientoSocio.partner_id;
+                periodoActual = movimientoSocio.Id_Periodo.HasValue ? movimientoSocio.Id_Periodo.Value : 0;
+
+                hbxEntities.CO_tb_MovimientosSocio.Remove(movimientoSocio);
+                hbxEntities.SaveChanges();
+
+            }
+
+            return RedirectToAction("Movimientos", "MovimientosSocio", new { PartnerId = codigoSocio, Id_Periodo = periodoActual });
+        }
+
+
+
+
+    }
+}

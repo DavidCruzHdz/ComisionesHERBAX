@@ -1,0 +1,160 @@
+﻿@model Comisiones.Models.ViewModels.MovimientosSocioViewModel
+
+
+@{
+    ViewBag.Title = "Alta de percepciones / deducciones";
+
+    ViewBag.codigoSocio = @Request.QueryString["PartnerId"];
+    ViewBag.Id_Periodo = @Request.QueryString["Id_Periodo"];
+
+}
+
+
+
+
+<div class="maintitle">@ViewBag.Title</div>
+<br />
+
+
+<form action="@sesion.urlMain/MovimientosSocio/Nuevo" method="post" border="5">
+
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-12">
+                <label for="Partner_id">Socio</label>
+                <input type="text" class="form-control" id="Partner_id" placeholder="" data-val="true" data-val-required="El campo Socio es obligatorio" name="Partner_id" value="@Request.QueryString["PartnerId"]">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Partner_id" data-valmsg-replace="true"></span>
+            </div>
+            <div class="col-lg-12">
+
+                <label for="tipoConcepto">Tipo Concepto</label>
+                <select class="form-control" data-val="true" data-val-required="El campo tipo concepto  es obligatorio" id="tipoConcepto" name="tipoConcepto" required>
+                    <option value="">Seleccione el tipo de concepto</option>
+                    <option value="D">Deducción</option>
+                    <option value="P">Percepción</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="tipoConcepto" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="col-lg-12">
+                <div id="concepto" style="padding-top:5px">
+                    <label for="Id_Concepto">Concepto</label>
+                    <select class="form-control" data-val="true" id="Id_Concepto" name="Id_Concepto"> </select>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+
+                <label for="Importe">Comentario</label>
+                <input class="form-control" data-val="true" data-val-required="Capture un comentario" id="comentario" name="comentario" type="text" value="">
+                <span class="field-validation-valid text-danger" data-valmsg-for="comentario" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="col-lg-12">
+
+                <label for="Importe">Monto</label>
+                <input class="form-control" data-val="true" data-val-number="El Monto  debe ser numerico." data-val-required="El campo Monto  es obligatorio" id="Monto" name="Monto" type="text" value="">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Monto" data-valmsg-replace="true"></span>
+            </div>
+
+            <!--
+            <div class="col-lg-12">
+
+                <label>Plazo : </label>
+                <select class="form-control">
+                    <option value="Q">QUINCENA</option>
+                    <option value="M">MENSUAL</option>
+
+                </select>
+            </div>
+
+            <div class="col-lg-12">
+
+                <label>A partir de la fecha : </label>
+                <input readonly class="form-control" type="text" id="fpagopres">
+
+            </div>
+                -->
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div>&nbsp;</div>
+            </div>
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-lg-4 align-content-center">
+                <a value="Cancelar " onclick="location.href='@Url.Action("Movimientos", "MovimientosSocio", new { PartnerId = ViewBag.codigoSocio, Id_Periodo= ViewBag.Id_Periodo} )'" class="btn btn-primary">Cancelar</a>
+            </div>
+            <div class="col-lg-4 align-content-left">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+                <input name="Id_Periodo" id="Id_Periodo" value="@Request.QueryString["Id_Periodo"]" type="hidden"/>
+            </div>
+            <div class="col-lg-4"></div>
+
+        </div>
+</form>
+
+
+@section scripts{
+    <script>
+
+
+        $(function () {
+            $("#fpagopres").datepicker();
+        });
+
+
+        function getPartnerid() {
+            return $(this).find('#Partner_id').val();
+        }
+
+        $(document).ready(function () {
+
+            console.log("Formulario listo");
+            console.log($('#idConcepto'));
+
+            $("#tipoConcepto").change(function () {
+
+                $('#Id_Concepto').show();
+                $('#concepto').show();
+
+                var url = "@Url.Action("getConceptosPorTipo", "MovimientosSocio")";
+                var idTipo = $('#tipoConcepto').val();
+                var data = { idTipo: idTipo }
+                console.log(idTipo);
+
+                if (idTipo != "" && idTipo != undefined) {
+
+                    $.get(url, data).done(function (data) {
+                        if (data.length > 0) {
+                            console.log("REGISTROS X TIPO CONCEPTO");
+                            console.log(data);
+                            $('#Id_Concepto').empty();
+                            for (i in data) {
+                                $("#Id_Concepto").append('<option value="' + data[i].Id + '" >' + data[i].Id + ' - ' + data[i].descripcion + '</option>');
+                            }
+                        } else {
+                            $('#Id_Concepto').empty();
+                            $('#Id_Concepto').hide();
+                        }
+                    })
+                } else {
+                    $('#Id_Concepto').empty();
+                    $('#Id_Concepto').hide();
+
+
+                    $('#concepto').hide();
+                }
+
+            });
+
+        });
+
+    </script>
+}
+

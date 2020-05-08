@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Herbax - Comisiones</title>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.js")
+
+   
+    @RenderSection("scripts", required: false)
+
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/comisiones.css" rel="stylesheet" />
+    <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <link href="~/Content/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/responsive.bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+        <div id="page_effect" style="display:none;">
+
+            <nav class="navbar navbar-expand-lg navbar-light-Comisiones bg-Comisiones">
+                <a class="navbar-brand" href="#">
+                    <img src="~/Content/themes/base/images/logo.png" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link enlace" href="@sesion.urlMain">Inicio<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link enlace" href="@sesion.urlMain/CargaComisiones/">cargar comisiones</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Movimientos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="@sesion.urlMain/MovimientosSocio/">Movimientos socios</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@sesion.urlMain/PrestamoSocio/">Pr&eacute;stamo a socio</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                C&aacute;lculo
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="@sesion.urlMain/CalculaComision/">C&aacute;lculo comisiones</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@sesion.urlMain/CalculaCDA/">C&aacute;lculo CDA</a>
+                                <a class="dropdown-item" href="@sesion.urlMain/CalculaPremio/">Calcula Premio</a>
+                                <a class="dropdown-item" href="@sesion.urlMain/CalculaReembolsos/">Calcula Reembolsos</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link enlace" href="@sesion.urlMain/Comisiones/">Archivo comisiones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link enlace" href="@sesion.urlMain/RecepcionDepositos/">Archivo depositos</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>*@
+                    </ul>
+                    @*<form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>*@
+                </div>
+            </nav>
+
+
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                
+                <footer>
+                    <div class="copyright"> Copyright &copy; 2019 Herbax products for life S.A. de C.V. version: 1.0.0.6</div>
+                </footer>
+
+                
+            </div>
+
+            <div class="container body-content">
+                <!-- GIF loader-->
+                <div id="divLoader" class="col-sm-12" style="display:none;">
+                    <div class="center-block">
+                        <img src="~/Content/ajax-loader.gif" alt="Loader" />
+                    </div>
+                </div>
+            </div>
+
+                <!-- MODAL Message-->
+                <div id="divMPageMessage" class="modal  fade" role="dialog" tabindex="-1">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Mensaje del Sistema</h4>
+                            </div>
+                            <div class="modal-body" id="divMessage">
+                                <div id="divMessageContent"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" id="btnMessageOk" data-dismiss="modal">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        <script type="text/javascript">
+            var g_zIndex = 11;
+            var MSG_TYPE = {
+                "success": "alert alert-success",
+                "info": "alert alert-info",
+                "warning": "alert alert-warning",
+                "error": "alert alert-danger"
+            };
+
+            //Funcion para formatear un numero a formato ###,###.##
+            function formatNumber(num) {
+                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            }
+
+            //Funcion para formatear un numero a formato $ ###,###.##
+            function formatCurrency(num) {
+                return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            }
+
+            function alertSystem(type, msg) {
+                bringToFront('divMessageContent');
+                $('#divMessageContent').removeClass()
+                $('#divMessageContent').addClass(MSG_TYPE[type]);
+                $('#divMessageContent').html(msg);
+                $('#divMPageMessage').modal('show');
+            }
+
+            function mostrarLoader() {
+                //$("#divLoader").show();
+                var v_control = $('#divLoader');
+                if (v_control !== null) {
+                    v_control.css("z-index", 1);
+                    v_control.show();
+                   window.scrollTo(0, 0);
+                }
+            }
+            function ocultarLoader() {
+                //$("#divLoader").hide();
+                var v_control = $('#divLoader');
+                if (v_control !== null) {
+                    v_control.css("z-index", 1);
+                    v_control.hide();
+                    // window.scrollTo(0, 0);
+                }
+            }
+
+
+            function bringToFront(p_idPage) {
+                //$('[id^="divPage"]').css("z-index","90");
+                var v_control = $('#' + p_idPage);
+                if (v_control !== null) {
+                    v_control.css("z-index", g_zIndex++);
+                    v_control.show();
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            $(document).ready(function () {
+
+                $('#page_effect').fadeIn(1200);
+
+
+                function obtieneNombrePaginaActual() {
+                    //var URLactual = jQuery(location).attr('href');
+                    //alert(URLactual);
+                    var pathname = window.location.pathname;
+                    //pathname = pathname.replace('/', '');
+                    //pathname = pathname.replace('/', '');
+                    //alert(pathname);
+                    return pathname;
+                }
+
+                var _paginaActual = obtieneNombrePaginaActual();
+
+                var alreadySetActive = false;
+
+                $("li").each(function () {
+                    if (this.innerHTML != undefined) {
+                        var element = $(this)[0];
+                        var aElem = element.childNodes[1];
+
+                        if (aElem.pathname !== '/') {
+                            if (aElem.pathname == _paginaActual) {
+                                if (aElem.id != 'aCalculo') {
+                                    aElem.classList.remove("enlace");
+                                    aElem.classList.add("menuActivo");
+                                    //alert(aElem.innerText);
+                                    alreadySetActive = true;
+                                }
+                            }
+                            else if (_paginaActual.indexOf(aElem.pathname.replace('/', '')) > 0) {
+                                if (alreadySetActive == false) {
+                                    //alert("pagina actual contiene");
+                                    aElem.classList.remove("enlace");
+                                    aElem.classList.add("menuActivo");
+                                    alreadySetActive = true;
+                                }
+                            }
+                            else {
+                                aElem.classList.remove("menuActivo");
+                                if (aElem.className.indexOf("enlace") == 0) {
+                                    aElem.classList.add("enlace");
+                                }
+                            }
+                        }//pathname !== '/'
+                    }
+                });
+
+                // De acuerdo al estatus del proceso de calculo, bloquea la opcion de movimientos por socio.
+                var _estatus = '@sesion.EstatusCalculo';
+                if (_estatus != undefined && (_estatus == 'True' || _estatus == 1)) {
+                    var elementMov = $("#liMovimientos")[0];
+                    elementMov.classList.remove("enlace");
+                    elementMov.classList.add("lidisabled");
+
+                    var aelementMov = elementMov.childNodes[1];
+
+                    if (_paginaActual == aelementMov.pathname) {
+                        window.location.href = "/";
+                    }
+                    else if (aelementMov.pathname.indexOf(_paginaActual.replace('/', '')) > 0) {
+                        window.location.href = "/";
+                    }
+                    else if (_paginaActual.indexOf(aelementMov.pathname.replace('/', '')) > 0) {
+                        window.location.href = "/";
+                    }
+
+                }
+                comisiones.urlMain = '@sesion.urlMain';
+            });
+
+        </script>
+
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+﻿@model Comisiones.Models.CO_tb_Usuarios
+
+@{
+	ViewBag.Title = "Acceso al portal";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="col-md-12 justify-content-center">
+
+	<div class="col-md-offset-4">
+		<p></p>
+	</div>
+	<div class="col-md-4 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+		<h2>@ViewBag.Title.</h2>
+
+				<section id="loginForm">
+					@using (Html.BeginForm("Login", "Home", new { ReturnUrl = Request.QueryString["returnUrl"] }, FormMethod.Post))
+					{
+						@Html.AntiForgeryToken()
+						<h4>Iniciar sesión.</h4>
+						<hr />
+						@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+						<div class="form-group">
+							@Html.LabelFor(m => m.NombreUsuario, new { @class = "col-md-2 control-label" })
+							<div class="col-md-10">
+								@Html.TextBoxFor(m => m.NombreUsuario, new { @class = "form-control Usuario" })
+								@Html.ValidationMessageFor(m => m.NombreUsuario, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						<div class="form-group">
+
+							@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+							<div class="col-md-10">
+								@Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+								@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-offset-4 col-md-8">
+								<input type="submit" value="Iniciar sesión" id="Busca" class="btn btn-danger" />
+							</div>
+						</div>
+					}
+				</section>
+		
+
+        @if (ViewBag.Message != "")
+        {
+            <script type="text/javascript">
+                                    window.onload = function ()
+                                    {
+
+                                        if (@ViewBag.IsOk == 0)
+										{
+											Swal.fire(
+												{
+													title: '@ViewBag.Message',
+													text: "Presione el boton para cerrar!",
+													type: "error",
+													animation: false,
+													customClass: {
+														popup: 'animated tada'
+													}
+												});
+										}
+
+
+                                    };
+            </script>
+        }
+
+	</div>
+
+	<div class="col-md-offset-4">
+		<p></p>
+	</div>
+</div>
+
+<div class="row">
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+	}
+</div>
+
+<script>
+    $(document).ready(function ()
+    {
+        @*if(@ViewBag.error!= null)
+        alert(@ViewBag.error)*@
+	});
+
+
+
+    $(function()
+    {
+        $("#Autoriza").click(function ()
+        {
+            var IdUser = 0;
+            IdUser = $("#CPIdUsuario").val();
+
+            var params =
+            {
+                IdAutoriza: IdUser,
+                IdClave: $("#CveAcceso").val(),
+                MotivoAuto: $("#MotivoAutoriza").val(),
+            };
+
+
+            $.ajax(
+                {
+                    url: "/Home/CreaMenu",
+                    method: "post",
+                    data: params,
+                    success: function (result)
+                    {
+                        if(result.toString()=="fallo")
+                        {
+                            Swal.fire({
+                                title: 'El usuario no existe',
+                                text: "Presione el boton para cerrar!",
+                                type: "error",
+                                animation: false,
+                                customClass: {
+                                    popup: 'animated tada'
+                                }
+                            })
+
+                        }
+                        else
+                        {
+
+
+
+
+                        }
+                    },
+                });
+        });
+    });
+
+
+</script>

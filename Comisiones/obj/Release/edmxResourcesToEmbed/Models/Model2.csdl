@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EVO_PTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CU_tb_Periodos">
+    <Key>
+      <PropertyRef Name="Id_Periodo" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="Anio" Type="Int32" Nullable="false" />
+    <Property Name="Mes" Type="Int32" Nullable="false" />
+    <Property Name="Quincena" Type="Int32" Nullable="false" />
+    <Property Name="Inicio" Type="DateTime" Precision="3" />
+    <Property Name="Fin" Type="DateTime" Precision="3" />
+    <Property Name="Estatus" Type="Int32" />
+    <Property Name="Mensaje" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioUltMod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="F_UltMod" Type="DateTime" Precision="0" />
+    <Property Name="Pagado" Type="Double" />
+    <Property Name="F_Pagado" Type="DateTime" Precision="0" />
+    <Property Name="Usuario_Pagado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Id_PeriodoComision" Type="Int32" Nullable="false" />
+    <Property Name="Id_Empresa" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IN_tb_DtlMovInv">
+    <Key>
+      <PropertyRef Name="Id_MovInv" />
+      <PropertyRef Name="Id_Producto" />
+      <PropertyRef Name="Precio" />
+      <PropertyRef Name="Id_Talla" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_DtlMovInv" Type="Int32" Nullable="false" />
+    <Property Name="Id_MovInv" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id_Producto" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="19" Scale="8" Nullable="false" />
+    <Property Name="Impuesto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Porc_Impuesto" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Id_Talla" Type="Int32" Nullable="false" />
+    <Property Name="Desc_Importe" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Desc_Impuesto" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Id_Empresa" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IN_tb_MovInventario">
+    <Key>
+      <PropertyRef Name="Id_MovInv" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_MovInv" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id_ConcMovInv" Type="Int32" Nullable="false" />
+    <Property Name="Id_Almacen_Origen" Type="Int32" Nullable="false" />
+    <Property Name="Id_Almacen_Destino" Type="Int32" Nullable="false" />
+    <Property Name="Id_Estatus" Type="Byte" Nullable="false" />
+    <Property Name="Id_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="Id_Cliente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="F_Traspaso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Envio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Moneda" Type="Int32" Nullable="false" />
+    <Property Name="Tipo_Cambio" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="DocAnt" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DocSig" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Total_Partidas" Type="Int32" Nullable="false" />
+    <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Descuento" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Descuento_Financiero" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="NoGuia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="F_Envio" Type="DateTime" Precision="0" />
+    <Property Name="Id_Mensajeria" Type="Int32" />
+    <Property Name="Factura_SAE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="F_Recepcion" Type="DateTime" Precision="0" />
+    <Property Name="Afecto_Existencia" Type="Boolean" />
+    <Property Name="Observaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Importancia" Type="Boolean" />
+    <Property Name="Enviar" Type="Boolean" />
+    <Property Name="Usuario_NoEnviar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpresoAlmacen" Type="Boolean" />
+    <Property Name="F_ImpresoAlmacen" Type="DateTime" Precision="0" />
+    <Property Name="F_AutorizarEnvio" Type="DateTime" Precision="0" />
+    <Property Name="Sincronizado" Type="Int32" Nullable="false" />
+    <Property Name="F_Sincronizacion" Type="DateTime" Precision="0" />
+    <Property Name="F_MarcadoPagado" Type="DateTime" Precision="0" />
+    <Property Name="Sincronizado_CDA" Type="Int32" Nullable="false" />
+    <Property Name="F_Sincronizado_CDA" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioUltMod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="F_UltMod" Type="DateTime" Precision="0" />
+    <Property Name="PC_Creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="F_Modificacion" Type="DateTime" Precision="0" />
+    <Property Name="Usuario_Modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PC_Modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AspelImporte" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+    <Property Name="AspelFecha_Apli" Type="DateTime" Precision="3" />
+    <Property Name="AspelClave" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="IE_Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IE_CP" Type="Int32" />
+    <Property Name="IE_Colonia" Type="Int32" />
+    <Property Name="IE_Ciudad" Type="String" MaxLength="130" FixedLength="false" Unicode="false" />
+    <Property Name="IE_Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IE_NombreCol" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="IE_Id_Almacen" Type="Int32" />
+    <Property Name="IE_Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="IE_Contacto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IE_Referencias" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Cliente_MicroCredito" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Id_PedidoRegalo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Envio_Forzado" Type="Int32" Nullable="false" />
+    <Property Name="Id_Empresa" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SAE_Transito" Type="Int32" Nullable="false" />
+    <Property Name="SAE_F_Transito" Type="DateTime" Precision="3" />
+    <Property Name="SAE_Almacen" Type="Int32" Nullable="false" />
+    <Property Name="SAE_F_Almacen" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PR_tb_GanadoresPromocion">
+    <Key>
+      <PropertyRef Name="Id_Reg" />
+    </Key>
+    <Property Name="Id_Reg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Cliente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="Año" Type="Int32" Nullable="false" />
+    <Property Name="Mes" Type="Int32" Nullable="false" />
+    <Property Name="Quincena" Type="Int32" />
+    <Property Name="Id_Condicion" Type="Int32" Nullable="false" />
+    <Property Name="Compras" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="F_PrimerCompra" Type="DateTime" Precision="3" />
+    <Property Name="Id_MovInv" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Generar_Traspaso" Type="Int32" />
+    <Property Name="Usuario_Creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha_Creacion" Type="DateTime" Precision="0" />
+    <Property Name="Id_Empresa" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PR_tb_Param_Prom">
+    <Key>
+      <PropertyRef Name="Id_Periodo" />
+      <PropertyRef Name="Id_Condicion" />
+    </Key>
+    <Property Name="Id_Reg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="Id_Condicion" Type="Int32" Nullable="false" />
+    <Property Name="Año" Type="Int32" Nullable="false" />
+    <Property Name="Mes" Type="Int32" Nullable="false" />
+    <Property Name="Quincena" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id_Promocion" Type="Int32" Nullable="false" />
+    <Property Name="Condicion1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Condicion2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Usuario_Creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="F_Creacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Host_Creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Usuario_Modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="F_Modificacion" Type="DateTime" Precision="0" />
+    <Property Name="Host_Modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Socio_Tipo" Type="Int32" Nullable="false" />
+    <Property Name="Relacion_Condicion" Type="Int32" />
+    <Property Name="Id_Empresa" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PR_tb_Promocion">
+    <Key>
+      <PropertyRef Name="Id_Promocion" />
+    </Key>
+    <Property Name="Id_Promocion" Type="Int32" Nullable="false" />
+    <Property Name="Año" Type="Int32" Nullable="false" />
+    <Property Name="Mes" Type="Int32" Nullable="false" />
+    <Property Name="Premio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cantidad_1" Type="Int32" />
+    <Property Name="Premio_1" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad_2" Type="Int32" />
+    <Property Name="Premio_2" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad_3" Type="Int32" />
+    <Property Name="Premio_3" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad_4" Type="Int32" />
+    <Property Name="Premio_4" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad_5" Type="Int32" />
+    <Property Name="Premio_5" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario_Creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="F_Creacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Host_Creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Usuario_Modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="F_Modificacion" Type="DateTime" Precision="0" />
+    <Property Name="Host_Modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad_6" Type="Int32" />
+    <Property Name="Premio_6" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad_7" Type="Int32" />
+    <Property Name="Premio_7" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Empresa" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="EVO_PTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CU_tb_Periodos" EntityType="Self.CU_tb_Periodos" />
+    <EntitySet Name="IN_tb_DtlMovInv" EntityType="Self.IN_tb_DtlMovInv" />
+    <EntitySet Name="IN_tb_MovInventario" EntityType="Self.IN_tb_MovInventario" />
+    <EntitySet Name="PR_tb_GanadoresPromocion" EntityType="Self.PR_tb_GanadoresPromocion" />
+    <EntitySet Name="PR_tb_Param_Prom" EntityType="Self.PR_tb_Param_Prom" />
+    <EntitySet Name="PR_tb_Promocion" EntityType="Self.PR_tb_Promocion" />
+  </EntityContainer>
+</Schema>

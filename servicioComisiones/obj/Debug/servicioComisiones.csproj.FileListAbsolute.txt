@@ -1,0 +1,258 @@
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\obj\Debug\servicioComisiones.csprojAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\obj\Debug\servicioComisiones.csproj.CopyComplete
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa Tablas de Acesso\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\obj\Debug\servicioComisiones.csprojAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\obj\Debug\servicioComisiones.csproj.CopyComplete
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191122\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\obj\Debug\servicioComisiones.csprojAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\obj\Debug\servicioComisiones.csproj.CopyComplete
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etaoa 20191201\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\obj\Debug\servicioComisiones.csprojAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\obj\Debug\servicioComisiones.csproj.CopyComplete
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Segunda Etapa 20191210\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\obj\Debug\servicioComisiones.csprojAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\obj\Debug\servicioComisiones.csproj.CopyComplete
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200129\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\obj\Debug\servicioComisiones.csprojResolveAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200205 con modelo completo\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\obj\Debug\servicioComisiones.csprojResolveAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etaps 20200215\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\obj\Debug\servicioComisiones.csprojResolveAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200309\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\obj\Debug\servicioComisiones.csprojAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\obj\Debug\servicioComisiones.csproj.CopyComplete
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200310\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\obj\Debug\servicioComisiones.csprojAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\obj\Debug\servicioComisiones.csproj.CopyComplete
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - Tercera Etapa 20200320\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local\servicioComisiones\obj\Debug\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\ApplicationInsights.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\servicioComisiones.dll.config
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\servicioComisiones.pdb
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\servicioComisiones.dll.CodeAnalysisLog.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\servicioComisiones.dll.lastcodeanalysissucceeded
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.AI.Web.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.AI.Web.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\obj\Debug\servicioComisiones.csprojResolveAssemblyReference.cache
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\obj\Debug\servicioComisiones.dll
+C:\Users\vsantoss\Documents\Visual Studio 2019\Projects\Hebax_Local - copia\servicioComisiones\obj\Debug\servicioComisiones.pdb

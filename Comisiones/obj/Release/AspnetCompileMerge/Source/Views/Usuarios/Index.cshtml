@@ -1,0 +1,147 @@
+﻿@model IEnumerable<Comisiones.Models.CO_tb_Usuarios>
+
+@{
+	ViewBag.Title = "Listado de usuarios";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="maintitle">Listado de usuarios</div>
+
+<div class="container-fluid" id="divMainContainer">
+
+
+	<p>
+		@Html.ActionLink("Agregar usuario", "Create", "Usuarios", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+		@Html.AntiForgeryToken()
+	</p>
+
+
+
+	<script type="text/javascript" class="init">
+		$(document).ready(function () {
+			var table = $('#tbListaUsuarios').DataTable({
+
+				language: {
+					"decimal": "",
+					"emptyTable": "No hay información",
+					"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+					"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+					"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+					"infoPostFix": "",
+					"thousands": ",",
+					"lengthMenu": "Mostrar _MENU_ registros",
+					"loadingRecords": "Cargando...",
+					"processing": "Procesando...",
+					"search": "Buscar:",
+					"zeroRecords": "Ningún dato disponible en esta tabla",
+					"paginate": {
+						"first": "Primero",
+						"last": "Ultimo",
+						"next": "Siguiente",
+						"previous": "Anterior"
+					}
+				}
+			}
+			);
+
+
+		});
+	</script>
+
+
+	<div class="col-lg-12" id="divPageQueryLists">
+		<table id="tbListaUsuarios" class="table display table-striped table-bordered dt-responsive nowrap" style="width:100%">
+			<thead>
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.NombreUsuario)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Correo)
+					</th>
+					@*<th>
+							@Html.DisplayNameFor(model => model.Password)
+						</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Id_Pais)
+					</th>*@
+					<th>
+						@Html.DisplayNameFor(model => model.Estatus)
+					</th>
+					@*<th>
+							@Html.DisplayNameFor(model => model.FechaAlta)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.UsuarioAlta)
+						</th>*@
+					<th>
+						@Html.DisplayNameFor(model => model.FechaCambio)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.CO_tb_Usuarios2.NombreUsuario)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.CO_tb_Roles6.NombreRol)
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.NombreUsuario)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Correo)
+						</td>
+					
+						@*<td>
+							@Html.DisplayFor(modelItem => item.CO_tb_Pais.Pais)
+						</td>*@
+						<td>
+							@*@Html.DisplayFor(modelItem => item.Estatus)*@
+							@{
+								if (item.Estatus != false)
+								{
+									<span>Activo</span>
+								}
+								else
+								{
+									<span>Baja</span>
+								}
+							}
+						</td>
+						@*<td>
+								@Html.DisplayFor(modelItem => item.FechaAlta)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.UsuarioAlta)
+							</td>*@
+						<td>
+							@Html.DisplayFor(modelItem => item.FechaCambio)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.CO_tb_Usuarios2.NombreUsuario)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.CO_tb_Roles5.NombreRol)							
+						</td>
+						<td>
+							@Html.ActionLink("Modificar", "Edit", new { id = item.IdUsuario }) |
+							@Html.ActionLink("Consultar", "Details", new { id = item.IdUsuario }) |
+							@Html.ActionLink("Baja", "Delete", new { id = item.IdUsuario })
+
+						</td>
+					</tr>
+				}
+
+			</tbody>
+
+		</table>
+	</div>
+</div>
+

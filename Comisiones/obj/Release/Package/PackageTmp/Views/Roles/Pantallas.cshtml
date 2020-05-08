@@ -1,0 +1,96 @@
+﻿@model IList<Comisiones.Models.CO_tb_Pantallas>
+
+@{
+	ViewBag.Title = "Pantallas";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+@*@{var VarNombreRol = "";}*@
+
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+
+	<h2>Asignar permisos en pantallas </h2>
+
+	<h5>Marque las pantallas a donde podra tener acceso Rol @ViewBag.VarNombreRol</h5>
+
+	@using (Html.BeginForm())
+	{
+		<hr />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<div class="container form-group col-md-12" style="background-color:#D6EAF8;">
+            <br />
+			@for (var i = 0; i < Model.Count; i++)
+			{
+				<div class="form-group row">
+					<div class="container form-group col-md-1">
+						@Html.HiddenFor(x => x[i].IdPantalla, new { @class = "form-control" })
+						<span></span>
+					</div>
+
+
+					<div class="container form-group col-md-4" style="text-align-last:right; font-size:18px; font-style:normal; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+						@Html.DisplayFor(x => x[i].NombrePantalla, new { @class = "form-control", @style = "align-items:right" })
+					</div>
+
+
+					<div class="container form-group col-md-7">
+						@Html.CheckBoxFor(x => x[i].checkeado, new { @class = "form-control", @style = "align-items:left" })
+					</div>
+				</div>
+
+
+			}
+
+			@if (ViewBag.Message != "")
+			{
+					<script type="text/javascript">
+                                    window.onload = function ()
+                                    {
+											if (@ViewBag.IsOk == 1)
+											{			
+												Swal.fire("@ViewBag.Message", 'Presione el boton para cerrar!', 'success');
+											}
+											else
+											{
+												Swal.fire({
+													title: '@ViewBag.Message',
+													text: "Presione el boton para cerrar!",
+													type: "error",
+													animation: false,
+													customClass:
+													{
+														popup: 'animated tada'
+													}
+												});
+											}
+									};
+					</script>
+			}
+			</div>
+
+		<div class="form-actions no-color">
+			<input type="submit" value="Aceptar" class="btn btn-default" />
+			@Html.ActionLink("Regresar", "Index", "Roles", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+		</div>
+	}
+</div>
+
+
+
+
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
+
+
+

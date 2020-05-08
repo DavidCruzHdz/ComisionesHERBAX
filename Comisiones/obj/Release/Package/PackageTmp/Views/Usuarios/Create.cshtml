@@ -1,0 +1,99 @@
+﻿@model Comisiones.Models.CO_tb_Usuarios
+
+@{
+	ViewBag.Title = "Alta de Usuarios";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+	<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+		<h2>Agregar nuevo</h2>
+
+		@Html.AntiForgeryToken()
+
+		<h5>Alta de Usuario</h5>
+		<hr />
+		<div class="form-horizontal">
+			@using (Html.BeginForm())
+			{
+				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+				<div class="form-group row">
+					@Html.LabelFor(model => model.IdRol, "IdRol", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.DropDownList("IdRol", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.IdRol, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group row">
+					@Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group row">
+					@Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				@*<div class="form-group row">
+				@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-md-2 control-label" })
+				<div class="col-md-10">
+					@Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+					@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+				</div>
+			</div>*@
+
+				<div class="form-group row">
+					@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+					<div class="col-md-10">
+						@Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+
+				<div class="form-group row">
+					@Html.LabelFor(m => m.ConfirmaPass, new { @class = "col-md-2 control-label" })
+					<div class="col-md-10">
+						@Html.PasswordFor(m => m.ConfirmaPass, new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.ConfirmaPass, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+
+				@*<div class="form-group row">
+					@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-md-2 control-label" })
+					<div class="col-md-10">
+						<input maxlength="275" class="form-control" id="ConfirmaPass" name="ConfirmaPass" placeholder="Confirma la contraseña" required="required" size="30" style="width:275px;height:40px;" tabindex="3" type="password">
+					</div>
+				</div>*@
+
+				@*<div class="form-group row">
+				@Html.LabelFor(model => model.Id_Pais, "Id_Pais", htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.DropDownList("Id_Pais", null, htmlAttributes: new { @class = "form-control" })
+					@Html.ValidationMessageFor(model => model.Id_Pais, "", new { @class = "text-danger" })
+				</div>
+			</div>*@
+
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<input type="submit" value="Grabar" class="btn btn-default" style="height:25Px; text-align:inherit" />
+						@Html.ActionLink("Regresar", "Index", "Usuarios", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+					</div>
+				</div>
+
+			}
+		</div>
+
+		</div>
+		@section Scripts {
+			@Scripts.Render("~/bundles/jqueryval")
+		}

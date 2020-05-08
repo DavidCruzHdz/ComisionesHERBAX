@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c2c3574a9c8149a8a437dcb4778fdc64" Name="Diagram1" ZoomLevel="44">
+        <EntityTypeShape EntityType="EvolutionModel.IN_tb_MovInventario" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.IN_tb_Product" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CL_tb_ordersformat" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CL_tb_Pais" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CO_tb_PayHub" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CU_tb_Estatus" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CU_tb_Foliador" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CU_tb_PaisIva" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CU_tb_Periodo" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CU_tb_Periodos" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="EvolutionModel.IN_tb_Almacen" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="EvolutionModel.IN_tb_ConcMovInv" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="EvolutionModel.IN_tb_DtlMovInv" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="EvolutionModel.IN_tb_Inventario" Width="1.5" PointX="6.75" PointY="13.75" />
+        <EntityTypeShape EntityType="EvolutionModel.IN_tb_Producto" Width="1.5" PointX="8.75" PointY="13.75" />
+        <EntityTypeShape EntityType="EvolutionModel.IN_tb_Products" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.IN_tb_Skus_tmp" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EvolutionModel.pr_tb_premio" Width="1.5" PointX="10.75" PointY="14.75" />
+        <EntityTypeShape EntityType="EvolutionModel.tb_clientes_Cp_US" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="EvolutionModel.VE_tb_Moneda" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.VwOrderLines" Width="1.5" PointX="16.75" PointY="4.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CL_tb_customer" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.SA_tb_Order" Width="1.5" PointX="13.375" PointY="16.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

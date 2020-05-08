@@ -1,0 +1,397 @@
+﻿@model IList<Comisiones.Models.CO_st_getReembolsos_Result>
+
+@{
+	ViewBag.Title = "Cálcula Reembolsos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<style>
+	/*
+	div.dataTables_wrapper {
+		width: 1200px;
+		margin: 0 auto;
+	} */
+</style>*@
+
+
+
+<script type="text/javascript" class="init">
+	$(document).ready(function () {
+		var table = $('#tbReembolsos').DataTable({
+			language: {
+				"decimal": "",
+				"emptyTable": "No hay información",
+				"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+				"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+				"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+				"infoPostFix": "",
+				"thousands": ",",
+				"lengthMenu": "Mostrar _MENU_ registros",
+				"loadingRecords": "Cargando...",
+				"processing": "Procesando...",
+				"search": "Buscar:",
+				"zeroRecords": "Ningún dato disponible en esta tabla",
+				"paginate": {
+					"first": "Primero",
+					"last": "Ultimo",
+					"next": "Siguiente",
+					"previous": "Anterior"
+				}
+			}
+		}
+		);
+
+
+	});
+</script>
+
+
+
+<head>
+	<link rel="stylesheet" href="~/Content/estilos.css" />
+</head>
+
+
+<body>
+    <br />
+    <div class="maintitle">Calculo de Reembolsos</div>
+
+	<input type="checkbox" id="cerrar">
+	<label for="cerrar" id="btn-cerrar">X</label>
+	<div class="ventana">
+		<div class="contenido">
+			<h2>Cargando Informacion</h2>
+			<img src="~/images/espera.svg" alt="">
+			<h4>Espere hasta que la informacion se complete</h4>
+		</div>
+	</div>
+
+	<main>
+		<div class="container">
+			@if (ViewBag.Message != "")
+			{
+				<script type="text/javascript">
+                                    window.onload = function ()
+                                    {
+
+                                        if (@ViewBag.IsOk == 0)
+										{
+											Swal.fire(
+												{
+													title: '@ViewBag.Message',
+													text: "Presione el boton para cerrar!",
+													type: "error",
+													animation: false,
+													customClass: {
+														popup: 'animated tada'
+													}
+												});
+										}
+
+
+                                    };
+				</script>
+			}
+			else
+			{
+				<table id="tbReembolsos" class="display nowrap" style="width:100%">
+
+					<thead style="background-color:#D6EAF8;width:100%">
+						<tr>
+							<th>Mes</th>
+							<th>Periodo</th>
+							<th>Socio</th>
+							<th style="width:1000px;" type="text" maxlength="1000">Nombre_Completo</th>
+							<th>Ventas</th>
+							<th>Reembolso</th>
+							<th>Estatus</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						@for (var i = 0; i < Model.Count; i++)
+						{
+							<tr>
+								<td style="text-align:center">
+									@Html.DisplayFor(x => x[i].MES, new { @class = "form-control" })
+								</td>
+								<td style="text-align:center">
+									@Html.DisplayFor(x => x[i].ID_PERIODO, new { @class = "form-control" })
+								</td>
+								<td style="text-align:center">
+									@Html.DisplayFor(x => x[i].ID_PARTNER, new { @class = "form-control" })
+								</td>
+								<td style="text-align:center">
+									@Html.DisplayFor(x => x[i].NOMBRE_CUSTOMER, new { @class = "form-control" })
+								</td>
+								<td style="text-align:center">
+									@Html.DisplayFor(x => x[i].VENTA_PERIODO, new { @class = "form-control" })
+								</td>
+								<td style="text-align:center">
+									@Html.DisplayFor(x => x[i].CANTIDAD_REEMBOLSO, new { @class = "form-control" })
+								</td>
+								<td style="text-align:center">
+									@Html.DisplayFor(x => x[i].ESTATUS, new { @class = "form-control" })
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+
+				<div class="row">
+					<div class="col-sm-8"></div>
+					<div class="col-sm-4 text-right">
+						<input data-ajax="true" type="submit" value="Cierre Reembolso" id="Cierre" class="btn btn-danger btn-lg" name="btn-graba" />
+					</div>
+				</div>
+			}
+
+		</div>
+
+	
+	</main>
+</body>
+
+
+@section scripts{
+	<script>
+
+
+		$(document).ready(function () {
+			//$('#Ventana2').modal('show'); // abrir
+			//mostrarLoader();
+            var _numReg = 0;
+            @*var tablaReembolsos = $('#tbReembolsos').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+                },
+                "scrollY": 400,
+                "scrollX": true,
+                //scrollCollapse: true,
+                paging: false,
+                //data:dataSet,
+                columns: [
+                    { title: "Mes" },
+                    //{ title: "Id periodo" },
+                    { title: "Id parthner" },
+                    { title: "Venta " },
+                    { title: "Reembolso" },
+                    { title: "Nombre" },
+                    { title: "Estatus" }
+                ]
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Content("~/CalculaReembolsos/CalculaReembolsos")",
+                //data: {"id":1},
+                processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (retorno) {
+
+                // if (retorno.length > 0) {
+                if (retorno.IsOk != 0)
+                 {
+                    //console.log("OJO>>> " + JSON.stringify(retorno));
+                    _numReg = retorno.length;
+
+                    $.each(retorno, function (i, data) {
+
+                        tablaReembolsos.row.add(
+                            [
+                                data.MES,
+                                //data.ID_PERIODO,
+                                data.ID_PARTNER,
+                                formatCurrency(data.VENTA_PERIODO),
+                                formatCurrency(data.CANTIDAD_REEMBOLSO),
+                                data.NOMBRE_CUSTOMER,
+                                data.ESTATUS
+
+                            ]);
+                        tablaReembolsos.draw();
+                    });
+                    ocultarLoader();
+                }
+                else
+                {
+                    if (retorno.IsOk == 0)
+                    {
+                        Swal.fire
+                         ({
+                             title: "Error el calculo del periodo ya fue generado con anterioridad",
+                             text: retorno.Mensaje,
+                             //html: retorno,
+
+                             type: "error",
+                             animation: false,
+                             customClass:
+                               {
+                                   popup: 'animated tada'
+                               }
+                         })
+                    }
+                    else
+                    {
+                        alertSystem("success", "El proceso no genero Resultados.");
+                    }
+                    ocultarLoader();
+                }
+
+
+				$('#modal').modal('hidden');
+            }, error: function (e) {
+                    Swal.fire
+                     ({
+                         title: "Error ocurrio un problema al momento de generar la informacion",
+                         text: retorno.Mensaje,
+                         //html: retorno,
+
+                         type: "error",
+                         animation: false,
+                         customClass:
+                           {
+                               popup: 'animated tada'
+                           }
+                     })
+
+                    //alertSystem("error", e.responseText);
+                ocultarLoader();
+            }
+        })*@
+
+
+
+            $("#CreateMovSocio").click(function (event) {
+                event.preventDefault();
+                 //console.log("Numero de Registros:>> " + _numReg);
+                 if ( _numReg > 0 ) {
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Content("~/CalculaReembolsos/GenerarMovSocio")",
+                        //data: data,
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        timeout: 600000,
+                        success: function (data) {
+                            console.log(data);
+                            alertSystem("success", "Se han Generado Movimientos con Exito.");
+                        },
+                        error: function (e) {
+                            alertSystem("error", e.responseText);
+                        }
+                    });
+                }else {
+                    alertSystem("info", "No existe datos para procesar");
+                }
+
+                });
+
+            });
+
+
+
+			   $(function()
+				{
+					$("#Cierre").click(function ()
+					{
+						   $.ajax({
+								type: "POST",
+								url: "@Url.Content("~/CalculaReembolsos/EnviaReembolsosAlHistorial")",
+								//data: data,
+								processData: false,
+								contentType: false,
+								cache: false,
+								timeout: 600000,
+								success: function (result)
+							   {
+						
+							           if (result != null)
+							           {
+							               $("#LblClientes").attr('readonly', true);
+
+							               $.each(result, function (index, item2)
+							               {
+							                   var Clientes = " <tr id='"+item2.IdCliente.toString()+"'><td>"+item2.NombreCliente.toString()+"</td><td>"+item2.PoblacionCli.toString()+"</td><td>"+item2.RegionCli.toString()+"</td></tr>";
+							                   $(".tablaCli").append(Clientes);
+
+							                   $("#VarTrasportista").val(item2.Transportista.toString());
+							                   $("#VarFechaPlan").val(item2.FechaPlan.toString());
+							               });
+
+							           }
+							           else
+							           {
+							               Swal.fire({
+							                   title: "Error se presento un problema al momento de generar la informacion",
+							                   text: result.Mensaje,
+							                   type: "error",
+							                   showConfirmButton: true,
+							                   confirmButtonText: "Cerrar",
+							                   animation: false,
+							                   customClass: {
+							                       popup: 'animated tada'
+							                   }
+							               }).then(function (result)
+							               {
+							                   window.location.href = "Index";
+							               })
+							           }
+								},
+							   error: function (e)
+							   {
+
+									var span = document.createElement("span");
+									span.innerHTML = e.responseText;
+
+
+								   Swal.fire
+									   ({
+										 title: "Error ocurrio un problema al momento de generar los reembolsos",
+											html: span,
+										confirmButtonText: "cerrar",
+										allowOutsideClick: "true",
+										type: "error",
+										animation: false,
+										  customClass:
+												{
+					                                popup: 'animated tada'
+												}
+									   })
+
+
+								}
+							});
+
+
+
+
+
+					});
+
+			   });
+
+
+
+//function mostrarVentana()
+//{
+//    var ventana = document.getElementById(‘Ventana2’);
+//    ventana.style.marginTop = «100px»;
+//    ventana.style.left = ((document.body.clientWidth-350) / 2) +  «px»;
+//    ventana.style.display = ‘block’;
+//}
+
+//function ocultarVentana()
+//{
+//    var ventana = document.getElementById(‘miVentana’);
+//    ventana.style.display = ‘none’;
+//}
+
+	</script>
+
+}

@@ -1,0 +1,153 @@
+﻿@model IList<Comisiones.Models.CO_st_BuscaConfigReembolsos2_Result>
+
+@{
+	ViewBag.Title = "Listado de Reembolsos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<div class="maintitle">Listado de Reembolsos</div>
+
+<div class="container-fluid" id="divMainContainer">
+	@Html.AntiForgeryToken()
+	<p>
+		@Html.ActionLink("Agregar nueva", "Create", "CO_tb_ConfigReembolsos", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+		@Html.AntiForgeryToken()
+	</p>
+
+
+	<script type="text/javascript" class="init">
+		$(document).ready(function () {
+			var table = $('#tblConfigReembolsos').DataTable({
+
+				language: {
+					"decimal": "",
+					"emptyTable": "No hay información",
+					"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+					"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+					"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+					"infoPostFix": "",
+					"thousands": ",",
+					"lengthMenu": "Mostrar _MENU_ registros",
+					"loadingRecords": "Cargando...",
+					"processing": "Procesando...",
+					"search": "Buscar:",
+					"zeroRecords": "Ningún dato disponible en esta tabla",
+					"paginate": {
+						"first": "Primero",
+						"last": "Ultimo",
+						"next": "Siguiente",
+						"previous": "Anterior"
+					}
+				}
+			}
+			);
+
+
+		});
+	</script>
+
+
+	<div class="col-lg-12" id="divPageQueryLists">
+		<table id="tblConfigReembolsos" class="table display table-striped table-bordered dt-responsive nowrap" style="width:100%; text-align:right;">
+			<thead>
+				<tr>
+					<th>
+						<span>Reembolso</span>
+					</th>
+					<th>
+						<span>Año</span>
+					</th>
+					<th>
+						<span>Mes</span>
+					</th>
+					<th>
+						<span>Cantidad</span>
+					</th>
+					<th>
+						<span>Cantidad Topada</span>
+					</th>
+					<th>
+						<span>Porcentaje</span>
+					</th>
+					<th>
+						<span>Concepto</span>
+					</th>
+					@*<th>
+							@Html.DisplayNameFor(model => model.id_estatus)
+						</th>*@
+					<th>
+						<span>Pais</span>
+					</th>
+					@*<th>
+							@Html.DisplayNameFor(model => model.UltMod_Usuario)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.UltMod_F)
+						</th>*@
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+
+						<td>
+							@Html.DisplayFor(modelItem => item.Id_Reembolso)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Anio)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Mes)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Cantidad)
+						</td>
+
+						<td>
+							@Html.DisplayFor(modelItem => item.Cantidad_Topada)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.PorcentajeReembolso)
+						</td>
+
+						<td>
+							@Html.DisplayFor(modelItem => item.Concepto)
+						</td>
+
+						@*<td>
+								@Html.DisplayFor(modelItem => item.id_estatus)
+							</td>*@
+
+
+						<td>
+							@Html.DisplayFor(modelItem => item.pais)
+							@Html.HiddenFor(modelItem => item.id_pais)
+						</td>
+
+
+
+						@*<td>
+								@Html.DisplayFor(modelItem => item.UltMod_Usuario)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.UltMod_F)
+							</td>>*@
+
+						<td>
+							@Html.ActionLink("Modificar", "Edit", new { id = item.Id_Reembolso, pais = item.id_pais }) |
+							@Html.ActionLink("Consultar", "Details", new { id = item.Id_Reembolso, pais = item.id_pais }) |
+							@Html.ActionLink("Borrar", "Delete", new { id = item.Id_Reembolso, pais = item.id_pais })
+						</td>
+					</tr>
+				}
+
+		</table>
+	</div>
+
+
+
+

@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Listado Préstamos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="maintitle">Lista de Pr&eacute;stamos</div>
+
+<div class="container-fluid" id="divMainContainer">
+
+
+    <form class="form-inline" >
+        
+        <button type="button" class="btn btn-info btn-sm" id="btnDescargarExcel">Descargar Excel</button>
+    </form>
+    
+    <br />
+       
+
+    <div class="col-lg-12" id="divPageQueryLists">
+        <table id="tbListaPrestamos" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+            <!-- Codigo generado desde JS Aqui...
+            <tbody id="tbListaPrestamosBody"></tbody>-->
+        </table>
+    </div>
+</div>
+
+
+    
+
+
+
+<script>
+    $(document).ready(function () {
+        mostrarLoader();
+
+        $('#btnDescargarExcel').click(function (event) {
+            event.preventDefault();
+            mostrarLoader();
+            window.location.href = 'descargaListaPrestamos';
+            ocultarLoader();
+        });
+
+        var tbListaPrestamos = $('#tbListaPrestamos').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+            },
+            "scrollX": true,
+            //scrollCollapse: true,
+            paging: true,
+            //data:dataSet,
+            //periodoCreacion,partner_id,nombre,importe,saldo,Motivo,idFormaPago,descFormaPago
+            columns: [  
+                        { title: "Periodo" },   
+                        { title: "Nombre del socio" },
+                        { title: "importe" },
+                        { title: "saldo" },
+                        { title: "Motivo" },
+                        { title: "forma de  Pago" }
+            ]  
+        });
+        //ajax mustra los prestamos al  cargar la pagina
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "@Url.Content("~/ListaPrestamos/ListarPrestamos")",
+            //data: dataSend,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (retorno) {
+            if (retorno.length > 0) {
+
+                tbListaPrestamos.rows().remove().draw();
+                _numReg = retorno.length;
+                console.log("Numero de registros::" + _numReg)
+                $.each(retorno, function (i, data) {
+                    //Campos que vienen en SP
+                    //periodoCreacion,partner_id,nombre,importe,saldo,Motivo,idFormaPago,descFormaPago
+                    tbListaPrestamos.row.add($('<tr > '
+                     + '<td >' + data.periodoCreacion + '</td>'
+                     + '<td>' + data.nombre + '</td>'
+                     + '<td class="derecha">' + formatCurrency(data.importe) + '</td>'
+                     + '<td class="derecha">' + formatCurrency(data.saldo) + '</td>'
+                     + '<td>' + data.Motivo + '</td>'
+                     + '<td>' + data.descFormaPago + '</td>'   
+                     + '</tr>'));
+
+                    tbListaPrestamos.draw();
+                });
+
+                ocultarLoader();
+
+            } else { alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();}
+
+            },
+            error: function (e) {
+                alertSystem("error", e.responseText);
+                ocultarLoader();
+            }
+
+        })
+
+
+    });
+
+</script>

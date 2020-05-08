@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Comisiones.Models.CO_tb_Productos_Reembolso>
+
+@{
+	ViewBag.Title = "Productos de Reembolsos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="maintitle">Listado de Productos de Reembolsos</div>
+
+<br />
+<div class="container-fluid" id="divMainContainer">
+	@Html.AntiForgeryToken()
+	<p>
+		@Html.ActionLink("Agregar nueva", "Create", "Productos_Reembolso", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+		@Html.AntiForgeryToken()
+	</p>
+
+
+	<script type="text/javascript" class="init">
+		$(document).ready(function () {
+			var table = $('#tblProdReembolso').DataTable({
+
+				language: {
+					"decimal": "",
+					"emptyTable": "No hay información",
+					"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+					"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+					"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+					"infoPostFix": "",
+					"thousands": ",",
+					"lengthMenu": "Mostrar _MENU_ registros",
+					"loadingRecords": "Cargando...",
+					"processing": "Procesando...",
+					"search": "Buscar:",
+					"zeroRecords": "Ningún dato disponible en esta tabla",
+					"paginate": {
+						"first": "Primero",
+						"last": "Ultimo",
+						"next": "Siguiente",
+						"previous": "Anterior"
+					}
+				}
+			}
+			);
+
+
+		});
+	</script>
+
+
+	<div class="col-lg-12" id="divPageQueryLists">
+		<table id="tblProdReembolso" class="table display table-striped table-bordered dt-responsive nowrap" style="width:100%">
+			<thead>
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.warehouse)
+					</th>
+					@*
+					<th>
+						@Html.DisplayNameFor(model => model.Id_Empresa)
+					</th>
+
+		<th>
+			@Html.DisplayNameFor(model => model.Warehouse_ID)
+		</th>*@
+					<th>
+						@Html.DisplayNameFor(model => model.cve_art)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Descripcion)
+					</th>
+					@*<th>
+						@Html.DisplayNameFor(model => model.DescripcionCorta)
+					</th>*@
+					<th>
+						@Html.DisplayNameFor(model => model.PrecioPublico)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.PrecioMinimo)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.PrecioCosto)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.PrecioSocio)
+					</th>
+					@*<th>
+			@Html.DisplayNameFor(model => model.ActivoSAE)
+		</th>*@
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.warehouse)
+					</td>
+					@*<td>
+						@Html.DisplayFor(modelItem => item.Id_Empresa)
+					</td>
+					<td>
+			@Html.DisplayFor(modelItem => item.Warehouse_ID)
+		</td>*@
+					<td>
+						@Html.DisplayFor(modelItem => item.cve_art)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Descripcion)
+					</td>
+					@*<td>
+						@Html.DisplayFor(modelItem => item.DescripcionCorta)
+					</td>*@
+					<td>
+						@Html.DisplayFor(modelItem => item.PrecioPublico)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.PrecioMinimo)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.PrecioCosto)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.PrecioSocio)
+					</td>
+					@*<td>
+			@Html.DisplayFor(modelItem => item.ActivoSAE)
+		</td>*@
+					<td>
+						@Html.ActionLink("Modificar", "Edit", new { id = item.sku }) |
+						@Html.ActionLink("Consultar", "Details", new { id = item.sku }) |
+						@Html.ActionLink("Borrar", "Delete", new { id = item.sku })
+					</td>
+				</tr>
+				}
+			</tbody>
+
+		</table>
+	</div>
+</div>
+

@@ -1,0 +1,98 @@
+﻿@model Comisiones.Models.CO_Tb_ISR_GT
+
+@{
+	ViewBag.Title = "Consultas";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	@Html.AntiForgeryToken()
+	<h2>Consultar de Impuestos</h2>
+	<div>
+		<h4>Informacion de ISR</h4>
+		<hr />
+		<dl class="dl-horizontal">
+			<dt>
+				@Html.DisplayNameFor(model => model.id_pais)
+			</dt>
+
+			<dd>
+				@*@Html.DisplayFor(model => model.id_pais)*@
+				@Html.DropDownList("id_pais", (IEnumerable<SelectListItem>)ViewBag.dropdownPaises, "Selecciona un Pais?", new { @id = "IdPais", @disabled = "disabled" })
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.id_regimen)
+			</dt>
+
+			<dd>
+				@*@Html.DisplayFor(model => model.id_regimen)*@
+				@Html.DropDownList("id_regimen", (IEnumerable<SelectListItem>)ViewBag.dropdownRegimen, "A que Regimen Fiscal pertenece", new { @id = "IdRegimen", @class = "form-control", @disabled = "disabled" })
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.montominimo)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.montominimo)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.limiteinferior)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.limiteinferior)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.limitesuperior)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.limitesuperior)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.ISR)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.ISR)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.fecha_ult_modificacion)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.fecha_ult_modificacion)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.usuario_ult_modificacion)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.usuario_ult_modificacion)
+			</dd>
+
+		</dl>
+	</div>
+	<p>
+			@Html.ActionLink("Regresar", "Index", "CO_Tb_ISR_GT", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+	</p>
+
+</div>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#IdPais").attr('readonly', true);
+	    $("#IdRegimen").attr('readonly', true);
+	});
+</script>

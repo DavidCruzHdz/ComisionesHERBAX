@@ -1,0 +1,205 @@
+﻿
+@{
+	ViewBag.Title = "Generación de archivo de comisiones";
+}
+
+<br />
+<div class="maintitle">@ViewBag.Title</div>
+
+
+@*<div class="form-group">
+	<label for="pais">Pais</label>
+	<select id="pais" class="form-control">
+		<option value="">Selecciona un país</option>
+		<option value="Mexico">México</option>
+		<option value="Guatemala">Guatemala</option>
+		<option value="Estados Unidos">EUA</option>
+	</select>
+	<span id="msgParaPais" class="field-validation-valid text-danger" style="display:none;">El campo País  es obligatorio</span>
+</div>
+<div class="form-group">
+	<label for="tipoArchivo">Tipo archivo</label>
+	<select id="tipoArchivo" class="form-control">
+		<option value="Asimilados">Asimilados</option>
+		<option value="Factura">Factura</option>
+	</select>
+</div>*@
+
+
+
+<div class="form-group">
+    @*@Html.LabelFor(for="Pais", htmlAttributes: new { @class = "control-label col-md-2" })*@
+    <label for="pais">Pais</label>
+    <div class="col-md-10">
+        @Html.DropDownList("id_pais", (IEnumerable<SelectListItem>)ViewBag.dropdownPaises, "Selecciona un Pais?", new { @id = "pais", @class = "form-control" })
+
+    </div>
+</div>
+
+<div class="form-group">
+    @*@Html.LabelFor(model => model.id_regimen, htmlAttributes: new { @class = "control-label col-md-2" })*@
+    <label for="tipoArchivo">Tipo de archivo</label>
+    <div class="col-md-10">
+        @Html.DropDownList("id_regimen", (IEnumerable<SelectListItem>)ViewBag.dropdownRegimen, "A que Regimen Fiscal pertenece", new { @id = "tipoArchivo", @class = "form-control" })
+
+    </div>
+</div>
+
+
+<div id="seccionCompania" class="form-group" style="display:none;">
+    <label for="compania">Compañ&iacute;a</label>
+    <div class="col-md-10">
+        @Html.DropDownList("id_CompaniaPago", (IEnumerable<SelectListItem>)ViewBag.dropdownCia, "A que Compañia pertenece", new { @id = "compania", @class = "form-control" })
+
+    </div>
+</div>
+
+
+
+
+@*<div id="seccionCompania" class="form-group" style="display:none;">
+	<label for="compania">Compañ&iacute;a</label>
+	<select id="compania" class="form-control">
+		<option value="1">Saba</option>
+		<option value="2">Ikos</option>
+	</select>
+</div>*@
+
+<div class="form-group col-md-3 row">
+	<button id="btndescargar" class="btn">Descargar</button>
+</div>
+
+
+
+@section scripts{
+	<script>
+		$(document).ready(function () {
+
+			$('#msgParaPais').hide();
+			$('#seccionCompania').hide();
+
+			$("#pais").change(function () {
+				//$('#seccionCompania').hide();
+				var pais = $('#pais').val();
+
+				if (pais != '') {
+					$('#msgParaPais').hide();
+				}
+
+				if (pais == 1) {
+					$('#seccionCompania').show();
+				} else {
+					$('#seccionCompania').hide();
+				}
+
+
+    		    // Clear drop down list
+				$("#tipoArchivo").find("option").remove();
+
+		        var params =
+                {
+                      IdPais: $("#pais").val(),
+                };
+
+
+			    $.ajax(
+                    {
+                        url: "/Comisiones/RegimenSelectList",
+                        method: "post",
+                        data: params,
+                        success: function (data) {
+                            console.log(data)
+                                // agregamos opcion de inicio
+                            $('<option>').val(0).text("A que Regimen Fiscal pertenece").appendTo("#tipoArchivo");
+
+                            $.each(data, function (index, value) {
+                                console.log(index + value)
+                                $('<option>').val(value.Value).text(value.Text).appendTo("#tipoArchivo");
+                            })
+
+                            $("#tipoArchivo").attr('readonly', false);
+                        },
+                    });
+			})
+
+
+
+
+
+			$('#btndescargar').click(function (e) {
+
+				var tipoArchivo = $('#tipoArchivo').val();
+				var pais = $('#pais').val();
+				console.log(pais);
+
+				if (pais != '') {
+					$('#msgParaPais').hide();
+					if (pais == 1) {
+						$('#seccionCompania').show();
+
+						var compania = $('#compania').val();
+						if (compania == 1) {
+							if (tipoArchivo == 1) {
+								//Asimilados
+								window.location.href = 'DescargaArchivoAsimilado?compania=1&tipoConsulta=C1&tipoArchivo=Asimilados';
+							} else if (tipoArchivo == 2) {
+								//factura
+								window.location.href = 'DescargaArchivoAsimilado?compania=1&tipoConsulta=C2&tipoArchivo=Factura';
+							}
+
+						} else if (compania == 2) {
+							if (tipoArchivo == 1) {
+								//Asimilados
+								window.location.href = 'DescargaArchivoAsimilado?compania=2&tipoConsulta=C1&tipoArchivo=Asimilados';
+							} else if (tipoArchivo == 2) {
+								//factura
+								window.location.href = 'DescargaArchivoAsimilado?compania=2&tipoConsulta=C2&tipoArchivo=Factura';
+							}
+
+						}
+
+					}
+					else if (pais == 2) {
+						$('#seccionCompania').hide();
+						if (tipoArchivo == 1) {
+							//Asimilados, se comento window.location.href ya que no esta definido si Guatemala tiene Asmiliados
+							//window.location.href = 'DescargaArchivoAsimilado?compania=0&tipoConsulta=C3';
+							alertSystem("info", "Guatemala no tiene Asimilados ");
+						} else if (tipoArchivo == 0) {
+							//factura
+							window.location.href = 'DescargaArchivoAsimilado?compania=0&tipoConsulta=C4&tipoArchivo=Factura';
+						}
+
+
+					} else if (pais == 3) {
+						$('#seccionCompania').hide();
+
+						if (tipoArchivo == 1) {
+							//Asimilados, se comento window.location.href ya que no esta definido si Estados Unidos tiene Asmiliados
+							//window.location.href = 'DescargaArchivoAsimilado?compania=0&tipoConsulta=C5';
+							alertSystem("info", "Estados Unidos no tiene Asimilados ");
+						} else if (tipoArchivo == 0) {
+							//factura
+								//alertSystem("info", "Estados Unidos sin Factura ");
+							window.location.href = 'DescargaArchivoAsimilado?compania=3&tipoConsulta=C6&tipoArchivo=SinFactura';
+						}
+					}
+
+				} else {
+					$('#msgParaPais').show();
+					$('#seccionCompania').hide();
+					e.preventDefault();  //stop the browser from following
+
+				}
+
+
+
+
+
+				///
+				///window.location.href = '/Comisiones/DescargaArchivoAsimilado?compania=1&tipoConsulta=C1';
+			});
+		})
+
+	</script>
+}

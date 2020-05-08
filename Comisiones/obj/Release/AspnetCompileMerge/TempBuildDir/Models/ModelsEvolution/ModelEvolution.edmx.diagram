@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c2c3574a9c8149a8a437dcb4778fdc64" Name="Diagram1" ZoomLevel="106">
+        <EntityTypeShape EntityType="EvolutionModel.CU_tb_Mes" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CL_tb_Pais" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CO_tb_Periodo" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CO_tb_Rank" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CU_tb_Periodo" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CU_tb_TipoCambio" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.IN_tb_Products" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CL_tb_Customer" Width="1.5" PointX="9.375" PointY="5.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CL_tb_CustomerRank" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CO_tb_cdaPolitica" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EvolutionModel.CO_tb_TypeDist" Width="1.5" PointX="11.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

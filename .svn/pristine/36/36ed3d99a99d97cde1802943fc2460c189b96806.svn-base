@@ -1,0 +1,158 @@
+﻿
+@{
+    ViewBag.Title = "Cálculo CDA";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    /*
+    div.dataTables_wrapper {
+        width: 1200px;
+        margin: 0 auto;
+    } */
+    
+</style>
+
+
+
+<div class="maintitle">Cálculo de CDA</div>
+<br />
+<div class="container">
+
+    
+    <!--<div class="row">
+        <div class="col-sm-12"> -->
+            <table id="tbBonos"  class="display nowrap" style="width:100%">
+                
+            </table>
+        <!--</div>
+    </div>-->
+
+
+   
+
+    <div class="row">
+        <div class="col-sm-10"></div>
+        <div class="col-sm-2 text-right">
+            <input type="submit" name="Calcular" id="CreateMovSocio" value="crear Movimientos Socio" class="btn" />
+        </div>
+    </div>
+    <!--fin del Row-->
+</div>
+
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var _numReg = 0;
+            var _numQuincena =0;
+            var tablaBonos = $('#tbBonos').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+                },
+                "scrollY": 400,
+                "scrollX": true,
+                //scrollCollapse: true,
+                paging: true,
+                //data:dataSet,
+                columns: [  
+                    { title: "mes" },
+                     { title: "Quincena" },
+                    { title: "user xen" },
+                    { title: "Almac&eacute;n" },
+                    { title: "id Responsable" },
+                    { title: "Regla" },
+                    { title: "Pol&iacute;tica" },
+                    { title: "total venta" }    
+                ]
+            });
+            
+            $.ajax({
+                type: "POST",
+                url: "@Url.Content("~/CalculaCDA/CalcularCDA")",
+                //data: {"id":1},
+                processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (retorno) {
+                
+                if (retorno.length > 0) {
+                    //console.log("OJO>>> " + JSON.stringify(retorno));
+                    _numReg = retorno.length;
+                    
+                    $.each(retorno, function (i, data) {
+                        _numQuincena = data.Quincena;
+                        tablaBonos.row.add(
+                            [  
+                                data.mes,
+                                data.Quincena,
+                                data.Id_UserXen,
+                                data.Almacen,
+                                data.Id_Responsable,
+                                data.Regla,
+                                data.Id_Politica,
+                                formatCurrency(data.Total_venta)
+                            ]);
+                        tablaBonos.draw();     
+                    });  
+                } else { alertSystem("success", "El proceso no generó Resultados."); }
+                
+                
+            },error: function (e) {
+                alertSystem("error", e.responseText);
+            }
+        })
+
+           
+            
+            $("#CreateMovSocio").click(function (event) {
+                event.preventDefault();
+                mostrarLoader();
+                //console.log("Numero de Registros:>> " + _numReg);
+                
+                    if (_numReg > 0) {
+                        if (_numQuincena > 0) {
+
+                        $.ajax({
+                            type: "POST",
+                            url: "@Url.Content("~/CalculaCDA/GenerarMovSocio")",
+                            //data: data,
+                            processData: false,
+                            contentType: false,
+                            cache: false,
+                            timeout: 600000,
+                            success: function (data) {
+                                console.log(data);
+                                ocultarLoader();
+                                alertSystem("success", "Se han Generado Movimientos con Exito.");
+                            },
+                            error: function (e) {
+                                ocultarLoader();
+                                alertSystem("error", e.responseText);
+                                
+                            }
+                        });
+
+                    } else {
+                        ocultarLoader();
+                        alertSystem("info", "Solo se permite crear movimiento si es fin de Mes");
+                    }
+                    } else {
+                        alertSystem("info", "No existe datos para procesar");
+                        ocultarLoader();
+                    }
+                
+                });
+            
+            });
+
+        
+            
+        
+    </script>
+ 
+}

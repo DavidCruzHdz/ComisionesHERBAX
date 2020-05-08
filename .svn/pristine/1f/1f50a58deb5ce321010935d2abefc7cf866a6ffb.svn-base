@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "Cálcula Reembolsos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    /*
+    div.dataTables_wrapper {
+        width: 1200px;
+        margin: 0 auto;
+    } */
+    
+</style>
+
+
+
+<div class="maintitle">Reembolsos  </div>
+<br />
+<div class="container">
+
+    
+    <!--<div class="row">
+        <div class="col-sm-12"> -->
+            <table id="tbReembolsos"  class="display nowrap" style="width:100%">
+                
+            </table>
+        <!--</div>
+    </div>-->
+
+
+   
+
+    <div class="row">
+        <div class="col-sm-10"></div>
+        <div class="col-sm-2 text-right">
+            <input type="submit" name="Calcular" id="CreateMovSocio" value="crear Movimientos Socio" class="btn" />
+        </div>
+    </div>
+    <!--fin del Row-->
+</div>
+
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var _numReg = 0;
+            var tablaReembolsos = $('#tbReembolsos').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+                },
+                "scrollY": 400,
+                "scrollX": true,
+                //scrollCollapse: true,
+                paging: false,
+                //data:dataSet,
+                columns: [  
+                    { title: "Mes" },
+                    { title: "Id periodo" },
+                    { title: "Id parthner" },
+                    { title: "Venta " },
+                    { title: "Reembolso" },
+                    { title: "Nombre" },
+                    { title: "Estatus" }    
+                ]
+            });
+            
+            $.ajax({
+                type: "POST",
+                url: "@Url.Content("~/CalculaReembolsos/CalculaReembolsos")",
+                //data: {"id":1},
+                processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (retorno) {
+                
+                if (retorno.length > 0) {
+                    //console.log("OJO>>> " + JSON.stringify(retorno));
+                    _numReg = retorno.length;
+                    
+                    $.each(retorno, function (i, data) {
+                        
+                        tablaReembolsos.row.add(
+                            [  
+                                data.MES,
+                                data.ID_PERIODO,
+                                data.ID_PARTNER,
+                                formatCurrency(data.VENTA_PERIODO),
+                                formatCurrency(data.CANTIDAD_REEMBOLSO),
+                                data.NOMBRE_CUSTOMER,
+                                data.ESTATUS
+                                
+                            ]);
+                        tablaReembolsos.draw();     
+                    });  
+                } else { alertSystem("success", "El proceso no genero Resultados."); }
+                
+                
+            },error: function (e) {
+                alertSystem("error", e.responseText);
+            }
+        })
+
+           
+            
+            $("#CreateMovSocio").click(function (event) {
+                event.preventDefault();
+                 //console.log("Numero de Registros:>> " + _numReg);
+                 if ( _numReg > 0 ) {
+                    
+
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Content("~/CalculaReembolsos/GenerarMovSocio")",
+                        //data: data,
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        timeout: 600000,
+                        success: function (data) {
+                            console.log(data);
+                            alertSystem("success", "Se han Generado Movimientos con Exito.");
+                        },
+                        error: function (e) {
+                            alertSystem("error", e.responseText);
+                        }
+                    });
+                }else {
+                    alertSystem("info", "No existe datos para procesar");
+                }
+
+                });
+            
+            });
+
+        
+            
+        
+    </script>
+ 
+}

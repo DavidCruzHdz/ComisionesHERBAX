@@ -1,0 +1,66 @@
+﻿@model Comisiones.Models.CO_tb_CompaniaPago
+
+@{
+	ViewBag.Title = "Delete";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h2>Borrar esta compañia</h2>
+
+	@Html.AntiForgeryToken()
+	<h6>Esta seguro que desea borrar los datos de esta compañia?</h6>
+	<div>
+		<div>				
+			<hr />
+			<dl class="dl-horizontal">
+				<dt>
+					@Html.DisplayNameFor(model => model.nombreCompania)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.nombreCompania)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.porcentaje)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.porcentaje)
+				</dd>
+
+				@*<dt>
+				@Html.DisplayNameFor(model => model.usuario)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.usuario)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.fechaMovimiento)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.fechaMovimiento)
+			</dd>*@
+
+			</dl>
+
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+
+				<div class="form-actions no-color">
+					<input type="submit" value="Aceptar" class="btn btn-default" />
+					@Html.ActionLink("Regresar", "Index", "CO_tb_CompaniaPago", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+				</div>
+			}
+		</div>
+
+
+	</div>
+
+</div>
+

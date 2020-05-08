@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EVO_PTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CU_tb_Periodos">
+    <Key>
+      <PropertyRef Name="Id_Periodo" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_Periodo" Type="int" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" Nullable="false" />
+    <Property Name="Inicio" Type="datetime" />
+    <Property Name="Fin" Type="datetime" />
+    <Property Name="Estatus" Type="int" />
+    <Property Name="Mensaje" Type="varchar" MaxLength="255" />
+    <Property Name="UsuarioUltMod" Type="varchar" MaxLength="50" />
+    <Property Name="F_UltMod" Type="smalldatetime" />
+    <Property Name="Pagado" Type="float" />
+    <Property Name="F_Pagado" Type="smalldatetime" />
+    <Property Name="Usuario_Pagado" Type="varchar" MaxLength="100" />
+    <Property Name="Id_PeriodoComision" Type="int" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IN_tb_DtlMovInv">
+    <Key>
+      <PropertyRef Name="Id_MovInv" />
+      <PropertyRef Name="Id_Producto" />
+      <PropertyRef Name="Precio" />
+      <PropertyRef Name="Id_Talla" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_DtlMovInv" Type="int" Nullable="false" />
+    <Property Name="Id_MovInv" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Id_Producto" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Precio" Type="numeric" Precision="19" Scale="8" Nullable="false" />
+    <Property Name="Impuesto" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Porc_Impuesto" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Id_Talla" Type="int" Nullable="false" />
+    <Property Name="Desc_Importe" Type="money" />
+    <Property Name="Desc_Impuesto" Type="money" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IN_tb_MovInventario">
+    <Key>
+      <PropertyRef Name="Id_MovInv" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_MovInv" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Id_ConcMovInv" Type="int" Nullable="false" />
+    <Property Name="Id_Almacen_Origen" Type="int" Nullable="false" />
+    <Property Name="Id_Almacen_Destino" Type="int" Nullable="false" />
+    <Property Name="Id_Estatus" Type="tinyint" Nullable="false" />
+    <Property Name="Id_Periodo" Type="int" Nullable="false" />
+    <Property Name="Id_Cliente" Type="varchar" MaxLength="10" />
+    <Property Name="F_Traspaso" Type="smalldatetime" Nullable="false" />
+    <Property Name="Envio" Type="varchar" MaxLength="255" />
+    <Property Name="Id_Moneda" Type="int" Nullable="false" />
+    <Property Name="Tipo_Cambio" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="DocAnt" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="DocSig" Type="varchar" MaxLength="7" />
+    <Property Name="Total_Partidas" Type="int" Nullable="false" />
+    <Property Name="SubTotal" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Descuento" Type="numeric" Precision="18" Scale="4" />
+    <Property Name="Impuesto" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Total" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Descuento_Financiero" Type="numeric" Precision="18" Scale="4" />
+    <Property Name="NoGuia" Type="varchar" MaxLength="100" />
+    <Property Name="F_Envio" Type="smalldatetime" />
+    <Property Name="Id_Mensajeria" Type="int" />
+    <Property Name="Factura_SAE" Type="varchar" MaxLength="20" />
+    <Property Name="F_Recepcion" Type="smalldatetime" />
+    <Property Name="Afecto_Existencia" Type="bit" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="255" />
+    <Property Name="Importancia" Type="bit" />
+    <Property Name="Enviar" Type="bit" />
+    <Property Name="Usuario_NoEnviar" Type="varchar" MaxLength="50" />
+    <Property Name="ImpresoAlmacen" Type="bit" />
+    <Property Name="F_ImpresoAlmacen" Type="smalldatetime" />
+    <Property Name="F_AutorizarEnvio" Type="smalldatetime" />
+    <Property Name="Sincronizado" Type="int" Nullable="false" />
+    <Property Name="F_Sincronizacion" Type="smalldatetime" />
+    <Property Name="F_MarcadoPagado" Type="smalldatetime" />
+    <Property Name="Sincronizado_CDA" Type="int" Nullable="false" />
+    <Property Name="F_Sincronizado_CDA" Type="smalldatetime" />
+    <Property Name="UsuarioUltMod" Type="varchar" MaxLength="50" />
+    <Property Name="F_UltMod" Type="smalldatetime" />
+    <Property Name="PC_Creacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Modificacion" Type="smalldatetime" />
+    <Property Name="Usuario_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="PC_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="AspelImporte" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+    <Property Name="AspelFecha_Apli" Type="datetime" />
+    <Property Name="AspelClave" Type="varchar" MaxLength="35" />
+    <Property Name="IE_Direccion" Type="varchar" MaxLength="200" />
+    <Property Name="IE_CP" Type="int" />
+    <Property Name="IE_Colonia" Type="int" />
+    <Property Name="IE_Ciudad" Type="varchar" MaxLength="130" />
+    <Property Name="IE_Estado" Type="varchar" MaxLength="100" />
+    <Property Name="IE_NombreCol" Type="varchar" MaxLength="80" />
+    <Property Name="IE_Id_Almacen" Type="int" />
+    <Property Name="IE_Telefono" Type="varchar" MaxLength="15" />
+    <Property Name="IE_Contacto" Type="varchar" MaxLength="30" />
+    <Property Name="IE_Referencias" Type="varchar" MaxLength="25" />
+    <Property Name="Id_Cliente_MicroCredito" Type="varchar" MaxLength="10" />
+    <Property Name="Id_PedidoRegalo" Type="varchar" MaxLength="7" />
+    <Property Name="Envio_Forzado" Type="int" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="SAE_Transito" Type="int" Nullable="false" />
+    <Property Name="SAE_F_Transito" Type="datetime" />
+    <Property Name="SAE_Almacen" Type="int" Nullable="false" />
+    <Property Name="SAE_F_Almacen" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PR_tb_GanadoresPromocion">
+    <Key>
+      <PropertyRef Name="Id_Reg" />
+    </Key>
+    <Property Name="Id_Reg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Cliente" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Id_Periodo" Type="int" Nullable="false" />
+    <Property Name="Año" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" />
+    <Property Name="Id_Condicion" Type="int" Nullable="false" />
+    <Property Name="Compras" Type="money" />
+    <Property Name="F_PrimerCompra" Type="datetime" />
+    <Property Name="Id_MovInv" Type="varchar" MaxLength="7" />
+    <Property Name="Generar_Traspaso" Type="int" />
+    <Property Name="Usuario_Creacion" Type="varchar" MaxLength="50" />
+    <Property Name="Fecha_Creacion" Type="smalldatetime" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="PR_tb_Param_Prom">
+    <Key>
+      <PropertyRef Name="Id_Periodo" />
+      <PropertyRef Name="Id_Condicion" />
+    </Key>
+    <Property Name="Id_Reg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Periodo" Type="int" Nullable="false" />
+    <Property Name="Id_Condicion" Type="int" Nullable="false" />
+    <Property Name="Año" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Id_Promocion" Type="int" Nullable="false" />
+    <Property Name="Condicion1" Type="money" Nullable="false" />
+    <Property Name="Condicion2" Type="money" Nullable="false" />
+    <Property Name="Usuario_Creacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="F_Creacion" Type="smalldatetime" Nullable="false" />
+    <Property Name="Host_Creacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Usuario_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Modificacion" Type="smalldatetime" />
+    <Property Name="Host_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="Socio_Tipo" Type="int" Nullable="false" />
+    <Property Name="Relacion_Condicion" Type="int" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PR_tb_Promocion">
+    <Key>
+      <PropertyRef Name="Id_Promocion" />
+    </Key>
+    <Property Name="Id_Promocion" Type="int" Nullable="false" />
+    <Property Name="Año" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Premio" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Cantidad_1" Type="int" />
+    <Property Name="Premio_1" Type="varchar" MaxLength="16" />
+    <Property Name="Cantidad_2" Type="int" />
+    <Property Name="Premio_2" Type="varchar" MaxLength="16" />
+    <Property Name="Cantidad_3" Type="int" />
+    <Property Name="Premio_3" Type="varchar" MaxLength="16" />
+    <Property Name="Cantidad_4" Type="int" />
+    <Property Name="Premio_4" Type="varchar" MaxLength="16" />
+    <Property Name="Cantidad_5" Type="int" />
+    <Property Name="Premio_5" Type="varchar" MaxLength="16" />
+    <Property Name="Usuario_Creacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="F_Creacion" Type="smalldatetime" Nullable="false" />
+    <Property Name="Host_Creacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Usuario_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Modificacion" Type="smalldatetime" />
+    <Property Name="Host_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="Cantidad_6" Type="int" />
+    <Property Name="Premio_6" Type="varchar" MaxLength="16" />
+    <Property Name="Cantidad_7" Type="int" />
+    <Property Name="Premio_7" Type="varchar" MaxLength="16" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <EntityContainer Name="EVO_PTModelStoreContainer">
+    <EntitySet Name="CU_tb_Periodos" EntityType="Self.CU_tb_Periodos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IN_tb_DtlMovInv" EntityType="Self.IN_tb_DtlMovInv" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IN_tb_MovInventario" EntityType="Self.IN_tb_MovInventario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PR_tb_GanadoresPromocion" EntityType="Self.PR_tb_GanadoresPromocion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PR_tb_Param_Prom" EntityType="Self.PR_tb_Param_Prom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PR_tb_Promocion" EntityType="Self.PR_tb_Promocion" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

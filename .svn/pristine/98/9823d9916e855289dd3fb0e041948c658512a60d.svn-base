@@ -1,0 +1,41 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Comisiones.Models.ViewModels
+{
+    public class MovimientosSocioViewModel
+    { 
+        public int Id_MovimientosSocio { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Socio")]
+        public string Partner_id { get; set; }
+
+        public string NombreDistribuidor { get; set; }
+
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Concepto")]
+        public int Id_Concepto { get; set; }
+
+
+        public string TipoConcepto { get; set; }
+
+        public string DescripcionConcepto { get; set; }
+
+        public string Comentario { get; set; }
+
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Importe Préstamo")]
+        [DataType(DataType.Currency)]
+        public decimal Monto { get; set; }
+
+        public decimal Comisiones { get; set; }
+
+        public int Id_Periodo { get; set; }
+
+        public string NombreSocio { get; set; }
+
+
+    }
+}

@@ -1,0 +1,552 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - Herbax - Comisiones</title>
+
+	@Scripts.Render("~/bundles/modernizr")
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/bootstrap")
+
+	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+	@Scripts.Render("~/Scripts/jquery-ui-1.12.1.js")
+
+
+	@RenderSection("scripts", required: false)
+
+	<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+	<link href="~/Content/bootstrap.css" rel="stylesheet" />
+	<link href="~/Content/Site.css" rel="stylesheet" />
+	<link href="~/Content/comisiones.css" rel="stylesheet" />
+	<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+
+	<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+
+	<link href="~/Content/dataTables.bootstrap.min.css" rel="stylesheet" />
+	<link href="~/Content/responsive.bootstrap.min.css" rel="stylesheet" />
+	<script src="~/Scripts/sweetalert2@8.js" type="text/javascript"></script>
+
+	<style>
+		/*.header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background-color: #f9f9f9;
+		}
+
+		.header__logo {
+			background-color: red;
+			padding: 40px;
+		}
+
+		.header__menu ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+			.header__menu ul li {
+				display: inline-block;
+			}
+
+		.main {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.main__content {
+			width: 100%;
+			background-color: #ddd;
+			height: 500px;
+		}
+
+		.nav a {
+			color: #ffffff !important;
+		}
+
+		.nav dropdown-menu li a {
+			color: black !important;
+		}
+
+		.nav li :hover {
+			color: #808080 !important;
+			background-color: red;
+			background: #8ea8ba;
+			scrollbar-3dlight-color: cornflowerblue;
+			scrollbar-base-color: azure;
+		}
+
+		li .my-class {
+			color: black !important;
+		}
+
+			.jumbotron {
+				position: relative;
+				padding: 20px !important;
+				margin-top: 70px !important;
+				background: #eee;
+				margin-top: 23px;
+				text-align: left;
+				margin-bottom: 0 !important;
+			}
+
+				.jumbotron .container-fluid {
+					padding: 0 !important;
+				}
+
+		*/
+		.jumbotron {
+			border-style: groove;
+			position: relative;
+			padding: 25px !important;
+			margin-top: 20px !important;
+			background: #eee;
+			margin-top: 23px;
+			text-align: left;
+			margin-bottom: 0 !important;
+		}
+
+			.jumbotron .container-fluid {
+				padding: 0 !important;
+			}
+	</style>
+
+</head>
+<body>
+
+	<div id="page_effect" style="display:none;">
+
+		<nav class="navbar navbar-expand-lg navbar-light-Comisiones bg-Comisiones">
+			<a class="navbar-brand" href="#">
+				<img src="~/Content/themes/base/images/logo.png" />
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link enlace" href="@sesion.urlMain">Inicio<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Comisiones
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="@sesion.urlMain/CargaAnticipos/">Cargar anticipos</a>
+							<a class="dropdown-item" href="@sesion.urlMain/CargaComisiones/">Cargar comisiones</a>
+							<a class="dropdown-item" href="@sesion.urlMain/CalculaComision/">C&aacute;lculo comisiones</a>
+							<a class="dropdown-item" href="@sesion.urlMain/CalculaCDA/">C&aacute;lculo CDA</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="@sesion.urlMain/Comisiones/">Archivo comisiones</a>
+							<a class="dropdown-item" href="@sesion.urlMain/RecepcionDepositos/">Archivo dep&oacute;sitos</a>
+							<a class="dropdown-item" href="@sesion.urlMain/ComiAtrasadas/">Archivo comisiones atrasadas</a>
+						</div>
+					</li>
+
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Movimientos
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="@sesion.urlMain/MovimientosSocio/">Movimientos socios</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="@sesion.urlMain/PrestamoSocio/">Pr&eacute;stamo a socio</a>
+							<a class="dropdown-item" href="@sesion.urlMain/ListaPrestamos/">Lista pr&eacute;stamos</a>
+						</div>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Premios
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="@sesion.urlMain/CalculaPremio/">C&aacute;lculo premios</a>
+							<a class="dropdown-item" href="@sesion.urlMain/ConsultaPremios/">Premios otorgados</a>
+						</div>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Reembolsos
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="@sesion.urlMain/CalculaReembolsos/">C&aacute;lculo reembolsos</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="@sesion.urlMain/ReembolsosCanje/">Canje de reembolsos</a>
+							<a class="dropdown-item" href="@sesion.urlMain/ReembolsosConPedidos/">Reembolsos con pedidos</a>
+						</div>
+					</li>
+
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Reportes
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="@sesion.urlMain/EstadosDeCuenta/">Estados de cuenta</a>
+							<a class="dropdown-item" href="@sesion.urlMain/ReporteComisiones/">Reporte de comisiones</a>
+						</div>
+					</li>
+
+
+
+
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Cat&aacute;logos
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="@sesion.urlMain/CatPeriodos/">Per&iacute;odos</a>
+							<a class="dropdown-item" href="@sesion.urlMain/CatSocios/">Socios</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="@sesion.urlMain/CO_tb_CompaniaPago/">Compañias de pago</a>
+							<a class="dropdown-item" href="@sesion.urlMain/CO_tb_Conceptos/">Conceptos</a>
+
+							<a class="dropdown-item" href="@sesion.urlMain/CO_tb_ImpuestoComision/">Impuesto de comisiones</a>
+							<a class="dropdown-item" href="@sesion.urlMain/CO_Tb_IVA/">R&eacute;gimen fiscal</a>
+							<a class="dropdown-item" href="@sesion.urlMain/CO_Tb_ISR_GT/">ISR</a>
+
+
+							@*<a href="#menu3sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Impuestos</a>
+							<div class="collapse" id="menu3sub2">
+								<a class="dropdown-item" href="@sesion.urlMain/CO_tb_ImpuestoComision/">Impuesto de Comisiones</a>
+								<a class="dropdown-item" href="@sesion.urlMain/CO_Tb_IVA/">Regimen Fiscal</a>
+								<a class="dropdown-item" href="@sesion.urlMain/CO_Tb_ISR_GT/">ISR</a>
+							</div>*@
+
+
+							<a class="dropdown-item" href="@sesion.urlMain/CO_tb_Parametro/">Parametros</a>
+							<a class="dropdown-item" href="@sesion.urlMain/CO_tb_ConfigReembolsos/">Reembolsos</a>
+							<a class="dropdown-item" href="@sesion.urlMain/CO_tb_Rango_Compra_Premios/">Premios</a>
+							<a class="dropdown-item" href="@sesion.urlMain/CO_tb_cdaPolitica/">Politicas de CDA</a>
+
+
+						</div>
+					</li>
+
+
+
+					@*<li class="nav-item">
+		  <a class="nav-link disabled" href="#">Disabled</a>
+		</li>*@
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Accesos
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="@sesion.urlMain/CambioPassword/">Cambiar contraseña</a>
+							<a class="dropdown-item" href="~/Home/Deslogear">Cerrar sesión</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="@sesion.urlMain/Usuarios/">Usuarios</a>
+							<a class="dropdown-item" href="@sesion.urlMain/Roles/">Roles</a>
+
+						</div>
+					</li>
+
+
+
+
+				</ul>
+				@*<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+					</form>*@
+			</div>
+		</nav>
+
+
+		<div class="container body-content align-content-md-center">
+			@RenderBody()
+			<hr />
+			<footer>
+				<div class="copyright"> Copyright &copy; 2019 Herbax products for life S.A. de C.V. version: 1.0.9.9</div>
+			</footer>
+		</div>
+
+		<div class="container body-content">
+			<!-- GIF loader-->
+			<div id="divLoader" class="col-sm-12" style="display:none;">
+				<div class="center-block">
+					<img src="~/Content/ajax-loader.gif" alt="Loader" />
+				</div>
+			</div>
+		</div>
+
+		<!-- MODAL Message-->
+		<div id="divMPageMessage" class="modal  fade" role="dialog" tabindex="-1">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Mensaje del Sistema</h4>
+					</div>
+					<div class="modal-body" id="divMessage">
+						<div id="divMessageContent"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" id="btnMessageOk" data-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+            var g_zIndex = 11;
+            var MSG_TYPE = {
+                "success": "alert alert-success",
+                "info": "alert alert-info",
+                "warning": "alert alert-warning",
+                "error": "alert alert-danger"
+            };
+
+            //Funcion para formatear un numero a formato ###,###.##
+            function formatNumber(num) {
+                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            }
+
+            //Funcion para formatear un numero a formato $ ###,###.##
+            function formatCurrency(num) {
+                return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            }
+
+            function alertSystem(type, msg) {
+                bringToFront('divMessageContent');
+                $('#divMessageContent').removeClass()
+                $('#divMessageContent').addClass(MSG_TYPE[type]);
+                $('#divMessageContent').html(msg);
+                $('#divMPageMessage').modal('show');
+            }
+
+            function mostrarLoader() {
+                //$("#divLoader").show();
+                var v_control = $('#divLoader');
+                if (v_control !== null) {
+                    v_control.css("z-index", 1);
+                    v_control.show();
+                   window.scrollTo(0, 0);
+                }
+            }
+            function ocultarLoader() {
+                //$("#divLoader").hide();
+                var v_control = $('#divLoader');
+                if (v_control !== null) {
+                    v_control.css("z-index", 1);
+                    v_control.hide();
+                    // window.scrollTo(0, 0);
+                }
+            }
+
+
+            function bringToFront(p_idPage) {
+                //$('[id^="divPage"]').css("z-index","90");
+                var v_control = $('#' + p_idPage);
+                if (v_control !== null) {
+                    v_control.css("z-index", g_zIndex++);
+                    v_control.show();
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            $(document).ready(function () {
+
+                $('#page_effect').fadeIn(1200);
+
+
+                function obtieneNombrePaginaActual() {
+                    //var URLactual = jQuery(location).attr('href');
+                    //alert(URLactual);
+                    var pathname = window.location.pathname;
+                    //pathname = pathname.replace('/', '');
+                    //pathname = pathname.replace('/', '');
+                    //alert(pathname);
+                    return pathname;
+                }
+
+                var _paginaActual = obtieneNombrePaginaActual();
+
+                var alreadySetActive = false;
+
+                $("li").each(function () {
+                    if (this.innerHTML != undefined) {
+                        var element = $(this)[0];
+                        var aElem = element.childNodes[1];
+
+                        if (aElem.pathname !== '/') {
+                            if (aElem.pathname == _paginaActual) {
+                                if (aElem.id != 'aCalculo') {
+                                    aElem.classList.remove("enlace");
+                                    aElem.classList.add("menuActivo");
+                                    //alert(aElem.innerText);
+                                    alreadySetActive = true;
+                                }
+                            }
+                            else if (_paginaActual.indexOf(aElem.pathname.replace('/', '')) > 0) {
+                                if (alreadySetActive == false) {
+                                    //alert("pagina actual contiene");
+                                    aElem.classList.remove("enlace");
+                                    aElem.classList.add("menuActivo");
+                                    alreadySetActive = true;
+                                }
+                            }
+                            else {
+                                aElem.classList.remove("menuActivo");
+                                if (aElem.className.indexOf("enlace") == 0) {
+                                    aElem.classList.add("enlace");
+                                }
+                            }
+                        }//pathname !== '/'
+                    }
+                });
+
+                // De acuerdo al estatus del proceso de calculo, bloquea la opcion de movimientos por socio.
+                var _estatus = '@sesion.EstatusCalculo';
+                if (_estatus != undefined && (_estatus == 'True' || _estatus == 1)) {
+                    var elementMov = $("#liMovimientos")[0];
+                    elementMov.classList.remove("enlace");
+                    elementMov.classList.add("lidisabled");
+
+                    var aelementMov = elementMov.childNodes[1];
+
+                    if (_paginaActual == aelementMov.pathname) {
+                        window.location.href = "/";
+                    }
+                    else if (aelementMov.pathname.indexOf(_paginaActual.replace('/', '')) > 0) {
+                        window.location.href = "/";
+                    }
+                    else if (_paginaActual.indexOf(aelementMov.pathname.replace('/', '')) > 0) {
+                        window.location.href = "/";
+                    }
+
+                }
+                comisiones.urlMain = '@sesion.urlMain';
+            });
+
+	</script>
+
+
+	<style>
+		#navbarSupportedContent .list-group-item 
+		{
+		    border-radius: 0;
+			background-color: #333;
+			color: #ccc;
+		    border-left: 0;
+		    border-right: 0;
+		    border-color: #2c2c2c;
+		    white-space: nowrap;
+		}
+
+		/* highlight active menu */
+		#navbarSupportedContent .list-group-item:not(.collapsed) 
+		{
+		    background-color: #222;
+		}
+
+		/* closed state */
+		#navbarSupportedContent .list-group .list-group-item[aria-expanded="false"]::after 
+		{
+		  content: " \f0d7";
+		  font-family: FontAwesome;
+		  display: inline;
+		  text-align: right;
+		  padding-left: 5px;
+		}
+
+		/* open state */
+		#navbarSupportedContent .list-group .list-group-item[aria-expanded="true"] 
+		{
+		  background-color: #222;
+		}
+
+		#navbarSupportedContent .list-group .list-group-item[aria-expanded="true"]::after 
+		{
+		  content: " \f0da";
+		  font-family: FontAwesome;
+		  display: inline;
+		  text-align: right;
+		  padding-left: 5px;
+		}
+
+		/* level 1*/
+		#navbarSupportedContent .list-group .collapse .list-group-item  
+		{
+		  padding-left: 20px;
+		}
+
+		/* level 2*/
+		#navbarSupportedContent .list-group .collapse > .collapse .list-group-item 
+		{
+			padding-left: 30px;
+		}
+
+		/* level 3*/
+		#navbarSupportedContent .list-group .collapse > .collapse > .collapse .list-group-item 
+		{
+			padding-left: 40px;
+		}
+
+		@*@media (max-width:48em)
+		{*@
+		    /* overlay sub levels on small screens */
+		    #navbarSupportedContent .list-group .collapse.in, #navbarSupportedContent .list-group .collapsing
+			{	
+		        position: absolute;
+				z-index: 1;
+		        width: 190px;
+			}
+
+			#navbarSupportedContent .list-group > .list-group-item 
+			{
+				text-align: center;
+		        padding: .75rem .5rem;
+			}
+
+			/* hide caret icons of top level when collapsed */
+		    #navbarSupportedContent .list-group > .list-group-item[aria-expanded="true"]::after,
+		    #navbarSupportedContent .list-group > .list-group-item[aria-expanded="false"]::after 
+			{
+				display:none;
+			}
+		/*}*/
+
+		/* change transition animation to width when entire sidebar is toggled */
+			#navbarSupportedContent.collapse 
+			{
+			  -webkit-transition-timing-function: ease;
+		       -o-transition-timing-function: ease;
+			  transition-timing-function: ease;
+				-webkit-transition-duration: .2s;
+				-o-transition-duration: .2s;
+				transition-duration: .2s;
+			}
+
+			#navbarSupportedContent.collapsing 
+			{
+				opacity: 0.8;
+			    width: 0;
+			  -webkit-transition-timing-function: ease-in;
+		       -o-transition-timing-function: ease-in;
+				  transition-timing-function: ease-in;
+				-webkit-transition-property: width;
+		       -o-transition-property: width;
+				  transition-property: width;
+
+			}
+	</style>
+		
+</body>
+
+
+
+
+</html>
+

@@ -1,0 +1,158 @@
+﻿@model Comisiones.Models.ModelsEvolution.CO_tb_cdaPolitica
+
+@{
+
+	ViewBag.Title = "Modificaciones";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.ui.core.min.js")"
+		type="text/javascript"></script>
+
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker.min.js")"
+		type="text/javascript"></script>
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h2>Modificar datos</h2>
+
+	<h4>Cambios a la informacion</h4>
+	<hr />
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<form id="myform" class="form-inline">
+		<div class="form-horizontal">
+
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			@Html.HiddenFor(model => model.Id_Politica)
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-5" })
+				<div class="col-md-7">
+					@Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+					@Html.LabelFor(model => model.Descripcion_corta, htmlAttributes: new { @class = "control-label col-md-5" })
+				<div class="col-md-7">
+					@Html.EditorFor(model => model.Descripcion_corta, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Descripcion_corta, "", new { @class = "text-danger" })
+				</div>
+			</div>
+		<br />
+		<div class="form-group">
+			@Html.LabelFor(model => model.Monto, htmlAttributes: new { @class = "control-label col-md-5" })
+			<div class="col-md-7">
+				@Html.EditorFor(model => model.Monto, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Monto, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<br />
+		<div class="form-group">
+			@Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-5" })
+			<div class="col-md-7">
+				@Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<br />
+		<div class="form-group">
+			@Html.LabelFor(model => model.Cantidad_Topada, htmlAttributes: new { @class = "control-label col-md-5" })
+			<div class="col-md-7">
+				@Html.EditorFor(model => model.Cantidad_Topada, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Cantidad_Topada, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<br />
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.id_percepcion, htmlAttributes: new { @class = "control-label col-md-5" })
+			<div class="col-md-7">
+				@Html.DropDownList("id_percepcion", (IEnumerable<SelectListItem>)ViewBag.dropdownPercepcion, "Selecciona un Percepcion?", new { @id = "IdPercepcion", @class = "form-control" })
+
+			</div>
+		</div>
+		<br />
+		<div class="form-group">
+			@Html.LabelFor(model => model.id_estatus, htmlAttributes: new { @class = "control-label col-md-5" })
+			<div class="col-md-7">
+				@Html.DropDownList("id_estatus", (IEnumerable<SelectListItem>)ViewBag.dropdownEstatus, "Estatus actual?", new { @id = "IdEstatus", @class = "form-control" })
+			</div>
+		</div>
+
+		@*<div class="form-group">
+				@Html.LabelFor(model => model.id_percepcion, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.id_percepcion, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.id_percepcion, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.id_estatus, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.id_estatus, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.id_estatus, "", new { @class = "text-danger" })
+				</div>
+			</div>*@
+		<br />
+		<div class="form-group">
+			@*@Html.LabelFor(model => model.f_Vigencia, htmlAttributes: new { @class = "control-label col-md-5" })
+			<div class="col-md-7">
+			    @Html.TextBoxFor(model => model.f_Vigencia, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @id = "FechaVigencia", @class = "form-control" } })
+            </div>*@
+
+
+            @Html.LabelFor(model => model.f_Vigencia, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.f_Vigencia, new { htmlAttributes = new { @id = "FechaVigencia", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.f_Vigencia, "", new { @class = "text-danger" })
+            </div>
+		</div>
+
+		@*<div class="form-group">
+				@Html.LabelFor(model => model.UltMod_Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.UltMod_Usuario, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.UltMod_Usuario, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.UltMod_F, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.UltMod_F, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.UltMod_F, "", new { @class = "text-danger" })
+				</div>
+			</div>*@
+
+
+			@using (Html.BeginForm("Edit", "CO_tb_cdaPolitica", "POST"))
+			{
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<input type="submit" value="Grabar" class="btn btn-default" style="height:25Px; text-align:inherit" />
+						@Html.ActionLink("Regresar", "Index", "CO_tb_cdaPolitica", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+					</div>
+
+				</div>
+			}
+		</div>
+	</form>
+	}
+		
+	</div>
+
+<script>
+		$(document).ready(function () {
+		    //$("#FechaVigencia").attr("readonly", "true");
+        });
+
+
+
+
+
+</script>

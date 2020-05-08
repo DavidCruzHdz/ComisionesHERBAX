@@ -1,0 +1,411 @@
+﻿@model IList<Comisiones.Models.CO_st_BuscaProductos4_Result>
+
+@{ ViewBag.Title = "Alta de Premios";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<script type="text/javascript" class="init">
+
+</script>
+
+
+<head>
+	<link rel="stylesheet" href="~/Content/estilos.css" />
+</head>
+
+<body>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jqueryval")
+
+	<main>
+		<div class="maintitle">Lista de reembolsos pendientes</div>
+		<div class="container-fluid" id="divMainContainer" style="align-content:center">
+			<form id="myform" class="form-inline">
+				@using (Html.BeginForm())
+				{
+					@Html.AntiForgeryToken()
+
+				<div class="form-horizontal">
+					<hr />
+					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+					@using (Html.BeginForm("Create", "CO_tb_Premios", FormMethod.Get))
+					{
+						<div class="form-group">
+							<div class="col-md-2" style="text-align-last:right">
+								<div>
+									<label>Pais</label>
+								</div>
+							</div>
+
+							<div class="col-md-8">
+								@Html.DropDownList("id_pais", (IEnumerable<SelectListItem>)ViewBag.dropdownPaises, "Selecciona un Pais?", new { onchange = "this.form.submit();", @id = "IdPais", @class = "form-control" })								
+							</div>
+
+						</div>
+					}
+
+
+					<div class="form-group">
+						<div class="col-md-2" style="text-align-last:right">
+							<div>
+								<label>Nombre Premio</label>
+							</div>
+						</div>
+
+						<div class="col-md-10">
+							<input maxlength="800" class="form-control" id="nombre_premio" name="nombre_premio" style="width:800px;height:30px;" tabindex="1" type="text">
+						</div>
+					</div>
+
+					<br />
+					<div class="form-group">
+						<div class="col-md-2" style="text-align-last:right">
+							<div>
+								<label>Periodo</label>
+							</div>
+						</div>
+						<div class="col-md-10">
+							@Html.DropDownList("id_periodo", (IEnumerable<SelectListItem>)ViewBag.dropdownPeriodos, new { @id = "IdPeriodo", @class = "form-control" })
+						</div>
+					</div>
+					<br />
+
+					<br />
+					<br />
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							@*<a href=#myModal" id="MuestraProd">Abrir ventana modal</a>*@
+							<input data-ajax="true" value="Seleccionar Productos" id="MuestraProd" class="btn btn-danger btn-lg" href="#myModal" name="MuestraProd" data-toggle="modal" />
+						</div>
+					</div>
+				</div>
+				}
+
+				@*<div>
+						@Html.ActionLink("Back to List", "Index")
+					</div>*@
+
+
+
+
+
+
+			</form>
+
+			<!-- Modal -->
+			<div id="myModal" class="modal face" style="align-content:center">
+				<div class="modal-body" role="document">
+					<div class="modal-content">
+						<div class="modal-body form-horizontal">
+							@using (Html.BeginForm("Create", "CO_tb_Premios", "POST"))
+							{
+								<table class="table table-striped modal-content theader w-auto" id="TblPremios">
+
+									<tr style="background-color:#D6EAF8;width:100%">
+										<th>Empresa</th>
+										<th>Nombre de Premio</th>
+										<th></th>
+										<th>Periodo</th>
+										
+									</tr>
+
+									<tr class="tablaPremios"></tr>
+								</table>
+								<table class="table display" style="background-color:#D6EAF8" id="TblProductos">
+									<thead style="background-color:#D6EAF8">
+										<tr>
+											<th style="text-align:center">
+												<label>Clave</label>
+											</th>
+											<th style="width:700px;" type="text" maxlength="700">
+												<label>Nombre Producto</label>
+											</th>
+											<th>
+												<label>Precio</label>
+											</th>
+											<th>
+												<label>Seleccionar</label>
+											</th>
+											<th>
+												@*<label></label>*@
+											</th>
+											<th>
+											</th>
+											<th>
+											</th>
+
+										</tr>
+									</thead>
+									<tbody>
+
+										@for (var i = 0; i < Model.Count; i++)
+										{
+											<tr id="row+@i" oninput="test(this)">
+
+												@Html.HiddenFor(x => x[i].PrecioPublico, new { @class = "form-control  TmpVentas", @id = "Precio" + @i })
+												@Html.HiddenFor(x => x[i].sku, new { @class = "form-control TmpSku" })
+												@Html.HiddenFor(x => x[i].Descripcion, new { @class = "form-control", @style = "align-items:right", @disabled = "disabled" })
+												@*@Html.HiddenFor(x => x[i].SubTotal, new { @class = "form-control Monto", @style = "align-items:right", @disabled = "disabled" })*@
+
+												@Html.HiddenFor(x => x[i].Warehouse_ID, new { @class = "form-control" })
+												@Html.HiddenFor(x => x[i].Warehouse, new { @class = "form-control" })
+												@Html.HiddenFor(x => x[i].cve_art, new { @class = "form-control" })
+												@*@Html.HiddenFor(x => x[i].ActivoSAE, new { @class = "form-control TmpAnio" })
+												@Html.HiddenFor(x => x[i].PrecioMinimo, new { @class = "form-control TmpMes" })*@
+
+												<td style="text-align:center">
+													@Html.DisplayFor(x => x[i].sku, new { @class = "form-control" })
+												</td>
+
+
+
+												<td style="width:700px;" type="text" maxlength="700">
+													@Html.DisplayFor(x => x[i].Descripcion, new { @class = "form-control", @style = "align-items:right", @disabled = "disabled" })
+												</td>
+												<td>
+
+													@Html.DisplayFor(x => x[i].PrecioPublico, new { @class = "form-control VaPrecio" + @i, @style = "align-items:right", @disabled = "disabled" })
+												</td>
+												<td>
+													@*@Html.EditorFor(x => x[i].CantidadProducto, "Teclee la cantidad a solicitar", new { @class = "form-control CantProd", htmlAttributes = new { min = 0, max = 100000 }, @style = "align-items:right; width: 80px; height: 20px;", @type = "number" })
+														<br />
+														@Html.ValidationMessageFor(x => x[i].CantidadProducto, "", new { @class = "text-danger" })*@
+
+													@Html.CheckBoxFor(x => x[i].checkeado, new { @class = "form-control", @style = "align-items:left" })
+												</td>
+												@*<td>
+														@Html.HiddenFor(x => x[i].SubTotal, new { @class = "form-control TmpMonto", @style = "align-items:right", @disabled = "disabled" })
+													</td>*@
+												<td>
+													@Html.HiddenFor(x => x[i].Id_Empresa, new { @class = "form-control  IdEmpresa" })
+												</td>
+												@*<td>
+														@Html.HiddenFor(x => x[i].Id_Socio, new { @class = "form-control  TmpSocio" })
+													</td>*@
+													<td>
+														@Html.HiddenFor(x => x[i].nombre_premio, new { @class = "form-control  TmpNomPremio" })
+													</td>
+												<td>
+													@Html.HiddenFor(x => x[i].Id_Pais, new { @class = "form-control  TmpPais" })
+												</td>
+												<td>
+													@Html.HiddenFor(x => x[i].Id_Periodo, new { @class = "form-control  TmpPeriodo" })
+												</td>
+												@*<td>
+													@Html.HiddenFor(x => x[i].Cantidad, new { @class = "form-control  TmpCantidad" })
+												</td>
+												<td>
+													@Html.HiddenFor(x => x[i].Topada, new { @class = "form-control  TmpTopada" })
+												</td>
+												<td>
+													@Html.HiddenFor(x => x[i].Porcentaje, new { @class = "form-control  TmpPorcentaje" })
+												</td>*@
+											</tr>
+										}
+									</tbody>
+
+								</table>
+
+
+
+								<div class="modal-footer">
+									<input type="hidden" value="0" id="rembolsoTotal" />
+									<input type="hidden" value="0" id="rembolsoActual" />
+
+									<a href="~/CO_tb_ConfigReembolsos/" class="btn btn-danger btn-lg">Cerrar</a>
+
+									@*<input type="submit" value="envia" onclick="return validar()" class="btn btn-danger btn-lg" />*@
+									<input type="submit" value="envia" class="btn btn-danger btn-lg" />
+
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</main>
+</body>
+
+
+
+
+@section scripts{
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			mostrarLoader();
+			//$("#IdPeriodos").attr('readonly', true);
+			//$("#IdPais").change(function()
+			//{
+			//    // Clear drop down list
+			//    $("#IdPeriodos").find("option").remove();
+
+			//    var params =
+			//            {
+			//                IdPais: $("#IdPais").val(),
+			//            };
+			//    $.ajax(
+			//        {
+			//            url: "/CO_tb_Premios/PeriodosSelectList",
+			//            method: "post",
+			//            data: params,
+			//            success: function(data) {
+			//                console.log(data)
+			//                // agregamos opcion de inicio
+			//                $('<option>').val(0).text("Periodo a capturar?").appendTo("#IdPeriodos");
+
+			//                $.each(data, function(index, value) {
+			//                    console.log(index + value)
+			//                    $('<option>').val(value.Value).text(value.Text).appendTo("#IdPeriodos");
+			//                })
+
+			//                $("#IdPeriodos").attr('readonly', false);
+			//            },
+			//        });
+			//})
+
+
+			$(".CantProd").val(0);
+			$(".text-box").val(0);
+
+
+			var Nombre = 0;//global variable
+			var Ventas = 0;//global variable
+			var TotalReembolso = 0;//global variable
+
+			var Reembolsado = "";
+			var NumSocio = "";
+			var Diferencia = 0;
+			var Anio = 0;
+			var Mes = 0;
+			var Quincena = 0;
+
+
+			ocultarLoader();
+
+
+
+			$("#MuestraProd").click(function () {
+				addRowHandlers();
+			})
+
+
+		});
+
+
+
+		function addRowHandlers() {
+			$('#myform').on('submit', function (ev) {
+				$('#my-modal').modal({
+					show: 'false'
+				});
+
+				window.opener.document.getElementById('myModal').innerHTML = "";
+
+				var data = $(this).serializeObject();
+				json_data = JSON.stringify(data);
+				$("#results").text(json_data);
+				$(".modal-body").text(json_data);
+
+				ev.preventDefault();
+			});
+
+
+			var hoy = new Date();
+			var dd = hoy.getDate();
+			var mm = hoy.getMonth() + 1;
+			var yyyy = hoy.getFullYear();
+
+			if (dd < 10) {
+				dd = '0' + dd;
+			}
+
+			if (mm < 10) {
+				mm = '0' + mm;
+			}
+
+			var PaisPremio = $("#IdPais").val();
+			var PeriodoPremio = $("#IdPeriodo").val();
+			var NombrePremio = $("#nombre_premio").val();
+
+			$(".TmpNomPremio").val(NombrePremio);
+			$(".TmpPais").val(PaisPremio);
+			$(".TmpPeriodo").val(PeriodoPremio);
+			
+			var ProdASeleccionar = " <td>" + PaisPremio.toString()  + "</td><td>" + PeriodoPremio.toString() + "</td><td>" + NombrePremio.toString() + "</td>";
+			$(".tablaPremios td").remove();
+			$(".tablaPremios").append(ProdASeleccionar);
+		};
+
+
+		function validar() {
+			return false
+		}
+
+
+		function test(item) {
+		};
+
+
+
+		function cierre() {
+			$("#myModal").modal('hide');//ocultamos el modal
+			$('body').removeClass('modal-open');//eliminamos la clase del body para poder hacer scroll
+			$('.modal-backdrop').remove();//eliminamos el backdrop del modal
+
+			Swal.fire
+				({
+					title: 'Aun no ha grabado el pedido esta seguro que quiere ',
+					text: "Presione el boton para cerrar!",
+					type: "success",
+					animation: false,
+					customClass:
+					{
+						popup: 'animated tada'
+					}
+				}).then(function (result) {
+					window.location.hostname;
+				})
+
+		}
+
+
+		function cerrar() {
+
+			$(".CantProd").text("0");
+			$(".text-box").text("0");
+		}
+
+
+		function validar() {
+			return false
+		}
+
+
+		$("#IdPais").change(function () {
+			$("input[type=submit]").click();
+		});
+	</script>
+
+
+
+}
+
+<style>
+	.theader th {
+		width: 16% !important;
+	}
+
+	.theader td {
+		width: 16% !important;
+	}
+</style>
+
+
+

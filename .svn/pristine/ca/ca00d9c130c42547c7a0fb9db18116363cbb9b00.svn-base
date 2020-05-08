@@ -1,0 +1,1492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EvolutionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.CL_tb_customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CL_tb_customer">
+    <Key>
+      <PropertyRef Name="partner_id" />
+      <PropertyRef Name="sponsor_id" />
+      <PropertyRef Name="upline_id" />
+      <PropertyRef Name="id_eStatus" />
+    </Key>
+    <Property Name="partner_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="sponsor_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="upline_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="id_eStatus" Type="tinyint" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="RenewedDate" Type="datetime" />
+    <Property Name="Email" Type="varchar" MaxLength="200" />
+    <Property Name="HomeNo" Type="varchar" MaxLength="20" />
+    <Property Name="WorkNo" Type="varchar" MaxLength="20" />
+    <Property Name="CellNo" Type="varchar" MaxLength="30" />
+    <Property Name="FaxNo" Type="varchar" MaxLength="20" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="BillingAddress1" Type="nvarchar" MaxLength="75" />
+    <Property Name="BillingAddress2" Type="nvarchar" MaxLength="75" />
+    <Property Name="BillingAddress3" Type="nvarchar" MaxLength="75" />
+    <Property Name="BillingCity" Type="nvarchar" MaxLength="75" />
+    <Property Name="BillingState" Type="nvarchar" MaxLength="50" />
+    <Property Name="BillingCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="BillingZip" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShippingAddress1" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShippingAddress2" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShippingAddress3" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShippingCity" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShippingState" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShippingCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShippingZip" Type="nvarchar" MaxLength="75" />
+    <Property Name="DistUserName" Type="nvarchar" MaxLength="40" />
+    <Property Name="DistBusinessCenter" Type="smallint" />
+    <Property Name="SponsorBusinessCenter" Type="int" />
+    <Property Name="OriginalSponsorID" Type="int" />
+    <Property Name="OriginalSponsorBusinessCenter" Type="int" />
+    <Property Name="RenewalDate" Type="datetime" />
+    <Property Name="UplineBusinessCenter" Type="int" />
+    <Property Name="PlacementPosition" Type="varchar" MaxLength="20" />
+    <Property Name="RankTitle" Type="varchar" MaxLength="50" />
+    <Property Name="RankDate" Type="datetime" />
+    <Property Name="PackageLevel" Type="varchar" MaxLength="50" />
+    <Property Name="PackageNextPaymentDate" Type="datetime" />
+    <Property Name="SubscriberCreatedDate" Type="datetime" />
+    <Property Name="Terminated" Type="tinyint" />
+    <Property Name="Status" Type="varchar" MaxLength="8" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="75" />
+    <Property Name="CorporateEmailOptIn" Type="varchar" MaxLength="3" />
+    <Property Name="DistributorEmailOptIn" Type="varchar" MaxLength="3" />
+    <Property Name="EnteredDate" Type="datetime" />
+    <Property Name="EnteredBy" Type="varchar" MaxLength="15" />
+    <Property Name="DefaultWarehouse" Type="nvarchar" MaxLength="15" />
+    <Property Name="Active" Type="int" />
+    <Property Name="Qualified" Type="int" />
+    <Property Name="clabe" Type="varchar" MaxLength="18" />
+    <Property Name="paymethod_com" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Evolution.dbo.CL_tb_orders_paso' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CL_tb_orders_paso">
+          <Property Name="Company" Type="varchar" MaxLength="50" />
+          <Property Name="Custom_Sponsor_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Display_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Distributor_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+          <Property Name="GovIdentification" Type="varchar" MaxLength="50" />
+          <Property Name="GovIdentificationx" Type="varchar" MaxLength="50" />
+          <Property Name="Member_Full_Name_1_Limited_16" Type="varchar" MaxLength="50" />
+          <Property Name="Member_Full_Name_2_Limited_16" Type="varchar" MaxLength="50" />
+          <Property Name="Billing_Address_3" Type="varchar" MaxLength="50" />
+          <Property Name="Billing_State_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Bonus_Date" Type="varchar" MaxLength="50" />
+          <Property Name="COD_Amount" Type="varchar" MaxLength="50" />
+          <Property Name="Discount_Amount" Type="varchar" MaxLength="50" />
+          <Property Name="Entered_By" Type="varchar" MaxLength="50" />
+          <Property Name="LinePerItemCostNoTax" Type="varchar" MaxLength="50" />
+          <Property Name="Order_Currency_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Order_Date" Type="varchar" MaxLength="50" />
+          <Property Name="Order_Number" Type="varchar" MaxLength="50" />
+          <Property Name="Order_Number_Special" Type="varchar" MaxLength="50" />
+          <Property Name="Order_Status" Type="varchar" MaxLength="50" />
+          <Property Name="OrderRowNumber" Type="varchar" MaxLength="50" />
+          <Property Name="OrderSkuType" Type="varchar" MaxLength="50" />
+          <Property Name="Public_Notes" Type="varchar" MaxLength="500" />
+          <Property Name="Ship_To_Address_1_Limited_16" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_Address_2_Limited_16" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_City" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_Address_Line_1" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_Address_Line_2" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_Country" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_Country_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_Name_1_Limited_16" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_Name_2_Limited_16" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_Postal_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_Shipping_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_State_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_State_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Shippable_Cost" Type="varchar" MaxLength="50" />
+          <Property Name="Shipper" Type="varchar" MaxLength="50" />
+          <Property Name="Shipping_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Shipping_Cost" Type="varchar" MaxLength="50" />
+          <Property Name="Shipping_Delivery_Date" Type="varchar" MaxLength="50" />
+          <Property Name="Shipping_Delivery_Is_COD" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_ShipName" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_StCodex" Type="varchar" MaxLength="50" />
+          <Property Name="Ship_To_StNamex" Type="varchar" MaxLength="50" />
+          <Property Name="SplitPayTypeAmount1" Type="varchar" MaxLength="50" />
+          <Property Name="StrippedPhone" Type="varchar" MaxLength="50" />
+          <Property Name="Subtotal_Before_Discount" Type="varchar" MaxLength="50" />
+          <Property Name="SubTotal_Without_Tax" Type="varchar" MaxLength="50" />
+          <Property Name="Tax_Cost" Type="varchar" MaxLength="50" />
+          <Property Name="Telephone" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Cost" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Discount_Amount" Type="varchar" MaxLength="50" />
+          <Property Name="Shipping_Method" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Volume" Type="varchar" MaxLength="50" />
+          <Property Name="TotalLinePerItemCost" Type="varchar" MaxLength="50" />
+          <Property Name="UniqueOrderRow" Type="varchar" MaxLength="50" />
+          <Property Name="Warehouse_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Additional_Fields" Type="varchar" MaxLength="50" />
+          <Property Name="Cost" Type="varchar" MaxLength="50" />
+          <Property Name="HS_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Product_ID" Type="varchar" MaxLength="50" />
+          <Property Name="PV" Type="varchar" MaxLength="50" />
+          <Property Name="Quantity" Type="varchar" MaxLength="50" />
+          <Property Name="SKU" Type="varchar" MaxLength="50" />
+          <Property Name="Weight" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.CL_tb_ordersformat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CL_tb_ordersformat">
+    <Key>
+      <PropertyRef Name="OrderNumber" />
+    </Key>
+    <Property Name="OrderNumber" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="Distid" Type="int" />
+    <Property Name="Partnetid" Type="varchar" MaxLength="10" />
+    <Property Name="DistBusinessCenter" Type="int" />
+    <Property Name="ShipDate" Type="datetime" />
+    <Property Name="ShipMethod" Type="varchar" MaxLength="30" />
+    <Property Name="Invoice" Type="varchar" MaxLength="50" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1500" />
+    <Property Name="ShipAddress1" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShipAddress2" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShipAddress3" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShipCity" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShipState" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShipCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShipZip" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShipPhoneNo" Type="varchar" MaxLength="20" />
+    <Property Name="EnteredBy" Type="varchar" MaxLength="15" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="15" />
+    <Property Name="PublicNotes" Type="nvarchar" MaxLength="1500" />
+    <Property Name="BonusDate" Type="datetime" />
+    <Property Name="Warehouse" Type="nvarchar" MaxLength="15" />
+    <Property Name="OrderStatus" Type="varchar" MaxLength="50" />
+    <Property Name="OrderCurrency" Type="varchar" MaxLength="3" />
+    <Property Name="OrderAmount" Type="money" />
+    <Property Name="OrderShipAmount" Type="money" />
+    <Property Name="OrderTaxAmount" Type="money" />
+    <Property Name="orderpulled" Type="tinyint" />
+    <Property Name="AssignedVolumeDistID" Type="int" />
+    <Property Name="TrackingNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Volume" Type="money" />
+    <Property Name="CV" Type="money" />
+    <Property Name="ShipCost" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.CL_tb_Pais' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CL_tb_Pais">
+    <Key>
+      <PropertyRef Name="Id_Pais" />
+      <PropertyRef Name="Id_Estatus" />
+      <PropertyRef Name="Pais" />
+      <PropertyRef Name="Folio" />
+    </Key>
+    <Property Name="Id_Pais" Type="int" Nullable="false" />
+    <Property Name="Id_Estatus" Type="tinyint" Nullable="false" />
+    <Property Name="Pais" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Folio" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="NombreCorto" Type="varchar" MaxLength="3" />
+    <Property Name="DistBusinessCenter" Type="int" />
+    <Property Name="Warehouse" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.CO_tb_PayHub' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CO_tb_PayHub">
+    <Key>
+      <PropertyRef Name="Id_Periodo" />
+      <PropertyRef Name="Id_Cliente" />
+      <PropertyRef Name="Id_PercDed" />
+      <PropertyRef Name="F_Aplicacion" />
+      <PropertyRef Name="Id_Estatus" />
+    </Key>
+    <Property Name="Id_Periodo" Type="int" Nullable="false" />
+    <Property Name="Id_Cliente" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Id_PercDed" Type="int" Nullable="false" />
+    <Property Name="F_Aplicacion" Type="smalldatetime" Nullable="false" />
+    <Property Name="Cantidad" Type="numeric" Precision="38" Scale="2" />
+    <Property Name="Id_Estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.CU_tb_Estatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CU_tb_Estatus">
+    <Key>
+      <PropertyRef Name="Id_Estatus" />
+      <PropertyRef Name="Estatus" />
+      <PropertyRef Name="Usuario_Creacion" />
+      <PropertyRef Name="F_Creacion" />
+      <PropertyRef Name="Host_Creacion" />
+    </Key>
+    <Property Name="Id_Estatus" Type="tinyint" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Usuario_Creacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="F_Creacion" Type="smalldatetime" Nullable="false" />
+    <Property Name="Host_Creacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Usuario_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Modificacion" Type="smalldatetime" />
+    <Property Name="Host_Modificacion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.CU_tb_Foliador' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CU_tb_Foliador">
+    <Key>
+      <PropertyRef Name="Id_Foliador" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Secuencial" />
+      <PropertyRef Name="Formato" />
+    </Key>
+    <Property Name="Id_Foliador" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Serie" Type="char" MaxLength="1" />
+    <Property Name="Secuencial" Type="int" Nullable="false" />
+    <Property Name="Formato" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.CU_tb_PaisIva' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CU_tb_PaisIva">
+    <Key>
+      <PropertyRef Name="DistBusinessCenter" />
+      <PropertyRef Name="Iva" />
+    </Key>
+    <Property Name="DistBusinessCenter" Type="int" Nullable="false" />
+    <Property Name="Iva" Type="int" Nullable="false" />
+    <Property Name="Porcentaje" Type="decimal" Precision="3" Scale="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.CU_tb_Periodo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CU_tb_Periodo">
+    <Key>
+      <PropertyRef Name="Id_Periodo" />
+      <PropertyRef Name="Anio" />
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="Quincena" />
+      <PropertyRef Name="Id_PeriodoComision" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_Periodo" Type="int" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" Nullable="false" />
+    <Property Name="Inicio" Type="datetime" />
+    <Property Name="Fin" Type="datetime" />
+    <Property Name="Estatus" Type="int" />
+    <Property Name="Mensaje" Type="varchar" MaxLength="255" />
+    <Property Name="UsuarioUltMod" Type="varchar" MaxLength="50" />
+    <Property Name="F_UltMod" Type="smalldatetime" />
+    <Property Name="Pagado" Type="float" />
+    <Property Name="F_Pagado" Type="smalldatetime" />
+    <Property Name="Usuario_Pagado" Type="varchar" MaxLength="100" />
+    <Property Name="Id_PeriodoComision" Type="int" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.CU_tb_Periodos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CU_tb_Periodos">
+    <Key>
+      <PropertyRef Name="Id_Periodo" />
+      <PropertyRef Name="Anio" />
+      <PropertyRef Name="Mes" />
+      <PropertyRef Name="Quincena" />
+      <PropertyRef Name="Id_PeriodoComision" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_Periodo" Type="int" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+    <Property Name="Mes" Type="int" Nullable="false" />
+    <Property Name="Quincena" Type="int" Nullable="false" />
+    <Property Name="Inicio" Type="datetime" />
+    <Property Name="Fin" Type="datetime" />
+    <Property Name="Estatus" Type="int" />
+    <Property Name="Mensaje" Type="varchar" MaxLength="255" />
+    <Property Name="UsuarioUltMod" Type="varchar" MaxLength="50" />
+    <Property Name="F_UltMod" Type="smalldatetime" />
+    <Property Name="Pagado" Type="float" />
+    <Property Name="F_Pagado" Type="smalldatetime" />
+    <Property Name="Usuario_Pagado" Type="varchar" MaxLength="100" />
+    <Property Name="Id_PeriodoComision" Type="int" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.IN_tb_Almacen' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="IN_tb_Almacen">
+    <Key>
+      <PropertyRef Name="Id_Almacen" />
+      <PropertyRef Name="Almacen" />
+      <PropertyRef Name="Id_Responsable" />
+      <PropertyRef Name="Comision" />
+      <PropertyRef Name="Funcionando" />
+      <PropertyRef Name="Santander_Afiliacion" />
+      <PropertyRef Name="Id_Promocion" />
+      <PropertyRef Name="Ambiente" />
+      <PropertyRef Name="VentaPublico" />
+      <PropertyRef Name="VentaRapida" />
+      <PropertyRef Name="Validar_Registro_Celular" />
+      <PropertyRef Name="Envios_Control" />
+      <PropertyRef Name="Envios_Dia1" />
+      <PropertyRef Name="Envios_Dia2" />
+      <PropertyRef Name="Envios_Dia3" />
+      <PropertyRef Name="Envios_Dia4" />
+      <PropertyRef Name="Envios_Dia5" />
+      <PropertyRef Name="Envios_Dia6" />
+      <PropertyRef Name="Envios_Dia7" />
+      <PropertyRef Name="CDA_Propio" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_Almacen" Type="int" Nullable="false" />
+    <Property Name="Almacen" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="F_Alta" Type="smalldatetime" />
+    <Property Name="F_Baja" Type="smalldatetime" />
+    <Property Name="Id_Responsable" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Comision" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Ventas" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Id_Vendedora" Type="int" />
+    <Property Name="Direccion" Type="varchar" MaxLength="50" />
+    <Property Name="Id_Colonia" Type="int" />
+    <Property Name="Id_Ciudad" Type="int" />
+    <Property Name="Id_Estado" Type="int" />
+    <Property Name="Id_Pais" Type="int" />
+    <Property Name="Telefono" Type="varchar" MaxLength="12" />
+    <Property Name="Fax" Type="varchar" MaxLength="12" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Deposito" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Aval" Type="varchar" MaxLength="10" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="255" />
+    <Property Name="Id_Estatus" Type="int" />
+    <Property Name="Id_Formula" Type="int" />
+    <Property Name="Id_Mensajeria" Type="int" />
+    <Property Name="Id_Banco" Type="int" />
+    <Property Name="LocalCDA" Type="bit" />
+    <Property Name="NuevaImagen" Type="bit" />
+    <Property Name="FirmoInventario" Type="bit" />
+    <Property Name="FirmoPagare" Type="bit" />
+    <Property Name="EnvioAutorizado" Type="bit" />
+    <Property Name="Computadora" Type="bit" />
+    <Property Name="MobiliarioHerbax" Type="bit" />
+    <Property Name="PerteneceHerbax" Type="bit" />
+    <Property Name="HoraEntradaLV" Type="smalldatetime" />
+    <Property Name="HoraSalidaLV" Type="smalldatetime" />
+    <Property Name="HoraEntradaSab" Type="smalldatetime" />
+    <Property Name="HoraSalidaSab" Type="smalldatetime" />
+    <Property Name="Internet" Type="bit" />
+    <Property Name="VentaPromedio" Type="money" />
+    <Property Name="SaldoPendiente" Type="money" />
+    <Property Name="BloqueoVenta" Type="bit" />
+    <Property Name="DireccionEnvio" Type="varchar" MaxLength="50" />
+    <Property Name="Id_ColoniaEnvio" Type="int" />
+    <Property Name="SubCentro" Type="bit" />
+    <Property Name="Id_Almacen_Pertenece" Type="int" />
+    <Property Name="ComisionCDA" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ObjetivoVenta" Type="money" />
+    <Property Name="Id_Almacen_SAE" Type="int" />
+    <Property Name="Publico_Web" Type="bit" />
+    <Property Name="Id_Gerente" Type="int" />
+    <Property Name="UsuarioUltMod" Type="varchar" MaxLength="50" />
+    <Property Name="F_UltMod" Type="smalldatetime" />
+    <Property Name="Usuario_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Modificacion" Type="smalldatetime" />
+    <Property Name="Funcionando" Type="bit" Nullable="false" />
+    <Property Name="Id_Colonia_Mapanet" Type="int" />
+    <Property Name="Sistema_POS" Type="bit" />
+    <Property Name="Terminal_Bancaria" Type="bit" />
+    <Property Name="Computadora_Herbax" Type="bit" />
+    <Property Name="Santander_Afiliacion" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Santander_Cajero1" Type="varchar" MaxLength="20" />
+    <Property Name="Santander_Pass1" Type="varchar" MaxLength="20" />
+    <Property Name="Santander_Cajero2" Type="varchar" MaxLength="20" />
+    <Property Name="Santander_Pass2" Type="varchar" MaxLength="20" />
+    <Property Name="Santander_Merchant" Type="varchar" MaxLength="20" />
+    <Property Name="Santander_Branch" Type="varchar" MaxLength="25" />
+    <Property Name="Santander_Company" Type="varchar" MaxLength="30" />
+    <Property Name="Id_Promocion" Type="int" Nullable="false" />
+    <Property Name="TelefonoEnvio" Type="varchar" MaxLength="20" />
+    <Property Name="ContactoEnvio" Type="varchar" MaxLength="30" />
+    <Property Name="ReferenciasEnvio" Type="varchar" MaxLength="25" />
+    <Property Name="VersionPOS" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="F_ActualizacionPOS" Type="datetime" />
+    <Property Name="Ambiente" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="VentaPublico" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="VentaRapida" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="Validar_Registro_Celular" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Envios_Control" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Envios_Dia1" Type="int" Nullable="false" />
+    <Property Name="Envios_Dia2" Type="int" Nullable="false" />
+    <Property Name="Envios_Dia3" Type="int" Nullable="false" />
+    <Property Name="Envios_Dia4" Type="int" Nullable="false" />
+    <Property Name="Envios_Dia5" Type="int" Nullable="false" />
+    <Property Name="Envios_Dia6" Type="int" Nullable="false" />
+    <Property Name="Envios_Dia7" Type="int" Nullable="false" />
+    <Property Name="CDA_Propio" Type="int" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.IN_tb_ConcMovInv' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="IN_tb_ConcMovInv">
+    <Key>
+      <PropertyRef Name="Id_ConcMovInv" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Tipo_Mov" />
+      <PropertyRef Name="Host_Creacion" />
+    </Key>
+    <Property Name="Id_ConcMovInv" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tipo_Mov" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Asociado_a" Type="char" MaxLength="1" />
+    <Property Name="Cuenta_Contable" Type="varchar" MaxLength="16" />
+    <Property Name="Afecta_ExistenciasCDA" Type="bit" />
+    <Property Name="Cve_SAE" Type="char" MaxLength="10" />
+    <Property Name="Usuario_Creacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Creacion" Type="smalldatetime" />
+    <Property Name="Usuario_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Modificacion" Type="smalldatetime" />
+    <Property Name="Host_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="Host_Creacion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.IN_tb_DtlMovInv' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="IN_tb_DtlMovInv">
+    <Key>
+      <PropertyRef Name="Id_DtlMovInv" />
+      <PropertyRef Name="Id_MovInv" />
+      <PropertyRef Name="Id_Producto" />
+      <PropertyRef Name="Cantidad" />
+      <PropertyRef Name="Precio" />
+      <PropertyRef Name="Impuesto" />
+      <PropertyRef Name="Id_Talla" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_DtlMovInv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_MovInv" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Id_Producto" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Precio" Type="numeric" Precision="19" Scale="8" Nullable="false" />
+    <Property Name="Impuesto" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Porc_Impuesto" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Id_Talla" Type="int" Nullable="false" />
+    <Property Name="Desc_Importe" Type="money" />
+    <Property Name="Desc_Impuesto" Type="money" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.IN_tb_Inventario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="IN_tb_Inventario">
+    <Key>
+      <PropertyRef Name="sku" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="sku" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="40" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="40" />
+    <Property Name="costo_prom" Type="float" />
+    <Property Name="p_Publico1" Type="float" />
+    <Property Name="p_minimo2" Type="float" />
+    <Property Name="costo3" Type="float" />
+    <Property Name="Socio4" Type="float" />
+    <Property Name="P_PuibXen5" Type="float" />
+    <Property Name="P_SocXen6" Type="float" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IN_tb_MovInventario">
+    <Key>
+      <PropertyRef Name="Id_MovInv" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_MovInv" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Id_ConcMovInv" Type="int" Nullable="false" />
+    <Property Name="Id_Almacen_Origen" Type="int" Nullable="false" />
+    <Property Name="Id_Almacen_Destino" Type="int" Nullable="false" />
+    <Property Name="Id_Estatus" Type="tinyint" Nullable="false" />
+    <Property Name="Id_Periodo" Type="int" Nullable="false" />
+    <Property Name="Id_Cliente" Type="varchar" MaxLength="10" />
+    <Property Name="F_Traspaso" Type="smalldatetime" Nullable="false" />
+    <Property Name="Envio" Type="varchar" MaxLength="255" />
+    <Property Name="Id_Moneda" Type="int" Nullable="false" />
+    <Property Name="Tipo_Cambio" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="DocAnt" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="DocSig" Type="varchar" MaxLength="7" />
+    <Property Name="Total_Partidas" Type="int" Nullable="false" />
+    <Property Name="SubTotal" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Descuento" Type="numeric" Precision="18" Scale="4" />
+    <Property Name="Impuesto" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Total" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Descuento_Financiero" Type="numeric" Precision="18" Scale="4" />
+    <Property Name="NoGuia" Type="varchar" MaxLength="100" />
+    <Property Name="F_Envio" Type="smalldatetime" />
+    <Property Name="Id_Mensajeria" Type="int" />
+    <Property Name="Factura_SAE" Type="varchar" MaxLength="20" />
+    <Property Name="F_Recepcion" Type="smalldatetime" />
+    <Property Name="Afecto_Existencia" Type="bit" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="255" />
+    <Property Name="Importancia" Type="bit" />
+    <Property Name="Enviar" Type="bit" />
+    <Property Name="Usuario_NoEnviar" Type="varchar" MaxLength="50" />
+    <Property Name="ImpresoAlmacen" Type="bit" />
+    <Property Name="F_ImpresoAlmacen" Type="smalldatetime" />
+    <Property Name="F_AutorizarEnvio" Type="smalldatetime" />
+    <Property Name="Sincronizado" Type="int" Nullable="false" />
+    <Property Name="F_Sincronizacion" Type="smalldatetime" />
+    <Property Name="F_MarcadoPagado" Type="smalldatetime" />
+    <Property Name="Sincronizado_CDA" Type="int" Nullable="false" />
+    <Property Name="F_Sincronizado_CDA" Type="smalldatetime" />
+    <Property Name="UsuarioUltMod" Type="varchar" MaxLength="50" />
+    <Property Name="F_UltMod" Type="smalldatetime" />
+    <Property Name="PC_Creacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Modificacion" Type="smalldatetime" />
+    <Property Name="Usuario_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="PC_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="AspelImporte" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+    <Property Name="AspelFecha_Apli" Type="datetime" />
+    <Property Name="AspelClave" Type="varchar" MaxLength="35" />
+    <Property Name="IE_Direccion" Type="varchar" MaxLength="200" />
+    <Property Name="IE_CP" Type="int" />
+    <Property Name="IE_Colonia" Type="int" />
+    <Property Name="IE_Ciudad" Type="varchar" MaxLength="130" />
+    <Property Name="IE_Estado" Type="varchar" MaxLength="100" />
+    <Property Name="IE_NombreCol" Type="varchar" MaxLength="80" />
+    <Property Name="IE_Id_Almacen" Type="int" />
+    <Property Name="IE_Telefono" Type="varchar" MaxLength="15" />
+    <Property Name="IE_Contacto" Type="varchar" MaxLength="30" />
+    <Property Name="IE_Referencias" Type="varchar" MaxLength="25" />
+    <Property Name="Id_Cliente_MicroCredito" Type="varchar" MaxLength="10" />
+    <Property Name="Id_PedidoRegalo" Type="varchar" MaxLength="7" />
+    <Property Name="Envio_Forzado" Type="int" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IN_tb_Product">
+    <Key>
+      <PropertyRef Name="sku_number" />
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="sku_number" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="product_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="product_description" Type="varchar" MaxLength="1000" />
+    <Property Name="instruction_use" Type="varchar" MaxLength="1000" />
+    <Property Name="ingredent" Type="varchar" MaxLength="1000" />
+    <Property Name="product_content" Type="varchar" MaxLength="50" />
+    <Property Name="retail_sales_unit" Type="varchar" MaxLength="50" />
+    <Property Name="nutrition_info" Type="varchar" MaxLength="1000" />
+    <Property Name="technical_info" Type="varchar" MaxLength="100" />
+    <Property Name="educational_info" Type="varchar" MaxLength="2000" />
+    <Property Name="catagory_id" Type="int" Nullable="false" />
+    <Property Name="functionality_id" Type="int" />
+    <Property Name="unit_cost" Type="money" />
+    <Property Name="partner_price" Type="numeric" Precision="19" Scale="8" />
+    <Property Name="ratail_price" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="sale_tax" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="product_point" Type="numeric" Precision="18" Scale="8" Nullable="false" />
+    <Property Name="calification_points" Type="numeric" Precision="18" Scale="8" Nullable="false" />
+    <Property Name="size" Type="varchar" MaxLength="3" />
+    <Property Name="gender" Type="int" />
+    <Property Name="presetation" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="sele_unit_case" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="bar_code" Type="varchar" MaxLength="13" />
+    <Property Name="product_presetation" Type="int" />
+    <Property Name="status_id" Type="int" />
+    <Property Name="discontinued_date" Type="smalldatetime" />
+    <Property Name="Path_Imagen1" Type="varchar" MaxLength="100" />
+    <Property Name="Path_Imagen2" Type="varchar" MaxLength="100" />
+    <Property Name="Path_Imagen3" Type="varchar" MaxLength="100" />
+    <Property Name="onhand_inventory" Type="bit" />
+    <Property Name="quarentine" Type="bit" />
+    <Property Name="quarentine_internet" Type="bit" />
+    <Property Name="kit" Type="bit" />
+    <Property Name="pickupcenter_id" Type="int" Nullable="false" />
+    <Property Name="country_id" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="creator_user" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="creator_date" Type="smalldatetime" Nullable="false" />
+    <Property Name="creator_machine" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="changing_user" Type="varchar" MaxLength="50" />
+    <Property Name="changing_date" Type="smalldatetime" />
+    <Property Name="changing_machine" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.IN_tb_Producto' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="IN_tb_Producto">
+    <Key>
+      <PropertyRef Name="Id_Producto" />
+      <PropertyRef Name="Producto" />
+      <PropertyRef Name="Id_Linea" />
+      <PropertyRef Name="Puntos" />
+      <PropertyRef Name="Puntos_Calificar" />
+      <PropertyRef Name="Internet" />
+      <PropertyRef Name="Decremento" />
+      <PropertyRef Name="Orden" />
+      <PropertyRef Name="Precio_PublicoBase" />
+      <PropertyRef Name="ProductoDigital" />
+      <PropertyRef Name="Activo_CDA_Propios" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_Producto" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Producto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="1000" />
+    <Property Name="Modo_Empleo" Type="varchar" MaxLength="1000" />
+    <Property Name="Ingredientes" Type="varchar" MaxLength="1000" />
+    <Property Name="Contenido" Type="varchar" MaxLength="50" />
+    <Property Name="Tamaño_Porcion" Type="varchar" MaxLength="50" />
+    <Property Name="Informacion_Nutrimental" Type="varchar" MaxLength="1000" />
+    <Property Name="Titulo_InfEducativa" Type="varchar" MaxLength="100" />
+    <Property Name="Informacion_Educativa" Type="varchar" MaxLength="2000" />
+    <Property Name="Id_Linea" Type="int" Nullable="false" />
+    <Property Name="Id_Clasificacion" Type="int" />
+    <Property Name="Costo" Type="money" />
+    <Property Name="Precio" Type="numeric" Precision="19" Scale="8" />
+    <Property Name="Precio_Publico" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Impuesto" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Puntos" Type="numeric" Precision="18" Scale="8" Nullable="false" />
+    <Property Name="Puntos_Calificar" Type="numeric" Precision="18" Scale="8" Nullable="false" />
+    <Property Name="Precio_2" Type="numeric" Precision="18" Scale="8" />
+    <Property Name="Precio_Publico_2" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Impuesto_2" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Puntos_2" Type="numeric" Precision="18" Scale="8" />
+    <Property Name="Puntos_Calificar_2" Type="numeric" Precision="18" Scale="8" />
+    <Property Name="Precio_3" Type="numeric" Precision="18" Scale="8" />
+    <Property Name="Precio_Publico_3" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Impuesto_3" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Puntos_3" Type="numeric" Precision="18" Scale="8" />
+    <Property Name="Puntos_Calificar_3" Type="numeric" Precision="18" Scale="8" />
+    <Property Name="Precio_4" Type="numeric" Precision="18" Scale="8" />
+    <Property Name="Precio_Publico_4" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Impuesto_4" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Puntos_4" Type="numeric" Precision="18" Scale="8" />
+    <Property Name="Puntos_Calificar_4" Type="numeric" Precision="18" Scale="8" />
+    <Property Name="Precio_5" Type="decimal" Precision="18" Scale="8" />
+    <Property Name="Precio_Publico_5" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Impuesto_5" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Puntos_5" Type="decimal" Precision="18" Scale="8" />
+    <Property Name="Puntos_Calificar_5" Type="decimal" Precision="18" Scale="8" />
+    <Property Name="Stock_Mínimo" Type="int" />
+    <Property Name="Stock_Máximo" Type="int" />
+    <Property Name="Talla" Type="bit" />
+    <Property Name="Presentación" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Empaque" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Codigo_Barras" Type="varchar" MaxLength="13" />
+    <Property Name="Bonos" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Id_Presentacion" Type="int" />
+    <Property Name="Id_Estatus" Type="int" />
+    <Property Name="ValidaPrecios" Type="bit" />
+    <Property Name="Comisionable" Type="bit" />
+    <Property Name="Activo_CDA" Type="bit" />
+    <Property Name="F_Baja" Type="smalldatetime" />
+    <Property Name="Path_Imagen1" Type="varchar" MaxLength="100" />
+    <Property Name="Path_Imagen2" Type="varchar" MaxLength="100" />
+    <Property Name="Path_Imagen3" Type="varchar" MaxLength="100" />
+    <Property Name="Internet" Type="bit" Nullable="false" />
+    <Property Name="Existencia" Type="bit" />
+    <Property Name="Bloqueado" Type="bit" />
+    <Property Name="Id_PoliticaDescuento" Type="int" />
+    <Property Name="Bloqueado_Internet" Type="bit" />
+    <Property Name="Agotado_Internet" Type="bit" />
+    <Property Name="Solo_Internet" Type="bit" />
+    <Property Name="Malteada" Type="bit" />
+    <Property Name="ValeKit" Type="bit" />
+    <Property Name="Kit" Type="bit" />
+    <Property Name="Id_PoliticaDescPedTotal" Type="int" />
+    <Property Name="Porc_Comisionable" Type="numeric" Precision="16" Scale="2" />
+    <Property Name="UsuarioUltMod" Type="varchar" MaxLength="50" />
+    <Property Name="F_UltMod" Type="smalldatetime" />
+    <Property Name="Usuario_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Modificacion" Type="smalldatetime" />
+    <Property Name="Decremento" Type="int" Nullable="false" />
+    <Property Name="Orden" Type="int" Nullable="false" />
+    <Property Name="F_Decremento" Type="smalldatetime" />
+    <Property Name="Id_Producto_Alt" Type="varchar" MaxLength="16" />
+    <Property Name="Precio_PublicoBase" Type="decimal" Precision="19" Scale="8" Nullable="false" />
+    <Property Name="ProductoDigital" Type="int" Nullable="false" />
+    <Property Name="Activo_CDA_Propios" Type="int" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.IN_tb_Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="IN_tb_Products">
+    <Key>
+      <PropertyRef Name="sku" />
+      <PropertyRef Name="warehouse" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="sku" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="warehouse" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="cve_art" Type="varchar" MaxLength="16" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="40" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="40" />
+    <Property Name="PrecioPublico" Type="float" />
+    <Property Name="PrecioMinimo" Type="float" />
+    <Property Name="PrecioCosto" Type="float" />
+    <Property Name="PrecioSocio" Type="float" />
+    <Property Name="XPrecioPublico" Type="float" />
+    <Property Name="XPrecioPublicoDesc" Type="float" />
+    <Property Name="XPrecioSocio" Type="float" />
+    <Property Name="XPrecioSocioDesc" Type="float" />
+    <Property Name="PuntosPersonal" Type="float" />
+    <Property Name="PuntosPersonalDesc" Type="float" />
+    <Property Name="PuntosComision" Type="float" />
+    <Property Name="PuntosComisionDesc" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.IN_tb_Skus_tmp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="IN_tb_Skus_tmp">
+    <Key>
+      <PropertyRef Name="sku" />
+      <PropertyRef Name="warehouse" />
+      <PropertyRef Name="Id_Empresa" />
+      <PropertyRef Name="cve_art" />
+    </Key>
+    <Property Name="sku" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="warehouse" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="cve_art" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="40" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="40" />
+    <Property Name="PrecioPublico" Type="float" />
+    <Property Name="PrecioMinimo" Type="float" />
+    <Property Name="PrecioCosto" Type="float" />
+    <Property Name="PrecioSocio" Type="float" />
+    <Property Name="XPrecioPublico" Type="float" />
+    <Property Name="XPrecioPublicoDesc" Type="float" />
+    <Property Name="XPrecioSocio" Type="float" />
+    <Property Name="XPrecioSocioDesc" Type="float" />
+    <Property Name="PuntosPersonal" Type="float" />
+    <Property Name="PuntosPersonalDesc" Type="float" />
+    <Property Name="PuntosComision" Type="float" />
+    <Property Name="PuntosComisionDesc" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.pr_tb_premio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="pr_tb_premio">
+    <Key>
+      <PropertyRef Name="Id_Premio" />
+      <PropertyRef Name="Premio" />
+      <PropertyRef Name="Bonos" />
+      <PropertyRef Name="Id_Estatus" />
+      <PropertyRef Name="Usuario_Creacion" />
+      <PropertyRef Name="F_Creacion" />
+      <PropertyRef Name="Host_Creacion" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_Premio" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Premio" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Descripción" Type="varchar" MaxLength="255" />
+    <Property Name="Bonos" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Foto" Type="varchar" MaxLength="255" />
+    <Property Name="Id_Estatus" Type="int" Nullable="false" />
+    <Property Name="Usuario_Creacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="F_Creacion" Type="smalldatetime" Nullable="false" />
+    <Property Name="Host_Creacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Usuario_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Modificacion" Type="smalldatetime" />
+    <Property Name="Host_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.SA_tb_Order' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SA_tb_Order">
+    <Key>
+      <PropertyRef Name="OrderNumber" />
+    </Key>
+    <Property Name="OrderNumber" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="Distid" Type="int" />
+    <Property Name="Partnetid" Type="varchar" MaxLength="10" />
+    <Property Name="DistBusinessCenter" Type="int" />
+    <Property Name="ShipDate" Type="datetime" />
+    <Property Name="ShipMethod" Type="varchar" MaxLength="30" />
+    <Property Name="Invoice" Type="varchar" MaxLength="50" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1500" />
+    <Property Name="ShipAddress1" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShipAddress2" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShipAddress3" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShipCity" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShipState" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShipCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShipZip" Type="nvarchar" MaxLength="75" />
+    <Property Name="ShipPhoneNo" Type="varchar" MaxLength="20" />
+    <Property Name="EnteredBy" Type="varchar" MaxLength="15" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="15" />
+    <Property Name="PublicNotes" Type="nvarchar" MaxLength="1500" />
+    <Property Name="BonusDate" Type="datetime" />
+    <Property Name="Warehouse" Type="nvarchar" MaxLength="15" />
+    <Property Name="OrderStatus" Type="varchar" MaxLength="50" />
+    <Property Name="OrderCurrency" Type="varchar" MaxLength="3" />
+    <Property Name="OrderAmount" Type="money" />
+    <Property Name="OrderShipAmount" Type="money" />
+    <Property Name="OrderTaxAmount" Type="money" />
+    <Property Name="orderpulled" Type="tinyint" />
+    <Property Name="AssignedVolumeDistID" Type="int" />
+    <Property Name="TrackingNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Volume" Type="money" />
+    <Property Name="CV" Type="money" />
+    <Property Name="ShipCost" Type="money" />
+    <Property Name="Subtotal_Before_Discount" Type="money" />
+    <Property Name="Tax_Cost" Type="money" />
+    <Property Name="Total_Cost" Type="money" />
+    <Property Name="Entered_By" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.tb_clientes_Cp_US' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tb_clientes_Cp_US">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="150" />
+    <Property Name="apellido_paterno" Type="varchar" MaxLength="150" />
+    <Property Name="apellido_materno" Type="varchar" MaxLength="150" />
+    <Property Name="email" Type="varchar" MaxLength="150" />
+    <Property Name="city" Type="varchar" MaxLength="75" />
+    <Property Name="country" Type="varchar" MaxLength="5" />
+    <Property Name="zone" Type="varchar" MaxLength="5" />
+    <Property Name="vpostal_code" Type="varchar" MaxLength="5" />
+    <Property Name="npostal_code" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.VE_tb_Moneda' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VE_tb_Moneda">
+    <Key>
+      <PropertyRef Name="Id_Moneda" />
+      <PropertyRef Name="Moneda" />
+      <PropertyRef Name="Abreviatura" />
+      <PropertyRef Name="TipoCambio" />
+      <PropertyRef Name="Host_Creacion" />
+      <PropertyRef Name="Id_Empresa" />
+    </Key>
+    <Property Name="Id_Moneda" Type="int" Nullable="false" />
+    <Property Name="Moneda" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Abreviatura" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TipoCambio" Type="money" Nullable="false" />
+    <Property Name="Usuario_Creacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Creacion" Type="smalldatetime" />
+    <Property Name="Usuario_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="F_Modificacion" Type="smalldatetime" />
+    <Property Name="Host_Modificacion" Type="varchar" MaxLength="50" />
+    <Property Name="Host_Creacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Evolution.dbo.VwOrderLines' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VwOrderLines">
+    <Key>
+      <PropertyRef Name="OrderNumber" />
+      <PropertyRef Name="ItemNumber" />
+      <PropertyRef Name="ItemLineNumber" />
+    </Key>
+    <Property Name="OrderNumber" Type="int" Nullable="false" />
+    <Property Name="ItemNumber" Type="int" Nullable="false" />
+    <Property Name="ItemLineNumber" Type="int" Nullable="false" />
+    <Property Name="Sku" Type="nvarchar" MaxLength="25" />
+    <Property Name="Quantity" Type="smallint" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Volume" Type="money" />
+    <Property Name="Warehouse" Type="nvarchar" MaxLength="15" />
+    <Property Name="TaxRate" Type="float" />
+    <Property Name="OrderPerItemCost" Type="money" />
+    <Property Name="OrderWholesalePrice" Type="money" />
+    <Property Name="OrderAmount" Type="money" />
+    <Property Name="OrderTax" Type="money" />
+  </EntityType>
+  <Function Name="CL_fu_Rol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="Rol" Type="varchar" Mode="In" />
+    <Parameter Name="usuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CL_sp_pr_CrearRed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pnId_Cliente" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CL_stp_in_order" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="CL_stp_in order" />
+  <Function Name="CU_fu_ImpuestoProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+    <Parameter Name="pnId_Producto" Type="varchar" Mode="In" />
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CU_fu_Ivapais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="DistBusinessCenter" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CU_fu_PeriodoAbierto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="CU_fu_PrecioProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
+    <Parameter Name="pnId_Producto" Type="varchar" Mode="In" />
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CU_sp_se_Folio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id_Empresa" Type="varchar" Mode="In" />
+    <Parameter Name="pnId_Foliador" Type="int" Mode="In" />
+    <Parameter Name="pnFolio" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="PR_sp_MailPt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="subjet" Type="varchar" Mode="In" />
+    <Parameter Name="destino" Type="varchar" Mode="In" />
+    <Parameter Name="body" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SAE_stp_in_Pedidos_06" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nId_Empresa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SAE_stp_in_Pedidos_08" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nId_Empresa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SAE_stp_in_Pedidos_13" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nId_Empresa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SAE_stp_in_Pedidos03" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nId_Empresa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SE_fu_Id_EmpresaSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+  <Function Name="stp_carga_archivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileproc" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="stp_carga_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileproc" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="stp_distribuye_archivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="XE_PrecioGeneracion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="XE_PrecioGeneracion2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="XE_Socio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="EvolutionModelStoreContainer">
+    <EntitySet Name="IN_tb_MovInventario" EntityType="Self.IN_tb_MovInventario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IN_tb_Product" EntityType="Self.IN_tb_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CL_tb_customer" EntityType="Self.CL_tb_customer" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CL_tb_customer].[partner_id] AS [partner_id], 
+    [CL_tb_customer].[sponsor_id] AS [sponsor_id], 
+    [CL_tb_customer].[upline_id] AS [upline_id], 
+    [CL_tb_customer].[id_eStatus] AS [id_eStatus], 
+    [CL_tb_customer].[LastName] AS [LastName], 
+    [CL_tb_customer].[FirstName] AS [FirstName], 
+    [CL_tb_customer].[StartDate] AS [StartDate], 
+    [CL_tb_customer].[RenewedDate] AS [RenewedDate], 
+    [CL_tb_customer].[Email] AS [Email], 
+    [CL_tb_customer].[HomeNo] AS [HomeNo], 
+    [CL_tb_customer].[WorkNo] AS [WorkNo], 
+    [CL_tb_customer].[CellNo] AS [CellNo], 
+    [CL_tb_customer].[FaxNo] AS [FaxNo], 
+    [CL_tb_customer].[DOB] AS [DOB], 
+    [CL_tb_customer].[BillingAddress1] AS [BillingAddress1], 
+    [CL_tb_customer].[BillingAddress2] AS [BillingAddress2], 
+    [CL_tb_customer].[BillingAddress3] AS [BillingAddress3], 
+    [CL_tb_customer].[BillingCity] AS [BillingCity], 
+    [CL_tb_customer].[BillingState] AS [BillingState], 
+    [CL_tb_customer].[BillingCountry] AS [BillingCountry], 
+    [CL_tb_customer].[BillingZip] AS [BillingZip], 
+    [CL_tb_customer].[ShippingAddress1] AS [ShippingAddress1], 
+    [CL_tb_customer].[ShippingAddress2] AS [ShippingAddress2], 
+    [CL_tb_customer].[ShippingAddress3] AS [ShippingAddress3], 
+    [CL_tb_customer].[ShippingCity] AS [ShippingCity], 
+    [CL_tb_customer].[ShippingState] AS [ShippingState], 
+    [CL_tb_customer].[ShippingCountry] AS [ShippingCountry], 
+    [CL_tb_customer].[ShippingZip] AS [ShippingZip], 
+    [CL_tb_customer].[DistUserName] AS [DistUserName], 
+    [CL_tb_customer].[DistBusinessCenter] AS [DistBusinessCenter], 
+    [CL_tb_customer].[SponsorBusinessCenter] AS [SponsorBusinessCenter], 
+    [CL_tb_customer].[OriginalSponsorID] AS [OriginalSponsorID], 
+    [CL_tb_customer].[OriginalSponsorBusinessCenter] AS [OriginalSponsorBusinessCenter], 
+    [CL_tb_customer].[RenewalDate] AS [RenewalDate], 
+    [CL_tb_customer].[UplineBusinessCenter] AS [UplineBusinessCenter], 
+    [CL_tb_customer].[PlacementPosition] AS [PlacementPosition], 
+    [CL_tb_customer].[RankTitle] AS [RankTitle], 
+    [CL_tb_customer].[RankDate] AS [RankDate], 
+    [CL_tb_customer].[PackageLevel] AS [PackageLevel], 
+    [CL_tb_customer].[PackageNextPaymentDate] AS [PackageNextPaymentDate], 
+    [CL_tb_customer].[SubscriberCreatedDate] AS [SubscriberCreatedDate], 
+    [CL_tb_customer].[Terminated] AS [Terminated], 
+    [CL_tb_customer].[Status] AS [Status], 
+    [CL_tb_customer].[CompanyName] AS [CompanyName], 
+    [CL_tb_customer].[CorporateEmailOptIn] AS [CorporateEmailOptIn], 
+    [CL_tb_customer].[DistributorEmailOptIn] AS [DistributorEmailOptIn], 
+    [CL_tb_customer].[EnteredDate] AS [EnteredDate], 
+    [CL_tb_customer].[EnteredBy] AS [EnteredBy], 
+    [CL_tb_customer].[DefaultWarehouse] AS [DefaultWarehouse], 
+    [CL_tb_customer].[Active] AS [Active], 
+    [CL_tb_customer].[Qualified] AS [Qualified], 
+    [CL_tb_customer].[clabe] AS [clabe], 
+    [CL_tb_customer].[paymethod_com] AS [paymethod_com]
+    FROM [dbo].[CL_tb_customer] AS [CL_tb_customer]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CL_tb_ordersformat" EntityType="Self.CL_tb_ordersformat" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CL_tb_ordersformat].[OrderNumber] AS [OrderNumber], 
+    [CL_tb_ordersformat].[OrderDate] AS [OrderDate], 
+    [CL_tb_ordersformat].[Distid] AS [Distid], 
+    [CL_tb_ordersformat].[Partnetid] AS [Partnetid], 
+    [CL_tb_ordersformat].[DistBusinessCenter] AS [DistBusinessCenter], 
+    [CL_tb_ordersformat].[ShipDate] AS [ShipDate], 
+    [CL_tb_ordersformat].[ShipMethod] AS [ShipMethod], 
+    [CL_tb_ordersformat].[Invoice] AS [Invoice], 
+    [CL_tb_ordersformat].[Notes] AS [Notes], 
+    [CL_tb_ordersformat].[ShipAddress1] AS [ShipAddress1], 
+    [CL_tb_ordersformat].[ShipAddress2] AS [ShipAddress2], 
+    [CL_tb_ordersformat].[ShipAddress3] AS [ShipAddress3], 
+    [CL_tb_ordersformat].[ShipCity] AS [ShipCity], 
+    [CL_tb_ordersformat].[ShipState] AS [ShipState], 
+    [CL_tb_ordersformat].[ShipCountry] AS [ShipCountry], 
+    [CL_tb_ordersformat].[ShipZip] AS [ShipZip], 
+    [CL_tb_ordersformat].[ShipPhoneNo] AS [ShipPhoneNo], 
+    [CL_tb_ordersformat].[EnteredBy] AS [EnteredBy], 
+    [CL_tb_ordersformat].[UpdatedBy] AS [UpdatedBy], 
+    [CL_tb_ordersformat].[PublicNotes] AS [PublicNotes], 
+    [CL_tb_ordersformat].[BonusDate] AS [BonusDate], 
+    [CL_tb_ordersformat].[Warehouse] AS [Warehouse], 
+    [CL_tb_ordersformat].[OrderStatus] AS [OrderStatus], 
+    [CL_tb_ordersformat].[OrderCurrency] AS [OrderCurrency], 
+    [CL_tb_ordersformat].[OrderAmount] AS [OrderAmount], 
+    [CL_tb_ordersformat].[OrderShipAmount] AS [OrderShipAmount], 
+    [CL_tb_ordersformat].[OrderTaxAmount] AS [OrderTaxAmount], 
+    [CL_tb_ordersformat].[orderpulled] AS [orderpulled], 
+    [CL_tb_ordersformat].[AssignedVolumeDistID] AS [AssignedVolumeDistID], 
+    [CL_tb_ordersformat].[TrackingNumber] AS [TrackingNumber], 
+    [CL_tb_ordersformat].[Volume] AS [Volume], 
+    [CL_tb_ordersformat].[CV] AS [CV], 
+    [CL_tb_ordersformat].[ShipCost] AS [ShipCost]
+    FROM [dbo].[CL_tb_ordersformat] AS [CL_tb_ordersformat]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CL_tb_Pais" EntityType="Self.CL_tb_Pais" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CL_tb_Pais].[Id_Pais] AS [Id_Pais], 
+    [CL_tb_Pais].[Id_Estatus] AS [Id_Estatus], 
+    [CL_tb_Pais].[Pais] AS [Pais], 
+    [CL_tb_Pais].[Folio] AS [Folio], 
+    [CL_tb_Pais].[NombreCorto] AS [NombreCorto], 
+    [CL_tb_Pais].[DistBusinessCenter] AS [DistBusinessCenter], 
+    [CL_tb_Pais].[Warehouse] AS [Warehouse]
+    FROM [dbo].[CL_tb_Pais] AS [CL_tb_Pais]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CO_tb_PayHub" EntityType="Self.CO_tb_PayHub" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CO_tb_PayHub].[Id_Periodo] AS [Id_Periodo], 
+    [CO_tb_PayHub].[Id_Cliente] AS [Id_Cliente], 
+    [CO_tb_PayHub].[Id_PercDed] AS [Id_PercDed], 
+    [CO_tb_PayHub].[F_Aplicacion] AS [F_Aplicacion], 
+    [CO_tb_PayHub].[Cantidad] AS [Cantidad], 
+    [CO_tb_PayHub].[Id_Estatus] AS [Id_Estatus]
+    FROM [dbo].[CO_tb_PayHub] AS [CO_tb_PayHub]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CU_tb_Estatus" EntityType="Self.CU_tb_Estatus" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CU_tb_Estatus].[Id_Estatus] AS [Id_Estatus], 
+    [CU_tb_Estatus].[Estatus] AS [Estatus], 
+    [CU_tb_Estatus].[Usuario_Creacion] AS [Usuario_Creacion], 
+    [CU_tb_Estatus].[F_Creacion] AS [F_Creacion], 
+    [CU_tb_Estatus].[Host_Creacion] AS [Host_Creacion], 
+    [CU_tb_Estatus].[Usuario_Modificacion] AS [Usuario_Modificacion], 
+    [CU_tb_Estatus].[F_Modificacion] AS [F_Modificacion], 
+    [CU_tb_Estatus].[Host_Modificacion] AS [Host_Modificacion]
+    FROM [dbo].[CU_tb_Estatus] AS [CU_tb_Estatus]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CU_tb_Foliador" EntityType="Self.CU_tb_Foliador" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CU_tb_Foliador].[Id_Foliador] AS [Id_Foliador], 
+    [CU_tb_Foliador].[Descripcion] AS [Descripcion], 
+    [CU_tb_Foliador].[Serie] AS [Serie], 
+    [CU_tb_Foliador].[Secuencial] AS [Secuencial], 
+    [CU_tb_Foliador].[Formato] AS [Formato]
+    FROM [dbo].[CU_tb_Foliador] AS [CU_tb_Foliador]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CU_tb_PaisIva" EntityType="Self.CU_tb_PaisIva" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CU_tb_PaisIva].[DistBusinessCenter] AS [DistBusinessCenter], 
+    [CU_tb_PaisIva].[Iva] AS [Iva], 
+    [CU_tb_PaisIva].[Porcentaje] AS [Porcentaje]
+    FROM [dbo].[CU_tb_PaisIva] AS [CU_tb_PaisIva]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CU_tb_Periodo" EntityType="Self.CU_tb_Periodo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CU_tb_Periodo].[Id_Periodo] AS [Id_Periodo], 
+    [CU_tb_Periodo].[Anio] AS [Anio], 
+    [CU_tb_Periodo].[Mes] AS [Mes], 
+    [CU_tb_Periodo].[Quincena] AS [Quincena], 
+    [CU_tb_Periodo].[Inicio] AS [Inicio], 
+    [CU_tb_Periodo].[Fin] AS [Fin], 
+    [CU_tb_Periodo].[Estatus] AS [Estatus], 
+    [CU_tb_Periodo].[Mensaje] AS [Mensaje], 
+    [CU_tb_Periodo].[UsuarioUltMod] AS [UsuarioUltMod], 
+    [CU_tb_Periodo].[F_UltMod] AS [F_UltMod], 
+    [CU_tb_Periodo].[Pagado] AS [Pagado], 
+    [CU_tb_Periodo].[F_Pagado] AS [F_Pagado], 
+    [CU_tb_Periodo].[Usuario_Pagado] AS [Usuario_Pagado], 
+    [CU_tb_Periodo].[Id_PeriodoComision] AS [Id_PeriodoComision], 
+    [CU_tb_Periodo].[Id_Empresa] AS [Id_Empresa]
+    FROM [dbo].[CU_tb_Periodo] AS [CU_tb_Periodo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CU_tb_Periodos" EntityType="Self.CU_tb_Periodos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CU_tb_Periodos].[Id_Periodo] AS [Id_Periodo], 
+    [CU_tb_Periodos].[Anio] AS [Anio], 
+    [CU_tb_Periodos].[Mes] AS [Mes], 
+    [CU_tb_Periodos].[Quincena] AS [Quincena], 
+    [CU_tb_Periodos].[Inicio] AS [Inicio], 
+    [CU_tb_Periodos].[Fin] AS [Fin], 
+    [CU_tb_Periodos].[Estatus] AS [Estatus], 
+    [CU_tb_Periodos].[Mensaje] AS [Mensaje], 
+    [CU_tb_Periodos].[UsuarioUltMod] AS [UsuarioUltMod], 
+    [CU_tb_Periodos].[F_UltMod] AS [F_UltMod], 
+    [CU_tb_Periodos].[Pagado] AS [Pagado], 
+    [CU_tb_Periodos].[F_Pagado] AS [F_Pagado], 
+    [CU_tb_Periodos].[Usuario_Pagado] AS [Usuario_Pagado], 
+    [CU_tb_Periodos].[Id_PeriodoComision] AS [Id_PeriodoComision], 
+    [CU_tb_Periodos].[Id_Empresa] AS [Id_Empresa]
+    FROM [dbo].[CU_tb_Periodos] AS [CU_tb_Periodos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="IN_tb_Almacen" EntityType="Self.IN_tb_Almacen" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IN_tb_Almacen].[Id_Almacen] AS [Id_Almacen], 
+    [IN_tb_Almacen].[Almacen] AS [Almacen], 
+    [IN_tb_Almacen].[F_Alta] AS [F_Alta], 
+    [IN_tb_Almacen].[F_Baja] AS [F_Baja], 
+    [IN_tb_Almacen].[Id_Responsable] AS [Id_Responsable], 
+    [IN_tb_Almacen].[Comision] AS [Comision], 
+    [IN_tb_Almacen].[Ventas] AS [Ventas], 
+    [IN_tb_Almacen].[Id_Vendedora] AS [Id_Vendedora], 
+    [IN_tb_Almacen].[Direccion] AS [Direccion], 
+    [IN_tb_Almacen].[Id_Colonia] AS [Id_Colonia], 
+    [IN_tb_Almacen].[Id_Ciudad] AS [Id_Ciudad], 
+    [IN_tb_Almacen].[Id_Estado] AS [Id_Estado], 
+    [IN_tb_Almacen].[Id_Pais] AS [Id_Pais], 
+    [IN_tb_Almacen].[Telefono] AS [Telefono], 
+    [IN_tb_Almacen].[Fax] AS [Fax], 
+    [IN_tb_Almacen].[Email] AS [Email], 
+    [IN_tb_Almacen].[Deposito] AS [Deposito], 
+    [IN_tb_Almacen].[Aval] AS [Aval], 
+    [IN_tb_Almacen].[Observaciones] AS [Observaciones], 
+    [IN_tb_Almacen].[Id_Estatus] AS [Id_Estatus], 
+    [IN_tb_Almacen].[Id_Formula] AS [Id_Formula], 
+    [IN_tb_Almacen].[Id_Mensajeria] AS [Id_Mensajeria], 
+    [IN_tb_Almacen].[Id_Banco] AS [Id_Banco], 
+    [IN_tb_Almacen].[LocalCDA] AS [LocalCDA], 
+    [IN_tb_Almacen].[NuevaImagen] AS [NuevaImagen], 
+    [IN_tb_Almacen].[FirmoInventario] AS [FirmoInventario], 
+    [IN_tb_Almacen].[FirmoPagare] AS [FirmoPagare], 
+    [IN_tb_Almacen].[EnvioAutorizado] AS [EnvioAutorizado], 
+    [IN_tb_Almacen].[Computadora] AS [Computadora], 
+    [IN_tb_Almacen].[MobiliarioHerbax] AS [MobiliarioHerbax], 
+    [IN_tb_Almacen].[PerteneceHerbax] AS [PerteneceHerbax], 
+    [IN_tb_Almacen].[HoraEntradaLV] AS [HoraEntradaLV], 
+    [IN_tb_Almacen].[HoraSalidaLV] AS [HoraSalidaLV], 
+    [IN_tb_Almacen].[HoraEntradaSab] AS [HoraEntradaSab], 
+    [IN_tb_Almacen].[HoraSalidaSab] AS [HoraSalidaSab], 
+    [IN_tb_Almacen].[Internet] AS [Internet], 
+    [IN_tb_Almacen].[VentaPromedio] AS [VentaPromedio], 
+    [IN_tb_Almacen].[SaldoPendiente] AS [SaldoPendiente], 
+    [IN_tb_Almacen].[BloqueoVenta] AS [BloqueoVenta], 
+    [IN_tb_Almacen].[DireccionEnvio] AS [DireccionEnvio], 
+    [IN_tb_Almacen].[Id_ColoniaEnvio] AS [Id_ColoniaEnvio], 
+    [IN_tb_Almacen].[SubCentro] AS [SubCentro], 
+    [IN_tb_Almacen].[Id_Almacen_Pertenece] AS [Id_Almacen_Pertenece], 
+    [IN_tb_Almacen].[ComisionCDA] AS [ComisionCDA], 
+    [IN_tb_Almacen].[ObjetivoVenta] AS [ObjetivoVenta], 
+    [IN_tb_Almacen].[Id_Almacen_SAE] AS [Id_Almacen_SAE], 
+    [IN_tb_Almacen].[Publico_Web] AS [Publico_Web], 
+    [IN_tb_Almacen].[Id_Gerente] AS [Id_Gerente], 
+    [IN_tb_Almacen].[UsuarioUltMod] AS [UsuarioUltMod], 
+    [IN_tb_Almacen].[F_UltMod] AS [F_UltMod], 
+    [IN_tb_Almacen].[Usuario_Modificacion] AS [Usuario_Modificacion], 
+    [IN_tb_Almacen].[F_Modificacion] AS [F_Modificacion], 
+    [IN_tb_Almacen].[Funcionando] AS [Funcionando], 
+    [IN_tb_Almacen].[Id_Colonia_Mapanet] AS [Id_Colonia_Mapanet], 
+    [IN_tb_Almacen].[Sistema_POS] AS [Sistema_POS], 
+    [IN_tb_Almacen].[Terminal_Bancaria] AS [Terminal_Bancaria], 
+    [IN_tb_Almacen].[Computadora_Herbax] AS [Computadora_Herbax], 
+    [IN_tb_Almacen].[Santander_Afiliacion] AS [Santander_Afiliacion], 
+    [IN_tb_Almacen].[Santander_Cajero1] AS [Santander_Cajero1], 
+    [IN_tb_Almacen].[Santander_Pass1] AS [Santander_Pass1], 
+    [IN_tb_Almacen].[Santander_Cajero2] AS [Santander_Cajero2], 
+    [IN_tb_Almacen].[Santander_Pass2] AS [Santander_Pass2], 
+    [IN_tb_Almacen].[Santander_Merchant] AS [Santander_Merchant], 
+    [IN_tb_Almacen].[Santander_Branch] AS [Santander_Branch], 
+    [IN_tb_Almacen].[Santander_Company] AS [Santander_Company], 
+    [IN_tb_Almacen].[Id_Promocion] AS [Id_Promocion], 
+    [IN_tb_Almacen].[TelefonoEnvio] AS [TelefonoEnvio], 
+    [IN_tb_Almacen].[ContactoEnvio] AS [ContactoEnvio], 
+    [IN_tb_Almacen].[ReferenciasEnvio] AS [ReferenciasEnvio], 
+    [IN_tb_Almacen].[VersionPOS] AS [VersionPOS], 
+    [IN_tb_Almacen].[F_ActualizacionPOS] AS [F_ActualizacionPOS], 
+    [IN_tb_Almacen].[Ambiente] AS [Ambiente], 
+    [IN_tb_Almacen].[VentaPublico] AS [VentaPublico], 
+    [IN_tb_Almacen].[VentaRapida] AS [VentaRapida], 
+    [IN_tb_Almacen].[Validar_Registro_Celular] AS [Validar_Registro_Celular], 
+    [IN_tb_Almacen].[Envios_Control] AS [Envios_Control], 
+    [IN_tb_Almacen].[Envios_Dia1] AS [Envios_Dia1], 
+    [IN_tb_Almacen].[Envios_Dia2] AS [Envios_Dia2], 
+    [IN_tb_Almacen].[Envios_Dia3] AS [Envios_Dia3], 
+    [IN_tb_Almacen].[Envios_Dia4] AS [Envios_Dia4], 
+    [IN_tb_Almacen].[Envios_Dia5] AS [Envios_Dia5], 
+    [IN_tb_Almacen].[Envios_Dia6] AS [Envios_Dia6], 
+    [IN_tb_Almacen].[Envios_Dia7] AS [Envios_Dia7], 
+    [IN_tb_Almacen].[CDA_Propio] AS [CDA_Propio], 
+    [IN_tb_Almacen].[Id_Empresa] AS [Id_Empresa]
+    FROM [dbo].[IN_tb_Almacen] AS [IN_tb_Almacen]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="IN_tb_ConcMovInv" EntityType="Self.IN_tb_ConcMovInv" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IN_tb_ConcMovInv].[Id_ConcMovInv] AS [Id_ConcMovInv], 
+    [IN_tb_ConcMovInv].[Descripcion] AS [Descripcion], 
+    [IN_tb_ConcMovInv].[Tipo_Mov] AS [Tipo_Mov], 
+    [IN_tb_ConcMovInv].[Asociado_a] AS [Asociado_a], 
+    [IN_tb_ConcMovInv].[Cuenta_Contable] AS [Cuenta_Contable], 
+    [IN_tb_ConcMovInv].[Afecta_ExistenciasCDA] AS [Afecta_ExistenciasCDA], 
+    [IN_tb_ConcMovInv].[Cve_SAE] AS [Cve_SAE], 
+    [IN_tb_ConcMovInv].[Usuario_Creacion] AS [Usuario_Creacion], 
+    [IN_tb_ConcMovInv].[F_Creacion] AS [F_Creacion], 
+    [IN_tb_ConcMovInv].[Usuario_Modificacion] AS [Usuario_Modificacion], 
+    [IN_tb_ConcMovInv].[F_Modificacion] AS [F_Modificacion], 
+    [IN_tb_ConcMovInv].[Host_Modificacion] AS [Host_Modificacion], 
+    [IN_tb_ConcMovInv].[Host_Creacion] AS [Host_Creacion]
+    FROM [dbo].[IN_tb_ConcMovInv] AS [IN_tb_ConcMovInv]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="IN_tb_DtlMovInv" EntityType="Self.IN_tb_DtlMovInv" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IN_tb_DtlMovInv].[Id_DtlMovInv] AS [Id_DtlMovInv], 
+    [IN_tb_DtlMovInv].[Id_MovInv] AS [Id_MovInv], 
+    [IN_tb_DtlMovInv].[Id_Producto] AS [Id_Producto], 
+    [IN_tb_DtlMovInv].[Cantidad] AS [Cantidad], 
+    [IN_tb_DtlMovInv].[Precio] AS [Precio], 
+    [IN_tb_DtlMovInv].[Impuesto] AS [Impuesto], 
+    [IN_tb_DtlMovInv].[Porc_Impuesto] AS [Porc_Impuesto], 
+    [IN_tb_DtlMovInv].[Id_Talla] AS [Id_Talla], 
+    [IN_tb_DtlMovInv].[Desc_Importe] AS [Desc_Importe], 
+    [IN_tb_DtlMovInv].[Desc_Impuesto] AS [Desc_Impuesto], 
+    [IN_tb_DtlMovInv].[Id_Empresa] AS [Id_Empresa]
+    FROM [dbo].[IN_tb_DtlMovInv] AS [IN_tb_DtlMovInv]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="IN_tb_Inventario" EntityType="Self.IN_tb_Inventario" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IN_tb_Inventario].[sku] AS [sku], 
+    [IN_tb_Inventario].[Descripcion] AS [Descripcion], 
+    [IN_tb_Inventario].[DescripcionCorta] AS [DescripcionCorta], 
+    [IN_tb_Inventario].[costo_prom] AS [costo_prom], 
+    [IN_tb_Inventario].[p_Publico1] AS [p_Publico1], 
+    [IN_tb_Inventario].[p_minimo2] AS [p_minimo2], 
+    [IN_tb_Inventario].[costo3] AS [costo3], 
+    [IN_tb_Inventario].[Socio4] AS [Socio4], 
+    [IN_tb_Inventario].[P_PuibXen5] AS [P_PuibXen5], 
+    [IN_tb_Inventario].[P_SocXen6] AS [P_SocXen6], 
+    [IN_tb_Inventario].[Id_Empresa] AS [Id_Empresa]
+    FROM [dbo].[IN_tb_Inventario] AS [IN_tb_Inventario]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="IN_tb_Producto" EntityType="Self.IN_tb_Producto" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IN_tb_Producto].[Id_Producto] AS [Id_Producto], 
+    [IN_tb_Producto].[Producto] AS [Producto], 
+    [IN_tb_Producto].[Descripcion] AS [Descripcion], 
+    [IN_tb_Producto].[Modo_Empleo] AS [Modo_Empleo], 
+    [IN_tb_Producto].[Ingredientes] AS [Ingredientes], 
+    [IN_tb_Producto].[Contenido] AS [Contenido], 
+    [IN_tb_Producto].[Tamaño_Porcion] AS [Tamaño_Porcion], 
+    [IN_tb_Producto].[Informacion_Nutrimental] AS [Informacion_Nutrimental], 
+    [IN_tb_Producto].[Titulo_InfEducativa] AS [Titulo_InfEducativa], 
+    [IN_tb_Producto].[Informacion_Educativa] AS [Informacion_Educativa], 
+    [IN_tb_Producto].[Id_Linea] AS [Id_Linea], 
+    [IN_tb_Producto].[Id_Clasificacion] AS [Id_Clasificacion], 
+    [IN_tb_Producto].[Costo] AS [Costo], 
+    [IN_tb_Producto].[Precio] AS [Precio], 
+    [IN_tb_Producto].[Precio_Publico] AS [Precio_Publico], 
+    [IN_tb_Producto].[Impuesto] AS [Impuesto], 
+    [IN_tb_Producto].[Puntos] AS [Puntos], 
+    [IN_tb_Producto].[Puntos_Calificar] AS [Puntos_Calificar], 
+    [IN_tb_Producto].[Precio_2] AS [Precio_2], 
+    [IN_tb_Producto].[Precio_Publico_2] AS [Precio_Publico_2], 
+    [IN_tb_Producto].[Impuesto_2] AS [Impuesto_2], 
+    [IN_tb_Producto].[Puntos_2] AS [Puntos_2], 
+    [IN_tb_Producto].[Puntos_Calificar_2] AS [Puntos_Calificar_2], 
+    [IN_tb_Producto].[Precio_3] AS [Precio_3], 
+    [IN_tb_Producto].[Precio_Publico_3] AS [Precio_Publico_3], 
+    [IN_tb_Producto].[Impuesto_3] AS [Impuesto_3], 
+    [IN_tb_Producto].[Puntos_3] AS [Puntos_3], 
+    [IN_tb_Producto].[Puntos_Calificar_3] AS [Puntos_Calificar_3], 
+    [IN_tb_Producto].[Precio_4] AS [Precio_4], 
+    [IN_tb_Producto].[Precio_Publico_4] AS [Precio_Publico_4], 
+    [IN_tb_Producto].[Impuesto_4] AS [Impuesto_4], 
+    [IN_tb_Producto].[Puntos_4] AS [Puntos_4], 
+    [IN_tb_Producto].[Puntos_Calificar_4] AS [Puntos_Calificar_4], 
+    [IN_tb_Producto].[Precio_5] AS [Precio_5], 
+    [IN_tb_Producto].[Precio_Publico_5] AS [Precio_Publico_5], 
+    [IN_tb_Producto].[Impuesto_5] AS [Impuesto_5], 
+    [IN_tb_Producto].[Puntos_5] AS [Puntos_5], 
+    [IN_tb_Producto].[Puntos_Calificar_5] AS [Puntos_Calificar_5], 
+    [IN_tb_Producto].[Stock_Mínimo] AS [Stock_Mínimo], 
+    [IN_tb_Producto].[Stock_Máximo] AS [Stock_Máximo], 
+    [IN_tb_Producto].[Talla] AS [Talla], 
+    [IN_tb_Producto].[Presentación] AS [Presentación], 
+    [IN_tb_Producto].[Empaque] AS [Empaque], 
+    [IN_tb_Producto].[Codigo_Barras] AS [Codigo_Barras], 
+    [IN_tb_Producto].[Bonos] AS [Bonos], 
+    [IN_tb_Producto].[Id_Presentacion] AS [Id_Presentacion], 
+    [IN_tb_Producto].[Id_Estatus] AS [Id_Estatus], 
+    [IN_tb_Producto].[ValidaPrecios] AS [ValidaPrecios], 
+    [IN_tb_Producto].[Comisionable] AS [Comisionable], 
+    [IN_tb_Producto].[Activo_CDA] AS [Activo_CDA], 
+    [IN_tb_Producto].[F_Baja] AS [F_Baja], 
+    [IN_tb_Producto].[Path_Imagen1] AS [Path_Imagen1], 
+    [IN_tb_Producto].[Path_Imagen2] AS [Path_Imagen2], 
+    [IN_tb_Producto].[Path_Imagen3] AS [Path_Imagen3], 
+    [IN_tb_Producto].[Internet] AS [Internet], 
+    [IN_tb_Producto].[Existencia] AS [Existencia], 
+    [IN_tb_Producto].[Bloqueado] AS [Bloqueado], 
+    [IN_tb_Producto].[Id_PoliticaDescuento] AS [Id_PoliticaDescuento], 
+    [IN_tb_Producto].[Bloqueado_Internet] AS [Bloqueado_Internet], 
+    [IN_tb_Producto].[Agotado_Internet] AS [Agotado_Internet], 
+    [IN_tb_Producto].[Solo_Internet] AS [Solo_Internet], 
+    [IN_tb_Producto].[Malteada] AS [Malteada], 
+    [IN_tb_Producto].[ValeKit] AS [ValeKit], 
+    [IN_tb_Producto].[Kit] AS [Kit], 
+    [IN_tb_Producto].[Id_PoliticaDescPedTotal] AS [Id_PoliticaDescPedTotal], 
+    [IN_tb_Producto].[Porc_Comisionable] AS [Porc_Comisionable], 
+    [IN_tb_Producto].[UsuarioUltMod] AS [UsuarioUltMod], 
+    [IN_tb_Producto].[F_UltMod] AS [F_UltMod], 
+    [IN_tb_Producto].[Usuario_Modificacion] AS [Usuario_Modificacion], 
+    [IN_tb_Producto].[F_Modificacion] AS [F_Modificacion], 
+    [IN_tb_Producto].[Decremento] AS [Decremento], 
+    [IN_tb_Producto].[Orden] AS [Orden], 
+    [IN_tb_Producto].[F_Decremento] AS [F_Decremento], 
+    [IN_tb_Producto].[Id_Producto_Alt] AS [Id_Producto_Alt], 
+    [IN_tb_Producto].[Precio_PublicoBase] AS [Precio_PublicoBase], 
+    [IN_tb_Producto].[ProductoDigital] AS [ProductoDigital], 
+    [IN_tb_Producto].[Activo_CDA_Propios] AS [Activo_CDA_Propios], 
+    [IN_tb_Producto].[Id_Empresa] AS [Id_Empresa]
+    FROM [dbo].[IN_tb_Producto] AS [IN_tb_Producto]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="IN_tb_Products" EntityType="Self.IN_tb_Products" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IN_tb_Products].[sku] AS [sku], 
+    [IN_tb_Products].[warehouse] AS [warehouse], 
+    [IN_tb_Products].[Id_Empresa] AS [Id_Empresa], 
+    [IN_tb_Products].[cve_art] AS [cve_art], 
+    [IN_tb_Products].[Descripcion] AS [Descripcion], 
+    [IN_tb_Products].[DescripcionCorta] AS [DescripcionCorta], 
+    [IN_tb_Products].[PrecioPublico] AS [PrecioPublico], 
+    [IN_tb_Products].[PrecioMinimo] AS [PrecioMinimo], 
+    [IN_tb_Products].[PrecioCosto] AS [PrecioCosto], 
+    [IN_tb_Products].[PrecioSocio] AS [PrecioSocio], 
+    [IN_tb_Products].[XPrecioPublico] AS [XPrecioPublico], 
+    [IN_tb_Products].[XPrecioPublicoDesc] AS [XPrecioPublicoDesc], 
+    [IN_tb_Products].[XPrecioSocio] AS [XPrecioSocio], 
+    [IN_tb_Products].[XPrecioSocioDesc] AS [XPrecioSocioDesc], 
+    [IN_tb_Products].[PuntosPersonal] AS [PuntosPersonal], 
+    [IN_tb_Products].[PuntosPersonalDesc] AS [PuntosPersonalDesc], 
+    [IN_tb_Products].[PuntosComision] AS [PuntosComision], 
+    [IN_tb_Products].[PuntosComisionDesc] AS [PuntosComisionDesc]
+    FROM [dbo].[IN_tb_Products] AS [IN_tb_Products]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="IN_tb_Skus_tmp" EntityType="Self.IN_tb_Skus_tmp" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IN_tb_Skus_tmp].[sku] AS [sku], 
+    [IN_tb_Skus_tmp].[warehouse] AS [warehouse], 
+    [IN_tb_Skus_tmp].[Id_Empresa] AS [Id_Empresa], 
+    [IN_tb_Skus_tmp].[cve_art] AS [cve_art], 
+    [IN_tb_Skus_tmp].[Descripcion] AS [Descripcion], 
+    [IN_tb_Skus_tmp].[DescripcionCorta] AS [DescripcionCorta], 
+    [IN_tb_Skus_tmp].[PrecioPublico] AS [PrecioPublico], 
+    [IN_tb_Skus_tmp].[PrecioMinimo] AS [PrecioMinimo], 
+    [IN_tb_Skus_tmp].[PrecioCosto] AS [PrecioCosto], 
+    [IN_tb_Skus_tmp].[PrecioSocio] AS [PrecioSocio], 
+    [IN_tb_Skus_tmp].[XPrecioPublico] AS [XPrecioPublico], 
+    [IN_tb_Skus_tmp].[XPrecioPublicoDesc] AS [XPrecioPublicoDesc], 
+    [IN_tb_Skus_tmp].[XPrecioSocio] AS [XPrecioSocio], 
+    [IN_tb_Skus_tmp].[XPrecioSocioDesc] AS [XPrecioSocioDesc], 
+    [IN_tb_Skus_tmp].[PuntosPersonal] AS [PuntosPersonal], 
+    [IN_tb_Skus_tmp].[PuntosPersonalDesc] AS [PuntosPersonalDesc], 
+    [IN_tb_Skus_tmp].[PuntosComision] AS [PuntosComision], 
+    [IN_tb_Skus_tmp].[PuntosComisionDesc] AS [PuntosComisionDesc]
+    FROM [dbo].[IN_tb_Skus_tmp] AS [IN_tb_Skus_tmp]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="pr_tb_premio" EntityType="Self.pr_tb_premio" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [pr_tb_premio].[Id_Premio] AS [Id_Premio], 
+    [pr_tb_premio].[Premio] AS [Premio], 
+    [pr_tb_premio].[Descripción] AS [Descripción], 
+    [pr_tb_premio].[Bonos] AS [Bonos], 
+    [pr_tb_premio].[Foto] AS [Foto], 
+    [pr_tb_premio].[Id_Estatus] AS [Id_Estatus], 
+    [pr_tb_premio].[Usuario_Creacion] AS [Usuario_Creacion], 
+    [pr_tb_premio].[F_Creacion] AS [F_Creacion], 
+    [pr_tb_premio].[Host_Creacion] AS [Host_Creacion], 
+    [pr_tb_premio].[Usuario_Modificacion] AS [Usuario_Modificacion], 
+    [pr_tb_premio].[F_Modificacion] AS [F_Modificacion], 
+    [pr_tb_premio].[Host_Modificacion] AS [Host_Modificacion], 
+    [pr_tb_premio].[Id_Empresa] AS [Id_Empresa]
+    FROM [dbo].[pr_tb_premio] AS [pr_tb_premio]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SA_tb_Order" EntityType="Self.SA_tb_Order" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SA_tb_Order].[OrderNumber] AS [OrderNumber], 
+    [SA_tb_Order].[OrderDate] AS [OrderDate], 
+    [SA_tb_Order].[Distid] AS [Distid], 
+    [SA_tb_Order].[Partnetid] AS [Partnetid], 
+    [SA_tb_Order].[DistBusinessCenter] AS [DistBusinessCenter], 
+    [SA_tb_Order].[ShipDate] AS [ShipDate], 
+    [SA_tb_Order].[ShipMethod] AS [ShipMethod], 
+    [SA_tb_Order].[Invoice] AS [Invoice], 
+    [SA_tb_Order].[Notes] AS [Notes], 
+    [SA_tb_Order].[ShipAddress1] AS [ShipAddress1], 
+    [SA_tb_Order].[ShipAddress2] AS [ShipAddress2], 
+    [SA_tb_Order].[ShipAddress3] AS [ShipAddress3], 
+    [SA_tb_Order].[ShipCity] AS [ShipCity], 
+    [SA_tb_Order].[ShipState] AS [ShipState], 
+    [SA_tb_Order].[ShipCountry] AS [ShipCountry], 
+    [SA_tb_Order].[ShipZip] AS [ShipZip], 
+    [SA_tb_Order].[ShipPhoneNo] AS [ShipPhoneNo], 
+    [SA_tb_Order].[EnteredBy] AS [EnteredBy], 
+    [SA_tb_Order].[UpdatedBy] AS [UpdatedBy], 
+    [SA_tb_Order].[PublicNotes] AS [PublicNotes], 
+    [SA_tb_Order].[BonusDate] AS [BonusDate], 
+    [SA_tb_Order].[Warehouse] AS [Warehouse], 
+    [SA_tb_Order].[OrderStatus] AS [OrderStatus], 
+    [SA_tb_Order].[OrderCurrency] AS [OrderCurrency], 
+    [SA_tb_Order].[OrderAmount] AS [OrderAmount], 
+    [SA_tb_Order].[OrderShipAmount] AS [OrderShipAmount], 
+    [SA_tb_Order].[OrderTaxAmount] AS [OrderTaxAmount], 
+    [SA_tb_Order].[orderpulled] AS [orderpulled], 
+    [SA_tb_Order].[AssignedVolumeDistID] AS [AssignedVolumeDistID], 
+    [SA_tb_Order].[TrackingNumber] AS [TrackingNumber], 
+    [SA_tb_Order].[Volume] AS [Volume], 
+    [SA_tb_Order].[CV] AS [CV], 
+    [SA_tb_Order].[ShipCost] AS [ShipCost], 
+    [SA_tb_Order].[Subtotal_Before_Discount] AS [Subtotal_Before_Discount], 
+    [SA_tb_Order].[Tax_Cost] AS [Tax_Cost], 
+    [SA_tb_Order].[Total_Cost] AS [Total_Cost], 
+    [SA_tb_Order].[Entered_By] AS [Entered_By]
+    FROM [dbo].[SA_tb_Order] AS [SA_tb_Order]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tb_clientes_Cp_US" EntityType="Self.tb_clientes_Cp_US" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tb_clientes_Cp_US].[id_cliente] AS [id_cliente], 
+    [tb_clientes_Cp_US].[nombre] AS [nombre], 
+    [tb_clientes_Cp_US].[apellido_paterno] AS [apellido_paterno], 
+    [tb_clientes_Cp_US].[apellido_materno] AS [apellido_materno], 
+    [tb_clientes_Cp_US].[email] AS [email], 
+    [tb_clientes_Cp_US].[city] AS [city], 
+    [tb_clientes_Cp_US].[country] AS [country], 
+    [tb_clientes_Cp_US].[zone] AS [zone], 
+    [tb_clientes_Cp_US].[vpostal_code] AS [vpostal_code], 
+    [tb_clientes_Cp_US].[npostal_code] AS [npostal_code]
+    FROM [dbo].[tb_clientes_Cp_US] AS [tb_clientes_Cp_US]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VE_tb_Moneda" EntityType="Self.VE_tb_Moneda" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VE_tb_Moneda].[Id_Moneda] AS [Id_Moneda], 
+    [VE_tb_Moneda].[Moneda] AS [Moneda], 
+    [VE_tb_Moneda].[Abreviatura] AS [Abreviatura], 
+    [VE_tb_Moneda].[TipoCambio] AS [TipoCambio], 
+    [VE_tb_Moneda].[Usuario_Creacion] AS [Usuario_Creacion], 
+    [VE_tb_Moneda].[F_Creacion] AS [F_Creacion], 
+    [VE_tb_Moneda].[Usuario_Modificacion] AS [Usuario_Modificacion], 
+    [VE_tb_Moneda].[F_Modificacion] AS [F_Modificacion], 
+    [VE_tb_Moneda].[Host_Modificacion] AS [Host_Modificacion], 
+    [VE_tb_Moneda].[Host_Creacion] AS [Host_Creacion], 
+    [VE_tb_Moneda].[Id_Empresa] AS [Id_Empresa]
+    FROM [dbo].[VE_tb_Moneda] AS [VE_tb_Moneda]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwOrderLines" EntityType="Self.VwOrderLines" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VwOrderLines].[OrderNumber] AS [OrderNumber], 
+    [VwOrderLines].[ItemNumber] AS [ItemNumber], 
+    [VwOrderLines].[ItemLineNumber] AS [ItemLineNumber], 
+    [VwOrderLines].[Sku] AS [Sku], 
+    [VwOrderLines].[Quantity] AS [Quantity], 
+    [VwOrderLines].[Weight] AS [Weight], 
+    [VwOrderLines].[Volume] AS [Volume], 
+    [VwOrderLines].[Warehouse] AS [Warehouse], 
+    [VwOrderLines].[TaxRate] AS [TaxRate], 
+    [VwOrderLines].[OrderPerItemCost] AS [OrderPerItemCost], 
+    [VwOrderLines].[OrderWholesalePrice] AS [OrderWholesalePrice], 
+    [VwOrderLines].[OrderAmount] AS [OrderAmount], 
+    [VwOrderLines].[OrderTax] AS [OrderTax]
+    FROM [dbo].[VwOrderLines] AS [VwOrderLines]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

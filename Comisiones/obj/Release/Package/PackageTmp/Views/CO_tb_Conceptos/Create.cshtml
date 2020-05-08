@@ -1,0 +1,96 @@
+﻿@model Comisiones.Models.CO_tb_Conceptos
+
+@{
+	ViewBag.Title = "Alta de Usuarios";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:azure;">
+	<h2>Agregar nuevo</h2>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+	<h4>CO_tb_Conceptos</h4>
+	<hr />
+
+
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	@Html.HiddenFor(model => model.tipo)
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+			@Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DropDownList("tipo", (IEnumerable<SelectListItem>)ViewBag.dropdownTipo, "Seleccione el Tipo?", new { @id = "IdTipo", @class = "form-control" })			
+		</div>
+	</div>
+
+	
+	<div class="form-group">
+		@Html.LabelFor(model => model.gravable, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DropDownList("gravable", (IEnumerable<SelectListItem>)ViewBag.dropdownGravable, "El Concepto es Gravable?", new { @id = "IdGrabable", @class = "form-control" })
+
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.pagoEspecie, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DropDownList("pagoEspecie", (IEnumerable<SelectListItem>)ViewBag.dropdownPagoEspecie, "Acepta pago en especie?", new { @id = "IdPagoEspecie", @class = "form-control" })
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.estatus, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DropDownList("estatus", (IEnumerable<SelectListItem>)ViewBag.dropdownEstatus, "Estatus actual?", new { @id = "IdEstatus", @class = "form-control" })
+		</div>
+	</div>
+
+
+	@*<div class="form-group">
+			@Html.LabelFor(model => model.usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.usuario, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.usuario, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.fechaMovimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.fechaMovimiento, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.fechaMovimiento, "", new { @class = "text-danger" })
+			</div>
+		</div>*@
+
+
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Grabar" class="btn btn-default" style="height:25Px; text-align:inherit" />
+			@Html.ActionLink("Regresar", "Index", "CO_tb_Conceptos", null, new { @class = "btn btn-default btn-lg", @style = "display:inline" })
+		</div>
+	</div>
+</div>
+	}
+</div>
+
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+	}

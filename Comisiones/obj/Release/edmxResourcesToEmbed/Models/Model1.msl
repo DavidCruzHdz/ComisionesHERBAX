@@ -1,0 +1,1596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="herbaxModelStoreContainer" CdmEntityContainer="herbaxEntities">
+    <FunctionImportMapping FunctionImportName="CO_st_ComisionesDetallePais" FunctionName="herbaxModel.Store.CO_st_ComisionesDetallePais">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_ComisionesDetallePais_Result">
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="nombreCustomer" ColumnName="nombreCustomer" />
+          <ScalarProperty Name="MontoUSD" ColumnName="MontoUSD" />
+          <ScalarProperty Name="TipoCambio" ColumnName="TipoCambio" />
+          <ScalarProperty Name="MontoMonedaLocal" ColumnName="MontoMonedaLocal" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_NombreArchivoDetcom" FunctionName="herbaxModel.Store.CO_st_NombreArchivoDetcom" />
+    <FunctionImportMapping FunctionImportName="CO_st_extraerComisones_pr" FunctionName="herbaxModel.Store.CO_st_extraerComisones_pr" />
+    <FunctionImportMapping FunctionImportName="CO_st_BuscarSocioMovimientos" FunctionName="herbaxModel.Store.CO_st_BuscarSocioMovimientos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscarSocioMovimientos_Result">
+          <ScalarProperty Name="Partner_id" ColumnName="Partner_id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Periodo" ColumnName="Id_Periodo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_CalculaBonosCDA" FunctionName="herbaxModel.Store.CO_st_CalculaBonosCDA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_CalculaBonosCDA_Result">
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="Id_UserXen" ColumnName="Id_UserXen" />
+          <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+          <ScalarProperty Name="Id_Responsable" ColumnName="Id_Responsable" />
+          <ScalarProperty Name="Regla" ColumnName="Regla" />
+          <ScalarProperty Name="Id_Politica" ColumnName="Id_Politica" />
+          <ScalarProperty Name="Total_venta" ColumnName="Total_venta" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_InsertMovimientosSocio_CDA" FunctionName="herbaxModel.Store.CO_st_InsertMovimientosSocio_CDA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_InsertMovimientosSocio_CDA_Result">
+          <ScalarProperty Name="numReg" ColumnName="numReg" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_calculoImpuesto_pr" FunctionName="herbaxModel.Store.CO_st_calculoImpuesto_pr" />
+    <FunctionImportMapping FunctionImportName="CO_st_InfoPeriodoActivo" FunctionName="herbaxModel.Store.CO_st_InfoPeriodoActivo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_InfoPeriodoActivo_Result">
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="Fecha_inicio" ColumnName="Fecha_inicio" />
+          <ScalarProperty Name="Fecha_fin" ColumnName="Fecha_fin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_InsertaMovimientosSocio_Premio" FunctionName="herbaxModel.Store.CO_st_InsertaMovimientosSocio_Premio">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_InsertaMovimientosSocio_Premio_Result">
+          <ScalarProperty Name="numReg" ColumnName="numReg" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_MovientosDetalle" FunctionName="herbaxModel.Store.CO_st_MovientosDetalle">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_MovientosDetalle_Result">
+          <ScalarProperty Name="Partner_id" ColumnName="Partner_id" />
+          <ScalarProperty Name="NombreDistribuidor" ColumnName="NombreDistribuidor" />
+          <ScalarProperty Name="Id_MovimientosSocio" ColumnName="Id_MovimientosSocio" />
+          <ScalarProperty Name="id_Concepto" ColumnName="id_Concepto" />
+          <ScalarProperty Name="DescripcionConcepto" ColumnName="DescripcionConcepto" />
+          <ScalarProperty Name="MontoStr" ColumnName="MontoStr" />
+          <ScalarProperty Name="tipoMovimiento" ColumnName="tipoMovimiento" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="Id_Periodo" ColumnName="Id_Periodo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_Forma_de_pago" FunctionName="herbaxModel.Store.CO_st_Forma_de_pago">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_Forma_de_pago_Result">
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_ActualizaPeriodos" FunctionName="herbaxModel.Store.CO_st_ActualizaPeriodos" />
+    <FunctionImportMapping FunctionImportName="CO_st_InsertaPeriodos" FunctionName="herbaxModel.Store.CO_st_InsertaPeriodos" />
+    <FunctionImportMapping FunctionImportName="CO_st_verificarPagoComision_pr" FunctionName="herbaxModel.Store.CO_st_verificarPagoComision_pr" />
+    <FunctionImportMapping FunctionImportName="CO_st_BuscarDatosPagoSocio" FunctionName="herbaxModel.Store.CO_st_BuscarDatosPagoSocio">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscarDatosPagoSocio_Result">
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="bank_id" ColumnName="bank_id" />
+          <ScalarProperty Name="Rfc" ColumnName="Rfc" />
+          <ScalarProperty Name="Curp" ColumnName="Curp" />
+          <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
+          <ScalarProperty Name="CuentaClabe" ColumnName="CuentaClabe" />
+          <ScalarProperty Name="pais_id" ColumnName="pais_id" />
+          <ScalarProperty Name="PaisDesc" ColumnName="PaisDesc" />
+          <ScalarProperty Name="Regimen_id" ColumnName="Regimen_id" />
+          <ScalarProperty Name="RegimenDesc" ColumnName="RegimenDesc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_ActualizaDatosPagoSocio" FunctionName="herbaxModel.Store.CO_st_ActualizaDatosPagoSocio" />
+    <FunctionImportMapping FunctionImportName="CO_st_Listabancos" FunctionName="herbaxModel.Store.CO_st_Listabancos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_Listabancos_Result">
+          <ScalarProperty Name="bank_id" ColumnName="bank_id" />
+          <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_ListaRegimenFiscal" FunctionName="herbaxModel.Store.CO_st_ListaRegimenFiscal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_ListaRegimenFiscal_Result">
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="id_regimen" ColumnName="id_regimen" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_registrosPagoAtrasadas_pr" FunctionName="herbaxModel.Store.CO_st_registrosPagoAtrasadas_pr">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_registrosPagoAtrasadas_pr_Result">
+          <ScalarProperty Name="TipoRegistro" ColumnName="TipoRegistro" />
+          <ScalarProperty Name="NoIdentificaciónArchivo" ColumnName="NoIdentificaciónArchivo" />
+          <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+          <ScalarProperty Name="VersionLayout" ColumnName="VersionLayout" />
+          <ScalarProperty Name="TipoRegistroDet" ColumnName="TipoRegistroDet" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="CURP" ColumnName="CURP" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Clabe" ColumnName="Clabe" />
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="id_Distribuidor" ColumnName="id_Distribuidor" />
+          <ScalarProperty Name="TipoRegistroCtrl" ColumnName="TipoRegistroCtrl" />
+          <ScalarProperty Name="NoMovimientos" ColumnName="NoMovimientos" />
+          <ScalarProperty Name="ImpTotalAbonos" ColumnName="ImpTotalAbonos" />
+          <ScalarProperty Name="IvaDelimTotal" ColumnName="IvaDelimTotal" />
+          <ScalarProperty Name="ImporteVista" ColumnName="ImporteVista" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_NombreArchivoComiAtrasadas" FunctionName="herbaxModel.Store.CO_st_NombreArchivoComiAtrasadas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_NombreArchivoComiAtrasadas_Result">
+          <ScalarProperty Name="nombreArchivo" ColumnName="nombreArchivo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_ListaPrestamos" FunctionName="herbaxModel.Store.CO_st_ListaPrestamos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_ListaPrestamos_Result">
+          <ScalarProperty Name="periodoCreacion" ColumnName="periodoCreacion" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="importe" ColumnName="importe" />
+          <ScalarProperty Name="saldo" ColumnName="saldo" />
+          <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+          <ScalarProperty Name="idFormaPago" ColumnName="idFormaPago" />
+          <ScalarProperty Name="descFormaPago" ColumnName="descFormaPago" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_NombreArchivoLPrestamos" FunctionName="herbaxModel.Store.CO_st_NombreArchivoLPrestamos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_NombreArchivoLPrestamos_Result">
+          <ScalarProperty Name="nombreArchivo" ColumnName="nombreArchivo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_cargatmp_CO_tb_Comisiones" FunctionName="herbaxModel.Store.CO_st_cargatmp_CO_tb_Comisiones" />
+    <FunctionImportMapping FunctionImportName="CO_st_asignarCompaniaPago_pr" FunctionName="herbaxModel.Store.CO_st_asignarCompaniaPago_pr" />
+    <FunctionImportMapping FunctionImportName="CO_st_buscarsocio_pr" FunctionName="herbaxModel.Store.CO_st_buscarsocio_pr" />
+    <FunctionImportMapping FunctionImportName="co_st_CalculoImpuesto_Guatemala" FunctionName="herbaxModel.Store.co_st_CalculoImpuesto_Guatemala" />
+    <FunctionImportMapping FunctionImportName="co_st_CalculoImpuesto_Mexico" FunctionName="herbaxModel.Store.co_st_CalculoImpuesto_Mexico">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.co_st_CalculoImpuesto_Mexico_Result">
+          <ScalarProperty Name="SOCIO" ColumnName="SOCIO" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+          <ScalarProperty Name="CoutaFija" ColumnName="CoutaFija" />
+          <ScalarProperty Name="diferenciaLimiteInf" ColumnName="diferenciaLimiteInf" />
+          <ScalarProperty Name="montoISRDiferencia" ColumnName="montoISRDiferencia" />
+          <ScalarProperty Name="retencionTotal" ColumnName="retencionTotal" />
+          <ScalarProperty Name="netoPagar" ColumnName="netoPagar" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="co_st_CalculoImpuesto_USA" FunctionName="herbaxModel.Store.co_st_CalculoImpuesto_USA" />
+    <FunctionImportMapping FunctionImportName="CO_st_extraerComisones_pr_original" FunctionName="herbaxModel.Store.CO_st_extraerComisones_pr_original" />
+    <FunctionImportMapping FunctionImportName="CO_st_ListaComisiones_porEstatus" FunctionName="herbaxModel.Store.CO_st_ListaComisiones_porEstatus" />
+    <FunctionImportMapping FunctionImportName="CO_st_obtieneSocios" FunctionName="herbaxModel.Store.CO_st_obtieneSocios" />
+    <FunctionImportMapping FunctionImportName="CO_st_ORGANIZA_DATOS" FunctionName="herbaxModel.Store.CO_st_ORGANIZA_DATOS" />
+    <FunctionImportMapping FunctionImportName="CO_st_ProgramacionCobro" FunctionName="herbaxModel.Store.CO_st_ProgramacionCobro" />
+    <FunctionImportMapping FunctionImportName="CO_st_validaCapacidadPago" FunctionName="herbaxModel.Store.CO_st_validaCapacidadPago" />
+    <FunctionImportMapping FunctionImportName="CO_st_comboNumerodePagos1" FunctionName="herbaxModel.Store.CO_st_comboNumerodePagos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_comboNumerodePagos1_Result">
+          <ScalarProperty Name="indice" ColumnName="indice" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_comboNumerodePagos" FunctionName="herbaxModel.Store.CO_st_comboNumerodePagos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_comboNumerodePagos_Result">
+          <ScalarProperty Name="indice" ColumnName="indice" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_ListaPaises" FunctionName="herbaxModel.Store.CO_st_ListaPaises">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_ListaPaises_Result">
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+          <ScalarProperty Name="nombrePais" ColumnName="nombrePais" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaPartidasDePedido1" FunctionName="herbaxModel.Store.CO_st_BuscaPartidasDePedido">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaPartidasDePedido1_Result">
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+          <ScalarProperty Name="Id_Inventario" ColumnName="Id_Inventario" />
+          <ScalarProperty Name="Partida" ColumnName="Partida" />
+          <ScalarProperty Name="Cve_Producto" ColumnName="Cve_Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_TransferirPartidasPedido1" FunctionName="herbaxModel.Store.CO_st_TransferirPartidasPedido" />
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaDetalleDelPedido2" FunctionName="herbaxModel.Store.CO_st_BuscaDetalleDelPedido">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaDetalleDelPedido2_Result">
+          <ScalarProperty Name="Id_MovInv" ColumnName="Id_MovInv" />
+          <ScalarProperty Name="Id_DtlMovInv" ColumnName="Id_DtlMovInv" />
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+          <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Porc_Impuesto" ColumnName="Porc_Impuesto" />
+          <ScalarProperty Name="Id_Talla" ColumnName="Id_Talla" />
+          <ScalarProperty Name="Desc_Importe" ColumnName="Desc_Importe" />
+          <ScalarProperty Name="Desc_Impuesto" ColumnName="Desc_Impuesto" />
+          <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_GeneraMovimientosPremios2" FunctionName="herbaxModel.Store.CO_st_GeneraMovimientosPremios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_GeneraMovimientosPremios2_Result">
+          <ScalarProperty Name="Partnetid" ColumnName="Partnetid" />
+          <ScalarProperty Name="nombrePartner" ColumnName="nombrePartner" />
+          <ScalarProperty Name="RankLastPeriod_ID" ColumnName="RankLastPeriod_ID" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="puntos" ColumnName="puntos" />
+          <ScalarProperty Name="Grado" ColumnName="Grado" />
+          <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+          <ScalarProperty Name="PRODUCTOS" ColumnName="PRODUCTOS" />
+          <ScalarProperty Name="fechaCalculo" ColumnName="fechaCalculo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_getPremiosHist3" FunctionName="herbaxModel.Store.CO_st_getPremiosHist" />
+    <FunctionImportMapping FunctionImportName="CO_st_EdoDeCuenta_get_Distribuidor" FunctionName="herbaxModel.Store.CO_st_EdoDeCuenta_get_Distribuidor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_EdoDeCuenta_get_Distribuidor_Result">
+          <ScalarProperty Name="Socio" ColumnName="Socio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="CDA" ColumnName="CDA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_EdoDeCuenta_get_Percepciones" FunctionName="herbaxModel.Store.CO_st_EdoDeCuenta_get_Percepciones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_EdoDeCuenta_get_Percepciones_Result">
+          <ScalarProperty Name="Id_Periodo" ColumnName="Id_Periodo" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+          <ScalarProperty Name="Fin" ColumnName="Fin" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+          <ScalarProperty Name="CreadoUsuario" ColumnName="CreadoUsuario" />
+          <ScalarProperty Name="Creado_F" ColumnName="Creado_F" />
+          <ScalarProperty Name="UltModUsuario" ColumnName="UltModUsuario" />
+          <ScalarProperty Name="UltMod_F" ColumnName="UltMod_F" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_GeneraEstadosDeCuenta" FunctionName="herbaxModel.Store.CO_st_GeneraEstadosDeCuenta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_GeneraEstadosDeCuenta_Result">
+          <ScalarProperty Name="Socio" ColumnName="Socio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="CDA" ColumnName="CDA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_EdoDeCuenta_get_Movimientos1" FunctionName="herbaxModel.Store.CO_st_EdoDeCuenta_get_Movimientos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_EdoDeCuenta_get_Movimientos1_Result">
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="Quincena1" ColumnName="Quincena1" />
+          <ScalarProperty Name="Quincena2" ColumnName="Quincena2" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_InsertaMovimientosSocio_Reembolsos" FunctionName="herbaxModel.Store.CO_st_InsertaMovimientosSocio_Reembolsos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_CO_st_InsertaMovimientosSocio_Reembolsos_Result">
+          <ScalarProperty Name="numReg" ColumnName="numReg" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CO_TB_ARBOL">
+      <EntityTypeMapping TypeName="herbaxModel.CO_TB_ARBOL">
+        <MappingFragment StoreEntitySet="CO_TB_ARBOL">
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="VOLUMENCOMISION" ColumnName="VOLUMENCOMISION" />
+          <ScalarProperty Name="PUNTOS" ColumnName="PUNTOS" />
+          <ScalarProperty Name="NUMMESES" ColumnName="NUMMESES" />
+          <ScalarProperty Name="NUMDIAS" ColumnName="NUMDIAS" />
+          <ScalarProperty Name="IDPERIODO" ColumnName="IDPERIODO" />
+          <ScalarProperty Name="VENTARED" ColumnName="VENTARED" />
+          <ScalarProperty Name="VENTAPERSONAL" ColumnName="VENTAPERSONAL" />
+          <ScalarProperty Name="SPONSOR_ID" ColumnName="SPONSOR_ID" />
+          <ScalarProperty Name="PARTNER_ID" ColumnName="PARTNER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Bonos">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Bonos">
+        <MappingFragment StoreEntitySet="CO_tb_Bonos">
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="descripcionConcepto" ColumnName="descripcionConcepto" />
+          <ScalarProperty Name="idConcepto" ColumnName="idConcepto" />
+          <ScalarProperty Name="TotalBono" ColumnName="TotalBono" />
+          <ScalarProperty Name="idPolitica" ColumnName="idPolitica" />
+          <ScalarProperty Name="MontoBonoPolitica" ColumnName="MontoBonoPolitica" />
+          <ScalarProperty Name="montoBonoManejoCDA" ColumnName="montoBonoManejoCDA" />
+          <ScalarProperty Name="numVecesPremio" ColumnName="numVecesPremio" />
+          <ScalarProperty Name="cantidadTopada" ColumnName="cantidadTopada" />
+          <ScalarProperty Name="cantidadInicial" ColumnName="cantidadInicial" />
+          <ScalarProperty Name="montoPolitica" ColumnName="montoPolitica" />
+          <ScalarProperty Name="manejoCDA" ColumnName="manejoCDA" />
+          <ScalarProperty Name="montoVenta" ColumnName="montoVenta" />
+          <ScalarProperty Name="nombreAlmacen" ColumnName="nombreAlmacen" />
+          <ScalarProperty Name="idAlmacen" ColumnName="idAlmacen" />
+          <ScalarProperty Name="nombreResponsableAlmacen" ColumnName="nombreResponsableAlmacen" />
+          <ScalarProperty Name="idResponsableAlmacen" ColumnName="idResponsableAlmacen" />
+          <ScalarProperty Name="idBono" ColumnName="idBono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Comisiones">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Comisiones">
+        <MappingFragment StoreEntitySet="CO_tb_Comisiones">
+          <ScalarProperty Name="MontoMonedaLocal" ColumnName="MontoMonedaLocal" />
+          <ScalarProperty Name="MontoUSD" ColumnName="MontoUSD" />
+          <ScalarProperty Name="idMonedaLocal" ColumnName="idMonedaLocal" />
+          <ScalarProperty Name="TipoCambio" ColumnName="TipoCambio" />
+          <ScalarProperty Name="idPais" ColumnName="idPais" />
+          <ScalarProperty Name="Clabe" ColumnName="Clabe" />
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="folioCalculo" ColumnName="folioCalculo" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fechaAplicacion" ColumnName="fechaAplicacion" />
+          <ScalarProperty Name="id_Concepto" ColumnName="id_Concepto" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="id_Periodo" ColumnName="id_Periodo" />
+          <ScalarProperty Name="id_Comisiones" ColumnName="id_Comisiones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Comisiones_hist">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Comisiones_hist">
+        <MappingFragment StoreEntitySet="CO_tb_Comisiones_hist">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="folioCalculo" ColumnName="folioCalculo" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fechaAplicacion" ColumnName="fechaAplicacion" />
+          <ScalarProperty Name="id_Concepto" ColumnName="id_Concepto" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="id_Periodo" ColumnName="id_Periodo" />
+          <ScalarProperty Name="id_Comisiones" ColumnName="id_Comisiones" />
+          <ScalarProperty Name="id_Comisiones_hist" ColumnName="id_Comisiones_hist" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_CompaniaPago">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_CompaniaPago">
+        <MappingFragment StoreEntitySet="CO_tb_CompaniaPago">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+          <ScalarProperty Name="nombreCompania" ColumnName="nombreCompania" />
+          <ScalarProperty Name="id_CompaniaPago" ColumnName="id_CompaniaPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Conceptos">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Conceptos">
+        <MappingFragment StoreEntitySet="CO_tb_Conceptos">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="pagoEspecie" ColumnName="pagoEspecie" />
+          <ScalarProperty Name="gravable" ColumnName="gravable" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_Concepto" ColumnName="id_Concepto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_CuentaSocioHistorico">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_CuentaSocioHistorico">
+        <MappingFragment StoreEntitySet="CO_tb_CuentaSocioHistorico">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="Clabe" ColumnName="Clabe" />
+          <ScalarProperty Name="id_Banco" ColumnName="id_Banco" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="id_CuentaSocioHistorico" ColumnName="id_CuentaSocioHistorico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_FoliosMovInventarios">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_FoliosMovInventarios">
+        <MappingFragment StoreEntitySet="CO_tb_FoliosMovInventarios">
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="UsuarioCambio" ColumnName="UsuarioCambio" />
+          <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+          <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Aplicativo" ColumnName="Aplicativo" />
+          <ScalarProperty Name="Folio_Actual" ColumnName="Folio_Actual" />
+          <ScalarProperty Name="Folio_Final" ColumnName="Folio_Final" />
+          <ScalarProperty Name="Folio_Inicio" ColumnName="Folio_Inicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_ImpuestoComision">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_ImpuestoComision">
+        <MappingFragment StoreEntitySet="CO_tb_ImpuestoComision">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="coutaFija" ColumnName="coutaFija" />
+          <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+          <ScalarProperty Name="limiteSuperior" ColumnName="limiteSuperior" />
+          <ScalarProperty Name="limiteInferior" ColumnName="limiteInferior" />
+          <ScalarProperty Name="id_Impuesto" ColumnName="id_Impuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_ImpuestoPais">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_ImpuestoPais">
+        <MappingFragment StoreEntitySet="CO_tb_ImpuestoPais">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="pagoMinimo" ColumnName="pagoMinimo" />
+          <ScalarProperty Name="impuesto" ColumnName="impuesto" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
+          <ScalarProperty Name="id_Impuesto" ColumnName="id_Impuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_MenuDinamico">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_MenuDinamico">
+        <MappingFragment StoreEntitySet="CO_tb_MenuDinamico">
+          <ScalarProperty Name="UsuarioCambio" ColumnName="UsuarioCambio" />
+          <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+          <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="DescripcionMenu" ColumnName="DescripcionMenu" />
+          <ScalarProperty Name="Entre" ColumnName="Entre" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Carpeta" ColumnName="Carpeta" />
+          <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PadreId" ColumnName="PadreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_MovimientosSocio">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_MovimientosSocio">
+        <MappingFragment StoreEntitySet="CO_tb_MovimientosSocio">
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="Id_Periodo" ColumnName="Id_Periodo" />
+          <ScalarProperty Name="folioCalculo" ColumnName="folioCalculo" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+          <ScalarProperty Name="id_Concepto" ColumnName="id_Concepto" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="id_MovimientosSocio" ColumnName="id_MovimientosSocio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_PagoSocio">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_PagoSocio">
+        <MappingFragment StoreEntitySet="CO_tb_PagoSocio">
+          <ScalarProperty Name="clabe" ColumnName="clabe" />
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="folioCalculo" ColumnName="folioCalculo" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fechaPago" ColumnName="fechaPago" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="id_CompaniaPago" ColumnName="id_CompaniaPago" />
+          <ScalarProperty Name="id_Periodo" ColumnName="id_Periodo" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="id_PagoSocio" ColumnName="id_PagoSocio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_PagoSocio_hist">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_PagoSocio_hist">
+        <MappingFragment StoreEntitySet="CO_tb_PagoSocio_hist">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="folioCalculo" ColumnName="folioCalculo" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fechaPago" ColumnName="fechaPago" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="id_CompaniaPago" ColumnName="id_CompaniaPago" />
+          <ScalarProperty Name="id_Periodo" ColumnName="id_Periodo" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="id_PagoSocio" ColumnName="id_PagoSocio" />
+          <ScalarProperty Name="id_PagoSocio_hist" ColumnName="id_PagoSocio_hist" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_PagosRespuesta">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_PagosRespuesta">
+        <MappingFragment StoreEntitySet="CO_tb_PagosRespuesta">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="id_Periodo" ColumnName="id_Periodo" />
+          <ScalarProperty Name="motivoDevolucion" ColumnName="motivoDevolucion" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="claveRastreo" ColumnName="claveRastreo" />
+          <ScalarProperty Name="fechaAplicacion" ColumnName="fechaAplicacion" />
+          <ScalarProperty Name="numeroReferencia" ColumnName="numeroReferencia" />
+          <ScalarProperty Name="importe" ColumnName="importe" />
+          <ScalarProperty Name="beneficiario" ColumnName="beneficiario" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="cuentaDestino" ColumnName="cuentaDestino" />
+          <ScalarProperty Name="tiporeRegistro" ColumnName="tiporeRegistro" />
+          <ScalarProperty Name="id_PagosRespuesta" ColumnName="id_PagosRespuesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Pantallas">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Pantallas">
+        <MappingFragment StoreEntitySet="CO_tb_Pantallas">
+          <ScalarProperty Name="UsuarioCambio" ColumnName="UsuarioCambio" />
+          <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+          <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="DescripcionMenu" ColumnName="DescripcionMenu" />
+          <ScalarProperty Name="Entre" ColumnName="Entre" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Carpeta" ColumnName="Carpeta" />
+          <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+          <ScalarProperty Name="NombrePantalla" ColumnName="NombrePantalla" />
+          <ScalarProperty Name="PadreId" ColumnName="PadreId" />
+          <ScalarProperty Name="IdPantalla" ColumnName="IdPantalla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Parametro">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Parametro">
+        <MappingFragment StoreEntitySet="CO_tb_Parametro">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="valor_dec" ColumnName="valor_dec" />
+          <ScalarProperty Name="valor_str" ColumnName="valor_str" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="parametro" ColumnName="parametro" />
+          <ScalarProperty Name="Key_parametro" ColumnName="Key_parametro" />
+          <ScalarProperty Name="id_Parametro" ColumnName="id_Parametro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_PermisosRoles">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_PermisosRoles">
+        <MappingFragment StoreEntitySet="CO_tb_PermisosRoles">
+          <ScalarProperty Name="UsuarioCambio" ColumnName="UsuarioCambio" />
+          <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+          <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdPantalla" ColumnName="IdPantalla" />
+          <ScalarProperty Name="IdPermiso" ColumnName="IdPermiso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Prestamo">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Prestamo">
+        <MappingFragment StoreEntitySet="CO_tb_Prestamo">
+          <ScalarProperty Name="FechaNegacion" ColumnName="FechaNegacion" />
+          <ScalarProperty Name="FechaAutorizacion" ColumnName="FechaAutorizacion" />
+          <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+          <ScalarProperty Name="idFormaPago" ColumnName="idFormaPago" />
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="folioCalculo" ColumnName="folioCalculo" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="saldo" ColumnName="saldo" />
+          <ScalarProperty Name="id_Periodo" ColumnName="id_Periodo" />
+          <ScalarProperty Name="id_Concepto" ColumnName="id_Concepto" />
+          <ScalarProperty Name="numeroPagos" ColumnName="numeroPagos" />
+          <ScalarProperty Name="tipoAplicacion" ColumnName="tipoAplicacion" />
+          <ScalarProperty Name="importe" ColumnName="importe" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="id_Prestamo" ColumnName="id_Prestamo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_PrestamoDetalle">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_PrestamoDetalle">
+        <MappingFragment StoreEntitySet="CO_tb_PrestamoDetalle">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fechaAplicacion" ColumnName="fechaAplicacion" />
+          <ScalarProperty Name="fechaPago" ColumnName="fechaPago" />
+          <ScalarProperty Name="pagonumero" ColumnName="pagonumero" />
+          <ScalarProperty Name="importe" ColumnName="importe" />
+          <ScalarProperty Name="id_Prestamo" ColumnName="id_Prestamo" />
+          <ScalarProperty Name="id_PrestamoDetalle" ColumnName="id_PrestamoDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_RecepcionDepositos">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_RecepcionDepositos">
+        <MappingFragment StoreEntitySet="CO_tb_RecepcionDepositos">
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="divisa" ColumnName="divisa" />
+          <ScalarProperty Name="comprobanteElectronico" ColumnName="comprobanteElectronico" />
+          <ScalarProperty Name="rfc" ColumnName="rfc" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="motivoDevolucion" ColumnName="motivoDevolucion" />
+          <ScalarProperty Name="claveRastreo" ColumnName="claveRastreo" />
+          <ScalarProperty Name="fechaAplicacion" ColumnName="fechaAplicacion" />
+          <ScalarProperty Name="formaAplicacion" ColumnName="formaAplicacion" />
+          <ScalarProperty Name="referenciaInterban" ColumnName="referenciaInterban" />
+          <ScalarProperty Name="conceptoPagoTransf" ColumnName="conceptoPagoTransf" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="importe" ColumnName="importe" />
+          <ScalarProperty Name="beneficiario" ColumnName="beneficiario" />
+          <ScalarProperty Name="cuentaDestino" ColumnName="cuentaDestino" />
+          <ScalarProperty Name="cuentaOrigen" ColumnName="cuentaOrigen" />
+          <ScalarProperty Name="numeroReferencia" ColumnName="numeroReferencia" />
+          <ScalarProperty Name="id_RecepcionDeposito" ColumnName="id_RecepcionDeposito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Roles">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Roles">
+        <MappingFragment StoreEntitySet="CO_tb_Roles">
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="UsuarioCambio" ColumnName="UsuarioCambio" />
+          <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+          <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Usuarios">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Usuarios">
+        <MappingFragment StoreEntitySet="CO_tb_Usuarios">
+          <ScalarProperty Name="UsuarioCambio" ColumnName="UsuarioCambio" />
+          <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+          <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_config_premios">
+      <EntityTypeMapping TypeName="herbaxModel.tb_config_premios">
+        <MappingFragment StoreEntitySet="tb_config_premios">
+          <ScalarProperty Name="idPais" ColumnName="idPais" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="idConcepto" ColumnName="idConcepto" />
+          <ScalarProperty Name="quincena" ColumnName="quincena" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="puntos" ColumnName="puntos" />
+          <ScalarProperty Name="idGrupo" ColumnName="idGrupo" />
+          <ScalarProperty Name="idPremio" ColumnName="idPremio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_CALCULO_PREMIOS_HIST">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_CALCULO_PREMIOS_HIST">
+        <MappingFragment StoreEntitySet="CO_tb_CALCULO_PREMIOS_HIST">
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="PedidoGenerado" ColumnName="PedidoGenerado" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="PRODUCTOS" ColumnName="PRODUCTOS" />
+          <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+          <ScalarProperty Name="Grado" ColumnName="Grado" />
+          <ScalarProperty Name="puntos" ColumnName="puntos" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="nombrePartner" ColumnName="nombrePartner" />
+          <ScalarProperty Name="Partnetid" ColumnName="Partnetid" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="RankLastPeriod_ID" ColumnName="RankLastPeriod_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Pedidos">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Pedidos">
+        <MappingFragment StoreEntitySet="CO_tb_Pedidos">
+          <ScalarProperty Name="Id_Periodo_Evo" ColumnName="Id_Periodo_Evo" />
+          <ScalarProperty Name="UsuarioUltMod" ColumnName="UsuarioUltMod" />
+          <ScalarProperty Name="F_UltMod" ColumnName="F_UltMod" />
+          <ScalarProperty Name="Usuario_Creacion" ColumnName="Usuario_Creacion" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Generar_Traspaso" ColumnName="Generar_Traspaso" />
+          <ScalarProperty Name="Id_Mensajeria" ColumnName="Id_Mensajeria" />
+          <ScalarProperty Name="F_Envio" ColumnName="F_Envio" />
+          <ScalarProperty Name="NoGuia" ColumnName="NoGuia" />
+          <ScalarProperty Name="DiferenciaCanje" ColumnName="DiferenciaCanje" />
+          <ScalarProperty Name="MontoCanje" ColumnName="MontoCanje" />
+          <ScalarProperty Name="Ventas" ColumnName="Ventas" />
+          <ScalarProperty Name="F_PrimerCompra" ColumnName="F_PrimerCompra" />
+          <ScalarProperty Name="Compras" ColumnName="Compras" />
+          <ScalarProperty Name="Id_Condicion" ColumnName="Id_Condicion" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="IE_Referencias" ColumnName="IE_Referencias" />
+          <ScalarProperty Name="IE_Contacto" ColumnName="IE_Contacto" />
+          <ScalarProperty Name="IE_Telefono" ColumnName="IE_Telefono" />
+          <ScalarProperty Name="IE_Id_Almacen" ColumnName="IE_Id_Almacen" />
+          <ScalarProperty Name="IE_NombreCol" ColumnName="IE_NombreCol" />
+          <ScalarProperty Name="IE_Estado" ColumnName="IE_Estado" />
+          <ScalarProperty Name="IE_Ciudad" ColumnName="IE_Ciudad" />
+          <ScalarProperty Name="IE_Colonia" ColumnName="IE_Colonia" />
+          <ScalarProperty Name="IE_CP" ColumnName="IE_CP" />
+          <ScalarProperty Name="IE_Direccion" ColumnName="IE_Direccion" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total_Partidas" ColumnName="Total_Partidas" />
+          <ScalarProperty Name="DocAnt" ColumnName="DocAnt" />
+          <ScalarProperty Name="Tipo_Cambio" ColumnName="Tipo_Cambio" />
+          <ScalarProperty Name="Id_Moneda" ColumnName="Id_Moneda" />
+          <ScalarProperty Name="Envio" ColumnName="Envio" />
+          <ScalarProperty Name="F_Traspaso" ColumnName="F_Traspaso" />
+          <ScalarProperty Name="Id_Periodo_PT" ColumnName="Id_Periodo_PT" />
+          <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+          <ScalarProperty Name="Id_Almacen_Destino" ColumnName="Id_Almacen_Destino" />
+          <ScalarProperty Name="Id_Almacen_Origen" ColumnName="Id_Almacen_Origen" />
+          <ScalarProperty Name="Id_ConcMovInv" ColumnName="Id_ConcMovInv" />
+          <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+          <ScalarProperty Name="Id_MovInv" ColumnName="Id_MovInv" />
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_ProgramacionCobro">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_ProgramacionCobro">
+        <MappingFragment StoreEntitySet="CO_tb_ProgramacionCobro">
+          <ScalarProperty Name="fechaAplicacion" ColumnName="fechaAplicacion" />
+          <ScalarProperty Name="remesa" ColumnName="remesa" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="primaTotal" ColumnName="primaTotal" />
+          <ScalarProperty Name="fechaCargo" ColumnName="fechaCargo" />
+          <ScalarProperty Name="id_Prestamo" ColumnName="id_Prestamo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Reembolsos">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Reembolsos">
+        <MappingFragment StoreEntitySet="CO_tb_Reembolsos">
+          <ScalarProperty Name="Situacion" ColumnName="Situacion" />
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+          <ScalarProperty Name="PedidoGenerado" ColumnName="PedidoGenerado" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+          <ScalarProperty Name="NOMBRE_CUSTOMER" ColumnName="NOMBRE_CUSTOMER" />
+          <ScalarProperty Name="CANTIDAD_REEMBOLSO" ColumnName="CANTIDAD_REEMBOLSO" />
+          <ScalarProperty Name="VENTA_PERIODO" ColumnName="VENTA_PERIODO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="ID_PARTNER" ColumnName="ID_PARTNER" />
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Reembolsos_Hist">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Reembolsos_Hist">
+        <MappingFragment StoreEntitySet="CO_tb_Reembolsos_Hist">
+          <ScalarProperty Name="Situacion" ColumnName="Situacion" />
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+          <ScalarProperty Name="PedidoGenerado" ColumnName="PedidoGenerado" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+          <ScalarProperty Name="NOMBRE_CUSTOMER" ColumnName="NOMBRE_CUSTOMER" />
+          <ScalarProperty Name="CANTIDAD_REEMBOLSO" ColumnName="CANTIDAD_REEMBOLSO" />
+          <ScalarProperty Name="VENTA_PERIODO" ColumnName="VENTA_PERIODO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="ID_PARTNER" ColumnName="ID_PARTNER" />
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SA_tb_cdaVenta">
+      <EntityTypeMapping TypeName="herbaxModel.SA_tb_cdaVenta">
+        <MappingFragment StoreEntitySet="SA_tb_cdaVenta">
+          <ScalarProperty Name="Id_Politica" ColumnName="Id_Politica" />
+          <ScalarProperty Name="Regla" ColumnName="Regla" />
+          <ScalarProperty Name="Id_Responsable" ColumnName="Id_Responsable" />
+          <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+          <ScalarProperty Name="Id_Almacen" ColumnName="Id_Almacen" />
+          <ScalarProperty Name="Id_UserXen" ColumnName="Id_UserXen" />
+          <ScalarProperty Name="Total_Venta" ColumnName="Total_Venta" />
+          <ScalarProperty Name="Id_Periodo" ColumnName="Id_Periodo" />
+          <ScalarProperty Name="Partner_id" ColumnName="Partner_id" />
+          <ScalarProperty Name="iD_Venta" ColumnName="iD_Venta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SA_tb_Puntos">
+      <EntityTypeMapping TypeName="herbaxModel.SA_tb_Puntos">
+        <MappingFragment StoreEntitySet="SA_tb_Puntos">
+          <ScalarProperty Name="costoTotal" ColumnName="costoTotal" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="nombrePartner" ColumnName="nombrePartner" />
+          <ScalarProperty Name="Partnetid" ColumnName="Partnetid" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="RankLastPeriod_ID" ColumnName="RankLastPeriod_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TMP_CALCULO_PREMIOS">
+      <EntityTypeMapping TypeName="herbaxModel.TB_TMP_CALCULO_PREMIOS">
+        <MappingFragment StoreEntitySet="TB_TMP_CALCULO_PREMIOS">
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="PedidoGenerado" ColumnName="PedidoGenerado" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="PRODUCTOS" ColumnName="PRODUCTOS" />
+          <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+          <ScalarProperty Name="Grado" ColumnName="Grado" />
+          <ScalarProperty Name="puntos" ColumnName="puntos" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="nombrePartner" ColumnName="nombrePartner" />
+          <ScalarProperty Name="Partnetid" ColumnName="Partnetid" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="RankLastPeriod_ID" ColumnName="RankLastPeriod_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TMP_CALCULO_PREMIOS_HIST">
+      <EntityTypeMapping TypeName="herbaxModel.TB_TMP_CALCULO_PREMIOS_HIST">
+        <MappingFragment StoreEntitySet="TB_TMP_CALCULO_PREMIOS_HIST">
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="PedidoGenerado" ColumnName="PedidoGenerado" />
+          <ScalarProperty Name="PRODUCTOS" ColumnName="PRODUCTOS" />
+          <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+          <ScalarProperty Name="Grado" ColumnName="Grado" />
+          <ScalarProperty Name="puntos" ColumnName="puntos" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="nombrePartner" ColumnName="nombrePartner" />
+          <ScalarProperty Name="Partnetid" ColumnName="Partnetid" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="RankLastPeriod_ID" ColumnName="RankLastPeriod_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_Tb_ISR_GT">
+      <EntityTypeMapping TypeName="herbaxModel.CO_Tb_ISR_GT">
+        <MappingFragment StoreEntitySet="CO_Tb_ISR_GT">
+          <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+          <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+          <ScalarProperty Name="ISR" ColumnName="ISR" />
+          <ScalarProperty Name="limitesuperior" ColumnName="limitesuperior" />
+          <ScalarProperty Name="limiteinferior" ColumnName="limiteinferior" />
+          <ScalarProperty Name="montominimo" ColumnName="montominimo" />
+          <ScalarProperty Name="id_regimen" ColumnName="id_regimen" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="id_ISR" ColumnName="id_ISR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_Tb_IVA">
+      <EntityTypeMapping TypeName="herbaxModel.CO_Tb_IVA">
+        <MappingFragment StoreEntitySet="CO_Tb_IVA">
+          <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+          <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="id_regimen" ColumnName="id_regimen" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="id_IVA" ColumnName="id_IVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_getReembolsos2" FunctionName="herbaxModel.Store.CO_st_getReembolsos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_getReembolsos_Result">
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+          <ScalarProperty Name="ID_PARTNER" ColumnName="ID_PARTNER" />
+          <ScalarProperty Name="VENTA_PERIODO" ColumnName="VENTA_PERIODO" />
+          <ScalarProperty Name="CANTIDAD_REEMBOLSO" ColumnName="CANTIDAD_REEMBOLSO" />
+          <ScalarProperty Name="NOMBRE_CUSTOMER" ColumnName="NOMBRE_CUSTOMER" />
+          <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CO_tb_Rango_Compra_Premios">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Rango_Compra_Premios">
+        <MappingFragment StoreEntitySet="CO_tb_Rango_Compra_Premios">
+          <ScalarProperty Name="UltMod_F" ColumnName="UltMod_F" />
+          <ScalarProperty Name="UltModUsuario" ColumnName="UltModUsuario" />
+          <ScalarProperty Name="Creado_F" ColumnName="Creado_F" />
+          <ScalarProperty Name="CreadoUsuario" ColumnName="CreadoUsuario" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="puntos" ColumnName="puntos" />
+          <ScalarProperty Name="id_periodo" ColumnName="id_periodo" />
+          <ScalarProperty Name="id_rank" ColumnName="id_rank" />
+          <ScalarProperty Name="id_premio" ColumnName="id_premio" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="id_Rango" ColumnName="id_Rango" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_CierreDePeriodoReembolso" FunctionName="herbaxModel.Store.CO_st_CierreDePeriodoReembolso" />
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaReembolsos2" FunctionName="herbaxModel.Store.CO_st_BuscaReembolsos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaReembolsos2_Result">
+          <ScalarProperty Name="Socio" ColumnName="Socio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Ventas" ColumnName="Ventas" />
+          <ScalarProperty Name="Reembolso" ColumnName="Reembolso" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaPedidosReembolsos4" FunctionName="herbaxModel.Store.CO_st_BuscaPedidosReembolsos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaPedidosReembolsos4_Result">
+          <ScalarProperty Name="Socio" ColumnName="Socio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Ventas" ColumnName="Ventas" />
+          <ScalarProperty Name="Reembolso" ColumnName="Reembolso" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="Situacion" ColumnName="Situacion" />
+          <ScalarProperty Name="No_Guia" ColumnName="No_Guia" />
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+          <ScalarProperty Name="Ver_Pedido" ColumnName="Ver_Pedido" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaPedidosPremios2" FunctionName="herbaxModel.Store.CO_st_BuscaPedidosPremios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaPedidosPremios2_Result">
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Partnetid" ColumnName="Partnetid" />
+          <ScalarProperty Name="nombrePartner" ColumnName="nombrePartner" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="puntos" ColumnName="puntos" />
+          <ScalarProperty Name="Grado" ColumnName="Grado" />
+          <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+          <ScalarProperty Name="PRODUCTOS" ColumnName="PRODUCTOS" />
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+          <ScalarProperty Name="No_Guia" ColumnName="No_Guia" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_GenerarPartidaPedidoReembolsos2" FunctionName="herbaxModel.Store.CO_st_GenerarPartidaPedidoReembolsos" />
+    <EntitySetMapping Name="CO_tb_DtlPedidos">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_DtlPedidos">
+        <MappingFragment StoreEntitySet="CO_tb_DtlPedidos">
+          <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+          <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+          <ScalarProperty Name="Desc_Impuesto" ColumnName="Desc_Impuesto" />
+          <ScalarProperty Name="Desc_Importe" ColumnName="Desc_Importe" />
+          <ScalarProperty Name="Id_Talla" ColumnName="Id_Talla" />
+          <ScalarProperty Name="Porc_Impuesto" ColumnName="Porc_Impuesto" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
+          <ScalarProperty Name="Id_MovInv" ColumnName="Id_MovInv" />
+          <ScalarProperty Name="Id_DtlMovInv" ColumnName="Id_DtlMovInv" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_ARBOL_HIST">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_ARBOL_HIST">
+        <MappingFragment StoreEntitySet="CO_tb_ARBOL_HIST">
+          <ScalarProperty Name="FECHACREACION" ColumnName="FECHACREACION" />
+          <ScalarProperty Name="Venta_5a_Generacion" ColumnName="Venta_5a_Generacion" />
+          <ScalarProperty Name="Venta_4a_Generacion" ColumnName="Venta_4a_Generacion" />
+          <ScalarProperty Name="LineaCargadaGrado" ColumnName="LineaCargadaGrado" />
+          <ScalarProperty Name="LineaCargadaSocio" ColumnName="LineaCargadaSocio" />
+          <ScalarProperty Name="LineaCargadaPorc" ColumnName="LineaCargadaPorc" />
+          <ScalarProperty Name="LineaCargada" ColumnName="LineaCargada" />
+          <ScalarProperty Name="DESCUENTOSRED_Gt" ColumnName="DESCUENTOSRED_Gt" />
+          <ScalarProperty Name="DESCUENTOSRED_Us" ColumnName="DESCUENTOSRED_Us" />
+          <ScalarProperty Name="DESCUENTOSRED_Mx" ColumnName="DESCUENTOSRED_Mx" />
+          <ScalarProperty Name="DESCUENTOSRED" ColumnName="DESCUENTOSRED" />
+          <ScalarProperty Name="DESCUENTOSPERSONAL_Gt" ColumnName="DESCUENTOSPERSONAL_Gt" />
+          <ScalarProperty Name="DESCUENTOSPERSONAL_Us" ColumnName="DESCUENTOSPERSONAL_Us" />
+          <ScalarProperty Name="DESCUENTOSPERSONAL_Mx" ColumnName="DESCUENTOSPERSONAL_Mx" />
+          <ScalarProperty Name="DESCUENTOSPERSONAL" ColumnName="DESCUENTOSPERSONAL" />
+          <ScalarProperty Name="UNIDADESRED" ColumnName="UNIDADESRED" />
+          <ScalarProperty Name="UNIDADESPERSONAL" ColumnName="UNIDADESPERSONAL" />
+          <ScalarProperty Name="COMPRAS_2124" ColumnName="COMPRAS_2124" />
+          <ScalarProperty Name="COMPRAS_2123" ColumnName="COMPRAS_2123" />
+          <ScalarProperty Name="PUNTOSAUSPICIOSPERSONAL" ColumnName="PUNTOSAUSPICIOSPERSONAL" />
+          <ScalarProperty Name="DIRECTOS" ColumnName="DIRECTOS" />
+          <ScalarProperty Name="AUSPICIOSRED" ColumnName="AUSPICIOSRED" />
+          <ScalarProperty Name="AUSPICIOSPERSONAL" ColumnName="AUSPICIOSPERSONAL" />
+          <ScalarProperty Name="SOCIOSRED" ColumnName="SOCIOSRED" />
+          <ScalarProperty Name="ALMACEN" ColumnName="ALMACEN" />
+          <ScalarProperty Name="PUNTOSRED_GT" ColumnName="PUNTOSRED_GT" />
+          <ScalarProperty Name="PUNTOSRED_US" ColumnName="PUNTOSRED_US" />
+          <ScalarProperty Name="PUNTOSRED_MX" ColumnName="PUNTOSRED_MX" />
+          <ScalarProperty Name="PUNTOSRED" ColumnName="PUNTOSRED" />
+          <ScalarProperty Name="PUNTOSPERSONAL_GT" ColumnName="PUNTOSPERSONAL_GT" />
+          <ScalarProperty Name="PUNTOSPERSONAL_US" ColumnName="PUNTOSPERSONAL_US" />
+          <ScalarProperty Name="PUNTOSPERSONAL_MX" ColumnName="PUNTOSPERSONAL_MX" />
+          <ScalarProperty Name="PUNTOSPERSONAL" ColumnName="PUNTOSPERSONAL" />
+          <ScalarProperty Name="NUMMESES" ColumnName="NUMMESES" />
+          <ScalarProperty Name="NUMDIAS" ColumnName="NUMDIAS" />
+          <ScalarProperty Name="IDPERIODO" ColumnName="IDPERIODO" />
+          <ScalarProperty Name="VENTARED_GT" ColumnName="VENTARED_GT" />
+          <ScalarProperty Name="VENTARED_US" ColumnName="VENTARED_US" />
+          <ScalarProperty Name="VENTARED_MX" ColumnName="VENTARED_MX" />
+          <ScalarProperty Name="VENTARED" ColumnName="VENTARED" />
+          <ScalarProperty Name="VENTAPERSONAL_GT" ColumnName="VENTAPERSONAL_GT" />
+          <ScalarProperty Name="VENTAPERSONAL_US" ColumnName="VENTAPERSONAL_US" />
+          <ScalarProperty Name="VENTAPERSONAL_MX" ColumnName="VENTAPERSONAL_MX" />
+          <ScalarProperty Name="VENTAPERSONAL" ColumnName="VENTAPERSONAL" />
+          <ScalarProperty Name="SPONSOR_ID" ColumnName="SPONSOR_ID" />
+          <ScalarProperty Name="PARTNER_ID" ColumnName="PARTNER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscarPeriodos2" FunctionName="herbaxModel.Store.CO_st_BuscarPeriodos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscarPeriodos2_Result">
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="Fecha_inicio" ColumnName="Fecha_inicio" />
+          <ScalarProperty Name="Fecha_fin" ColumnName="Fecha_fin" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_GetPremiosPeriodoActivo2" FunctionName="herbaxModel.Store.CO_st_GetPremiosPeriodoActivo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_GetPremiosPeriodoActivo_Result">
+          <ScalarProperty Name="RankLastPeriod_ID" ColumnName="RankLastPeriod_ID" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="Partnetid" ColumnName="Partnetid" />
+          <ScalarProperty Name="nombrePartner" ColumnName="nombrePartner" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="puntos" ColumnName="puntos" />
+          <ScalarProperty Name="PRODUCTOS" ColumnName="PRODUCTOS" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+          <ScalarProperty Name="Grado" ColumnName="Grado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_GetComisionesPeriodoActivo1" FunctionName="herbaxModel.Store.CO_st_GetComisionesPeriodoActivo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_GetComisionesPeriodoActivo1_Result">
+          <ScalarProperty Name="id_Periodo" ColumnName="id_Periodo" />
+          <ScalarProperty Name="tipocambio" ColumnName="tipocambio" />
+          <ScalarProperty Name="montoUSD" ColumnName="montoUSD" />
+          <ScalarProperty Name="keyPais" ColumnName="keyPais" />
+          <ScalarProperty Name="MontoMonedaLocal" ColumnName="MontoMonedaLocal" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_NombreArchivoLReembolsos" FunctionName="herbaxModel.Store.CO_st_NombreArchivoLReembolsos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_NombreArchivoLReembolsos_Result">
+          <ScalarProperty Name="nombreArchivo" ColumnName="nombreArchivo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_ListaReembolsos1" FunctionName="herbaxModel.Store.CO_st_ListaReembolsos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_ListaReembolsos1_Result">
+          <ScalarProperty Name="Socio" ColumnName="Socio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Ventas" ColumnName="Ventas" />
+          <ScalarProperty Name="Reembolso" ColumnName="Reembolso" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="co_tb_ventageneracional">
+      <EntityTypeMapping TypeName="herbaxModel.co_tb_ventageneracional">
+        <MappingFragment StoreEntitySet="co_tb_ventageneracional">
+          <ScalarProperty Name="Fin" ColumnName="Fin" />
+          <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+          <ScalarProperty Name="Volumen5aGen" ColumnName="Volumen5aGen" />
+          <ScalarProperty Name="Volumen4taGen" ColumnName="Volumen4taGen" />
+          <ScalarProperty Name="directos" ColumnName="directos" />
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="IdVolumen" ColumnName="IdVolumen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SA_tb_cdaVentas">
+      <EntityTypeMapping TypeName="herbaxModel.SA_tb_cdaVentas">
+        <MappingFragment StoreEntitySet="SA_tb_cdaVentas">
+          <ScalarProperty Name="f_proceso" ColumnName="f_proceso" />
+          <ScalarProperty Name="Total_venta" ColumnName="Total_venta" />
+          <ScalarProperty Name="entered_by" ColumnName="entered_by" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_TranspasaPedidosPremios1" FunctionName="herbaxModel.Store.CO_st_TranspasaPedidosPremios" />
+    <FunctionImportMapping FunctionImportName="CO_st_GenerarPedidosPremios6" FunctionName="herbaxModel.Store.CO_st_GenerarPedidosPremios" />
+    <FunctionImportMapping FunctionImportName="CO_st_GenerarPedidosReembolsos5" FunctionName="herbaxModel.Store.CO_st_GenerarPedidosReembolsos" />
+    <FunctionImportMapping FunctionImportName="CO_st_TranspasaPedidosReembolsos2" FunctionName="herbaxModel.Store.CO_st_TranspasaPedidosReembolsos" />
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaEstadosDeCuenta3" FunctionName="herbaxModel.Store.CO_st_BuscaEstadosDeCuenta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaEstadosDeCuenta3_Result">
+          <ScalarProperty Name="Socio" ColumnName="Socio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="CDA" ColumnName="CDA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscarRegimenFiscal" FunctionName="herbaxModel.Store.CO_st_BuscarRegimenFiscal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscarRegimenFiscal_Result">
+          <ScalarProperty Name="id_regimen" ColumnName="id_regimen" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_generaMovimientosPrestamo2" FunctionName="herbaxModel.Store.CO_st_generaMovimientosPrestamo" />
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaProductosPremios" FunctionName="herbaxModel.Store.CO_st_BuscaProductosPremios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaProductosPremios_Result">
+          <ScalarProperty Name="sku" ColumnName="sku" />
+          <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+          <ScalarProperty Name="Warehouse_ID" ColumnName="Warehouse_ID" />
+          <ScalarProperty Name="cve_art" ColumnName="cve_art" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="PrecioPublico" ColumnName="PrecioPublico" />
+          <ScalarProperty Name="PrecioMinimo" ColumnName="PrecioMinimo" />
+          <ScalarProperty Name="PrecioCosto" ColumnName="PrecioCosto" />
+          <ScalarProperty Name="PrecioSocio" ColumnName="PrecioSocio" />
+          <ScalarProperty Name="ActivoSAE" ColumnName="ActivoSAE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaProductosReembolsos1" FunctionName="herbaxModel.Store.CO_st_BuscaProductosReembolsos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaProductosReembolsos1_Result">
+          <ScalarProperty Name="sku" ColumnName="sku" />
+          <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+          <ScalarProperty Name="Warehouse_ID" ColumnName="Warehouse_ID" />
+          <ScalarProperty Name="cve_art" ColumnName="cve_art" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="PrecioPublico" ColumnName="PrecioPublico" />
+          <ScalarProperty Name="PrecioMinimo" ColumnName="PrecioMinimo" />
+          <ScalarProperty Name="PrecioCosto" ColumnName="PrecioCosto" />
+          <ScalarProperty Name="PrecioSocio" ColumnName="PrecioSocio" />
+          <ScalarProperty Name="ActivoSAE" ColumnName="ActivoSAE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaIVAs1" FunctionName="herbaxModel.Store.CO_st_BuscaIVAs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaIVAs1_Result">
+          <ScalarProperty Name="id_IVA" ColumnName="id_IVA" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
+          <ScalarProperty Name="id_regimen" ColumnName="id_regimen" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+          <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaISRs2" FunctionName="herbaxModel.Store.CO_st_BuscaISRs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaISRs2_Result">
+          <ScalarProperty Name="id_ISR" ColumnName="id_ISR" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
+          <ScalarProperty Name="id_regimen" ColumnName="id_regimen" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="montominimo" ColumnName="montominimo" />
+          <ScalarProperty Name="limiteinferior" ColumnName="limiteinferior" />
+          <ScalarProperty Name="limitesuperior" ColumnName="limitesuperior" />
+          <ScalarProperty Name="ISR" ColumnName="ISR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_NombreArchivoLComisiones3" FunctionName="herbaxModel.Store.CO_st_NombreArchivoLComisiones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_NombreArchivoLComisiones_Result">
+          <ScalarProperty Name="ArchivoXLS" ColumnName="ArchivoXLS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CO_tb_ConfigReembolsos">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_ConfigReembolsos">
+        <MappingFragment StoreEntitySet="CO_tb_ConfigReembolsos">
+          <ScalarProperty Name="UltMod_F" ColumnName="UltMod_F" />
+          <ScalarProperty Name="UltMod_Usuario" ColumnName="UltMod_Usuario" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="id_estatus" ColumnName="id_estatus" />
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="PorcentajeReembolso" ColumnName="PorcentajeReembolso" />
+          <ScalarProperty Name="Cantidad_Topada" ColumnName="Cantidad_Topada" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Id_Reembolso" ColumnName="Id_Reembolso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TMP_CO_tb_ConfigReembolsos">
+      <EntityTypeMapping TypeName="herbaxModel.TMP_CO_tb_ConfigReembolsos">
+        <MappingFragment StoreEntitySet="TMP_CO_tb_ConfigReembolsos">
+          <ScalarProperty Name="UltMod_F" ColumnName="UltMod_F" />
+          <ScalarProperty Name="UltMod_Usuario" ColumnName="UltMod_Usuario" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="id_estatus" ColumnName="id_estatus" />
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="PorcentajeReembolso" ColumnName="PorcentajeReembolso" />
+          <ScalarProperty Name="Cantidad_Topada" ColumnName="Cantidad_Topada" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Id_Reembolso" ColumnName="Id_Reembolso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_Productos_Reembolso">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Productos_Reembolso">
+        <MappingFragment StoreEntitySet="CO_tb_Productos_Reembolso">
+          <ScalarProperty Name="UsuarioCambio" ColumnName="UsuarioCambio" />
+          <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+          <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+          <ScalarProperty Name="sku" ColumnName="sku" />
+          <ScalarProperty Name="Id_Reembolso" ColumnName="Id_Reembolso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BorrarProductosReembolso" FunctionName="herbaxModel.Store.CO_st_BorrarProductosReembolso" />
+    <EntitySetMapping Name="CO_tb_Premios">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Premios">
+        <MappingFragment StoreEntitySet="CO_tb_Premios">
+          <ScalarProperty Name="UltMod_F" ColumnName="UltMod_F" />
+          <ScalarProperty Name="UltModUsuario" ColumnName="UltModUsuario" />
+          <ScalarProperty Name="Creado_F" ColumnName="Creado_F" />
+          <ScalarProperty Name="CreadoUsuario" ColumnName="CreadoUsuario" />
+          <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="id_periodo" ColumnName="id_periodo" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="nombre_premio" ColumnName="nombre_premio" />
+          <ScalarProperty Name="id_premio" ColumnName="id_premio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CO_tb_PREMIOPRODUCTO">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_PREMIOPRODUCTO">
+        <MappingFragment StoreEntitySet="CO_tb_PREMIOPRODUCTO">
+          <ScalarProperty Name="UltMod_F" ColumnName="UltMod_F" />
+          <ScalarProperty Name="UltModUsuario" ColumnName="UltModUsuario" />
+          <ScalarProperty Name="Creado_F" ColumnName="Creado_F" />
+          <ScalarProperty Name="CreadoUsuario" ColumnName="CreadoUsuario" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
+          <ScalarProperty Name="IDPREMIO" ColumnName="IDPREMIO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaRango_Compra_Premios1" FunctionName="herbaxModel.Store.CO_st_BuscaRango_Compra_Premios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaRango_Compra_Premios1_Result">
+          <ScalarProperty Name="id_rango" ColumnName="id_rango" />
+          <ScalarProperty Name="DescripcionPais" ColumnName="DescripcionPais" />
+          <ScalarProperty Name="DescripcionPremio" ColumnName="DescripcionPremio" />
+          <ScalarProperty Name="DescripcionRank" ColumnName="DescripcionRank" />
+          <ScalarProperty Name="id_periodo" ColumnName="id_periodo" />
+          <ScalarProperty Name="puntos" ColumnName="puntos" />
+          <ScalarProperty Name="DescripcionEstatus" ColumnName="DescripcionEstatus" />
+          <ScalarProperty Name="UltModUsuario" ColumnName="UltModUsuario" />
+          <ScalarProperty Name="UltMod_F" ColumnName="UltMod_F" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaRANKs" FunctionName="herbaxModel.Store.CO_st_BuscaRANKs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaRANKs_Result">
+          <ScalarProperty Name="id_ISR" ColumnName="id_ISR" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
+          <ScalarProperty Name="id_regimen" ColumnName="id_regimen" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="montominimo" ColumnName="montominimo" />
+          <ScalarProperty Name="limiteinferior" ColumnName="limiteinferior" />
+          <ScalarProperty Name="limitesuperior" ColumnName="limitesuperior" />
+          <ScalarProperty Name="ISR" ColumnName="ISR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BorrarProductosPremios" FunctionName="herbaxModel.Store.CO_st_BorrarProductosPremios" />
+    <EntitySetMapping Name="CO_tb_Productos_Premios">
+      <EntityTypeMapping TypeName="herbaxModel.CO_tb_Productos_Premios">
+        <MappingFragment StoreEntitySet="CO_tb_Productos_Premios">
+          <ScalarProperty Name="UltMod_F" ColumnName="UltMod_F" />
+          <ScalarProperty Name="UltModUsuario" ColumnName="UltModUsuario" />
+          <ScalarProperty Name="Creado_F" ColumnName="Creado_F" />
+          <ScalarProperty Name="CreadoUsuario" ColumnName="CreadoUsuario" />
+          <ScalarProperty Name="FinalVigencia" ColumnName="FinalVigencia" />
+          <ScalarProperty Name="InicioVigencia" ColumnName="InicioVigencia" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="id_rank" ColumnName="id_rank" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="id_premio" ColumnName="id_premio" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_registrosPago_pr1" FunctionName="herbaxModel.Store.CO_st_registrosPago_pr">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_registrosPago_pr1_Result">
+          <ScalarProperty Name="TipoRegistro" ColumnName="TipoRegistro" />
+          <ScalarProperty Name="NoIdentificaciónArchivo" ColumnName="NoIdentificaciónArchivo" />
+          <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+          <ScalarProperty Name="VersionLayout" ColumnName="VersionLayout" />
+          <ScalarProperty Name="TipoRegistroDet" ColumnName="TipoRegistroDet" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="CURP" ColumnName="CURP" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Clabe" ColumnName="Clabe" />
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="id_Distribuidor" ColumnName="id_Distribuidor" />
+          <ScalarProperty Name="TipoRegistroCtrl" ColumnName="TipoRegistroCtrl" />
+          <ScalarProperty Name="NoMovimientos" ColumnName="NoMovimientos" />
+          <ScalarProperty Name="ImpTotalAbonos" ColumnName="ImpTotalAbonos" />
+          <ScalarProperty Name="IvaDelimTotal" ColumnName="IvaDelimTotal" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="RegimenFiscal" ColumnName="RegimenFiscal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaProductos4" FunctionName="herbaxModel.Store.CO_st_BuscaProductos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaProductos4_Result">
+          <ScalarProperty Name="sku" ColumnName="sku" />
+          <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+          <ScalarProperty Name="Warehouse_ID" ColumnName="Warehouse_ID" />
+          <ScalarProperty Name="Warehouse" ColumnName="Warehouse" />
+          <ScalarProperty Name="cve_art" ColumnName="cve_art" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="PrecioPublico" ColumnName="PrecioPublico" />
+          <ScalarProperty Name="PrecioMinimo" ColumnName="PrecioMinimo" />
+          <ScalarProperty Name="PrecioCosto" ColumnName="PrecioCosto" />
+          <ScalarProperty Name="PrecioSocio" ColumnName="PrecioSocio" />
+          <ScalarProperty Name="ActivoSAE" ColumnName="ActivoSAE" />
+          <ScalarProperty Name="Id_Periodo" ColumnName="Id_Periodo" />
+          <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Topada" ColumnName="Topada" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+          <ScalarProperty Name="checkeado" ColumnName="checkeado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaConfigReembolsos2" FunctionName="herbaxModel.Store.CO_st_BuscaConfigReembolsos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaConfigReembolsos2_Result">
+          <ScalarProperty Name="Id_Reembolso" ColumnName="Id_Reembolso" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Cantidad_Topada" ColumnName="Cantidad_Topada" />
+          <ScalarProperty Name="PorcentajeReembolso" ColumnName="PorcentajeReembolso" />
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_ReporteComisionesExcell2" FunctionName="herbaxModel.Store.CO_st_ReporteComisionesExcell">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_ReporteComisionesExcell2_Result">
+          <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="FormaPago" ColumnName="FormaPago" />
+          <ScalarProperty Name="C_Constructor" ColumnName="C_Constructor" />
+          <ScalarProperty Name="C_Generacional" ColumnName="C_Generacional" />
+          <ScalarProperty Name="C_InfinitoDiferencial" ColumnName="C_InfinitoDiferencial" />
+          <ScalarProperty Name="C_InicioRapido" ColumnName="C_InicioRapido" />
+          <ScalarProperty Name="C_Nivel" ColumnName="C_Nivel" />
+          <ScalarProperty Name="C_Retail" ColumnName="C_Retail" />
+          <ScalarProperty Name="C_Elite" ColumnName="C_Elite" />
+          <ScalarProperty Name="C_Salto" ColumnName="C_Salto" />
+          <ScalarProperty Name="C_TotalGeneral" ColumnName="C_TotalGeneral" />
+          <ScalarProperty Name="P_ManejoCDA" ColumnName="P_ManejoCDA" />
+          <ScalarProperty Name="P_BonoRuta" ColumnName="P_BonoRuta" />
+          <ScalarProperty Name="P_ReembolsoMeta" ColumnName="P_ReembolsoMeta" />
+          <ScalarProperty Name="P_TotalPercepciones" ColumnName="P_TotalPercepciones" />
+          <ScalarProperty Name="D_ArrendamientoAuto" ColumnName="D_ArrendamientoAuto" />
+          <ScalarProperty Name="D_ConvencionRiviera" ColumnName="D_ConvencionRiviera" />
+          <ScalarProperty Name="D_CreditoCrece" ColumnName="D_CreditoCrece" />
+          <ScalarProperty Name="D_DeducibleAuto" ColumnName="D_DeducibleAuto" />
+          <ScalarProperty Name="D_EquipoComputo" ColumnName="D_EquipoComputo" />
+          <ScalarProperty Name="D_Impresora" ColumnName="D_Impresora" />
+          <ScalarProperty Name="D_Mobiliario" ColumnName="D_Mobiliario" />
+          <ScalarProperty Name="D_Placas_Seguros" ColumnName="D_Placas_Seguros" />
+          <ScalarProperty Name="D_Prestamo" ColumnName="D_Prestamo" />
+          <ScalarProperty Name="D_Manutencion" ColumnName="D_Manutencion" />
+          <ScalarProperty Name="D_TotalDeducciones" ColumnName="D_TotalDeducciones" />
+          <ScalarProperty Name="ComisionTotal" ColumnName="ComisionTotal" />
+          <ScalarProperty Name="I_Iva" ColumnName="I_Iva" />
+          <ScalarProperty Name="I_ISR" ColumnName="I_ISR" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_BuscaProductosConUnId5" FunctionName="herbaxModel.Store.CO_st_BuscaProductosConUnId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_BuscaProductosConUnId1_Result">
+          <ScalarProperty Name="sku" ColumnName="sku" />
+          <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+          <ScalarProperty Name="Warehouse_ID" ColumnName="Warehouse_ID" />
+          <ScalarProperty Name="Warehouse" ColumnName="Warehouse" />
+          <ScalarProperty Name="cve_art" ColumnName="cve_art" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="PrecioPublico" ColumnName="PrecioPublico" />
+          <ScalarProperty Name="PrecioMinimo" ColumnName="PrecioMinimo" />
+          <ScalarProperty Name="PrecioCosto" ColumnName="PrecioCosto" />
+          <ScalarProperty Name="PrecioSocio" ColumnName="PrecioSocio" />
+          <ScalarProperty Name="ActivoSAE" ColumnName="ActivoSAE" />
+          <ScalarProperty Name="Id_Periodo" ColumnName="Id_Periodo" />
+          <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Topada" ColumnName="Topada" />
+          <ScalarProperty Name="nombre_premio" ColumnName="nombre_premio" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+          <ScalarProperty Name="checkeado" ColumnName="checkeado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CO_st_calculoImpuesto_VistaPrevia2" FunctionName="herbaxModel.Store.CO_st_calculoImpuesto_VistaPrevia">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="herbaxModel.CO_st_calculoImpuesto_VistaPrevia2_Result" />
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

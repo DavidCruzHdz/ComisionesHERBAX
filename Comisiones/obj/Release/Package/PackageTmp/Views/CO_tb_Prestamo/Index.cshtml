@@ -1,0 +1,35 @@
+﻿@model List<Comisiones.Models.ViewModels.ListCO_tb_PrestamoViewModel>
+
+@{
+    ViewBag.Title = "Pr&eacute;stamos";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+<br />
+<div class="row">
+    <a href="~/Tabla"></a>
+</div>
+
+<div class="row>
+    <div class="col-sm-12">
+        <table class="table-responsive">
+            <tr>
+                <th>#</th>
+                <th>socio</th>
+                <th>Pr&eacute;stamo</th>
+                <th>Tipo Aplicación</th>
+                <th>numero pagos</th>
+            </tr>
+            @foreach (var prestamo in Model)
+            {
+                <tr>
+                    <td>@prestamo.Id_prestamo</td>
+                    <td>@prestamo.Id_Distribuidor</td>
+                    <td>@prestamo.Importe</td>
+                    <td>@prestamo.TipoAplicacion</td>
+                    <td>@prestamo.NumeroPagos</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "Generación de archivo de comisiones";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+<br />
+<div class="form-group">
+    <label for="pais">Pais</label>
+    <select id="pais" class="form-control">
+        <option value="">Selecciona un país</option>
+        <option value="Mexico">México</option>
+        <option value="Estados Unidos">EUA</option>
+        <option value="Guatemala">Guatemala</option>
+    </select>
+    <span id="msgParaPais" class="field-validation-valid text-danger" style="display:none;">El campo País  es obligatorio</span>
+</div>
+<div class="form-group">
+    <label for="tipoArchivo">Tipo archivo</label>
+    <select id="tipoArchivo" class="form-control">
+        <option value="Asimilados">Asimilados</option>
+        <option value="Factura">Factura</option>
+    </select>
+</div>
+<div id="seccionCompania" class="form-group" style="display:none;">
+    <label for="compania" >Compañia</label>
+    <select id="compania" class="form-control">
+        <option value="1">Saba</option>
+        <option value="2">Ikos</option>
+    </select>
+</div>
+<div class="form-group col-md-3 row">
+    <button id="btndescargar" class="btn"><i class="fa fa-download btn-sm"></i> Descargar</button>
+</div>
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $('#msgParaPais').hide();
+            $('#seccionCompania').hide();
+
+            $("#pais").change(function () {
+                $('#seccionCompania').hide();
+                var pais = $('#pais').val();
+
+                if (pais != '') {
+                    $('#msgParaPais').hide();
+                }
+
+                if (pais == 'Mexico') {
+                    $('#seccionCompania').show();
+                } else {
+                    $('#seccionCompania').hide();
+                }
+
+
+
+            });
+
+            $('#btndescargar').click(function (e) {
+
+                var tipoArchivo = $('#tipoArchivo').val();
+                var pais = $('#pais').val();
+
+                console.log(pais);
+
+                if (pais != '') {
+                    $('#msgParaPais').hide();
+                    if (pais == 'Mexico') {
+                        $('#seccionCompania').show();
+
+                        var compania = $('#compania').val();
+                        if (compania == 1) {
+                            if (tipoArchivo == 'Asimilados') {
+                                //Asimilados
+                                window.location.href = '/Comisiones/DescargaArchivoAsimilado?compania=1&tipoConsulta=C1';
+                            } else if (tipoArchivo == 'Factura') {
+                                //factura
+                                window.location.href = '/Comisiones/DescargaArchivoAsimilado?compania=1&tipoConsulta=C2';
+                            }
+
+                        } else if (compania == 2) {
+                            if (tipoArchivo == 'Asimilados') {
+                                //Asimilados
+                                window.location.href = '/Comisiones/DescargaArchivoAsimilado?compania=2&tipoConsulta=C1';
+                            } else if (tipoArchivo == 'Factura') {
+                                //factura
+                                window.location.href = '/Comisiones/DescargaArchivoAsimilado?compania=2&tipoConsulta=C2';
+                            }
+
+                        }
+
+                    } else if (pais == 'Guatemala') {
+                        $('#seccionCompania').hide();
+                        if (tipoArchivo == 'Asimilados') {
+                            //Asimilados
+                            window.location.href = '/Comisiones/DescargaArchivoAsimilado?compania=0&tipoConsulta=C3';
+                        } else if (tipoArchivo == 'Factura') {
+                            //factura
+                            window.location.href = '/Comisiones/DescargaArchivoAsimilado?compania=0&tipoConsulta=C4';
+                        }
+
+
+                    } else if (pais == 'Estados Unidos') {
+                        $('#seccionCompania').hide();
+
+                        if (tipoArchivo == 'Asimilados') {
+                            //Asimilados
+                            window.location.href = '/Comisiones/DescargaArchivoAsimilado?compania=0&tipoConsulta=C5';
+                        } else if (tipoArchivo == 'Factura') {
+                            //factura
+                            window.location.href = '/Comisiones/DescargaArchivoAsimilado?compania=0&tipoConsulta=C6';
+                        }
+                    }
+
+                } else {
+                    $('#msgParaPais').show();
+                    $('#seccionCompania').hide();
+                    e.preventDefault();  //stop the browser from following
+                }
+
+
+
+
+
+                ///
+                ///window.location.href = '/Comisiones/DescargaArchivoAsimilado?compania=1&tipoConsulta=C1';
+            });
+        })
+
+    </script>
+}

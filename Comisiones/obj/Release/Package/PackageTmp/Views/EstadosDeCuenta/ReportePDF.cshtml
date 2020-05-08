@@ -1,0 +1,631 @@
+﻿@model List<Comisiones.Models.CO_st_BuscaEstadosDeCuenta1_Result>
+@{
+	ViewBag.Title = "Generacion de Estados de Cuenta";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<style type="text/css">
+		body {
+			font-family: Arial;
+			font-size: 9pt;
+		}
+	</style>
+</head>
+<body>
+	<h4>Customers</h4>
+	<hr />
+	<div id="Grid">
+		<table cellpadding="5" cellspacing="0" style="border: 1px solid #ccc;font-size: 9pt;">
+			<tr>
+				<td colspan="8" border="1">
+					<table>
+						<tr>
+							<td colspan="4" border="1"><span>ESTADO DE CUENTA</span></td>
+						</tr>
+						<tr>
+							<td colspan="4" border="1"><span>Fecha de Impresion:</span></td>
+						</tr>
+
+					</table>
+
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<table class="table table-striped modal-content theader w-auto" id="TblDistribuidor" style="background-color:#D6EAF8;width:100%">
+						<tr colspan="4" style="width:100%;"><td><h5>Informacion del Distribuidor</h5></td></tr>
+						<tbody class="tblSocio"></tbody>
+					</table>
+				</td>
+				<td rowspan="3">
+					<table class="table table-striped modal-content theader w-auto" id="TblPerceDeduc" style="background-color:#D6EAF8;width:100%">
+						<tr>					
+							<td colspan="4">
+								<h4>Estado de Cuenta</h4>
+							</td>
+						</tr>
+						<tbody class="tblMovimientos"></tbody>
+					</table>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<table class="table table-striped modal-content theader w-auto" id="TblDeterminar" style="background-color:#D6EAF8;width:100%">
+						<tr>
+							<td colspan="4">
+								<h4>Informacion para determinar el Grado</h4>
+							</td>
+						</tr>
+						<tr>
+							<th style="width:25%;" type="text" maxlength="250">Nombre Completo</th>
+							<th>Fecha Pedido</th>
+							<th>Venta</th>
+							<th>Reembolso</th>
+						</tr>
+						<tbody class="tablaGrado"></tbody>
+					</table>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<table class="table table-striped modal-content theader w-auto" id="TblVolumen" style="background-color:#D6EAF8;width:100%">
+						<tr>
+							<td colspan="4">
+								<h5>Volumen de compra por Generacion (Compra Calificable)</h5>
+							</td>
+						</tr>
+						<tr>
+							<th style="width:15%;" type="text" maxlength="150">Generacion</th>
+							<th>1</th>
+							<th>2</th>
+							<th>3</th>
+							<th>4</th>
+							<th>5</th>
+						</tr>
+						<tbody class="tablaGeneracion"></tbody>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+	<br />
+	<br />
+
+	@using (Html.BeginForm("Export", "EstadosDeCuenta", FormMethod.Post))
+	{
+		<input type="hidden" name="GridHtml" />
+		<input type="submit" id="btnSubmit" value="Export" />
+	}
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("#btnSubmit").click(function () {
+				$("input[name='GridHtml']").val($("#Grid").html());
+			});
+		});
+
+    var dataSend = {};
+	$(document).ready(function () {
+
+		mostrarLoader();
+		var Socio = 0;//global variable
+		var Anio = 0;
+		var Mes = 0;
+
+		var tblEdoCuenta = $('#tblEdoCuenta').DataTable({
+			"language": {
+				"url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+			},
+
+			scrollCollapse: true,
+			paging: true,
+			//data:dataSet,
+			"scrollY": true,
+			"scrollX": true,
+			columns: [
+				{ title: "Socio" },
+				{ title: "Nombre Socio" },
+				{ title: "Direccion" },
+				{ title: "Ciudad" },
+				{ title: "Estado" },
+				{ title: "Pais" },
+				{ title: "Cp" },
+				{ title: "Telefono" },
+				{ title: "RFC" },
+				{ title: "CDA" }
+            ]
+		 });
+
+
+        $('#btnBusqueda').click(function () {
+		var dataSend = new FormData();
+			dataSend.append('partner_id', $('#Idpartner_Busqd').val());
+			dataSend.append('Anio', $('#Anios').val());
+			dataSend.append('Mes', $('#Meses').val());
+            dataSend.append('Nombre', $('#Nombre_Busqd').val());
+            dataSend.append('Direccion', $('#Direccion_Busqd').val());
+			dataSend.append('CP', $('#CP_Busqd').val());
+
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "@Url.Content("~/EstadosDeCuenta/FiltrarSocios")",
+                data: dataSend,
+                processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (retorno) {
+                if (retorno.length > 0) {
+
+                    tblEdoCuenta.rows().remove().draw();
+                    $.each(retorno, function (i, data) {
+
+tblEdoCuenta.row.add($('<tr > <td>'+ data.Socio + '</td>'
+                             +'<td>' + data.Nombre + '</td>'
+                             +'<td>' + data.Direccion + '</td>'
+                             +'<td>' + data.Ciudad + '</td> '
+                             +'<td>' + data.Estado + '</td>'
+                             + '<td>' + data.Pais + '</td>'
+                             + '<td>' + data.CP + '</td>'
+                             + '<td>' + data.Telefono + '</td>'
+                             + '<td>' + data.RFC + '</td>'
+							 + '<td>' + data.CDA + '</td>'
+                             + '</tr>'));
+                        tblEdoCuenta.draw();
+
+                    });
+					ocultarLoader();
+					addRowHandlers();
+
+                } else { alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();}
+
+            },
+            error: function (e) {
+                alertSystem("error", e.responseText);
+                ocultarLoader();
+            }
+
+        })
+        });
+
+    });
+
+
+
+		function rellenarconCeros(value, length) {
+			return (value.toString().length < length) ? rellenarconCeros("0" + value, length) :
+			value;
+		}
+
+
+		function addRowHandlers()
+		{
+
+			    var table = document.getElementById("tblEdoCuenta");
+			    var rows = table.getElementsByTagName("tr");
+				for (i = 1; i < rows.length; i++)
+				{
+					var row = table.rows[i];
+					row.onclick = function (myrow)
+					{
+						return function ()
+						{
+                             var Partner = myrow.getElementsByTagName("td")[0];
+							var IdPartner = Partner.innerHTML;
+
+							Socio = IdPartner;//global variable
+							var limite = 1;
+
+
+							$('#myform').on('submit', function (ev) {
+								 $('#my-modal').modal({
+							        show: 'false'
+								    });
+
+
+								var data = $(this).serializeObject();
+
+								var id = $(ev.relatedTarget).data().id;
+										$(ev.currentTarget).find('#lista').val(id);
+
+								    json_data = JSON.stringify(data);
+									$("#results").text(json_data);
+									$(".modal-body").text(json_data);
+
+									ev.preventDefault();
+								});
+
+
+							$('#myModal').modal('show');
+
+
+
+								//$('#myform').on('submit', function(ev) {
+								//	$('#myModal').on('show.bs.modal', function(ev) {
+								//		var id = $(ev.relatedTarget).data().id;
+								//		$(ev.currentTarget).find('#lista').val(id);
+								//		});
+								//	};
+
+
+								$("#divHtml").load("EstadosDeCuenta/ReportePDF.cshtml",
+								function()
+									{
+										$( "#divHtml" ).dialog({
+											modal: true,
+											buttons:
+											{
+												Ok: function ()
+												{
+													$( this ).dialog( "close" );
+												}
+											}
+										});
+									}
+								);
+
+
+
+
+											var dataSocio =
+											{
+												IdSocio: Socio.toString(),
+											};
+
+
+											//ajax mustra los prestamos al  cargar la pagina
+											$.ajax({
+									            type: "POST",
+								             enctype: 'multipart/form-data',
+											     url: "@Url.Content("~/EstadosDeCuenta/BuscaDistribuidor")",
+								                data: dataSocio,
+												success: function (retorno)
+												{
+
+													 if (retorno.length > 0)
+													 {
+														//tblSocio.rows().remove().draw();
+														 $.each(retorno, function (i, data)
+														 {
+															 var Distribuidor = " <tr><td>" + data.partner_id.toString() + "</td><td>" + data.Nombre.toString() + "</td></tr><tr><td>" + data.Direccion.toString() + "</td></tr><tr><td>" + data.Ciudad.toString() + "</td><td>" + data.Estado.toString() + "</td></tr><tr><td>C.P." + data.CP.toString() + "</td></tr><tr><td>RFC:" + data.RFC.toString() + "</td></tr><tr><td>CDA:" + data.CDA.toString() + "</td></tr>";
+															 $(".tblSocio").append(Distribuidor);
+
+													  });
+												 }
+												 else
+												 {
+													 alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();
+												 }
+
+									            },
+												error: function (e)
+												{
+									                alertSystem("error", e.responseText);
+									                ocultarLoader();
+												}
+
+											})
+
+
+
+
+											if ($("#Meses option:selected").val() != "")
+											{
+												var MesLetra = $("#Meses option:selected").text();
+												 Meses = 0;
+
+												switch (MesLetra)
+													{
+														case "Enero":
+															Meses = 1;
+															break;
+														case "Febrero":
+															Meses = 2;
+															break;
+														case "Marzo":
+															Meses = 3;
+															break;
+														case "Abril":
+															Meses = 4;
+															break;
+														case "Mayo":
+															Meses = 5;
+															break;
+														case "Junio":
+															Meses = 6;
+															break;
+														case "Julio":
+															Meses = 7;
+															break;
+														case "Agosto":
+															Meses = 8;
+															break;
+														case "Septiembre":
+															Meses = 9;
+															break;
+														case "Octubre":
+															Meses = 10;
+															break;
+														case "Noviembre":
+															Meses = 11;
+															break;
+														case "Diciembre":
+															Meses = 12;
+															break;
+														default:
+															Meses = 0;
+															break;
+													}
+											}
+
+											if ($("#Anios option:selected").val() != "")
+											{
+								                 Anios = $("#Anios option:selected").text();
+											}
+
+											var dataMov =
+											{
+												partner_id: Socio.toString(),
+												Anio: Anios,
+												Mes: Meses,
+
+											};
+
+
+											$.ajax({
+									            type: "POST",
+								             enctype: 'multipart/form-data',
+											     url: "@Url.Content("~/EstadosDeCuenta/EdoDeCtaMovimientos")",
+								                data: dataMov,
+												success: function (retorno)
+												{
+
+													 if (retorno.length > 0)
+													 {
+														 var Movimiento = "<tr><th><span></span></th><th><span></span></th><td>Concepto</th><th>1era. Quincena  </th><th>2da. Quincena   </th><th>Total</th></tr>";
+														 $(".tblMovimientos").append(Movimiento);
+
+														 $.each(retorno, function (i, data)
+														 {
+															 var ConceptoId = "";
+															 if (data.id_concepto == 0)
+															 {
+																 ConceptoId = "";
+															 }
+															 else
+															 {
+																 ConceptoId = data.id_concepto.toString();
+															 }
+
+
+															 var PrimerQuincena = "";
+															 if (data.Concepto.toString() == "Percepciones" || data.Concepto.toString() == "Deducciones")
+															 {
+																 PrimerQuincena =  "";
+															 }
+															 else
+															 {
+																 PrimerQuincena = data.Quincena1.toString();
+															 }
+
+
+															 var SegunaQuincena = "";
+															 if (data.Concepto.toString() == "Percepciones" || data.Concepto.toString() == "Deducciones")
+															 {
+																 SegundaQuincena =  "";
+															 }
+															 else
+															 {
+																 SegundaQuincena = data.Quincena2.toString();
+															 }
+
+
+
+															 var Totales = "";
+															 if (data.Concepto.toString() == "Percepciones" || data.Concepto.toString() == "Deducciones")
+															 {
+																 Totales =  "";
+															 }
+															 else
+															 {
+																 Totales = data.Total.toString();
+															 }
+
+															 //var Movimiento = " <tr><td style="width:100px;" >" + data.Concepto.toString() + "</td><td style="width:10px;" >" + data.id_concepto.toString() + "</td><td style="width:300px;" >" + data.descripcion.toString() + "</td><td style="width:100px;" >" + data.Quincena1.toString() + "</td><td style="width:100px;" >" + data.Quincena2.toString() + "</td><td style="width:100px;" >" + data.Total.toString() + "</td></tr>";
+															 Movimiento = " <tr><td >" + data.Concepto.toString() + "</td><td>" + ConceptoId.toString() + "</td><td>" + data.descripcion.toString() + "</td><td>" + PrimerQuincena.toString() + "</td><td>" + SegundaQuincena.toString() + "</td><td>" + Totales.toString() + "</td></tr>";
+															 $(".tblMovimientos").append(Movimiento);
+
+														});
+												 }
+
+												 else
+												 {
+													 alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();
+												 }
+
+									            },
+												error: function (e)
+												{
+									                alertSystem("error", e.responseText);
+									                ocultarLoader();
+												}
+
+											})
+
+
+
+
+
+						};
+					}(row);
+				}
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+	// $(document).ready(function()
+	//{
+	//	$("#divHtml").load("~/ReporteEdodeCta/ReportePDF",
+	//		function()
+	//			{
+	//				$( "#divHtml" ).dialog({
+	//					modal: true,
+	//					buttons:
+	//					{
+	//						Ok: function ()
+	//						{
+	//							$( this ).dialog( "close" );
+	//						}
+	//					}
+	//				});
+	//			}
+	//		);
+	//});
+
+
+
+
+
+
+
+
+
+
+
+
+	   $("#EnviarPDF").click(function ()
+			{
+											var dataToSend = JSON.stringify({ 'html': $("#content").html() });
+
+
+											$.ajax({
+											     url: "@Url.Content("~/EstadosDeCuenta/GenerayEnviaPDF")",
+												type: "POST",
+								                data: dataToSend,
+										 contentType: "application/json; charset=utf-8",
+								  		     success: function (data) {
+													 //$("#dialog").dialog("close");
+													 alertSystem("success", "El proceso genero con exito."); ocultarLoader();
+												console.log(data);
+												},
+												error: function (errorText)
+												{
+												console.log(errorText);
+												}
+											})
+		    });
+
+
+
+		   $("#EnviarPDF2").click(function ()
+			{
+											var dataPDF =
+											{
+												partner_id: Socio.toString(),
+												Anio: Anios,
+												Mes: Meses,
+
+											};
+
+
+											$.ajax({
+									            type: "POST",
+								             enctype: 'multipart/form-data',
+											     url: "@Url.Content("~/EstadosDeCuenta/GenerayEnviaPDF")",
+								                data: dataPDF,
+												success: function (retorno)
+												{
+
+													 if (retorno.length > 0)
+													 {
+
+														 alertSystem("success", "El archivo se creo con exito."); ocultarLoader();
+														// var Movimiento = "<tr><th><span></span></th><th><span></span></th><td>Concepto</th><th>1era. Quincena  </th><th>2da. Quincena   </th><th>Total</th></tr>";
+														// $(".tblMovimientos").append(Movimiento);
+
+														// $.each(retorno, function (i, data)
+														// {
+
+														//	 //var Movimiento = " <tr><td style="width:100px;" >" + data.Concepto.toString() + "</td><td style="width:10px;" >" + data.id_concepto.toString() + "</td><td style="width:300px;" >" + data.descripcion.toString() + "</td><td style="width:100px;" >" + data.Quincena1.toString() + "</td><td style="width:100px;" >" + data.Quincena2.toString() + "</td><td style="width:100px;" >" + data.Total.toString() + "</td></tr>";
+														//	 Movimiento = " <tr><td >" + data.Concepto.toString() + "</td><td>" + ConceptoId.toString() + "</td><td>" + data.descripcion.toString() + "</td><td>" + PrimerQuincena.toString() + "</td><td>" + SegundaQuincena.toString() + "</td><td>" + Totales.toString() + "</td></tr>";
+														//	 $(".tblMovimientos").append(Movimiento);
+
+														//});
+												 }
+
+												 else
+												 {
+													 alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();
+												 }
+
+									            },
+												error: function (e)
+												{
+									                alertSystem("error", e.responseText);
+									                ocultarLoader();
+												}
+
+											})
+
+		   });
+
+
+	function loadDocument() {
+        //To send the provided file name to the web API controller.
+        var documentName = $("#documentName").val();
+        var jsonObject = new Object();
+        if (documentName != "") {
+            jsonObject['documentName'] = documentName;
+            var jsonResult = JSON.stringify(jsonObject);
+            $.ajax({
+                type: "POST",
+                url: '../api/PdfViewer/DocumentRetrieve',
+                crossDomain: true,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: jsonResult,
+                traditional: true,
+                success: function (data) {
+                    //returns the PDF document data as base 64 string
+                    openDoc(data);
+                }
+            });
+        }
+
+    }
+    function openDoc(data) {
+        var obj = $("#pdfviewer").data("ejPdfViewer");
+        //load the PDF document in PDF viewer
+        obj.load(data);
+	}
+
+
+	$(function () {
+			$("#btnSubmit").click(function () {
+				$("input[name='GridHtml']").val($("#Grid").html());
+			});
+		});
+	</script>
+
+</body>
+</html>
+

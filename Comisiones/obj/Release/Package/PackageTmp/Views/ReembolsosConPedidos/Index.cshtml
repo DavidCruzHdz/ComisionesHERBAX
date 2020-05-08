@@ -1,0 +1,723 @@
+﻿@model IList<Comisiones.Models.CO_tb_DtlPedidos>
+
+@{ ViewBag.Title = "Pedidos Generados por reembolso";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script type="text/javascript" class="init">
+	$(document).ready(function () {
+		var table = $('#tblReembolsos').DataTable({
+			language: {
+				"decimal": "",
+				"emptyTable": "No hay información",
+				"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+				"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+				"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+				"infoPostFix": "",
+				"thousands": ",",
+				"lengthMenu": "Mostrar _MENU_ registros",
+				"loadingRecords": "Cargando...",
+				"processing": "Procesando...",
+				"search": "Buscar:",
+				"zeroRecords": "Ningún dato disponible en esta tabla",
+				"paginate": {
+					"first": "Primero",
+					"last": "Ultimo",
+					"next": "Siguiente",
+					"previous": "Anterior"
+				}
+			}
+		}
+		);
+
+
+	});
+</script>
+
+
+<head>
+	<link rel="stylesheet" href="~/Content/estilos.css" />
+</head>
+
+<body>
+	@*<div class="maintitle">Reembolsos  </div>
+		<br />*@
+
+	<input type="checkbox" id="cerrar">
+	<label for="cerrar" id="btn-cerrar"></label>
+	<div class="ventana">
+		<div class="contenido">
+			<h2>Cargando Informacion</h2>
+			<img src="~/images/espera.svg" alt="">
+			<h4>Espere hasta que la informacion se complete</h4>
+		</div>
+	</div>
+
+	<main>
+        <br />
+        <div class="maintitle">Reembolsos expirados y pedidos generados</div>
+		<div class="container-fluid" id="divMainContainer" style="align-content:center">
+			<form id="myform" class="form-inline">
+				@*<button type="button" class="btn btn-info btn-sm" id="btnDescargarExcel">Descargar Excel</button>
+		
+		<br />*@
+				<div class="col-lg-12" id="divPageQueryLists">
+					<table id="tblReembolsos" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+						<thead style="background-color:#D6EAF8;width:100%">
+										<tr>
+											<th>Socio</th>
+											<th style="width:1000px;" type="text" maxlength="1000">Nombre Completo</th>
+											<th>Pais</th>
+											<th>Ventas</th>
+											<th>Reembolso</th>
+											<th>Periodo</th>
+											<th>No. Guia</th>
+											<th>Pedido</th>
+											<th>Estatus</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										@foreach (var Rembolsar in ViewBag.Reembolsos)
+										{
+											<tr>
+												<td style="text-align:center">
+													@Rembolsar.Socio
+												</td>
+												<td style="text-align:center">
+													@Rembolsar.Nombre
+												</td>
+												<td style="text-align:center">
+													@Rembolsar.Pais
+												</td>
+												<td style="text-align:center">
+													@Rembolsar.Ventas
+												</td>
+												<td style="text-align:center">
+													@Rembolsar.Reembolso
+												</td>
+												<td style="text-align:center">
+													@Rembolsar.Periodo
+												</td>
+												<td style="text-align:center">
+													@Rembolsar.No_Guia
+												</td>
+												<td style="text-align:center">
+													@Rembolsar.Id_Pedido
+												</td>
+												<td style="text-align:center">
+													@Rembolsar.Ver_Pedido
+												</td>
+											</tr>
+										}
+									</tbody>
+								</table>
+							</div>
+			</form>
+
+			<div id="myModal" class="modal face" style="align-content:center">
+				@*<div class="modal face" id="myModal" style="width:100%">*@
+				<div class="modal-dialog" role="document">
+					<div class="modal-content" style="width:710px">
+
+						@*<div id="myModal" class="modal face" style="align-content:center">
+							<div class="modal-body" role="document">
+								<div class="modal-content">*@
+
+						<div class="modal-body">
+							@using (Html.BeginForm("", "", "POST"))
+							{
+								<script type="text/javascript">
+
+									if (@ViewBag.IsPedido > 0)
+									{
+										Swal.fire("@ViewBag.Message", 'si lo encontro!', 'success');
+
+									}
+								</script>
+
+								<table style="width:100%" class="table table-striped modal-content w-auto" id="TblCliente">
+									<thead style="background-color:#D6EAF8">
+										<tr style="width:100%">
+											<th style="width:11%">Socio</th>
+											<th style="width:43%">Nombre Completo</th>
+											<th style="width:16%">Fecha Pedido</th>
+											<th style="width:7%">Venta</th>
+											<th style="width:10%">Reembolso</th>
+											<th style="width:1%">Pedido</th>
+										</tr>
+									</thead>
+									<tbody class="tablaCli"></tbody>
+								</table>
+
+								<table style="width:100%" class="table table-striped modal-content w-auto" id="TblPartidas">
+									@*<thead style="background-color:#D6EAF8">
+											<tr>
+												<th >
+													<label>IdInventario</label>
+												</th>
+												<th style="text-align:center">
+													<label>Partidas</label>
+												</th>
+												<th>
+													<label>Pedido</label>
+												</th>
+												<th>
+													<label>Producto</label>
+												</th>
+												<th style="width:700px;" type="text" maxlength="700">
+													<label>Descripcion</label>
+												</th>
+												<th>
+													<label>Cantidad</label>
+												</th>
+												<th>
+													<label>Precio</label>
+												</th>
+												<th>
+													<label>Monto</label>
+												</th>
+
+												<th>
+												</th>
+										</thead>
+										<tbody class="tablaPda"></tbody>*@
+								</table>
+
+
+
+								<div class="modal-footer">
+									<input type="hidden" value="0" id="rembolsoActual" />
+									<button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+
+
+									@*<input type="submit" value="envia" class="btn btn-danger btn-lg" />*@
+
+
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+
+		</div>
+	</main>
+</body>
+
+
+@section scripts{
+	<script>
+
+
+		$(document).ready(function ()
+		{
+			//alert("ready");
+			mostrarLoader();
+
+				var Socio = 0;//global variable
+				var Ventas = 0;//global variable
+				var Reembolsado = "";
+				var Diferencia = 0;
+				var Anio = 0;
+				var Mes = 0;
+				var Quincena = 0;
+
+
+			$('#btnDescargarExcel').click(function (event)
+			{
+	            event.preventDefault();
+		        mostrarLoader();
+			    window.location.href = 'descargaReembolsosCanje';
+				ocultarLoader();
+			});
+
+			function Initialize()
+			{
+				$(".validatecheckbox").change(function ()
+				{
+
+				}
+				);
+				Validate();
+			};
+
+			ocultarLoader();
+			
+			addRowHandlers();
+
+			@*var tblReembolsos = $('#tblReembolsos').DataTable(
+				{
+					"language": {
+	                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+		        },
+            "scrollX": true,
+            //scrollCollapse: true,
+            paging: false,
+            //data:dataSet,
+            //periodoCreacion,partner_id,nombre,importe,saldo,Motivo,idFormaPago,descFormaPago
+			 columns: [
+                        { title: "Socio" },
+                        { title: "Nombre_Completo" },
+                        //{ title: "Calle" },
+                        //{ title: "Colonia" },
+                       // { title: "CP" },
+						//{ title: "Telefono" },
+						{ title: "Pais" },
+                        { title: "Ventas" },
+						{ title: "Reembolso" },
+						{ title: "Periodo" },
+						{ title: "No.Guias" },
+						{ title: "Pedido" },
+						{ title: "Estatus" }
+
+				]
+			});
+
+			//ajax mustra los prestamos al  cargar la pagina
+				$.ajax(
+				{
+					type: "POST",
+					enctype: 'multipart/form-data',
+					url: "@Url.Content("~/ReembolsosConPedidos/BuscaPedidos")",
+					//data: dataSend,
+					processData: false,
+					contentType: false,
+					cache: false,
+					timeout: 600000,
+					success: function (retorno)
+					{
+
+						if (retorno.length > 0)
+						{
+
+
+							tblReembolsos.rows().remove().draw();
+							$(".fila").remove();
+
+							//_numReg = retorno.length;
+							//console.log("Numero de registros::" + _numReg)
+							$.each(retorno, function (i, data)
+							{
+								//alert(data.Socio +" - "+data.Nombre+" - "+data.Pais +" - "+data.Ventas +" - "+data.Reembolso +" - "+data.Periodo +" - "+data.No_Guia +" - "+data.Id_Pedido +" - "+data.Ver_Pedido);
+								//Campos que vienen en SP
+								//periodoCreacion,partner_id,nombre,importe,saldo,Motivo,idFormaPago,descFormaPago
+								tblReembolsos.row.add($('<tr class="fila" onclick="eventoClick()" > '
+									+ '<td >' + data.Socio + '</td>'
+									+ '<td>' + data.Nombre + '</td>'
+									//+ '<td>' + data.Calle + '</td>'
+									//+ '<td>' + data.Colonia + '</td>'
+									//+ '<td>' + data.CP + '</td>'
+									//+ '<td>' + data.Telefono + '</td>'
+									+ '<td>' + data.Pais + '</td>'
+									+ '<td class="derecha">' + formatCurrency(data.Ventas) + '</td>'
+									+ '<td class="derecha">' + formatCurrency(data.Reembolso) + '</td>'
+									+ '<td>' + data.Periodo + '</td>'
+									+ '<td>' + data.No_Guia + '</td>'
+									+ '<td>' + data.Id_Pedido + '</td>'
+									+ '<td>' + data.Ver_Pedido + '</td>'
+									+ '</tr>'));
+								//alert("bien");
+								tblReembolsos.draw();
+							});
+							//alert("bien2")
+							ocultarLoader();
+							addRowHandlers();
+
+
+
+						}
+						else
+						{
+							ocultarLoader();
+							//alertSystem("success", "El proceso no genero Resultados.");
+
+							Swal.fire
+								({
+									title: 'El proceso no genero Resultados.',
+									text: "Presione el boton para cerrar!",
+									type: "error",
+									animation: false,
+									customClass:
+									{
+										popup: 'animated tada'
+									}
+								})
+
+						}
+						//,
+						//error: function (e)
+						//{
+						//	alertSystem("error", e.responseText);
+						//	ocultarLoader();
+						//}
+
+					}
+				});*@
+		});
+
+
+				function eventoClick() {
+
+				}
+
+
+
+				function addRowHandlers()
+				{
+	  				 var table = document.getElementById("tblReembolsos");
+					 var rows = table.getElementsByTagName("tr");
+
+
+								var TblPartidas = $('#TblPartidas').DataTable({
+												"language": {
+										             "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+															},
+									             "scrollX": true,
+									            scrollCollapse: true,
+										        paging: true,
+									            //data:dataSet,
+									            //periodoCreacion,partner_id,nombre,importe,saldo,Motivo,idFormaPago,descFormaPago
+
+												columns: [
+									                        { title: "Inv." ,className:"inventario"},
+															{ title: "Pedido"  ,className:"Pedido"},
+															{ title: "Pda"  ,className:"Partidas"},
+									                        { title: "Producto          "  ,className:"Producto"},
+									                        { title: "Descripcion       "  ,className:"Descripcion"},
+															{ title: "Cant."  ,className:"Cantidad"},
+
+													        { title: "Precio", className: "Precio" },
+															{ title: "Monto" ,className:"Monto"},
+
+														]
+										        });
+
+						//var table = document.getElementById("tblReembolsos");
+						// var rows = table.getElementsByTagName("tr");
+
+					for (i = 1; i < rows.length; i++)
+					{
+						var row = table.rows[i];
+						row.onclick = function (myrow)
+						{
+							var Pedido = myrow.getElementsByTagName("td")[7];
+							var IdPedido = Pedido.innerHTML;
+
+							return function ()
+							{
+								 var Partner = myrow.getElementsByTagName("td")[0];
+								var IdPartner = Partner.innerHTML;
+
+								var Name = myrow.getElementsByTagName("td")[1];
+								var NombreCompleto = Name.innerHTML;
+
+								var Sale = myrow.getElementsByTagName("td")[3];
+								var Venta = Sale.innerHTML;
+
+								var Reembolsar = myrow.getElementsByTagName("td")[4];
+								var Reembolso = Reembolsar.innerHTML;
+
+								var Periodo = myrow.getElementsByTagName("td")[5];
+								var IdPeriodo = Periodo.innerHTML;
+
+								//if (IdPedido == 0)
+								//{
+								//	alert("No existe pedido")
+								//	return false;
+								//}
+
+									var Boton = myrow.getElementsByTagName("td")[8];
+									var BtnPedido = Boton.innerHTML;
+
+									Socio = IdPartner;//global variable
+									var limite = 1;
+
+									//$('#myform').on('submit', function (ev) {
+									//	 $('#my-modal').modal({
+									//        show: 'false'
+									//	    });
+
+
+									//	    var data = $(this).serializeObject();
+									//	    json_data = JSON.stringify(data);
+									//		$("#results").text(json_data);
+									//		$(".modal-body").text(json_data);
+
+									//		ev.preventDefault();
+									//	});
+
+
+									var hoy = new Date();
+									var dd = hoy.getDate();
+									var mm = hoy.getMonth()+1;
+									var yyyy = hoy.getFullYear();
+
+									if (dd < 10)
+									{
+									  dd='0'+dd;
+									}
+
+									if (mm < 10)
+									{
+										mm='0'+mm;
+									}
+
+								   FechaPedido = dd + "/" + mm + "/" + yyyy;
+
+									ReembolsoSocio = Reembolso.toString();
+									Reembolsado = "";
+									Diferencias = 0;
+
+									var numeros = "0123456789.";
+										for (i = 0; i < ReembolsoSocio.length; i++)
+										{
+											if (numeros.indexOf(ReembolsoSocio.charAt(i), 0) != -1)
+											{
+												Reembolsado = Reembolsado + ReembolsoSocio.charAt(i);
+											}
+										}
+
+
+										$(".TmpSocio").val(IdPartner.toString());
+										//$(".tablaCli")..remove();
+
+										var Clientes = " <tr " + IdPartner.toString() + "'><td style='width:10%'>" + IdPartner.toString() + "</td><td style='width:48%'>" + NombreCompleto.toString() + "</td><td style='width:15%'>" + FechaPedido.toString() + "</td><td style='width:11%'>" + Venta.toString() + "</td><td style='width:10%'>" + Reembolso.toString() + "</td><td style='width:10%'>" + IdPedido.toString() + "</td></tr>";
+										$(".tablaCli tr").remove();
+										$(".tablaCli").append(Clientes);
+
+										//alert("bien2");
+
+										$('#TblPartidas tr').remove();
+
+											var dataSend =
+											{
+												PedidoId: IdPedido.toString(),
+											};
+
+
+											//ajax mustra los prestamos al  cargar la pagina
+											$.ajax({
+									            type: "POST",
+								             enctype: 'multipart/form-data',
+											     url: "@Url.Content("~/ReembolsosConPedidos/BuscaPartidas")",
+								                data: dataSend,
+												success: function (retorno)
+												{
+
+
+													 if (retorno.length > 0)
+													 {
+														 TblPartidas.rows().remove();
+														 //TblPartidas.clear();
+
+														 $.each(retorno, function (i, data)
+														 {
+															 var Monto = (data.Cantidad * data.Precio);
+
+															 TblPartidas.row.add($('<tr > '
+										                     + '<td style=width:14%>' + data.Id_MovInv + '</td>'
+															 + '<td style=width:17%>' + data.Id_Pedido + '</td>'
+														     + '<td style=width:19%>' + data.Id_DtlMovInv + '</td>'
+															 + '<td style=width:8%>' + data.Id_Producto + '</td>'
+															 + '<td style=width:44%>' + data.Descripcion + '</td>'
+																 + '<td style=width:1%>' + data.Cantidad + '</td>'
+																  + '<td style=width:5%>' + '    ' + '</td>'
+																 + '<td style=width:5%>' + '    ' + '</td>'
+
+																 + '<td style=width:10% class="derecha">' + formatCurrency(data.Precio) + '</td>'
+																 + '<td style=width:5%>' + '  ' + '</td>'
+															 + '<td style=width:5% class="derecha">' + formatCurrency(Monto) + '</td>'
+
+										                     + '</tr>'));
+
+										                    TblPartidas.draw();
+													  });
+												 }
+												 else
+												 {
+													 alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();
+												 }
+
+									            },
+												error: function (e)
+												{
+													alert("fallo");
+									                alertSystem("error", e.responseText);
+									                ocultarLoader();
+												}
+
+											})
+
+											$('#myModal').modal('show');
+										return false;
+							};
+						}(row);
+					}
+				};
+
+
+
+				function addRowProductos()
+				{
+					// Funcion para obtener solos los numeros de una cadena incluye punto decimal
+					// Esto se hizo porque el valor que se obtuvo de la pantalla anterior viene formateado en HTML
+					$(".TmpSocio").val(Socio);
+
+					for (i = 1; i < rows.length; i++)
+					{
+						var row2 = table2.rows[i];
+						row2.onclick = function (myrow2)
+						{
+							return function ()
+							{
+                        		var Id = row2.getElementsByTagName("td")[1];
+								Id.innerHTML = $("#TmpSocioId").val();
+
+								var Sale = myrow2.getElementsByTagName("td")[2];
+								Sale.innerHTML =  $("#TmpVentasId").val();
+
+								var IdPedido = myrow2.getElementsByTagName("td")[10];
+								var Pedido = innerHTML = $("#TmpReembolsoId").val();
+
+								var adicional =
+								  {
+									NumPedido: Pedido,
+									};
+
+								$.ajax({
+									url: "/ReembolsosCanje/BuscaPartidas",
+									type: 'POST',
+									data: adicional,
+								});
+
+
+							};
+						}(row2);
+					};
+				};
+
+
+				function test(item)
+				{
+					var myrow2 =item;
+					var Producto = myrow2.getElementsByTagName("td")[0];
+					var IdProducto = Producto.innerHTML;
+					var Price = myrow2.getElementsByTagName("td")[2];
+					var Precio = Price.val;
+					var PreciArt = 0;// Precio.toString();
+
+					var id = myrow2.id.toString();
+					id = id.substring(4, id.length);
+
+					//var Canti = myrow2.getElementsByTagName("td")[3];
+					e = $("#" + id).val();
+
+					if (e != null && e != "")
+					{
+						var montoRow = myrow2.getElementsByTagName("td")[4];
+						var monto = montoRow.innerHTML;
+
+						var varMonto = 0;
+						varMonto = (PreciArt * e);
+
+						var sumaRembolsos = $("#rembolsoActual").val();
+						if (parseFloat(monto) > 0)
+						{
+							sumaRembolsos = parseFloat(sumaRembolsos) - parseFloat(monto);
+						}
+
+						if (monto >= varMonto)
+						{
+							var restar = parseFloat(monto) - parseFloat(varMonto);
+							sumaRembolsos = parseFloat(sumaRembolsos) - parseFloat(restar);
+							$("#rembolsoActual").val(sumaRembolsos);
+						}
+						else
+						{
+							sumaRembolsos = parseFloat(sumaRembolsos) + parseFloat(varMonto);
+							$("#rembolsoActual").val(sumaRembolsos);
+						}
+
+						montoRow.innerHTML = varMonto;
+						$(".SubMonto").val(varMonto);
+
+						var SumaMontos3 = 0;
+						var table3 = document.getElementById("datatable");
+						var rows3 = table3.getElementsByTagName("tr");
+						var CantRembolsada = 0;
+						CantRembolsada = Number(Reembolsado);
+						Diferencia = (Reembolsado - sumaRembolsos);
+						$("#restante").text(Diferencia);
+					}
+				};
+
+
+
+
+
+			 $(function()
+			{
+				 $("#EnvioInfo").click(function ()
+				 {
+					 	var adicional =
+						  {
+							    modelo: $('#datatable input').serialize(),
+								SocioId: $("#SocioId").val(),
+								VentasId: $("#VentasId").val(),
+								ReembolsoId: $("#ReembolsoId").val(),
+							};
+
+							$.ajax({
+								url: "/ReembolsosCanje/Index",
+								type: 'POST',
+							    data: adicional,
+							});
+				 });
+			});
+
+
+	</script>
+}
+<style>
+
+	.inventario {
+		width: 14%;
+	}
+
+	.Pedido {
+		width: 17%;
+	}
+
+	.Partidas {
+		width: 19%;
+	}
+
+	.Producto {
+		width: 8%;
+	}
+
+	.Descripcion {
+		width: 40%;
+	}
+
+	.Cantidad {
+		width: 1%;
+	}
+
+	.Precio {
+		width: 10%;
+	}
+
+	.Monto {
+		width: 5%;
+	}
+
+	.Empresa {
+		width: 5%;
+	}
+</style>

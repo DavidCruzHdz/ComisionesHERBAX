@@ -1,0 +1,141 @@
+﻿@model Comisiones.Models.ViewModels.MovimientosSocioViewModel
+
+
+@{
+    ViewBag.Title = "Modificación de percepciones / deducciones";
+}
+
+<div class="maintitle">@ViewBag.Title</div>
+
+
+
+<form action="@sesion.urlMain/MovimientosSocio/Editar" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <di class="form-group">
+                <label for="Partner_id">Socio</label>
+                <div class="col-md-8">
+                    <input class="form-control" data-val="true" data-val-required="El campo Socio es obligatorio" id="Partner_id" name="Partner_id" type="text"  value="@Model.Partner_id" readonly  disabled/>
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Partner_id" data-valmsg-replace="true"></span>
+                </div>
+            </di>
+            <div class="form-group">
+                <label for="tipoConcepto">Tipo Concepto</label>
+                <div class="col-md-8">
+                    <select class="form-control" data-val="true" data-val-required="El campo tipo concepto  es obligatorio" id="tipoConcepto" name="tipoConcepto" required>
+                        <option value="a">otra opcion</option>
+                        <option value="D" @(Model.TipoConcepto == "D" ? "selected":"" )>Deducción</option>
+                        <option value="P"  @(Model.TipoConcepto == "P" ? "selected":"" )>Percepción</option>
+                    </select>
+                    <div class="col-md-12">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="tipoConcepto" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="col-md-8" style="padding-top:5px">
+                    <select class="form-control" data-val="true" id="Id_Concepto" name="Id_Concepto"> </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Importe">Monto</label>
+                <div class="col-md-12">
+                    <input class="form-control" data-val="true" data-val-number="El Monto  debe ser numerico." data-val-required="El campo Monto  es obligatorio" id="Monto" name="Monto" type="text" value="@Model.Monto" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Monto" data-valmsg-replace="true"></span>
+                </div>
+
+
+                <input id="TipoActual" name="TipoActual" type="hidden" value="@Model.TipoConcepto" />
+                <input id="idConceptoActual" name="idConceptoActual" type="hidden" value="@Model.Id_Concepto" />
+                <input id="Id_MovimientosSocio" name="Id_MovimientosSocio" type="hidden" value="@Model.Id_MovimientosSocio" />
+            </div>
+
+            <br />
+            <div style="text-align:right">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+@section scripts{
+    <script>
+
+
+        $(document).ready(function () {
+
+            var url = "@Url.Action("getConceptosPorTipo", "MovimientosSocio")";
+            var idTipoActual = $('#TipoActual').val();
+
+            var idConceptoActual = $('#idConceptoActual').val();
+
+            //Primera carga de update
+            var data = { idTipo: idTipoActual }
+
+            console.log("ID_CONCEPTO_ACTUAL");
+            console.log(idConceptoActual);
+
+            if (idTipoActual != "" && idTipoActual != undefined) {
+                $.get(url, data).done(function (data) {
+                    if (data.length > 0) {
+                        console.log("MODIFICA 1");
+                        console.log(data);
+                        $('#Id_Concepto').empty();
+                        for (i in data) {
+                            
+                            if (idConceptoActual == data[i].Id) {
+                                $("#Id_Concepto").append('<option value="' + data[i].Id + '" Selected >' + data[i].Id + ' - ' + data[i].descripcion + '</option>');
+                            } else {
+                                $("#Id_Concepto").append('<option value="' + data[i].Id + '" >' + data[i].Id + ' - ' + data[i].descripcion + '</option>');
+
+                            }                            
+                        }
+                    } else {
+                        console.log("Sin Registros");
+                        $('#Id_Concepto').empty();
+                    }
+                })
+            } else {
+                console.log("tipoActual vacio");
+                $('#Id_Concepto').empty();
+            }
+
+
+
+            //Funcion onchange combo Tipo concepto
+            $("#tipoConcepto").change(function () {
+
+                $('#Id_Concepto').show();
+
+                var url = "@Url.Action("getConceptosPorTipo", "MovimientosSocio")";
+                var idTipo = $('#tipoConcepto').val();
+                var data = {idTipo: idTipo}
+                console.log(idTipo);
+
+                if (idTipo != "" && idTipo != undefined ) {
+                    $.get(url, data).done(function (data) {
+                        if (data.length > 0) {
+                            console.log(data);
+                            $('#Id_Concepto').empty();
+                            for (i in data) {
+                                $("#Id_Concepto").append('<option value="' + data[i].Id + '" >' + data[i].Id + ' - ' + data[i].descripcion + '</option>');
+                            }
+                        } else {
+                            $('#Id_Concepto').empty();
+                            $('#Id_Concepto').hide();
+                        }
+                    })
+                } else {
+                    $('#Id_Concepto').empty();
+                    $('#Id_Concepto').hide();
+                }
+
+            });
+
+            
+            $("#Monto").focus();
+        });
+
+    </script>
+}
+

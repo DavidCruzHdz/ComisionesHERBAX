@@ -1,0 +1,525 @@
+﻿@model List<Comisiones.Models.CO_st_BuscarPeriodos_Result>
+@{
+    ViewBag.Title = "Catálogo de Socios";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="maintitle">Cat&aacute;logo de Socios</div>
+
+<div class="container-fluid" id="divMainContainer">
+
+    <form class="form-inline" action="/action_page.php">
+        <label for="email" class="mr-sm-2">N&uacute;mero de Socio:</label>
+        <input type="text" name="partner_idBusqd" id="Idpartner_idBusqd" class="form-control mb-2 mr-sm-2"  placeholder="N&uacute;mero de socio" />
+        
+        <button type="button" class="btn btn-info btn-sm" id="btnBusqueda">Buscar Socio</button>
+    </form>
+    
+        <br />
+       
+
+        <div class="col-lg-12" id="divPageQueryLists">
+            <table id="tbSocios" class="table table-striped table-bordered dt-responsive nowrap" style="width:98%">
+                <!-- Codigo generado desde JS Aqui...
+                <tbody id="tbSociosBody"></tbody>-->
+            </table>
+        </div>
+    </div>
+
+
+    
+
+
+
+<!-- Modal Se usa para Editar o para Agregar se usa idSocioSpan cuando es nuevo tiene un valor 0 sino tendra el id del socio a editar -->
+<div id="modalSocio" class="modal fade" role="dialog">
+    <span id="idSocioSpan"></span>
+    <span id="idPaisSpan"></span>
+    <span id="idBancoSpan"></span>
+    <span id="idRegimenSpan"></span>
+    
+    <div class="modal-dialog  modal-sm modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Datos del Socio</h4>
+            </div>
+            <div class="modal-body">
+                <form  method=POST role="form">
+                    <div class="form-group">
+                        <label>Curp: </label> 
+                        <input type="text" name="curp" id="idCurp" class="form-control" placeholder="Curp"/> 
+                    </div>
+                    <div class="form-group">
+                        <label>Rfc: </label>
+                        <input type="text" name="rfc" id="idRfc" class="form-control" placeholder="Rfc" />
+                    </div>
+                    <!--
+                    <div class="form-group">
+                        <label>Banco: </label>
+                        <input type="text" name="bank_id" id="idBanco" class="form-control" placeholder="Banco" />
+                    </div>-->
+
+                    <div class="form-group">
+                        <label for="Partner_id">banco:</label>
+                        <select class="form-control" id="idBanco" name="bank_id">
+                            <!--<option selected value="0">Seleccione una forma de pago</option>
+                            <option value="1">Mensual</option>
+                            <option value="2">Quincenal</option>-->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Clabe Interbancaria: </label>
+                        <input type="text" name="clabeinterbancaria" id="idclabeinterbancaria" class="form-control" placeholder="clabe interbancaria" />
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="Partner_id">R&eacute;gimen Fiscal: </label>
+                        <select class="form-control" id="idRegimenFiscal" name="regimenFiscal">
+                            <!--<option selected value="0">Seleccione una forma de pago</option>
+                            <option value="1">regimen 1</option>
+                            <option value="2">Regimen 2</option>-->
+                        </select>
+                    </div>
+                    
+                    <!--
+                    <div class="form-group">
+                        <label>R&eacute;gimen Fiscal: </label>
+                        <input type="text" name="regimenFiscal" id="idRegimenFiscal" class="form-control" placeholder="Regimen fiscal" />
+                    </div>
+                    -->
+                    <div class="form-group">
+
+                        <div class="row">
+                            <div class="col-lg-12"> &nbsp;</div>
+                            <div class="col-lg-8"></div>
+                            <div class="col-lg-4" align='right'>
+                                <button type="submit" class="btn btn-facebook">Guardar</button>
+                                <button type="reset" class="btn btn-facebook">Limpiar</button>
+                                <!--<input type="submit" value="Limpiar">-->
+                            </div>
+                        </div>
+                    </div>
+
+</form>
+            </div>
+            <!--
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+<!-- fin Modal Periodo-->
+
+<script>
+    var dataSend = {};
+
+
+    $(document).ready(function () {
+
+
+        /*$('#Idpartner_idBusqd').click(function () {
+            alert("cliqueando ando");
+        });*/
+
+        $('#btnBusqueda').click(function () {
+            
+            //alert("cliqueando ando  el boton" + $('#Idpartner_idBusqd').val());
+            // Create an FormData object
+            var dataSend = new FormData();
+            dataSend.append('partner_id', rellenarconCeros($('#Idpartner_idBusqd').val(),10));
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "@Url.Content("~/CatSocios/ListarSocios")",
+                data: dataSend,
+                processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (retorno) {
+                if (retorno.length > 0) {
+
+                    tbSocios.rows().remove().draw();
+                    _numReg = retorno.length;
+                    console.log("Numero de registros::" + _numReg);
+                    console.log("Datos del Retorno:" + JSON.stringify(retorno));
+
+                    $.each(retorno, function (i, data) {
+                        console.log("Datos de la consulta:"+JSON.stringify(data));
+                        //cargando datos en campos Span ya que al ocultar columnas se pierden los ID
+                        
+                        $('#modalSocio').find('#idPaisSpan').val(data.pais_id);
+                        $('#modalSocio').find('#idBancoSpan').val(data.bank_id);
+                        $('#modalSocio').find('#idRegimenSpan').val(data.Regimen_id);
+
+                        
+                        var rfc = data.Rfc != "" ? data.Rfc : "Sin Datos";
+                        var curp = data.Curp != "" ? data.Curp : "Sin Datos";
+                        var CuentaClabe = data.CuentaClabe != "" ? data.CuentaClabe : "Sin Datos";
+                        var Bank_Name = data.Bank_Name != "" ? data.Bank_Name : "Sin Datos";
+                        var PaisDesc = data.PaisDesc != "" ? data.PaisDesc : "Sin Datos";
+                        var RegimenDesc = data.RegimenDesc != null ? data.RegimenDesc : "";
+
+                        //tbSocios.row.add($('<tr id="' + data.partner_id + '"> <td>' + data.partner_id + '</td> <td>' + rfc + '</td> <td>' + curp + '</td>  <td>' + Bank_Name + '</td> <td>' + CuentaClabe + '</td>     <td>' + PaisDesc + '</td>     <td>' + RegimenDesc + '</td>  <td> <a href="#" onclick="editarSocio(' + Number(data.partner_id) + ');">  Editar  </a> </td> </tr>'));
+                        tbSocios.row.add($('<tr id="' + data.partner_id + '"> <td>' + data.partner_id + '</td> <td>' + data.Rfc + '</td> <td>' + data.Curp + '</td>  <td>' + data.Bank_Name + '</td> <td>' + data.CuentaClabe + '</td>     <td>' + data.PaisDesc + '</td>     <td>' + RegimenDesc + '</td>  <td> <a href="#" onclick="editarSocio( ' + Number(data.partner_id) + ');">  Editar  </a> </td> </tr>'));
+                        tbSocios.draw();
+
+                    });
+                    ocultarLoader();
+
+                } else { alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();}
+
+            },
+            error: function (e) {
+                alertSystem("error", e.responseText);
+                ocultarLoader();
+            }
+
+        })
+        });
+
+
+
+
+        var tbSocios = $('#tbSocios').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+            },
+
+            //scrollCollapse: true,
+            paging: true,
+            //data:dataSet,
+            columns: [
+                { title: "Socio" },
+                { title: "RFC" },
+                { title: "CURP" },
+                
+                { title: "Nombre Banco" },
+                { title: "Cuenta Clave" },
+                
+                { title: "País" }, //Pais
+                
+                { title: "R&eacute;gimen Fiscal" },
+                { title: " Acción" }
+            ] 
+            
+            /*"columnDefs": [{"targets": [3],"visible": false,"searchable": false},
+                           {"targets": [6],"visible": false},
+                           {"targets": [8], "visible": false}
+            ]*/
+            
+        });
+        //tbSocios.columns([3, 6, 8]).visible(false);
+        //$('#tbSocios').DataTable().destroy();
+
+        $('#modalSocio').on('hidden.bs.modal', function (e) {
+            //$(this).removeData('bs.modal');
+            e.preventDefault();
+            resetValuesFormModalSocio();
+        })
+
+
+        $('#modalSocio').submit(function (e) {
+            e.preventDefault();
+            var jsonValues = getValuesForm();
+            //alert("Guardando la Edicion");
+
+
+
+            var dataSend = new FormData();
+
+            dataSend.append('partner_id', jsonValues.partner_id);
+            dataSend.append('rfc', jsonValues.rfc);
+            dataSend.append('curp', jsonValues.curp);
+            dataSend.append('bank_id', jsonValues.bank_id);
+            dataSend.append('clabe', jsonValues.clabe);
+            dataSend.append('regimenFiscal', jsonValues.regimenFiscal);
+            dataSend.append('AccionSend', jsonValues.AccionSend);
+
+            if(ValidaCampos()){
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "@Url.Content("~/CatSocios/AddOrEdit")",
+                data: dataSend,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function (retorno) {
+                    console.log("Numero de registros::" + retorno.length)
+                    if (retorno.length > 0) {
+                        ocultarLoader();
+                        var tdResult = "";
+                        tbSocios.rows().remove().draw();
+                        //$('#tbSociosBody ').children().remove();
+                        $.each(retorno, function (key, data) {
+
+                            var RegimenDesc = data.RegimenDesc != null ? data.RegimenDesc : "";
+                            tbSocios.row.add($('<tr id="' + data.partner_id + '"> <td>' + data.partner_id + '</td> <td>' + data.Rfc + '</td> <td>' + data.Curp + '</td>  <td>' + data.Bank_Name + '</td> <td>' + data.CuentaClabe + '</td>     <td>' + data.PaisDesc + '</td>     <td>' + RegimenDesc + '</td>  <td> <a href="#" onclick="editarSocio( ' + Number(data.partner_id) + ');">  Editar  </a> </td> </tr>'));
+                            tbSocios.draw();
+                        });
+
+                        //$('#tbSocios').append(tdResult);
+
+                        ocultarLoader();
+                    } else { alertSystem("error", "No se encontraron Datos "); ocultarLoader(); }
+
+
+                }, error: function (e) {
+                    alertSystem("error", e.responseText);
+                    ocultarLoader();
+                }
+            });
+            //cerrar el modal despues de clik en guardar
+            cerrarModalSocio();
+        }else{
+                alertSystem("info", "Todos los campos son Requeridos");
+                console.log("Todos los campos son requeridos");
+
+        }
+
+
+
+        });
+
+
+
+        //
+        //ajax carga socios al cargar la pagina
+        //
+
+
+
+
+    });
+
+    function editarSocio(partner_id) {
+        //(idCurp curp,idRfc rfc,idBanco banco,idclabeinterbancaria clabeinterbancaria,idRegimenFiscal regimenFiscal)
+        //alert("llegando parter:" + rellenarconCeros(partner_id, 10));
+        var partner_id = rellenarconCeros(partner_id, 10);
+        //alert("parter_id " + partner_id);
+        $('#modalSocio').find('#idSocioSpan').val(partner_id);
+        
+        
+        //alert("EDITAR  Socio:> " + $('#modalSocio').find('#idSocioSpan').val());
+        var tr = $('#tbSocios   tr[id=' +partner_id + ']');
+        //alert("todo TR:> " + tr.html());
+
+        var partner_Id = $('#tbSocios tr[id=' + partner_id + ']').find("td").eq(0).html();
+        var rfc = $('#tbSocios tr[id=' + partner_id + ']').find("td").eq(1).html();
+        var curp = $('#tbSocios tr[id=' + partner_id + ']').find("td").eq(2).html();
+        var cuentaClabe = $('#tbSocios tr[id=' + partner_id + ']').find("td").eq(4).html();
+
+        var bank_id     =$('#modalSocio').find('#idBancoSpan').val();
+        var regimen_id = $('#modalSocio').find('#idRegimenSpan').val();
+
+        //Elemento del Modal
+        //$('#modalSocio').find("input[name=partner_id]").val(partner_Id);
+        $('#modalSocio').find("input[name=rfc]").val(rfc);
+        $('#modalSocio').find("input[name=curp]").val(curp);
+        $('#modalSocio').find("select[name=bank_id]").val(bank_id);
+
+        //alert("Banco que biene de BD: " + bank_id);
+
+        $('#modalSocio').find("input[name=clabeinterbancaria]").val(cuentaClabe);
+        $('#modalSocio').find("select[name=regimenFiscal]").val(regimen_id);
+        //Fin Elementos del modal
+
+
+
+        //Blloque para consultar Bancos y cargar el Combo
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "@Url.Content("~/CatSocios/getBancos")",
+                //data: dataSend,
+            processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function (retorno) {
+            if (retorno.length > 0) {
+                _numReg = retorno.length;
+                console.log("Numero de registros Bancos::" + _numReg)
+
+                $('#idBanco').children().remove();
+                //var bank_id = 6;
+                $("#idBanco").append('<option selected value="0">Seleccione un Banco</option>');
+                $.each(retorno, function (key, banco) {
+                    if (bank_id == banco.bank_id) {
+                        $("#idBanco").append('<option value=' + banco.bank_id + ' selected >' + banco.bank_name + '  </option>');
+                    } else {
+                        $("#idBanco").append('<option value=' + banco.bank_id + '>' + banco.bank_name + '</option>');
+                    }
+
+                });
+                ocultarLoader();
+
+            } else { alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();}
+
+        },
+        error: function (e) {
+            alertSystem("error", e.responseText);
+            ocultarLoader();
+        }
+
+    })
+        //fin de carga de Combo Bancos
+
+
+
+        //Bloque que consulta los regines fiscales
+
+        if ($('#modalSocio').find('#idPaisSpan').val() > 0) { 
+        var dataSend = new FormData();
+        dataSend.append('pais_id', $('#modalSocio').find('#idPaisSpan').val());
+        
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "@Url.Content("~/CatSocios/getRegimenesFiscales")",
+                data: dataSend,
+            processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function (retorno) {
+            if (retorno.length > 0) {
+                _numReg = retorno.length;
+                console.log("Numero de registros Regimenes::" + _numReg)
+
+                $('#idRegimenFiscal').children().remove();
+                //var bank_id = 6;
+                $("#idRegimenFiscal").append('<option selected value="0">Seleccione un R&eacute;gimen Fiscal</option>');
+                $.each(retorno, function (key, Regimen) {
+                    if (regimen_id == Regimen.id_regimen) {
+                        $("#idRegimenFiscal").append('<option value=' + Regimen.id_regimen + ' selected >' + Regimen.descripcion + '  </option>');
+                    } else {
+                        $("#idRegimenFiscal").append('<option value=' + Regimen.id_regimen + '>' + Regimen.descripcion + '</option>');
+                    }
+
+                });
+                ocultarLoader();
+
+            } else { alertSystem("success", "El proceso no genero Resultados."); ocultarLoader();}
+
+        },
+        error: function (e) {
+            alertSystem("error", e.responseText);
+            ocultarLoader();
+        }
+
+        })
+
+        } else { alertSystem("error", "El socio no tiene un país asignado"); }
+        //fin de bloque que consulta los regines fiscales
+
+
+
+        abrirModalSocio();
+   }
+
+    function ValidaCampos() {
+        //campo no validado ya que se genera automaticamente
+        //$('#modalSocio').find("input[name=idPeriodo]").val() == "" &&
+        var retorno =true;
+
+        if ($('#modalSocio').find("input[name=rfc]").val() == "") { retorno = false }
+        if ($('#modalSocio').find("input[name=curp]").val() == "") { retorno = false }
+        if ($('#modalSocio').find("input[name=bank_id]").val() == "") { retorno = false }
+        if ($('#modalSocio').find("input[name=clabeinterbancaria]").val() == "") { retorno = false }
+        if ($('#modalSocio').find("input[name=regimenFiscal]").val() == "") { retorno = false }
+
+        return retorno;
+    }
+
+    function abrirModalSocio() {
+        //backdrop:true se pone oscuro el fondo y puedes cerrarlo en los botones de cerrar o dando click dando fuera del modal
+        //backdrop:false NO se pone oscuro el fondo y puedes cerrarlo en los botones de cerrar o dando click dando fuera del modal
+        //backdrop:static  se pone oscuro el fondo y solo puedes cerrarlo con los botones de cerrar del modal
+
+        $('#modalSocio').modal({
+            backdrop: 'static',
+            show: true,
+            keyboard: true
+        })
+
+    }
+    function cerrarModalSocio() {
+        $('#modalSocio').modal("hide");
+        //resetValuesFormModalValor($('#modalSocio'));
+        resetValuesFormModalSocio();
+       //location.reload(true);//reload from server recarga la pagina (no lo uso ya que lo cambia a Ajax)
+
+
+    }
+
+    function getValuesForm() {
+
+        if ($('#modalSocio').find('#idSocioSpan').val() == 0) {
+            dataSend.AccionSend = 'Add';
+        } else {
+            dataSend.AccionSend = 'Edit';
+
+        }
+
+        dataSend.partner_id = $('#modalSocio').find('#idSocioSpan').val()
+
+        dataSend.rfc = $('#modalSocio').find("input[name=rfc]").val();
+        dataSend.curp = $('#modalSocio').find("input[name=curp]").val();
+        dataSend.bank_id =$('#modalSocio').find("select[name=bank_id]").val();
+        dataSend.clabe = $('#modalSocio').find("input[name=clabeinterbancaria]").val();
+        dataSend.regimenFiscal = $('#modalSocio').find("select[name=regimenFiscal]").val();
+
+        //pendiente obtener el pais
+
+        
+
+
+        console.log("jsonValues:> " +
+            dataSend.partner_id + "__" +
+        dataSend.rfc + "__" +
+        dataSend.curp + "__" +
+        dataSend.bank_id + "__" +
+        dataSend.clabe + "__" +
+        dataSend.regimenFiscal + "__" +
+        dataSend.AccionSend
+        );
+
+
+        return dataSend;
+    }
+
+
+    function resetValuesFormModalSocio() {
+        //alert("RESETEANDO..");
+        $('#modalSocio').find('#idSocioSpan').val(0);
+
+        console.log("modalSocio reseteando:> " + $('#modalSocio').find('#idSocioSpan').val());
+        //modal.find("input,textarea,select").val('');//.end().find("input[type=checkbox], input[type=radio]").prop("checked", "").end();
+
+
+        $('#modalSocio').find("input[name=rfc]").val("");
+        $('#modalSocio').find("input[name=curp]").val("");
+        $('#modalSocio').find("input[name=bank_id]").val("");
+        $('#modalSocio').find("input[name=clabeinterbancaria]").val("");
+        $('#modalSocio').find("input[name=regimenFiscal]").val("");
+
+
+
+
+    }
+
+
+    function rellenarconCeros(value, length) {
+        return (value.toString().length < length) ? rellenarconCeros("0" + value, length) :
+        value;
+    }
+
+        </script>
